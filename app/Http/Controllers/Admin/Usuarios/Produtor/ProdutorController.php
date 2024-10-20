@@ -29,7 +29,7 @@ class ProdutorController extends Controller
     public function show($id)
     {
         $usuario = (new ProdutorRepository())->findAllData($id);
-
+//dd($usuario);
         return Inertia::render('Admin/User/Produtor/Show/Page', compact('usuario'));
     }
 }

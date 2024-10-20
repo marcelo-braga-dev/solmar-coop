@@ -8,7 +8,7 @@ import DadosPessoais from "@/Components/UserData/DadosPessoais.jsx";
 import Endereco from "@/Components/UserData/Endereco.jsx";
 import Contato from "@/Components/UserData/Contato.jsx";
 import DadosAcesso from "@/Components/UserData/DadosAcesso.jsx";
-import Usina from "@/Pages/Admin/User/Produtor/Create/Usina.jsx";
+import Proposta from "@/Pages/Admin/User/Produtor/Create/Proposta.jsx";
 
 const Page = () => {
 
@@ -29,7 +29,7 @@ const Page = () => {
                 <Endereco data={data} setData={setData}/>
                 <Contato data={data} setData={setData}/>
                 <DadosAcesso data={data} setData={setData}/>
-                <Usina data={data} setData={setData}/>
+                <Proposta data={data} setData={setData}/>
 
                 <div className="text-center">
                     <Button type="submit" startIcon={<IconPlus/>} color="success">Cadastrar Produtor</Button>

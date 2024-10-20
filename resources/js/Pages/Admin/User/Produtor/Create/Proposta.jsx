@@ -1,9 +1,9 @@
 import {Card, CardContent, CardHeader, InputAdornment, MenuItem, TextField} from "@mui/material";
-import {IconSolarPanel2} from "@tabler/icons-react";
+import {IconFileInvoice, IconSolarPanel2} from "@tabler/icons-react";
 import Grid from "@mui/material/Grid2";
 import {useEffect, useState} from "react";
 
-const Usina = ({data, setData}) => {
+const Proposta = ({data, setData}) => {
     const [concessionarias, setConcessionarias] = useState([])
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const Usina = ({data, setData}) => {
 
     return (
         <Card sx={{marginBottom: 4}}>
-            <CardHeader title="Usina Solar" avatar={<IconSolarPanel2/>} disableTypography/>
+            <CardHeader title="Proposta Comercial" avatar={<IconFileInvoice/>} disableTypography/>
             <CardContent>
                 <Grid container spacing={3} marginBottom={4}>
                     <Grid size={{md: 6}}>
@@ -27,7 +27,7 @@ const Usina = ({data, setData}) => {
                             fullWidth
                             required
                         >
-                            {concessionarias.map(item => <MenuItem value={item.id}>{item.nome} / {item.estado}</MenuItem>)}
+                            {concessionarias.map(item => <MenuItem key={item.id} value={item.id}>{item.nome} / {item.estado}</MenuItem>)}
                         </TextField>
                     </Grid>
                 </Grid>
@@ -73,4 +73,4 @@ const Usina = ({data, setData}) => {
         </Card>
     )
 }
-export default Usina
+export default Proposta

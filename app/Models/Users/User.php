@@ -3,6 +3,7 @@
 namespace App\Models\Users;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Propostas\UsinaProposta;
 use App\Models\Usina\UsinaSolar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -68,6 +69,11 @@ class User extends Authenticatable
     public function usina(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(UsinaSolar::class, 'user_id', 'id');
+    }
+
+    public function propostas(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(UsinaProposta::class, 'user_id', 'id');
     }
 
     //--------------

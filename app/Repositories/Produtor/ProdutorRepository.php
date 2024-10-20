@@ -5,12 +5,11 @@ namespace App\Repositories\Produtor;
 use App\DTO\Endereco\CreateEnderecoUsuarioDTO;
 use App\DTO\UsinaSolar\CreateUsinaDTO;
 use App\DTO\Usuario\CreateUsuarioDTO;
+use App\Models\Propostas\UsinaProposta;
 use App\Models\Users\Produtor;
-use App\Models\Users\Roles;
 use App\Models\Users\User;
 use App\Models\Users\UserAddress;
 use App\Models\Users\UserData;
-use App\Models\Usina\UsinaSolar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -43,7 +42,7 @@ class ProdutorRepository
             // Usina Solar
             $usinaDTO = CreateUsinaDTO::fromArray($user->id, $data->usina);
             $usina = $usinaDTO->toArray();
-            UsinaSolar::create($usina);
+            UsinaProposta::create($usina);
         });
     }
 
@@ -62,7 +61,7 @@ class ProdutorRepository
     public function findAllData($id)
     {
         return (new User)
-            ->with(['dataUser', 'endereco', 'usina'])
+            ->with(['dataUser', 'endereco', 'usina', 'propostas'])
             ->find($id);
     }
 }
