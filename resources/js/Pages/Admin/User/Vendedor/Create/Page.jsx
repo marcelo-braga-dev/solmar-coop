@@ -21,7 +21,7 @@ const Page = () => {
     }
 
     return (
-        <Layout titlePage="Cadastro de Vendedor" menu="vendedores" subMenu="vendedores-cadastrar" back>
+        <Layout titlePage="Cadastro de Vendedor" menu="vendedores" subMenu="vendedores-cadastrar" backPage>
             <form onSubmit={submit}>
 
                 <DadosPessoais data={data} setData={setData}/>

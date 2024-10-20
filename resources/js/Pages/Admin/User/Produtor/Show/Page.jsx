@@ -1,27 +1,62 @@
+import {useState} from "react";
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
-import {Card, CardContent, IconButton, Stack, Typography} from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import {IconEye} from "@tabler/icons-react";
 
-const Page = () => {
+import {Box, Card, CardContent, Tab} from "@mui/material";
+import {TabPanel, TabList, TabContext} from '@mui/lab';
+
+import {IconFileLike, IconFileTypePdf, IconHistory, IconSolarPanel, IconUserBolt} from "@tabler/icons-react";
+
+import Info from "./Info.jsx";
+import Usina from "./Usina.jsx";
+import Contratos from "./Contratos.jsx";
+import Financeiro from "./Financeiro.jsx";
+import Propostas from "./Propostas.jsx";
+import Historico from "./Historico.jsx";
+
+const Page = ({usuario}) => {
+
+    const [tab, setTab] = useState('info')
+
+    const handleChangeTab = (event, newValue) => {
+        setTab(newValue);
+    };
+
     return (
-        <Layout titlePage="Informações do Produtor" menu="produtores-solar" subMenu="produtores-solar-cadastrados" back>
+        <Layout titlePage="Informações do Produtor" menu="produtores-solar" subMenu="produtores-solar-cadastrados" backPage>
             <Card sx={{marginBottom: 3}}>
                 <CardContent>
-                    <Grid container justifyContent="space-between">
-                        <Grid size={12}>
-                            <Stack spacing={2}>
-                                <Stack direction="row" spacing={2}>
-                                    <Typography fontWeight="bold">Nome/Razão Social:</Typography>
-                                    <Typography>Nome do Produtor</Typography>
-                                </Stack>
-                                <Stack direction="row" spacing={2}>
-                                    <Typography fontWeight="bold">Status:</Typography>
-                                    <Typography>Aguardando Aprovação</Typography>
-                                </Stack>
-                            </Stack>
-                        </Grid>
-                    </Grid>
+                    <TabContext value={tab}>
+                        <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+                            <TabList onChange={handleChangeTab} variant="scrollable" scrollButtons="auto"
+                                     textColor="primary"
+                                     indicatorColor="primary">
+                                <Tab label="Informações do Produtor" value="info" icon={<IconUserBolt size={20}/>} iconPosition="start"/>
+                                <Tab label="Usinas Solar" value="usinas" icon={<IconSolarPanel size={20}/>} iconPosition="start"/>
+                                <Tab label="Contratos" value="contratos" icon={<IconFileTypePdf size={20}/>} iconPosition="start"/>
+                                <Tab label="Financeiro" value="financeiro" icon={<IconFileTypePdf size={20}/>} iconPosition="start"/>
+                                <Tab label="Propostas Comerciais" value="propostas" icon={<IconFileLike size={20}/>} iconPosition="start"/>
+                                <Tab label="historico" value="historico" icon={<IconHistory size={20}/>} iconPosition="start"/>
+                            </TabList>
+                        </Box>
+                        <TabPanel value="info">
+                            <Info usuario={usuario.data_user}/>
+                        </TabPanel>
+                        <TabPanel value="usinas">
+                            <Usina usina={usuario.usina}/>
+                        </TabPanel>
+                        <TabPanel value="contratos">
+                            <Contratos contratos={usuario.contratos}/>
+                        </TabPanel>
+                        <TabPanel value="financeiro">
+                            <Financeiro financeiro={usuario.financeiro}/>
+                        </TabPanel>
+                        <TabPanel value="propostas">
+                            <Propostas propostas={usuario.propostas}/>
+                        </TabPanel>
+                        <TabPanel value="historico">
+                            <Historico historico={usuario.historico}/>
+                        </TabPanel>
+                    </TabContext>
                 </CardContent>
             </Card>
         </Layout>

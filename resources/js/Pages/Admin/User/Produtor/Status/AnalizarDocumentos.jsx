@@ -16,7 +16,7 @@ const AnalizarDocumentos = ({produtor}) => {
     }
 
     return (
-        <Layout titlePage="Analizar Documentos do Produtor" menu="produtores-solar" back>
+        <Layout titlePage="Analizar Documentos do Produtor" menu="produtores-solar" backPage>
             <DadoPessoaisData user={produtor}/>
 
             {/*Endereco*/}

@@ -7,6 +7,7 @@ use App\Models\Usina\UsinaSolar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 
 class User extends Authenticatable
 {
@@ -49,8 +50,11 @@ class User extends Authenticatable
         ];
     }
 
-    protected $appends = ['status_nome'];
+    protected $appends = ['status_nome', 'cadastrado_em'];
 
+    //--------------
+    // relations
+    //--------------
     public function dataUser(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(UserData::class, 'user_id', 'id');
@@ -66,6 +70,15 @@ class User extends Authenticatable
         return $this->hasOne(UsinaSolar::class, 'user_id', 'id');
     }
 
+    //--------------
+    // getters
+    //--------------
+    public function getCadastradoEmAttribute()
+    {
+        $data = Carbon::parse($this->attributes['created_at']);
+        return $data->format('d/m/Y H:i');
+    }
+
     public function getStatusNomeAttribute()
     {
         switch ($this->attributes['status']) {
@@ -73,6 +86,8 @@ class User extends Authenticatable
                 return 'Aguardando Análise Documentos';
             case 'documentacao-aprovada':
                 return 'Documentação Aprovada';
+            case 'assinar_contrato':
+                return 'Assinar Contrato';
             default:
                 return '-';
         }

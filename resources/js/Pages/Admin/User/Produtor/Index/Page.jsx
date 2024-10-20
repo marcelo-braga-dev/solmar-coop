@@ -89,7 +89,7 @@ const Page = () => {
                                     </Link>
                                 )}
                                 {item.status === 'documentacao-aprovada' && (
-                                    <Link href={route('admin.usinas.contratos.create', {produtor: item.id})}>
+                                    <Link href={route('auth.contratos.usina.index', {produtor: item.id})}>
                                         <Button color="info" startIcon={<IconFileText/>}>Gerar Contrato</Button>
                                     </Link>
                                 )}

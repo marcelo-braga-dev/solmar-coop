@@ -11,7 +11,7 @@ import * as React from "react";
 
 const Usinas = ({usinas}) => {
     return (
-        <Layout titlePage="Usinas na Concessionária" menu="usinas" subMenu="usinas-cadas" back>
+        <Layout titlePage="Usinas na Concessionária" menu="usinas" subMenu="usinas-cadas" backPage>
 
             <Grid container>
                 <Grid size={4}>

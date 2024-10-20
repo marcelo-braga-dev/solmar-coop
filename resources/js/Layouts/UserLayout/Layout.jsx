@@ -7,18 +7,14 @@ import {Head} from "@inertiajs/react";
 import {useActiveMenu} from "@/Utils/Drawer/activeMenuUtils.jsx";
 import {IconArrowLeft} from "@tabler/icons-react";
 
-const Layout = ({titlePage, menu, subMenu, back, children}) => {
+const Layout = ({titlePage, menu, subMenu, backPage, children}) => {
 
     useActiveMenu(titlePage, menu, subMenu)
-
-    const btnBack = () => {
-        window.history.back()
-    }
 
     return (
         <MenuProvider menu={menu} subMenu={subMenu}>
             <Head title={titlePage ?? ''}/>
-            <Navbar/>
+            <Navbar titlePage={titlePage ?? ''} backPage={backPage}/>
             <div style={{display: 'flex', backgroundColor: '#fcfcfc'}}>
                 <SideMenu/>
                 <div style={{
@@ -28,19 +24,12 @@ const Layout = ({titlePage, menu, subMenu, back, children}) => {
                     overflow: 'hidden',
                 }}>
                     <Container maxWidth="lg" style={{
-                        overflowY: 'auto', // Permite scroll vertical
+                        overflowY: 'auto',
                         padding: 0,
                     }}>
-                        <Stack direction="row" justifyContent="space-between" style={{ padding: '20px' }}>
-                            {titlePage && <Typography marginBottom={2} variant="h5">{titlePage}</Typography>}
-                            {back && <IconButton onClick={btnBack}><IconArrowLeft/></IconButton>}
-                        </Stack>
-
                         <div style={{
                             marginBottom: 50,
-                            // height: 'calc(100vh - 200px)', // Altura dinâmica considerando header e margens
                             overflowX: 'auto',
-                            // padding: '10px',
                         }}>
                             {children}
                         </div>

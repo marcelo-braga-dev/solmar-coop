@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Contratos\Usina;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Produtor\ProdutorRepository;
-use App\Repositories\Produtor\VendedorRepository;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 

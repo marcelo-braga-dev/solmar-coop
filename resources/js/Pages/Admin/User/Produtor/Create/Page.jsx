@@ -22,7 +22,7 @@ const Page = () => {
     }
 
     return (
-        <Layout titlePage="Cadastro de Produtor" menu="produtores-solar" subMenu="produtores-solar-cadastrados-2" back>
+        <Layout titlePage="Cadastro de Produtor" menu="produtores-solar" subMenu="produtores-solar-cadastrados-2" backPage>
             <form onSubmit={submit}>
 
                 <DadosPessoais data={data} setData={setData}/>

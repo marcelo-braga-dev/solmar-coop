@@ -5,6 +5,7 @@ namespace App\Models\Users;
 use App\Utils\StringUtils;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class UserData extends Model
 {
@@ -29,11 +30,25 @@ class UserData extends Model
         'ramo_atividade',
     ];
 
+    protected $appends = ['cadastrado_em'];
+
+    //--------------
+    // getters
+    //--------------
+    public function getCadastradoEmAttribute()
+    {
+        $data = Carbon::parse($this->attributes['created_at']);
+        return $data->format('d/m/Y H:i');
+    }
+
     public function getCnpjAttribute()
     {
         return StringUtils::formatCnpj($this->attributes['cnpj']);
     }
 
+    //--------------
+    // setters
+    //--------------
     public function setCnpjAttribute($value)
     {
         $this->attributes['cnpj'] = preg_replace('/\D/', '', $value);

@@ -44,7 +44,7 @@ const KanbanCardContent = ({card}) => {
                 </Grid>
                 <Grid container gap={1} justifyContent="end">
                     {card.status === 'assinar_contrato' && <Grid size="auto">
-                        <Link href={route('admin.usinas.contratos.create', {produtor: card.id})}>
+                        <Link href={route('auth.contratos.usina.index', {produtor: card.id})}>
                             <Button color="error" startIcon={<IconFileTypePdf/>} size="small">Contrato</Button>
                         </Link>
                     </Grid>}
