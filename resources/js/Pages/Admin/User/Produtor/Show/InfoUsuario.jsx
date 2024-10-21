@@ -1,7 +1,7 @@
 import {Stack} from "@mui/material";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 
-const Info = ({usuario}) => {
+const InfoUsuario = ({usuario}) => {
     return (
         <Stack spacing={2}>
             {usuario?.nome && <TextInfo title="Nome" text={usuario.nome}/>}
@@ -23,4 +23,4 @@ const Info = ({usuario}) => {
         </Stack>
     )
 }
-export default Info
+export default InfoUsuario

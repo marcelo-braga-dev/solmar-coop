@@ -6,7 +6,7 @@ import {TabPanel, TabList, TabContext} from '@mui/lab';
 
 import {IconFileLike, IconFileTypePdf, IconHistory, IconSolarPanel, IconUserBolt} from "@tabler/icons-react";
 
-import Info from "./Info.jsx";
+import InfoUsuario from "./InfoUsuario.jsx";
 import Usina from "./Usina.jsx";
 import Contratos from "./Contratos.jsx";
 import Financeiro from "./Financeiro.jsx";
@@ -39,7 +39,7 @@ const Page = ({usuario}) => {
                             </TabList>
                         </Box>
                         <TabPanel value="info">
-                            <Info usuario={usuario.data_user}/>
+                            <InfoUsuario usuario={usuario.data_user}/>
                         </TabPanel>
                         <TabPanel value="usinas">
                             <Usina usina={usuario.usina}/>
@@ -51,7 +51,7 @@ const Page = ({usuario}) => {
                             <Financeiro financeiro={usuario.financeiro}/>
                         </TabPanel>
                         <TabPanel value="propostas">
-                            <Propostas propostas={usuario.propostas}/>
+                            <Propostas propostas={usuario.propostas} usuario={usuario.data_user}/>
                         </TabPanel>
                         <TabPanel value="historico">
                             <Historico historico={usuario.historico}/>
