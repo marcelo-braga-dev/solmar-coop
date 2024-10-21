@@ -45,7 +45,7 @@ const Page = ({usuario}) => {
                             <Usina usina={usuario.usina}/>
                         </TabPanel>
                         <TabPanel value="propostas">
-                            <Propostas propostas={usuario.propostas} usuario={usuario.data_user}/>
+                            <Propostas propostas={usuario.propostas} cliente={usuario.data_user}/>
                         </TabPanel>
                         <TabPanel value="contratos">
                             <Contratos contratos={usuario.contratos}/>

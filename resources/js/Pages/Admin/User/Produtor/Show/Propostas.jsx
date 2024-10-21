@@ -5,7 +5,7 @@ import {IconDownload, IconFileTypePdf} from "@tabler/icons-react";
 import {useEffect, useRef, useState} from "react";
 import Page from "@/Pages/Auth/Propostas/Produtor/Proposta/Page.jsx";
 
-const Propostas = ({propostas, usuario}) => {
+const Propostas = ({propostas, cliente}) => {
     const [layout, setLayout] = useState([])
     const proposalRef = useRef(null);
 
@@ -69,7 +69,7 @@ const Propostas = ({propostas, usuario}) => {
                     <img src={layout.header} alt="Capa" loading="lazy" style={{width: '100%', height: '100%'}}/>
                 </div>
                 <div ref={proposalRef}>
-                    <Page proposta={propostas} usuario={usuario}/>
+                    <Page proposta={propostas} cliente={cliente}/>
                 </div>
             </Paper>}
         </>)

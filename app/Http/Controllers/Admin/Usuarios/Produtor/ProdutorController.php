@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Produtor\ProdutorRepository;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 
 class ProdutorController extends Controller
 {
