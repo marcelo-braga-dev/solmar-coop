@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid2";
 import {IconDownload, IconFileTypePdf} from "@tabler/icons-react";
 import {useEffect, useRef, useState} from "react";
 import Page from "@/Pages/Auth/Propostas/Produtor/Proposta/Page.jsx";
+import {router} from "@inertiajs/react";
 
 const Propostas = ({propostas, usuario}) => {
     const [layout, setLayout] = useState([])
@@ -12,7 +13,7 @@ const Propostas = ({propostas, usuario}) => {
     const generatePdf = () => {
         const htmlContent = proposalRef.current.innerHTML;
 
-        axios.post(route('auth.propostas.pdf.usina.gerar-pdf'), {html: htmlContent}, {
+        router.post(route('auth.propostas.pdf.usina.gerar-pdf'), {html: htmlContent}, {
             responseType: 'blob'
         })
             .then(response => {
