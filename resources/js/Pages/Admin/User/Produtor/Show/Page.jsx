@@ -32,9 +32,9 @@ const Page = ({usuario}) => {
                                      indicatorColor="primary">
                                 <Tab label="Informações do Produtor" value="info" icon={<IconUserBolt size={20}/>} iconPosition="start"/>
                                 <Tab label="Usinas Solar" value="usinas" icon={<IconSolarPanel size={20}/>} iconPosition="start"/>
+                                <Tab label="Propostas Comerciais" value="propostas" icon={<IconFileLike size={20}/>} iconPosition="start"/>
                                 <Tab label="Contratos" value="contratos" icon={<IconFileTypePdf size={20}/>} iconPosition="start"/>
                                 <Tab label="Financeiro" value="financeiro" icon={<IconFileTypePdf size={20}/>} iconPosition="start"/>
-                                <Tab label="Propostas Comerciais" value="propostas" icon={<IconFileLike size={20}/>} iconPosition="start"/>
                                 <Tab label="historico" value="historico" icon={<IconHistory size={20}/>} iconPosition="start"/>
                             </TabList>
                         </Box>
@@ -44,14 +44,14 @@ const Page = ({usuario}) => {
                         <TabPanel value="usinas">
                             <Usina usina={usuario.usina}/>
                         </TabPanel>
+                        <TabPanel value="propostas">
+                            <Propostas propostas={usuario.propostas} usuario={usuario.data_user}/>
+                        </TabPanel>
                         <TabPanel value="contratos">
                             <Contratos contratos={usuario.contratos}/>
                         </TabPanel>
                         <TabPanel value="financeiro">
                             <Financeiro financeiro={usuario.financeiro}/>
-                        </TabPanel>
-                        <TabPanel value="propostas">
-                            <Propostas propostas={usuario.propostas} usuario={usuario.data_user}/>
                         </TabPanel>
                         <TabPanel value="historico">
                             <Historico historico={usuario.historico}/>

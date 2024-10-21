@@ -21,9 +21,9 @@ class ProdutorController extends Controller
 
     public function store(Request $request)
     {
-        (new ProdutorRepository())->create($request);
+        $userId = (new ProdutorRepository())->create($request);
 
-        return redirect()->route('admin.produtor.index');
+        return redirect()->route('admin.produtor.show', $userId);
     }
 
     public function show($id)

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth\Propostas\Produtor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
-use Illuminate\Support\Facades\View;
 
 class GerarPropostaUsinaController extends Controller
 {
