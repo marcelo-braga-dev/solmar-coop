@@ -60,7 +60,7 @@ const Propostas = ({propostas, usuario}) => {
                     </Grid>
                 </Grid>
             </Paper>
-            <Paper sx={{padding: 2}} variant="outlined">
+            {layout.capa && <Paper sx={{padding: 2}} variant="outlined">
                 <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
                     <img src={layout.capa} alt="Capa" loading="lazy"/>
                 </div>
@@ -71,7 +71,7 @@ const Propostas = ({propostas, usuario}) => {
                 <div ref={proposalRef}>
                     <Page proposta={propostas} usuario={usuario}/>
                 </div>
-            </Paper>
+            </Paper>}
         </>)
 }
 export default Propostas
