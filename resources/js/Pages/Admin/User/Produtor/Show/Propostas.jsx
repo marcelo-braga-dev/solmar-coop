@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid2";
 import {IconDownload, IconFileTypePdf} from "@tabler/icons-react";
 import {useEffect, useRef, useState} from "react";
 import Page from "@/Pages/Auth/Propostas/Produtor/Proposta/Page.jsx";
+import {router} from "@inertiajs/react";
 
 const Propostas = ({propostas, cliente}) => {
     const [layout, setLayout] = useState([])

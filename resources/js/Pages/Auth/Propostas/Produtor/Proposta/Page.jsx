@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PropostaComercial = ({cliente, proposta}) => {
-    console.log(proposta)
+
     return (
         <div style={styles.container}>
             <div style={styles.header}>
@@ -51,19 +51,25 @@ const PropostaComercial = ({cliente, proposta}) => {
                     <div style={styles.sectionTitle}>Benefícios do Contrato</div>
                     <ul style={styles.list}>
                         <li style={styles.listItem}>
-                            <span style={styles.highlight}>Economia e sustentabilidade</span> - Reduza sua fatura de energia e contribua para um futuro mais sustentável com energia limpa.
+                            <span style={styles.highlight}>Economia e sustentabilidade</span> - Reduza sua fatura de energia e contribua para um futuro mais sustentável
+                            com energia limpa.
                         </li>
                         <li style={styles.listItem}>
-                            <span style={styles.highlight}>Geração de receita adicional</span> - Alugue os créditos de energia excedentes para outros clientes, transformando sua usina em uma fonte de renda.
+                            <span style={styles.highlight}>Geração de receita adicional</span> - Alugue os créditos de energia excedentes para outros clientes,
+                            transformando sua usina em uma fonte de renda.
                         </li>
                         <li style={styles.listItem}>
-                            <span style={styles.highlight}>Gestão completa pela cooperativa</span> - A cooperativa cuida de todos os aspectos operacionais, para que você não precise se preocupar com a administração da usina.
+                            <span style={styles.highlight}>Gestão completa pela cooperativa</span> - A cooperativa cuida de todos os aspectos operacionais, para que você
+                            não precise se preocupar com a administração da usina.
                         </li>
                         <li style={styles.listItem}>
-                            <span style={styles.highlight}>Aproveitamento máximo dos créditos de energia</span> - Otimize o uso da energia produzida e aproveite ao máximo os benefícios fiscais e de compensação.
+                            <span style={styles.highlight}>Aproveitamento máximo dos créditos de energia</span> - Otimize o uso da energia produzida e aproveite ao máximo
+                            os benefícios fiscais e de compensação.
                         </li>
                     </ul>
                 </div>
+
+                <div style={{pageBreakAfter: 'always'}}/>
 
                 <div style={styles.whyJoin}>
                     <div style={styles.sectionTitle}>Por Que se Juntar à Cooperativa?</div>
@@ -86,7 +92,9 @@ const PropostaComercial = ({cliente, proposta}) => {
                 <div style={styles.testimonial}>
                     <div style={styles.sectionTitle}>Depoimento de um Cliente Satisfeito</div>
                     <p style={styles.testimonialText}>
-                        "Desde que me tornei membro da cooperativa, minha usina solar se tornou uma fonte de receita adicional. Além disso, sinto-me orgulhoso por contribuir com um futuro mais sustentável. A gestão da cooperativa é excepcional e cuida de todos os detalhes para que eu não precise me preocupar."
+                        "Desde que me tornei membro da cooperativa, minha usina solar se tornou uma fonte de receita adicional. Além disso, sinto-me orgulhoso por
+                        contribuir com um futuro mais sustentável. A gestão da cooperativa é excepcional e cuida de todos os detalhes para que eu não precise me
+                        preocupar."
                     </p>
                     <p><strong>- Maria Fernandes, São Paulo - SP</strong></p>
                 </div>
@@ -94,7 +102,7 @@ const PropostaComercial = ({cliente, proposta}) => {
 
             <div style={styles.footer}>
                 <p>&copy; 2024 SOLMAR Cooperativa de Energia Solar. Todos os direitos reservados.</p>
-                <p>Endereço: Rua  | E-mail: </p>
+                <p>Endereço: Rua | E-mail: </p>
             </div>
         </div>
     );
@@ -183,7 +191,7 @@ const styles = {
         backgroundColor: '#f8f9fa',
         textAlign: 'center',
         padding: '20px',
-        marginTop: '30px',
+        marginTop: '150px',
         fontSize: '12px',
         color: '#6c757d',
         borderTop: '4px solid #ffc107',

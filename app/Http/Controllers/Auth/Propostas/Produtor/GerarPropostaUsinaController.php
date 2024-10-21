@@ -21,25 +21,25 @@ class GerarPropostaUsinaController extends Controller
 
         // Caminho para a imagem do cabeçalho
         $dirHeader = public_path('storage/propostas/produtores/layout/cabecalho.jpg');
-        $headerHtml = '
-                <div class="header">
-                    <img src="' . $dirHeader . '" alt="Cabeçalho" style="width: 100%; height: auto;">
-                </div>
-        ';
+        $headerHtml = '<img src="' . $dirHeader . '" alt="Cabeçalho" style="width: 100%; height: auto;">';
+
+        // Caminho para a imagem do rodape
+        $dirFooter = public_path('storage/propostas/produtores/layout/rodape.jpg');
+        $footerHtml = '<img src="' . $dirFooter . '" alt="Cabeçalho" style="width: 100%; height: auto;">';
 
         // Adiciona o cabeçalho logo após cada ocorrência de 'style="text-align: center; page-break-after: always;"'
-//        $html = preg_replace(
-//            '/style="text-align: center; page-break-after: always;"/i',
-//            'style="text-align: center; page-break-after: always;"' . $headerHtml,
-//            $html
-//        );
+        $html = preg_replace(
+            '/<div style="break-after: page;"><\/div>/i',
+            $footerHtml . '<div style="text-align: center; page-break-after: always;"></div>' . $headerHtml,
+            $html
+        );
 
         // Gera o PDF com o Snappy, configurando o cabeçalho e ajustando margens
-        $pdf = PDF::loadHTML($capa . $headerHtml . $html)
+        $pdf = PDF::loadHTML($capa . $headerHtml . $html . $footerHtml)
             ->setOption('encoding', 'UTF-8')
             ->setOption('enable-local-file-access', true)
-            ->setOption('margin-top', '5mm')
-            ->setOption('margin-bottom', '5mm');
+            ->setOption('margin-top', '2mm')
+            ->setOption('margin-bottom', '2mm');
 
         // Retorna o PDF para download
         return $pdf->inline('proposta_comercial_' . uniqid() . '.pdf');
