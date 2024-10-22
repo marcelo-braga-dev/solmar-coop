@@ -21,7 +21,7 @@ const PropostaComercial = ({cliente, proposta, endereco}) => {
                     {/*<p><strong>Telefone:</strong> (11) 99999-9999</p>*/}
                 </div>
 
-                <div style={styles.section}>{console.log(proposta)}
+                <div style={styles.section}>
                     <div style={styles.sectionTitle}>Detalhes da Usina Solar</div>
                     <p><strong>Tipo de Usina:</strong> Solar Fotovoltaica</p>
                     <p><strong>Taxa de Redução de Consumo:</strong> {proposta.taxa_reducao_consumo}%</p>
