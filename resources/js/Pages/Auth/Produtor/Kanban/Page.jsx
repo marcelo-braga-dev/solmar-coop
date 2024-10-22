@@ -7,7 +7,11 @@ import {LinearProgress} from "@mui/material";
 
 const initialColumns = [
     {status: 'novo', nome: 'Analizar Documentos', cor: '#007bff'},
-    {status: 'assinar_contrato', nome: 'Assinar Contrato', cor: '#ffc107'},
+    {status: 'assinar_contrato', nome: 'Assinar Pré-Contrato', cor: '#ffc107'},
+    {status: 'ficha_inscricao', nome: 'Preencher Ficha Inscrição', cor: '#28a745'},
+    {status: 'contrato_adesao', nome: 'Assinar Contrato Adesão', cor: '#1128b8'},
+    {status: 'contrato_aluguel', nome: 'Assinar Contrato Aluguel', cor: '#ea0b91'},
+    {status: 'troca_titularidade', nome: 'Troca de Titularidade', cor: '#0ecf3b'},
     {status: 'concluido', nome: 'Concluído', cor: '#28a745'},
 ];
 
@@ -96,6 +100,7 @@ const Page = () => {
     return (
         <Layout titlePage="Quadro de Produtores" menu="produtores-solar" subMenu="produtores-kanban">
             {carregando && <LinearProgress color="inherit"/>}
+            <div style={{height: 'calc(100vh - 8rem)'}}>
             {!carregando && <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
                 <div style={{display: 'flex', justifyContent: 'space-between', gap: '20px', padding: '20px'}}>
                     {columns.map(column => (
@@ -108,6 +113,7 @@ const Page = () => {
                     ))}
                 </div>
             </DndContext>}
+            </div>
         </Layout>
     );
 };

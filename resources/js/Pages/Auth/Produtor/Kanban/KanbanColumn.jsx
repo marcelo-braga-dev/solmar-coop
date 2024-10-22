@@ -7,7 +7,7 @@ const styles = {
         backgroundColor: '#ffffff',
         borderRadius: '8px',
         padding: '10px',
-        width: '400px',
+        minWidth: 300,
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         display: 'flex',
         flexDirection: 'column',
