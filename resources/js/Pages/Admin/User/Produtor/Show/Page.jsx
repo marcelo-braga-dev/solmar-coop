@@ -13,19 +13,19 @@ import Financeiro from "./Financeiro.jsx";
 import Propostas from "./Propostas.jsx";
 import Historico from "./Historico.jsx";
 
-const Page = ({usuario}) => {
+const Page = ({usuario, tab}) => {
 
-    const [tab, setTab] = useState('info')
+    const [tabSelected, setTabSelected] = useState( tab ?? 'info')
 
     const handleChangeTab = (event, newValue) => {
-        setTab(newValue);
+        setTabSelected(newValue);
     };
 
     return (
         <Layout titlePage="Informações do Produtor" menu="produtores-solar" subMenu="produtores-solar-cadastrados" backPage>
             <Card sx={{marginBottom: 3}}>
                 <CardContent>
-                    <TabContext value={tab}>
+                    <TabContext value={tabSelected}>
                         <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
                             <TabList onChange={handleChangeTab} variant="scrollable" scrollButtons="auto"
                                      textColor="primary"

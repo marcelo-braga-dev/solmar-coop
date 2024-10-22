@@ -24,13 +24,15 @@ class ProdutorController extends Controller
     {
         $userId = (new ProdutorRepository())->create($request);
 
-        return redirect()->route('admin.produtor.show', $userId);
+        return redirect()->route('admin.produtor.show', [$userId, 'tab' => 'propostas']);
     }
 
-    public function show($id)
+    public function show($id, Request $request)
     {
+        $tab = $request->tab;
+
         $usuario = (new ProdutorRepository())->findAllData($id);
 
-        return Inertia::render('Admin/User/Produtor/Show/Page', compact('usuario'));
+        return Inertia::render('Admin/User/Produtor/Show/Page', compact('usuario', 'tab'));
     }
 }
