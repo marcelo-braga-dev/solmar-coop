@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PropostaComercial = ({cliente, proposta}) => {
+const PropostaComercial = ({cliente, proposta, endereco}) => {
 
     return (
         <div style={styles.container}>
@@ -21,11 +21,22 @@ const PropostaComercial = ({cliente, proposta}) => {
                     {/*<p><strong>Telefone:</strong> (11) 99999-9999</p>*/}
                 </div>
 
-                <div style={styles.section}>
-                    <div style={styles.sectionTitle}>Detalhes do Contrato</div>
+                <div style={styles.section}>{console.log(proposta)}
+                    <div style={styles.sectionTitle}>Detalhes da Usina Solar</div>
                     <p><strong>Tipo de Usina:</strong> Solar Fotovoltaica</p>
+                    <p><strong>Taxa de Redução de Consumo:</strong> {proposta.taxa_reducao_consumo}%</p>
+                    <p><strong>Potência Total da Usina:</strong> {proposta.potencia_usina} kWp</p>
+                    <p><strong>Geração Média Mensal:</strong> {proposta.media_geracao} kWp</p>
+                    <p><strong>Inversor:</strong> {proposta.inversores}</p>
+                    <p><strong>Módulos:</strong> {proposta.modulos}</p>
                     <p><strong>Concessionária de Energia Elétrica:</strong> {proposta.concessionaria.nome} / {proposta.concessionaria.estado} </p>
-                    <p><strong>Localização:</strong> Fazenda Solar ABC, São Paulo - SP</p>
+                    <p><strong>Localização:</strong>{
+                        `${endereco.rua ?? '-'},
+                        ${endereco.numero ?? '-'},
+                        ${endereco.bairro ?? '-'},
+                        ${endereco.cidade ?? '-'}/${endereco.estado ?? '-'} -
+                        Cep: ${endereco.cep ?? '-'}`}
+                    </p>
                     <p><strong>Duração do Contrato:</strong> {proposta.prazo_locacao} meses</p>
                 </div>
 
@@ -46,6 +57,10 @@ const PropostaComercial = ({cliente, proposta}) => {
                         </li>
                     </ul>
                 </div>
+
+                <div style={{pageBreakAfter: 'always'}}/>
+
+                <div id="img1"/>
 
                 <div style={styles.section}>
                     <div style={styles.sectionTitle}>Benefícios do Contrato</div>
@@ -69,8 +84,6 @@ const PropostaComercial = ({cliente, proposta}) => {
                     </ul>
                 </div>
 
-                <div style={{pageBreakAfter: 'always'}}/>
-
                 <div style={styles.whyJoin}>
                     <div style={styles.sectionTitle}>Por Que se Juntar à Cooperativa?</div>
                     <ul style={styles.list}>
@@ -88,6 +101,8 @@ const PropostaComercial = ({cliente, proposta}) => {
                         </li>
                     </ul>
                 </div>
+
+                <div style={{pageBreakAfter: 'always'}}/>
 
                 <div style={styles.testimonial}>
                     <div style={styles.sectionTitle}>Depoimento de um Cliente Satisfeito</div>

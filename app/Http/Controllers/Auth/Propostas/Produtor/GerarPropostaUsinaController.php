@@ -21,7 +21,7 @@ class GerarPropostaUsinaController extends Controller
 
         // Caminho para a imagem do cabeçalho
         $dirHeader = public_path('storage/propostas/produtores/layout/cabecalho.jpg');
-        $headerHtml = '<img src="' . $dirHeader . '" alt="Cabeçalho" style="width: 100%; height: auto;">';
+        $headerHtml = '<img src="' . $dirHeader . '" alt="Cabeçalho" style="width: 100%; height: auto; margin-botton: 15px">';
 
         // Caminho para a imagem do rodape
         $dirFooter = public_path('storage/propostas/produtores/layout/rodape.jpg');
@@ -30,7 +30,16 @@ class GerarPropostaUsinaController extends Controller
         // Adiciona o cabeçalho logo após cada ocorrência de 'style="text-align: center; page-break-after: always;"'
         $html = preg_replace(
             '/<div style="break-after: page;"><\/div>/i',
-            $footerHtml . '<div style="text-align: center; page-break-after: always;"></div>' . $headerHtml,
+            '<div style="text-align: center; page-break-after: always;"></div>' . $headerHtml,
+            $html
+        );
+
+        // Adiciona img1
+        $img1 = public_path('storage/propostas/produtores/assets/img1.jpg');
+        $img1Html = '<img src="' . $img1 . '" alt="Cabeçalho" style="width: 100%; height: auto;">';
+        $html = preg_replace(
+            '/<div id="img1"><\/div>/i',
+            $img1Html,
             $html
         );
 

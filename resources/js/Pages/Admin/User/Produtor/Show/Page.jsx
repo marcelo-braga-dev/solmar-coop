@@ -42,10 +42,10 @@ const Page = ({usuario}) => {
                             <InfoUsuario usuario={usuario.data_user} contatos={usuario.contatos}/>
                         </TabPanel>
                         <TabPanel value="usinas">
-                            <Usina usina={usuario.usina}/>
+                            <Usina usina={usuario.propostas}/>
                         </TabPanel>
                         <TabPanel value="propostas">
-                            <Propostas propostas={usuario.propostas} cliente={usuario.data_user}/>
+                            <Propostas propostas={usuario.propostas} cliente={usuario.data_user} endereco={usuario.endereco}/>
                         </TabPanel>
                         <TabPanel value="contratos">
                             <Contratos contratos={usuario.contratos}/>

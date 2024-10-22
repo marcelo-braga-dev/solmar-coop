@@ -6,7 +6,7 @@ import {useEffect, useRef, useState} from "react";
 import Page from "@/Pages/Auth/Propostas/Produtor/Proposta/Page.jsx";
 import {router} from "@inertiajs/react";
 
-const Propostas = ({propostas, cliente}) => {
+const Propostas = ({propostas, cliente, endereco}) => {
     const [layout, setLayout] = useState([])
     const proposalRef = useRef(null);
 
@@ -70,7 +70,7 @@ const Propostas = ({propostas, cliente}) => {
                     <img src={layout.header} alt="Capa" loading="lazy" style={{width: '100%', height: '100%'}}/>
                 </div>
                 <div ref={proposalRef}>
-                    <Page proposta={propostas} cliente={cliente}/>
+                    <Page proposta={propostas} cliente={cliente} endereco={endereco}/>
                 </div>
             </Paper>}
         </>)
