@@ -8,12 +8,10 @@ use App\DTO\Usuario\CreateUsuarioDTO;
 use App\Models\Propostas\UsinaProposta;
 use App\Models\Users\Produtor;
 use App\Models\Users\User;
-use App\Models\Users\UserAddress;
-use App\Models\Users\UserData;
+use App\Services\Users\CreateUserService;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class ProdutorRepository
 {
@@ -21,25 +19,22 @@ class ProdutorRepository
     {
         try {
             return DB::transaction(function () use ($data) {
+                $service = new CreateUserService();
+
                 $dto = CreateUsuarioDTO::fromArray($data);
                 $produtor = $dto->toArray();
 
                 // Conta Acesso
-                $user = User::create([
-                    'name' => $produtor['nome'] ?? $produtor['razao_social'],
-                    'email' => $produtor['email'],
-                    'role_id' => 3,
-                    'status' => 'novo',
-                    'password' => ($data->senha ?? null) ? Hash::make($data->senha) : Hash::make(uniqid()),
-                ]);
+                $user = $service->user($produtor, $data);
 
                 // Dados do Usuario
-                UserData::create(['user_id' => $user->id, ...$produtor]);
+                $service->userData($user, $produtor);
+
+                // Dados do Usuario
+                $service->contato($user, $data);
 
                 // Endereco
-                $enderecoDTO = CreateEnderecoUsuarioDTO::fromArray($user->id, $data->endereco ?? []);
-                $endereco = $enderecoDTO->toArray();
-                UserAddress::create($endereco);
+                $service->endereco($user, $data);
 
                 // Usina Solar
                 $usinaDTO = CreateUsinaDTO::fromArray($user->id, $data->usina);
@@ -48,8 +43,8 @@ class ProdutorRepository
 
                 return $user->id;
             });
-        } catch (QueryException) {
-
+        } catch (QueryException $exception) {
+            dd($exception->getMessage());
         }
     }
 
@@ -68,7 +63,7 @@ class ProdutorRepository
     public function findAllData($id)
     {
         return (new User)
-            ->with(['dataUser', 'endereco', 'usina', 'propostas'])
+            ->with(['dataUser', 'endereco', 'usina', 'propostas', 'contatos'])
             ->find($id);
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Users\User;
 use App\Models\Users\UserAddress;
 use App\Models\Users\UserData;
 use App\Models\Users\Vendedor;
+use App\Services\Users\CreateUserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,25 +16,22 @@ class VendedorRepository
 {
     public function create(Request $data)
     {
+        $service = new CreateUserService();
+
         $dto = CreateUsuarioDTO::fromArray($data);
         $produtor = $dto->toArray();
 
         // Conta Acesso
-        $user = User::create([
-            'name' => $produtor['nome'] ?? $produtor['razao_social'],
-            'email' => $produtor['email'],
-            'role_id' => 2,
-            'status' => 'novo',
-            'password' => ($data->senha ?? null) ? Hash::make($data->senha) : Hash::make(uniqid()),
-        ]);
+        $user = $service->user($produtor, $data);
 
         // Dados do Usuario
-        UserData::create(['user_id' => $user->id, ...$produtor]);
+        $service->userData($user, $produtor);
+
+        // Dados do Usuario
+        $service->contato($user, $data);
 
         // Endereco
-        $enderecoDTO = CreateEnderecoUsuarioDTO::fromArray($user->id, $data->endereco ?? []);
-        $endereco = $enderecoDTO->toArray();
-        UserAddress::create($endereco);
+        $service->endereco($user, $data);
     }
 
     public function getAll()

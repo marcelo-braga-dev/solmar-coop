@@ -39,7 +39,7 @@ const Page = ({usuario}) => {
                             </TabList>
                         </Box>
                         <TabPanel value="info">
-                            <InfoUsuario usuario={usuario.data_user}/>
+                            <InfoUsuario usuario={usuario.data_user} contatos={usuario.contatos}/>
                         </TabPanel>
                         <TabPanel value="usinas">
                             <Usina usina={usuario.usina}/>

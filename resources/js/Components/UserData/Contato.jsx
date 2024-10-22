@@ -17,23 +17,18 @@ const Contato = ({data, setData}) => {
                 <Grid container spacing={3}>
                     <Grid size={{md: 3}}>
                         <TextField
-                            label="Nome do Proprietário do Contato:"
-                            onChange={e => setData({...data, contato: {...data.contato, nome: e.target.value}})}
-                            fullWidth
-                        />
-                    </Grid>
-                    <Grid size={{md: 3}}>
-                        <TextField
-                            label="Email:"
-                            onChange={e => setData({...data, contato: {...data.contato, email: e.target.value}})}
-                            fullWidth
-                        />
-                    </Grid>
-                    <Grid size={{md: 3}}>
-                        <TextField
                             label="Celular:"
+                            required
                             className="mobile"
                             onChange={e => setData({...data, contato: {...data.contato, celular: e.target.value}})}
+                            fullWidth
+                        />
+                    </Grid>
+                    <Grid size={{md: 3}}>
+                        <TextField
+                            label="Celular 2:"
+                            className="mobile"
+                            onChange={e => setData({...data, contato: {...data.contato, celular_2: e.target.value}})}
                             fullWidth
                         />
                     </Grid>
