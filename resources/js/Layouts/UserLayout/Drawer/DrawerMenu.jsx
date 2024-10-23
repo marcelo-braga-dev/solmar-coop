@@ -19,7 +19,7 @@ const styleDrawerItem = {pl: 4, borderBottom: 'none'};
 
 export default function SideMenu() {
 
-    const {openedMenu, openedSubMenu, toggleMenu} = useMenu();
+    const {openedMenu, openedSubMenu, toggleMenu, openMenuDrawer} = useMenu();
 
     const menuItems = adminMenu;
 
@@ -53,7 +53,7 @@ export default function SideMenu() {
     }, [toggleMenu]);
 
     return (
-        <Drawer
+        openMenuDrawer && <Drawer
             variant="permanent"
             anchor="left"
             sx={styleDrawer}

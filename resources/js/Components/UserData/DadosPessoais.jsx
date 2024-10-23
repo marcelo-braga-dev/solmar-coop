@@ -35,7 +35,7 @@ const DadosPessoais = ({data, setData}) => {
                     </Grid>
 
                     {data.tipo_pessoa === 'pj' && <>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="CNPJ"
                                 className="cnpj"
@@ -43,20 +43,20 @@ const DadosPessoais = ({data, setData}) => {
                                 required
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{md: 8}}>
+                        <Grid size={{xs: 12, md: 8}}>
                             <TextField
                                 label="Razão Social:"
                                 onChange={e => setData('razao_social', e.target.value)}
                                 required
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Nome Fantasia:"
                                 onChange={e => setData('nome_fantasia', e.target.value)}
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Tipo de Empresa:"
                                 onChange={e => setData('tipo_empresa', e.target.value)}
@@ -71,25 +71,25 @@ const DadosPessoais = ({data, setData}) => {
                                 <MenuItem value="Sociedade Limitada Unipessoal (SLU)">Sociedade Limitada Unipessoal (SLU)</MenuItem>
                             </TextField>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Ramo Atividade:"
                                 onChange={e => setData('ramo_atividade', e.target.value)}
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Inscrição Estadual:"
                                 onChange={e => setData('ie', e.target.value)}
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Inscrição Municipal:"
                                 onChange={e => setData('im', e.target.value)}
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Data Fundação:"
                                 onChange={e => setData('data_fundacao', e.target.value)}
@@ -100,26 +100,26 @@ const DadosPessoais = ({data, setData}) => {
                     </>}
 
                     {data.tipo_pessoa === 'pf' && <>
-                        <Grid size={{md: 8}}>
+                        <Grid size={{xs: 12, md: 8}}>
                             <TextField
                                 label="Nome Completo:"
                                 onChange={e => setData('nome', e.target.value)}
                                 required
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="CPF:"
                                 onChange={e => setData('cpf', e.target.value)}
                                 required
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="RG:"
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Data Nascimento:"
                                 onChange={e => setData('data_nascimento', e.target.value)}
@@ -128,7 +128,7 @@ const DadosPessoais = ({data, setData}) => {
                                 InputLabelProps={{shrink: true}}
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Gênero:"
                                 onChange={e => setData('genero', e.target.value)}
@@ -138,7 +138,7 @@ const DadosPessoais = ({data, setData}) => {
                                 <MenuItem value="f">Feminino</MenuItem>
                             </TextField>
                         </Grid>
-                        <Grid size={{md: 4}}>
+                        <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Estado Civil:"
                                 onChange={e => setData('estado_civil', e.target.value)}
@@ -150,7 +150,7 @@ const DadosPessoais = ({data, setData}) => {
                                 <MenuItem value="Viuvo(a)">Viuvo(a)</MenuItem>
                             </TextField>
                         </Grid>
-                        <Grid size={{md: 8}}>
+                        <Grid size={{xs: 12, md: 8}}>
                             <TextField
                                 label="Ocupação Profissional:"
                                 onChange={e => setData('profissao', e.target.value)}

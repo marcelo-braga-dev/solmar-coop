@@ -19,11 +19,11 @@ const Page = ({}) => {
     }, []);
 
     return (
-        <Layout titlePage="Vendedores Cadastrados" menu="vendedores" subMenu="vendedores-cadastrados">
+        <Layout titlePage="Consultores Cadastrados" menu="vendedores" subMenu="vendedores-cadastrados">
             <Grid container marginBottom={4} justifyContent="space-between">
                 <Grid size={3}>
                     <Link href={route('admin.user.vendedor.create')}>
-                        <Button startIcon={<IconPlus/>} color="success">Cadastrar Vendedor</Button>
+                        <Button startIcon={<IconPlus/>} color="success">Cadastrar Consultor</Button>
                     </Link>
                 </Grid>
                 <Grid size="auto">
@@ -33,7 +33,7 @@ const Page = ({}) => {
 
             {carregando && <LinearProgress color="inherit"/>}
 
-            {usuarios.length === 0 && !carregando && <Typography>Nenhum Produtor Cadastrado.</Typography>}
+            {usuarios.length === 0 && !carregando && <Typography>Nenhum Consultor Cadastrado.</Typography>}
 
             {usuarios.map(item => (
                 <Card key={item.id} sx={{marginBottom: 3}}>

@@ -21,7 +21,7 @@ const Page = () => {
     }
 
     return (
-        <Layout titlePage="Cadastro de Vendedor" menu="vendedores" subMenu="vendedores-cadastrar" backPage>
+        <Layout titlePage="Cadastro de Consultor" menu="vendedores" subMenu="vendedores-cadastrar" backPage>
             <form onSubmit={submit}>
 
                 <DadosPessoais data={data} setData={setData}/>
@@ -30,7 +30,7 @@ const Page = () => {
                 <DadosAcesso data={data} setData={setData}/>
 
                 <div className="text-center">
-                    <Button type="submit" startIcon={<IconPlus/>} color="success">Cadastrar Produtor</Button>
+                    <Button type="submit" startIcon={<IconPlus/>} color="success">Cadastrar Consultor</Button>
                 </div>
             </form>
         </Layout>

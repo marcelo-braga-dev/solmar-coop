@@ -20,11 +20,11 @@ const Page = ({}) => {
     }, []);
 
     return (
-        <Layout titlePage="Clientes Cadastrados" menu="clientes" subMenu="clientes-cadastrados">
+        <Layout titlePage="Cliente Consumidor Cadastrados" menu="clientes" subMenu="clientes-cadastrados">
             <Grid container marginBottom={4} justifyContent="space-between">
                 <Grid size={3}>
                     <Link href={route('admin.user.cliente.create')}>
-                        <Button startIcon={<IconPlus/>} color="success">Cadastrar Vendedor</Button>
+                        <Button startIcon={<IconPlus/>} color="success">Cadastrar Cliente Consumidor</Button>
                     </Link>
                 </Grid>
                 <Grid size="auto">

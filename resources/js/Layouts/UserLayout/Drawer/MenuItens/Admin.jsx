@@ -24,7 +24,7 @@ export const adminMenu = [
             {id: 'produtores-solar-cadastrados-2', title: 'Cadastrar Produtor', link: route('admin.produtor.create')},
         ],
     }, {
-        title: 'Clientes',
+        title: 'Cliente Consumidor',
         icon: <IconUsers/>,
         id: 'clientes',
         subItems: [
@@ -32,12 +32,12 @@ export const adminMenu = [
             {id: 'clientes-cadastrar', title: 'Cadastrar Cliente', link: route('admin.user.cliente.create')},
         ],
     }, {
-        title: 'Vendedores',
+        title: 'Colsultores',
         icon: <IconUserDollar/>,
         id: 'vendedores',
         subItems: [
-            {id: 'vendedores-cadastrados', title: 'Vendedores Cadastrados', link: route('admin.user.vendedor.index')},
-            {id: 'vendedores-cadastrar', title: 'Cadastrar Vendedor', link: route('admin.user.vendedor.create')},
+            {id: 'vendedores-cadastrados', title: 'Colsultores Cadastrados', link: route('admin.user.vendedor.index')},
+            {id: 'vendedores-cadastrar', title: 'Cadastrar Colsultor', link: route('admin.user.vendedor.create')},
         ],
     }, {
         title: 'Administradores',
@@ -71,7 +71,7 @@ export const adminMenu = [
             {id: 'dashboards-cadastrados', title: 'Produtores', link: route('admin.produtor.store')},
             {id: 'dashboards-cadastrar', title: 'Clientes', link: route('admin.produtor.show', 1)},
             {id: 'dashboards-cadastrar', title: 'Usinas', link: route('admin.produtor.show', 1)},
-            {id: 'dashboards-cadastrar', title: 'Vendedores', link: route('admin.produtor.show', 1)},
+            {id: 'dashboards-cadastrar', title: 'Consultores', link: route('admin.produtor.show', 1)},
         ],
     }, {
         title: 'Propostas Comerciais',
