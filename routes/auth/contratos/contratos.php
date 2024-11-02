@@ -14,6 +14,6 @@ Route::name('auth.contratos.')
         Route::name('pdf.usina.')
             ->prefix('pdf')
             ->group(function () {
-                Route::post('gerar-pdf-usina', [GerarContratoProdutorController::class, 'gerarPdf'])->name('gerar-pdf');
+                Route::get('gerar-pdf-usina', [GerarContratoProdutorController::class, 'gerarPdf'])->name('gerar-pdf');
             });
     });

@@ -2,10 +2,9 @@ import React from 'react';
 import SideMenu from "./Drawer/DrawerMenu.jsx";
 import {MenuProvider} from "./Drawer/DrawerContext.jsx";
 import Navbar from "./Header/Navbar.jsx";
-import {Container, IconButton, Stack, Typography} from "@mui/material";
+import {Container} from "@mui/material";
 import {Head} from "@inertiajs/react";
 import {useActiveMenu} from "@/Utils/Drawer/activeMenuUtils.jsx";
-import {IconArrowLeft} from "@tabler/icons-react";
 
 const Layout = ({titlePage, menu, subMenu, backPage, children}) => {
 
@@ -15,7 +14,7 @@ const Layout = ({titlePage, menu, subMenu, backPage, children}) => {
         <MenuProvider menu={menu} subMenu={subMenu}>
             <Head title={titlePage ?? ''}/>
             <Navbar titlePage={titlePage ?? ''} backPage={backPage}/>
-            <div style={{display: 'flex', backgroundColor: '#fcfcfc'}}>
+            <div style={{display: 'flex', backgroundColor: '#f5f5f5'}}>
                 <SideMenu/>
                 <div style={{
                     flexGrow: 1,
@@ -26,9 +25,11 @@ const Layout = ({titlePage, menu, subMenu, backPage, children}) => {
                     <Container maxWidth="lg" style={{
                         overflowY: 'auto',
                         padding: 0,
+                        minHeight: 'calc(100vh - 90px)'
                     }}>
                         <div style={{
                             marginBottom: 50,
+                            paddingBottom: 50,
                             overflowX: 'auto',
                         }}>
                             {children}

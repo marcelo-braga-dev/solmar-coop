@@ -1,6 +1,11 @@
 import { Container, Typography, Box, Divider } from '@mui/material';
+import Grid from "@mui/material/Grid2";
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 const ContratoUsina = () => {
+    const dataFormatada = format(new Date(), "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
+
     return (
         <Container maxWidth="md" style={{ marginTop: '20px', marginBottom: '20px' }}>
             <Typography variant="h4" align="center" gutterBottom>
@@ -174,9 +179,23 @@ const ContratoUsina = () => {
 
             <Divider style={{ margin: '20px 0' }} />
 
-            <Typography align="center" gutterBottom>
+            <Typography gutterBottom>
                 E, por estarem assim justos e contratados, firmam o presente instrumento em duas vias de igual teor e forma, na presença de duas testemunhas.
             </Typography>
+
+            <Typography gutterBottom marginTop={4}>
+                Maringá/PR, {dataFormatada}
+            </Typography>
+
+            <Grid container marginTop={15}>
+                <Grid size={5} sx={{textAlign: 'center', borderTop: 1}}>
+                    <Typography>(Produtor Solar)</Typography>
+                </Grid>
+                <Grid size={2}></Grid>
+                <Grid size={5} sx={{textAlign: 'center', borderTop: 1}}>
+                <Typography>SOLMAR COOPERATIVA</Typography>
+                </Grid>
+            </Grid>
         </Container>
     )
 

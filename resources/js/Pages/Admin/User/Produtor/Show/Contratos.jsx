@@ -4,27 +4,26 @@ import {IconDownload, IconFileCheck} from "@tabler/icons-react";
 import {useRef} from "react";
 import ContratoUsina from "@/Pages/Auth/Contratos/Usinas/Contrato/ContratoUsina.jsx";
 
-const Contratos = ({contratos}) => {
+const Contratos = ({contratos, contratado}) => {
 
     const proposalRef = useRef(null);
 
-    const generatePdf = () => {
-        const htmlContent = proposalRef.current.innerHTML;
-
-        axios.post(route('auth.contratos.pdf.usina.gerar-pdf'), {html: htmlContent}, {
-            responseType: 'blob'
-        })
-            .then(response => {
-                const url = window.URL.createObjectURL(new Blob([response.data]));
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', 'contrato.pdf');
-                document.body.appendChild(link);
-                link.click();
-            })
-            .catch(error => {
-                console.error('Erro ao gerar o PDF:', error);
+    const handleDownload = async () => {
+        try {
+            const response = await axios.get(route('auth.contratos.pdf.usina.gerar-pdf'), {
+                responseType: 'blob',
             });
+
+            const url = window.URL.createObjectURL(new Blob([response.data], {type: 'application/pdf'}));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `${contratado.razao_social}_contrato_usina.pdf`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } catch (error) {
+            console.error('Erro ao gerar o PDF:', error);
+        }
     };
 
     return (
@@ -38,7 +37,7 @@ const Contratos = ({contratos}) => {
                         <Grid>
                         </Grid>
                         <Grid size="auto">
-                            <Button color="success" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF</Button>
+                            <Button color="error" onClick={handleDownload} startIcon={<IconDownload/>}>Baixar PDF</Button>
                         </Grid>
                     </Grid>
                 </Grid>

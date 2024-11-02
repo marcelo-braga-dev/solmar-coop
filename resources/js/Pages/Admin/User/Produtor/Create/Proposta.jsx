@@ -1,5 +1,5 @@
 import {Card, CardContent, CardHeader, InputAdornment, MenuItem, TextField} from "@mui/material";
-import {IconFileInvoice, IconSolarPanel2} from "@tabler/icons-react";
+import {IconFileInvoice} from "@tabler/icons-react";
 import Grid from "@mui/material/Grid2";
 import {useEffect, useState} from "react";
 
@@ -67,7 +67,7 @@ const Proposta = ({data, setData}) => {
                             fullWidth
                             slotProps={{
                                 input: {
-                                    endAdornment: <InputAdornment position="start">kWh</InputAdornment>,
+                                    endAdornment: <InputAdornment position="start">kWh/mês</InputAdornment>,
                                 },
                             }}
                         />

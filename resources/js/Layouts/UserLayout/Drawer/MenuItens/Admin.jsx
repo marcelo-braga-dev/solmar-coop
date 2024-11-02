@@ -1,16 +1,14 @@
 import React from "react";
 import {
-    IconBrandWhatsapp, IconChartHistogram, IconDashboard,
+    IconBrandWhatsapp, IconChartHistogram,
     IconFileCheck,
     IconFileLike,
-    IconHeadphones,
     IconHeadset, IconReportMoney,
-    IconSettings,
     IconSolarPanel2, IconUserBolt,
     IconUserCog,
     IconUserDollar,
     IconUsers,
-    IconUsersGroup, IconUserSquare
+    IconUserSquare
 } from "@tabler/icons-react";
 
 export const adminMenu = [
@@ -19,7 +17,7 @@ export const adminMenu = [
         icon: <IconUserBolt/>,
         id: 'produtores-solar',
         subItems: [
-            {id: 'produtores-kanban', title: 'Quadro Produtores', link: route('auth.produtor.kanban.index')},
+            {id: 'produtores-kanban', title: 'Quadro de Status', link: route('auth.produtor.kanban.index')},
             {id: 'produtores-solar-cadastrados', title: 'Produtores Cadastrados', link: route('admin.produtor.index')},
             {id: 'produtores-solar-cadastrados-2', title: 'Cadastrar Produtor', link: route('admin.produtor.create')},
         ],
@@ -32,7 +30,7 @@ export const adminMenu = [
             {id: 'clientes-cadastrar', title: 'Cadastrar Cliente', link: route('admin.user.cliente.create')},
         ],
     }, {
-        title: 'Colsultores',
+        title: 'Consultores',
         icon: <IconUserDollar/>,
         id: 'vendedores',
         subItems: [

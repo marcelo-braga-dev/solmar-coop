@@ -10,15 +10,13 @@ class GerarContratoProdutorController extends Controller
 {
     public function gerarPdf(Request $request)
     {
-        $html = $request->input('html');
+        $data = [
+            'title1' => '(Produtor Solar)',
+            'title2' => 'SOLMAR COOPERATIVA',
+        ];
 
-        $pdf = PDF::loadHTML($html)
-            ->setOption('encoding', 'UTF-8')
-            ->setOption('enable-local-file-access', true)
-            ->setOption('margin-top', '15mm')
-            ->setOption('margin-bottom', '15mm');
+        $pdf = Pdf::loadView('pdf.contratos.usina', $data);
 
-        // Retorna o PDF para download
-        return $pdf->inline('contrato_' . uniqid() . '.pdf');
+        return $pdf->download('contrato.pdf');
     }
 }
