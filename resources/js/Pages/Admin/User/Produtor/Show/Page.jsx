@@ -4,7 +4,7 @@ import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import {Box, Card, CardContent, Tab} from "@mui/material";
 import {TabPanel, TabList, TabContext} from '@mui/lab';
 
-import {IconFileLike, IconFileTypePdf, IconHistory, IconSolarPanel, IconUserBolt} from "@tabler/icons-react";
+import {IconFileLike, IconFileTypePdf, IconHistory, IconKey, IconSolarPanel, IconUserBolt} from "@tabler/icons-react";
 
 import InfoUsuario from "./InfoUsuario.jsx";
 import Usina from "./Usina.jsx";
@@ -12,6 +12,7 @@ import Contratos from "./Contratos.jsx";
 import Financeiro from "./Financeiro.jsx";
 import Propostas from "./Propostas.jsx";
 import Historico from "./Historico.jsx";
+import InfoDadosAcesso from "@/Pages/Admin/User/Produtor/Show/InfoDadosAcesso.jsx";
 
 const Page = ({usuario, tab}) => {
 
@@ -35,11 +36,12 @@ const Page = ({usuario, tab}) => {
                                 <Tab label="Propostas Comerciais" value="propostas" icon={<IconFileLike size={20}/>} iconPosition="start"/>
                                 <Tab label="Contratos" value="contratos" icon={<IconFileTypePdf size={20}/>} iconPosition="start"/>
                                 <Tab label="Financeiro" value="financeiro" icon={<IconFileTypePdf size={20}/>} iconPosition="start"/>
-                                <Tab label="historico" value="historico" icon={<IconHistory size={20}/>} iconPosition="start"/>
+                                <Tab label="Histórico" value="historico" icon={<IconHistory size={20}/>} iconPosition="start"/>
+                                <Tab label="Dadosd de Acesso" value="acesso" icon={<IconKey size={20}/>} iconPosition="start"/>
                             </TabList>
                         </Box>
                         <TabPanel value="info">
-                            <InfoUsuario usuario={usuario.data_user} contatos={usuario.contatos}/>
+                            <InfoUsuario status={usuario.status_nome} usuario={usuario.data_user} contatos={usuario.contatos}/>
                         </TabPanel>
                         <TabPanel value="usinas">
                             <Usina usina={usuario.propostas}/>
@@ -55,6 +57,9 @@ const Page = ({usuario, tab}) => {
                         </TabPanel>
                         <TabPanel value="historico">
                             <Historico historico={usuario.historico}/>
+                        </TabPanel>
+                        <TabPanel value="acesso">
+                            <InfoDadosAcesso dados={usuario.dados_acesso}/>
                         </TabPanel>
                     </TabContext>
                 </CardContent>

@@ -1,13 +1,11 @@
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
-import Grid from "@mui/material/Grid2";
-import {Button, Card, CardContent, CardHeader} from "@mui/material";
-import {IconCheck, IconClipboardText, IconMapPin, IconPhoneCall, IconSolarPanel2} from "@tabler/icons-react";
-import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
+import {Button, Card, CardContent} from "@mui/material";
+import {IconCheck} from "@tabler/icons-react";
 import {router} from "@inertiajs/react";
 import DadoPessoaisData from "@/Components/DataUser/DadoPessoaisData.jsx";
 import EnderecoData from "@/Components/DataUser/EnderecoData.jsx";
 import ContatoData from "@/Components/DataUser/ContatoData.jsx";
-import UsinaData from "@/Components/Usina/UsinaData.jsx";
+import Proposta from "@/Components/Usina/Proposta.jsx";
 
 const AnalizarDocumentos = ({produtor}) => {
 
@@ -22,11 +20,11 @@ const AnalizarDocumentos = ({produtor}) => {
             {/*Endereco*/}
            <EnderecoData user={produtor}/>
 
-            {/*Contato*/}
+           {/* /!*Contato*!/*/}
             <ContatoData user={produtor}/>
 
-            {/*Usina*/}
-            <UsinaData usina={produtor.usina}/>
+           {/* /!*Usina*!/*/}
+            <Proposta proposta={produtor.propostas}/>
 
             <Card>
                 <CardContent className="text-center">

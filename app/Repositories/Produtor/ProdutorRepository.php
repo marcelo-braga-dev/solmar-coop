@@ -9,6 +9,8 @@ use App\Models\Propostas\UsinaProposta;
 use App\Models\Users\Produtor;
 use App\Models\Users\User;
 use App\Services\Users\CreateUserService;
+use App\src\Roles\RolesUser;
+use App\Utils\AlertMessage;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,13 +21,14 @@ class ProdutorRepository
     {
         try {
             return DB::transaction(function () use ($data) {
+                $role = (new RolesUser())->produtor();
                 $service = new CreateUserService();
 
                 $dto = CreateUsuarioDTO::fromArray($data);
                 $produtor = $dto->toArray();
 
                 // Conta Acesso
-                $user = $service->user($produtor, $data);
+                $user = $service->user($produtor, $role, $data->senha);
 
                 // Dados do Usuario
                 $service->userData($user, $produtor);
@@ -43,8 +46,8 @@ class ProdutorRepository
 
                 return $user->id;
             });
-        } catch (QueryException $exception) {
-            dd($exception->getMessage());
+        } catch (QueryException|\DomainException $exception) {
+            throw new \DomainException($exception->getMessage());
         }
     }
 

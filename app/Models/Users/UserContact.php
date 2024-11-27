@@ -2,7 +2,7 @@
 
 namespace App\Models\Users;
 
-use App\Utils\StringUtils;
+use App\Utils\FormatValues;
 use Illuminate\Database\Eloquent\Model;
 
 class UserContact extends Model
@@ -14,17 +14,17 @@ class UserContact extends Model
     //---------------
     public function setCelularAttribute($value)
     {
-        $this->attributes['celular'] = StringUtils::formatInteger($value);
+        $this->attributes['celular'] = FormatValues::formatInteger($value);
     }
 
     public function setCelular2Attribute($value)
     {
-        $this->attributes['celular_2'] = StringUtils::formatInteger($value);
+        $this->attributes['celular_2'] = FormatValues::formatInteger($value);
     }
 
     public function setTelefoneAttribute($value)
     {
-        $this->attributes['telefone'] = StringUtils::formatInteger($value);
+        $this->attributes['telefone'] = FormatValues::formatInteger($value);
     }
 
     //---------------
@@ -32,16 +32,16 @@ class UserContact extends Model
     //---------------
     public function getCelularAttribute()
     {
-        return StringUtils::formatPhone($this->attributes['celular']);
+        return FormatValues::formatPhone($this->attributes['celular']);
     }
 
     public function getCelular2Attribute()
     {
-        return StringUtils::formatPhone($this->attributes['celular_2']);
+        return FormatValues::formatPhone($this->attributes['celular_2']);
     }
 
     public function getTelefoneAttribute()
     {
-        return StringUtils::formatPhone($this->attributes['telefone']);
+        return FormatValues::formatPhone($this->attributes['telefone']);
     }
 }

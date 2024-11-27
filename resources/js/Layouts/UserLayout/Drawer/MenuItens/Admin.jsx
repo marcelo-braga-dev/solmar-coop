@@ -1,5 +1,6 @@
 import React from "react";
 import {
+    IconBolt,
     IconBrandWhatsapp, IconChartHistogram,
     IconFileCheck,
     IconFileLike,
@@ -60,6 +61,13 @@ export const adminMenu = [
             {id: 'financeiro-produtor', title: 'Produtores', link: route('admin.financeiro.produtor.index')},
             {id: 'financeiro-cliente', title: 'Clientes', link: route('admin.financeiro.cliente.index')},
             {id: 'financeiro-vendedor', title: 'Vendedores', link: route('admin.financeiro.vendedor.index')},
+        ],
+    }, {
+        title: 'Concessionárias Energia',
+        icon: <IconBolt/>,
+        id: 'concessionarias',
+        subItems: [
+            {id: 'concessionarias-todas', title: 'Todas Concessionárias', link: route('admin.concessionaria.index')},
         ],
     }, {
         title: 'Relatórios',

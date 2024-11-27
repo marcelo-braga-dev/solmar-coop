@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Button, Dialog, DialogContent, DialogTitle} from "@mui/material";
+import React, {useState} from "react";
+import {Dialog, DialogContent, DialogTitle} from "@mui/material";
 
 const ShowDialog = ({id, action}) => {
     const [openDialogId, setOpenDialogId] = useState(null);
@@ -9,7 +9,6 @@ const ShowDialog = ({id, action}) => {
     };
 
     const handleClose = () => {
-        console.log("Fechando diálogo");
         setOpenDialogId(null);
     };
 

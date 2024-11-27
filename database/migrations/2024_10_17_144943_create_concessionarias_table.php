@@ -10,16 +10,17 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('concessionarias_energias', function (Blueprint $table) {
+        Schema::create('concessionarias', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->decimal('tarifa_gd2')->default(0);
             $table->string('estado', 2);
             $table->timestamps();
         });
 
         Schema::table('usina_solars', function (Blueprint $table) {
             $table->unsignedBigInteger('concessionaria_id')->after('prazo_locacao')->nullable();
-            $table->foreign('concessionaria_id')->references('id')->on('concessionarias_energias');
+            $table->foreign('concessionaria_id')->references('id')->on('concessionarias');
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('concessionarias_energias');
+        Schema::dropIfExists('concessionarias');
     }
 };

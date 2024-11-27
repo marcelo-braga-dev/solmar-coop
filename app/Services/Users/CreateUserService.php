@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\Hash;
 
 class CreateUserService
 {
-    public function user(array $produtor, Request $data)
+    public function user(array $produtor, int $role, ?string $senha)
     {
         return User::create([
             'name' => $produtor['nome'] ?? $produtor['razao_social'],
             'email' => $produtor['email'],
-            'role_id' => 3,
+            'role_id' => $role,
             'status' => 'novo',
-            'password' => ($data->senha ?? null) ? Hash::make($data->senha) : Hash::make(uniqid()),
+            'password' => ($senha ?? null) ? Hash::make($senha) : Hash::make(uniqid()),
         ]);
     }
 
@@ -37,6 +37,6 @@ class CreateUserService
 
     public function contato($user, $data)
     {
-        UserContact::create(['user_id' => $user->id, 'email' => $user->email, ...$data['contato']]);
+        UserContact::create(['user_id' => $user->id, 'email' => $data['contato']['email'] ?? $user->email, ...$data['contato']]);
     }
 }

@@ -1,9 +1,9 @@
-import {Drawer, List, ListItem, Collapse, Typography, Stack} from '@mui/material';
+import {Drawer, List, ListItem, Collapse, Typography, Stack, Box} from '@mui/material';
 import {useMenu} from './DrawerContext.jsx';
 import {adminMenu} from "../Drawer/MenuItens/Admin";
 import {IconChevronDown, IconChevronUp, IconPoint, IconPointFilled} from "@tabler/icons-react";
 import {Link} from "@inertiajs/react";
-import {useMemo, useState} from "react";
+import {useMemo} from "react";
 
 const styleDrawer = {
     width: 280,
@@ -50,7 +50,7 @@ export default function SideMenu() {
                 </Collapse>
             </div>
         ))
-    }, [toggleMenu]);
+    }, [toggleMenu, menuItems, openedMenu, openedSubMenu]);
 
     return (
         openMenuDrawer && <Drawer
@@ -59,6 +59,10 @@ export default function SideMenu() {
             sx={styleDrawer}
         >
             <List sx={{marginTop: 9}}>
+                <Box sx={{paddingBottom: 2, paddingInline: 4}}>
+                    <img src={`/storage/app/logo.png`} alt="logo" loading="lazy" style={{width: '100%'}}/>
+                </Box>
+
                 {menuPrimary}
             </List>
         </Drawer>

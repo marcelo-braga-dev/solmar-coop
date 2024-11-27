@@ -1,5 +1,5 @@
-export default function ApplicationLogo(props) {
+export default function ApplicationLogo() {
     return (
-        <img alt="logo" src="/logo.png" style={{maxHeight: 100}}/>
+        <img alt="logo" src={`/storage/app/logo_main.png`} style={{maxHeight: 250}}/>
     );
 }

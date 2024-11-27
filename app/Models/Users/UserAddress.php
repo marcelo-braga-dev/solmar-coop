@@ -2,7 +2,7 @@
 
 namespace App\Models\Users;
 
-use App\Utils\StringUtils;
+use App\Utils\FormatValues;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,7 +16,7 @@ class UserAddress extends Model
 
     public function getCepAttribute()
     {
-        return StringUtils::formatCep($this->attributes['cep']);
+        return FormatValues::formatCep($this->attributes['cep']);
     }
 
     public function getCidadeEstadoAttribute()

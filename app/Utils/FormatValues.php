@@ -2,7 +2,7 @@
 
 namespace App\Utils;
 
-class StringUtils
+class FormatValues
 {
     public static function formatCnpj($cnpj)
     {

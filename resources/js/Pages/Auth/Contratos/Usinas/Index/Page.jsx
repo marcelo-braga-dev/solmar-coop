@@ -4,10 +4,10 @@ import {IconFileLike} from "@tabler/icons-react";
 
 const Page = () => {
     return (
-        <Layout titlePage="Contratos Gerados" menu="contratos" subMenu="contratos-usinas">
+        <Layout titlePage="Contratos de Usinas" menu="contratos" subMenu="contratos-usinas">
             <Card>
                 <CardHeader
-                    title="Contratos Gerados"
+                    title="Contratos de Usinas"
                     avatar={<IconFileLike/>}
                     disableTypography
                     // action={<Button component={Link} href={'/'} size="small" color="warning" startIcon={<IconEdit/>}>Editar Contrato Modelo</Button>}

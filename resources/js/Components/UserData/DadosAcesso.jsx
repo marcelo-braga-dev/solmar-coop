@@ -1,10 +1,10 @@
 import {Card, CardContent, CardHeader, FormGroup, Switch, TextField} from "@mui/material";
-import {IconKey, IconPhoneCall} from "@tabler/icons-react";
+import {IconKey} from "@tabler/icons-react";
 import Grid from "@mui/material/Grid2";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import {useState} from "react";
 
-const DadosAcesso = ({data, setData}) => {
+const DadosAcesso = ({setData}) => {
     const [senhaPorEmail, setSenhaPorEmail] = useState(true)
 
     return (
@@ -12,7 +12,7 @@ const DadosAcesso = ({data, setData}) => {
             <CardHeader title="Dados de Acesso" avatar={<IconKey/>} disableTypography/>
             <CardContent>
                 <Grid container spacing={3}>
-                    <Grid size={{md: 6}}>
+                    <Grid size={{xs: 12, md: 6}}>
                         <TextField
                             label="Email:"
                             type="email"
@@ -21,7 +21,7 @@ const DadosAcesso = ({data, setData}) => {
                             fullWidth
                         />
                     </Grid>
-                    <Grid size={6}>
+                    <Grid size={{xs: 12, md: 6}}>
                         <FormGroup>
                             <FormControlLabel
                                 control={<Switch
@@ -31,7 +31,7 @@ const DadosAcesso = ({data, setData}) => {
                                 label="Enviar senha de acesso por email?"/>
                         </FormGroup>
                     </Grid>
-                    {!senhaPorEmail && <Grid size={6}>
+                    {!senhaPorEmail && <Grid size={{xs: 12, md: 6}}>
                         <TextField
                             label="Senha:"
                             onChange={e => setData('senha', e.target.value)}

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Usuarios\Vendedor;
+namespace App\Http\Controllers\Admin\Usuarios\Consultor;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Vendedor\VendedorRepository;
+use App\Repositories\Consultor\ConsultorRepository;
 
 class GetAllVendedoresController extends Controller
 {
     public function __invoke()
     {
-        $user = (new VendedorRepository())->getAll();
+        $user = (new ConsultorRepository())->getAll();
 
         return response()->json($user);
     }

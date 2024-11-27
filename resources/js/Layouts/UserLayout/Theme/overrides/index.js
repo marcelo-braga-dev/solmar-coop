@@ -12,6 +12,7 @@ import InputLabel from './InputLabel';
 import LinearProgress from './LinearProgress';
 import ListItemIcon from './ListItemIcon';
 import OutlinedInput from './OutlinedInput';
+import Paper from './Paper';
 import Tab from './Tab';
 import TableCell from './TableCell';
 import Tabs from './Tabs';
@@ -32,6 +33,7 @@ export default function ComponentsOverrides(theme) {
         LinearProgress(),
         ListItemIcon(),
         OutlinedInput(theme),
+        Paper(theme),
         Tab(theme),
         TableCell(theme),
         Tabs(),

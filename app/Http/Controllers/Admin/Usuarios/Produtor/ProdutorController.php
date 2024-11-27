@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Usuarios\Produtor;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Produtor\ProdutorRepository;
+use App\Utils\AlertMessage;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
@@ -22,9 +23,16 @@ class ProdutorController extends Controller
 
     public function store(Request $request)
     {
-        $userId = (new ProdutorRepository())->create($request);
+        try {
+            $userId = (new ProdutorRepository())->create($request);
 
-        return redirect()->route('admin.produtor.show', [$userId, 'tab' => 'propostas']);
+            AlertMessage::success('Cadastrado com sucesso!');
+
+            return redirect()->route('admin.produtor.show', [$userId, 'tab' => 'propostas']);
+        } catch (\Exception $exception) {
+            AlertMessage::error($exception->getMessage());
+            return redirect()->back();
+        }
     }
 
     public function show($id, Request $request)

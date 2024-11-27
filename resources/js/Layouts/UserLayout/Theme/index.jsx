@@ -41,7 +41,7 @@ export default function ThemeCustomization({children}) {
             customShadows: themeCustomShadows,
             typography: themeTypography
         }),
-        [theme, themeTypography, themeCustomShadows]
+        [themeTypography, themeCustomShadows, theme.palette]
     );
 
     const themes = createTheme(themeOptions);

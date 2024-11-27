@@ -2,7 +2,7 @@
 
 namespace App\Models\Propostas;
 
-use App\Models\ConcessionariasEnergia;
+use App\Models\Concessionarias;
 use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,11 +22,15 @@ class UsinaProposta extends Model
         'taxa_reducao_consumo',
     ];
 
-    protected $with = ['concessionaria'];
+    protected $with = ['concessionaria', 'consultor'];
 
     //--------------
     // relations
     //--------------
+    public function consultor()
+    {
+        return $this->belongsTo(User::class, 'seller_id', 'id');
+    }
     public function proprietario()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
@@ -34,6 +38,6 @@ class UsinaProposta extends Model
 
     public function concessionaria()
     {
-        return $this->belongsTo(ConcessionariasEnergia::class, 'concessionaria_id', 'id');
+        return $this->belongsTo(Concessionarias::class, 'concessionaria_id', 'id');
     }
 }

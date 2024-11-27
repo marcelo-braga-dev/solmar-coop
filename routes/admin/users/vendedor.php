@@ -1,15 +1,17 @@
 <?php
 
+use App\Http\Controllers\Admin\Usuarios\Consultor\GetAllVendedoresController;
+use App\Http\Controllers\Admin\Usuarios\Consultor\ConsultorController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('admin.user.')
     ->prefix('user')
     ->group(function () {
-        Route::resource('vendedor', \App\Http\Controllers\Admin\Usuarios\Vendedor\VendedorController::class);
+        Route::resource('vendedor', ConsultorController::class);
 
         Route::name('vendedor.api.')
             ->prefix('vendedor-api')
             ->group(function () {
-                Route::get('get-vendedores', \App\Http\Controllers\Admin\Usuarios\Vendedor\GetAllVendedoresController::class)->name('get');
+                Route::get('get-vendedores', GetAllVendedoresController::class)->name('get');
             });
     });

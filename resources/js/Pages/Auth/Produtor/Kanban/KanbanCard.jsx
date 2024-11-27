@@ -33,11 +33,6 @@ const KanbanCard = ({task}) => {
         ...(hover ? styles.kanbanCardHover : {}),
     };
 
-    const handleButtonClick = (event) => {
-        event.stopPropagation(); // Impede que o evento de clique se propague para o elemento pai
-        console.log('Botão clicado');
-    };
-
     return (
         <div
             ref={setNodeRef}

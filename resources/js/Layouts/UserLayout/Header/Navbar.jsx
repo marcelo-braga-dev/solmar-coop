@@ -1,6 +1,5 @@
 import React from 'react';
-import {AppBar, Toolbar, IconButton, Box, Avatar, Typography, useMediaQuery} from '@mui/material';
-import {useTheme} from '@mui/material/styles';
+import {AppBar, Toolbar, IconButton, Box, Typography} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ProfileMenu from "@/Layouts/UserLayout/Header/ProfileMenu.jsx";
 import {IconArrowLeft} from "@tabler/icons-react";
@@ -29,9 +28,6 @@ export default function Navbar({titlePage, backPage}) {
                     <MenuIcon sx={{color: '#000'}}/>
                 </IconButton>
 
-                <Box sx={{display: 'flex', alignItems: 'center', width: 100, marginInlineEnd: 5}}>
-                    <img src="/logo.png" alt="logo" loading="lazy" style={{width: '100%'}}/>
-                </Box>
                 <Box sx={{width: 50}}>
                     {backPage && <IconButton onClick={btnBack}><IconArrowLeft size={20}/></IconButton>}
                 </Box>

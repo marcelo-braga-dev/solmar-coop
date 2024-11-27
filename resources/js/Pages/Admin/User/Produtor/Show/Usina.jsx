@@ -2,7 +2,6 @@ import {Stack, Typography} from "@mui/material";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 
 const Usina = ({usina}) => {
-    console.log(usina)
     return (
         <Stack spacing={2}>
             {!usina && <Typography>Não há registros de usinas solar.</Typography>}

@@ -34,6 +34,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'name',
         'password',
         'remember_token',
     ];
@@ -51,7 +52,7 @@ class User extends Authenticatable
         ];
     }
 
-    protected $appends = ['status_nome', 'cadastrado_em'];
+    protected $appends = ['nome', 'status_nome', 'cadastrado_em', 'dados_acesso'];
 
     //--------------
     // relations
@@ -84,6 +85,19 @@ class User extends Authenticatable
     //--------------
     // getters
     //--------------
+    public function getNomeAttribute()
+    {
+        return $this->attributes['name'];
+    }
+
+    public function getDadosAcessoAttribute()
+    {
+        return [
+            'email' => $this->attributes['email'],
+            'status' => $this->attributes['status'],
+        ];
+    }
+
     public function getCadastradoEmAttribute()
     {
         $data = Carbon::parse($this->attributes['created_at']);

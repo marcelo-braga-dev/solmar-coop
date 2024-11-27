@@ -2,7 +2,7 @@ import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import Grid from "@mui/material/Grid2";
 import {Link} from "@inertiajs/react";
 import {Button, Card, CardContent, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
-import {IconEye, IconFileText, IconPlus, IconUserSearch} from "@tabler/icons-react";
+import {IconEye, IconPlus} from "@tabler/icons-react";
 import React, {useEffect, useState} from "react";
 
 const Page = ({}) => {
@@ -43,7 +43,7 @@ const Page = ({}) => {
                                 <Stack spacing={2}>
                                     <Stack direction="row" spacing={2}>
                                         <Typography fontWeight="bold">Nome/Razão Social:</Typography>
-                                        <Typography>{item.name}</Typography>
+                                        <Typography>{item.nome}</Typography>
                                     </Stack>
                                     <Grid container>
                                         <Grid size={6}>

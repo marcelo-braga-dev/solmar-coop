@@ -19,7 +19,7 @@ const Proposta = ({data, setData}) => {
             <CardHeader title="Usina Solar" avatar={<IconFileInvoice/>} disableTypography/>
             <CardContent>
                 <Grid container spacing={3} marginBottom={4}>
-                    <Grid size={{md: 6}}>
+                    <Grid size={{xs: 12, md: 6}}>
                         <TextField
                             label="Concessionária de Energia"
                             select
@@ -30,17 +30,15 @@ const Proposta = ({data, setData}) => {
                             {concessionarias.map(item => <MenuItem key={item.id} value={item.id}>{item.nome} / {item.estado}</MenuItem>)}
                         </TextField>
                     </Grid>
-                    <Grid size={{md: 3}}>
+                    <Grid size={{xs: 12, md: 3}}>
                         <TextField
                             label="Taxa de Redução Consumo"
                             onChange={e => setData({...data, usina: {...data.usina, taxa_reducao_consumo: e.target.value}})}
                             type="number"
                             required
                             fullWidth
-                            inputProps={{
-                                step: 0.001
-                            }}
                             slotProps={{
+                                htmlInput: {step: 0.01},
                                 input: {
                                     endAdornment: <InputAdornment position="start">%</InputAdornment>,
                                 },
@@ -49,7 +47,7 @@ const Proposta = ({data, setData}) => {
                     </Grid>
                 </Grid>
                 <Grid container spacing={3} marginBottom={4}>
-                    <Grid size={{md: 3}}>
+                    <Grid size={{xs: 12, md: 3}}>
                         <TextField
                             label="Unidade Consumidora"
                             type="number"
@@ -58,7 +56,7 @@ const Proposta = ({data, setData}) => {
                             required
                         />
                     </Grid>
-                    <Grid size={{md: 3}}>
+                    <Grid size={{xs: 12, md: 3}}>
                         <TextField
                             label="Média Geração Mensal"
                             onChange={e => setData({...data, usina: {...data.usina, media_geracao: e.target.value}})}
@@ -72,7 +70,7 @@ const Proposta = ({data, setData}) => {
                             }}
                         />
                     </Grid>
-                    <Grid size={{md: 3}}>
+                    <Grid size={{xs: 12, md: 3}}>
                         <TextField
                             label="Potência Total da Usina"
                             onChange={e => setData({...data, usina: {...data.usina, potencia_usina: e.target.value}})}
@@ -86,7 +84,7 @@ const Proposta = ({data, setData}) => {
                             }}
                         />
                     </Grid>
-                    <Grid size={{md: 3}}>
+                    <Grid size={{xs: 12, md: 3}}>
                         <TextField
                             label="Prazo Locação"
                             onChange={e => setData({...data, usina: {...data.usina, prazo_locacao: e.target.value}})}
@@ -101,20 +99,24 @@ const Proposta = ({data, setData}) => {
                     </Grid>
                 </Grid>
                 <Grid container spacing={3} marginBottom={4}>
-                    <Grid size={{md: 6}}>
+                    <Grid size={{xs: 12, md: 6}}>
                         <TextField
-                            label="Inversores"
+                            label="Informações sobre Inversores"
                             onChange={e => setData({...data, usina: {...data.usina, inversores: e.target.value}})}
                             required
                             fullWidth
+                            multiline
+                            minRows={3}
                         />
                     </Grid>
-                    <Grid size={{md: 6}}>
+                    <Grid size={{xs: 12, md: 6}}>
                         <TextField
-                            label="Módulos"
+                            label="Informações sobre Módulos"
                             onChange={e => setData({...data, usina: {...data.usina, modulos: e.target.value}})}
                             required
                             fullWidth
+                            multiline
+                            minRows={3}
                         />
                     </Grid>
                 </Grid>

@@ -2,7 +2,7 @@
 
 namespace App\Models\Users;
 
-use App\Utils\StringUtils;
+use App\Utils\FormatValues;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -43,7 +43,7 @@ class UserData extends Model
 
     public function getCnpjAttribute()
     {
-        return StringUtils::formatCnpj($this->attributes['cnpj']);
+        return FormatValues::formatCnpj($this->attributes['cnpj']);
     }
 
     //--------------

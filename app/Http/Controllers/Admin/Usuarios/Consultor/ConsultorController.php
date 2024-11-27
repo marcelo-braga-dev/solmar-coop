@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Usuarios\Vendedor;
+namespace App\Http\Controllers\Admin\Usuarios\Consultor;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Vendedor\VendedorRepository;
+use App\Repositories\Consultor\ConsultorRepository;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class VendedorController extends Controller
+class ConsultorController extends Controller
 {
     public function index()
     {
@@ -21,7 +21,7 @@ class VendedorController extends Controller
 
     public function store(Request $request)
     {
-        (new VendedorRepository())->create($request);
+        (new ConsultorRepository())->create($request);
 
         return redirect()->route('admin.user.vendedor.index');
     }

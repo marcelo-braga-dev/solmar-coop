@@ -32,7 +32,7 @@ const Page = () => {
 
     // Função para mover os cards entre colunas
     const handleDragEnd = (event) => {
-        const { active, over } = event;
+        const {active, over} = event;
 
         if (!over) return; // Verificar se há uma coluna de destino
 
@@ -78,12 +78,10 @@ const Page = () => {
     // Função para atualizar o status do card no backend
     const updateCardStatus = async (cardId, newStatus) => {
         try {
-            const response = await axios.post(route('admin.produtor.api.update-status'), {
+            await axios.post(route('admin.produtor.api.update-status'), {
                 id: cardId,
                 status: newStatus
             });
-
-            console.log(`Card ${cardId} atualizado para o status ${newStatus}`);
         } catch (error) {
             console.error('Erro ao atualizar o status do card:', error);
         }
@@ -100,19 +98,19 @@ const Page = () => {
     return (
         <Layout titlePage="Quadro de Produtores" menu="produtores-solar" subMenu="produtores-kanban">
             {carregando && <LinearProgress color="inherit"/>}
-            <div style={{height: 'calc(100vh - 8rem)'}}>
-            {!carregando && <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
-                <div style={{display: 'flex', justifyContent: 'space-between', gap: '20px', padding: '20px'}}>
-                    {columns.map(column => (
-                        <KanbanColumn
-                            key={column.status}
-                            column={column}
-                            tasks={cards[column.status] || []}
-                            id={column.status}
-                        />
-                    ))}
-                </div>
-            </DndContext>}
+            <div style={{height: 'calc(100vh - 11rem)'}}>
+                {!carregando && <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
+                    <div style={{display: 'flex', justifyContent: 'space-between', gap: '20px', padding: '20px'}}>
+                        {columns.map(column => (
+                            <KanbanColumn
+                                key={column.status}
+                                column={column}
+                                tasks={cards[column.status] || []}
+                                id={column.status}
+                            />
+                        ))}
+                    </div>
+                </DndContext>}
             </div>
         </Layout>
     );

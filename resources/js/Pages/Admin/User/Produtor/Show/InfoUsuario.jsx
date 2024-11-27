@@ -2,11 +2,12 @@ import {Stack} from "@mui/material";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 import Grid from "@mui/material/Grid2";
 
-const InfoUsuario = ({usuario, contatos}) => {
+const InfoUsuario = ({usuario, contatos, status}) => {
     return (
         <Grid container spacing={2}>
             <Grid size={{md: 6}}>
                 <Stack spacing={2}>
+                    {status && <TextInfo title="Status" text={status}/>}
                     {usuario?.nome && <TextInfo title="Nome" text={usuario.nome}/>}
                     {usuario?.razao_social && <TextInfo title="Razão Social" text={usuario.razao_social}/>}
                     {usuario?.nome_fantasia && <TextInfo title="Nome Fantasia" text={usuario.nome_fantasia}/>}

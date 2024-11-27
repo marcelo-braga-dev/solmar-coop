@@ -1,13 +1,13 @@
 import Checkbox from '@/Components/Checkbox.jsx';
 import InputError from '@/Components/InputError.jsx';
 import InputLabel from '@/Components/InputLabel.jsx';
-import PrimaryButton from '@/Components/PrimaryButton.jsx';
 import TextInput from '@/Components/TextInput.jsx';
 import GuestLayout from '@/Layouts/GuestLayout.jsx';
-import { Head, Link, useForm } from '@inertiajs/react';
+import {Head, useForm} from '@inertiajs/react';
+import {Button} from "@mui/material";
 
-export default function Login({ status, canResetPassword }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
+export default function Login({status}) {
+    const {data, setData, post, processing, errors, reset} = useForm({
         email: '',
         password: '',
         remember: false,
@@ -23,7 +23,7 @@ export default function Login({ status, canResetPassword }) {
 
     return (
         <GuestLayout>
-            <Head title="Log in" />
+            <Head title="Log in"/>
 
             {status && (
                 <div className="mb-4 text-sm font-medium text-green-600">
@@ -33,7 +33,7 @@ export default function Login({ status, canResetPassword }) {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="email" value="Email"/>
 
                     <TextInput
                         id="email"
@@ -46,11 +46,11 @@ export default function Login({ status, canResetPassword }) {
                         onChange={(e) => setData('email', e.target.value)}
                     />
 
-                    <InputError message={errors.email} className="mt-2" />
+                    <InputError message={errors.email} className="mt-2"/>
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel htmlFor="password" value="Senha"/>
 
                     <TextInput
                         id="password"
@@ -62,7 +62,7 @@ export default function Login({ status, canResetPassword }) {
                         onChange={(e) => setData('password', e.target.value)}
                     />
 
-                    <InputError message={errors.password} className="mt-2" />
+                    <InputError message={errors.password} className="mt-2"/>
                 </div>
 
                 <div className="mt-4 block">
@@ -75,24 +75,21 @@ export default function Login({ status, canResetPassword }) {
                             }
                         />
                         <span className="ms-2 text-sm text-gray-600">
-                            Remember me
+                            Lembrar senha
                         </span>
                     </label>
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
-
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Log in
-                    </PrimaryButton>
+                <div className="mt-4 flex items-center justify-center">
+                    {/*{canResetPassword && (*/}
+                    {/*    <Link*/}
+                    {/*        href={route('password.request')}*/}
+                    {/*        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"*/}
+                    {/*    >*/}
+                    {/*        Forgot your password?*/}
+                    {/*    </Link>*/}
+                    {/*)}*/}
+                    <Button disabled={processing} type="submit">Entrar</Button>
                 </div>
             </form>
         </GuestLayout>

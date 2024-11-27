@@ -2,7 +2,7 @@
 
 namespace App\Models\Usina;
 
-use App\Models\ConcessionariasEnergia;
+use App\Models\Concessionarias;
 use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -25,6 +25,6 @@ class UsinaSolar extends Model
 
     public function concessionaria()
     {
-        return $this->belongsTo(ConcessionariasEnergia::class, 'concessionaria_id', 'id');
+        return $this->belongsTo(Concessionarias::class, 'concessionaria_id', 'id');
     }
 }
