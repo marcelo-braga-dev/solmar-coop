@@ -69,4 +69,11 @@ class ProdutorRepository
             ->with(['dataUser', 'endereco', 'usina', 'propostas', 'contatos'])
             ->find($id);
     }
+
+    public function find($id)
+    {
+        return (new User)
+            ->with(['dataUser', 'endereco', 'usina', 'propostas', 'contatos'])
+            ->find($id);
+    }
 }

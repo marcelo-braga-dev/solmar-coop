@@ -18,6 +18,7 @@ import TableCell from './TableCell';
 import Tabs from './Tabs';
 import Typography from './Typography';
 import TextField from './TextField';
+import CardHeader from './CardHeader';
 
 // ==============================|| OVERRIDES - MAIN ||============================== //
 
@@ -38,6 +39,7 @@ export default function ComponentsOverrides(theme) {
         TableCell(theme),
         Tabs(),
         Typography(),
-        TextField(theme)
+        TextField(theme),
+        CardHeader()
     );
 }

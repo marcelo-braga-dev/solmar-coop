@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('usina_propostas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
+            $table->string('status')->index();
             $table->unsignedBigInteger('concessionaria_id')->nullable()->index();
             $table->integer('uc');
             $table->decimal('media_geracao', 8, 2);

@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
+import {useDraggable} from '@dnd-kit/core';
 import KanbanCardContent from "@/Pages/Auth/Produtor/Kanban/KanbanCardContent.jsx";
-import {Box} from "@mui/material";
 
 const styles = {
     kanbanCard: {
         backgroundColor: '#fff',
         border: '1px solid #d1d1d1',
-        borderRadius: 2,
-        padding: 2,
-        marginBottom: 3,
+        borderRadius: '5px',
+        padding: '10px',
+        marginBottom: '10px',
+        cursor: 'grab',
         boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
         width: '100%',
         transition: 'box-shadow 0.3s ease',
@@ -19,30 +20,30 @@ const styles = {
 };
 
 const KanbanCard = ({task}) => {
+    const {attributes, listeners, setNodeRef, transform, transition} = useDraggable({
+        id: task.id,
+    });
 
     const [hover, setHover] = useState(false);
 
     const style = {
+        transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
+        transition,
         ...styles.kanbanCard,
         ...(hover ? styles.kanbanCardHover : {}),
     };
 
-    const handleEnter = () => {
-        setHover(true)
-    }
-
-    const handleLeave = () => {
-        setHover(false)
-    }
-
     return (
-        <Box
-            sx={style}
-            onMouseEnter={handleEnter}
-            onMouseLeave={handleLeave}
+        <div
+            ref={setNodeRef}
+            style={style}
+            {...listeners}
+            {...attributes}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
         >
             <KanbanCardContent card={task}/>
-        </Box>
+        </div>
     );
 };
 

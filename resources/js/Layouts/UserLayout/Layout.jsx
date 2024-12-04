@@ -33,7 +33,6 @@ const Layout = ({titlePage, menu, subMenu, backPage, children}) => {
                         }}>
                             <div style={{
                                 marginBottom: 50,
-                                paddingBottom: 50,
                                 overflowX: 'auto',
                             }}>
                                 {children}

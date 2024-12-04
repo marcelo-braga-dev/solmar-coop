@@ -1,23 +1,61 @@
-import {Card, CardContent, CardHeader, MenuItem, TextField} from "@mui/material";
+import {Button, Card, CardContent, CardHeader, MenuItem, TextField} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
-import {IconClipboardText} from "@tabler/icons-react";
+import {IconClipboardText, IconSearch} from "@tabler/icons-react";
 import {useEffect} from "react";
 import useInputMask from "@/Utils/Masks/InputsMask.js";
+import axios from 'axios';
+import {useAlertMessage} from "@/Contexts/Alerts/SnackbarProvider.jsx";
 
 const DadosPessoais = ({data, setData}) => {
+
+    const {alertError} = useAlertMessage()
 
     useEffect(() => {
         useInputMask()
     }, []);
 
+    const handleFetch = async () => {
+        const cnpj = data?.cnpj?.replace(/\D/g, "")
+        console.log(cnpj)
+
+        if (!cnpj || cnpj.length !== 14) {
+            console.log('Por favor, insira um CNPJ válido (14 dígitos).')
+            return;
+        }
+
+        try {
+            // const response = await axios.get(`https://www.receitaws.com.br/v1/cnpj/${cnpj}`);
+            // const response = await axios.get(`https://open.cnpja.com/office/${cnpj}`);
+            const response = await axios.get(`https://publica.cnpj.ws/cnpj/${cnpj}`);
+            const empresa = response.data
+
+            setData({
+                ...data,
+                razao_social: empresa?.razao_social,
+                nome_fantasia: empresa?.estabelecimento?.nome_fantasia,
+                tipo_empresa: empresa?.natureza_juridica?.descricao,
+                ramo_atividade: empresa?.estabelecimento?.atividade_principal?.descricao,
+                ie: empresa?.inscricoes_estaduais?.[0]?.inscricao_estadual,
+                data_fundacao: empresa?.estabelecimento?.data_inicio_atividade,
+            });
+            console.log(response.data);
+        } catch (err) {
+            alertError(err?.response?.data?.detalhes)
+            console.log('Erro ao buscar informações. Verifique o CNPJ ou tente novamente mais tarde.', err);
+        } finally {
+
+        }
+    };
+    console.log(data)
+
     return (
         <Card sx={{marginBottom: 4}}>
-            <CardHeader title="Dados" avatar={<IconClipboardText/>} disableTypography/>
+            <CardHeader title="Dados Cadastrais" avatar={<IconClipboardText/>}/>
             <CardContent>
                 <Grid container spacing={3}>
                     <Grid size={12}>
@@ -35,7 +73,7 @@ const DadosPessoais = ({data, setData}) => {
                     </Grid>
 
                     {data.tipo_pessoa === 'pj' && <>
-                        <Grid size={{xs: 12, md: 4}}>
+                        <Grid size={{xs: 8, md: 4}}>
                             <TextField
                                 label="CNPJ"
                                 className="cnpj"
@@ -43,17 +81,30 @@ const DadosPessoais = ({data, setData}) => {
                                 required
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{xs: 12, md: 8}}>
+                        <Grid size={{xs: 4, md: 8}}>
+                            <Button
+                                startIcon={<IconSearch/>}
+                                color="warning"
+                                onClick={handleFetch}
+                            >
+                                Buscar Dados
+                            </Button>
+                        </Grid>
+                        <Grid size={{xs: 12, md: 6}}>
                             <TextField
                                 label="Razão Social:"
+                                value={data.razao_social}
                                 onChange={e => setData('razao_social', e.target.value)}
                                 required
+                                slotProps={{inputLabel: {shrink: !!data.razao_social}}}
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{xs: 12, md: 4}}>
+                        <Grid size={{xs: 12, md: 6}}>
                             <TextField
                                 label="Nome Fantasia:"
+                                value={data.nome_fantasia}
                                 onChange={e => setData('nome_fantasia', e.target.value)}
+                                slotProps={{inputLabel: {shrink: !!data.nome_fantasia}}}
                                 fullWidth/>
                         </Grid>
                         <Grid size={{xs: 12, md: 4}}>
@@ -74,12 +125,15 @@ const DadosPessoais = ({data, setData}) => {
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Ramo Atividade:"
+                                value={data.ramo_atividade}
                                 onChange={e => setData('ramo_atividade', e.target.value)}
+                                slotProps={{inputLabel: {shrink: !!data.ramo_atividade}}}
                                 fullWidth/>
                         </Grid>
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Inscrição Estadual:"
+                                value={data.ie}
                                 onChange={e => setData('ie', e.target.value)}
                                 fullWidth/>
                         </Grid>
@@ -92,9 +146,10 @@ const DadosPessoais = ({data, setData}) => {
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Data Fundação:"
+                                value={data.data_fundacao}
                                 onChange={e => setData('data_fundacao', e.target.value)}
                                 type="date"
-                                InputLabelProps={{shrink: true}}
+                                slotProps={{inputLabel: {shrink: true}}}
                                 fullWidth/>
                         </Grid>
                     </>}
@@ -125,7 +180,7 @@ const DadosPessoais = ({data, setData}) => {
                                 onChange={e => setData('data_nascimento', e.target.value)}
                                 type="date"
                                 required
-                                InputLabelProps={{shrink: true}}
+                                slotProps={{inputLabel: {shrink: true}}}
                                 fullWidth/>
                         </Grid>
                         <Grid size={{xs: 12, md: 4}}>

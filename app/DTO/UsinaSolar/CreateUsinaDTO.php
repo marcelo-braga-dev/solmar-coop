@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class CreateUsinaDTO
 {
     public int $userId;
+    public string $status;
     public int $uc;
     public int $mediaGeracao;
     public int $prazoLocacao;
@@ -40,6 +41,7 @@ class CreateUsinaDTO
     {
         return [
             'user_id' => $this->userId,
+            'status' => 'analizar_documento',
             'uc' => $this->uc,
             'media_geracao' => $this->mediaGeracao,
             'prazo_locacao' => $this->prazoLocacao,

@@ -1,65 +1,74 @@
 import Grid from "@mui/material/Grid2";
-import {IconEye, IconFileTypePdf, IconHash, IconId, IconMapPin, IconUser} from "@tabler/icons-react";
-import {Button, Stack, Typography} from "@mui/material";
+import {IconFileSearch, IconEye, IconHash, IconId, IconUser} from "@tabler/icons-react";
+import {Button, IconButton, Stack, Typography} from "@mui/material";
 import React, {useMemo} from "react";
-import ShowDialog from "@/Pages/Auth/Produtor/Show/ShowDialog.jsx";
 import {Link} from "@inertiajs/react";
+import {useKanbanProdutor} from "@/Pages/Auth/Produtor/Kanban/ContextKanban.jsx";
 
 const KanbanCardContent = ({card}) => {
 
+    const {buttonClick} = useKanbanProdutor()
+
+    const handleClick = () => {
+        buttonClick(card.id, card.status)
+    }
+
     return useMemo(() => {
         return (
-            <Stack spacing={1}>
-                <Grid container gap={1}>
-                    <Grid size={1}>
-                        <IconUser/>
-                    </Grid>
-                    <Grid size={10}>
-                        <Typography>{card.data_user.nome ?? card.data_user.razao_social}</Typography>
-                    </Grid>
+            <Grid container>
+                <Grid size={11}>
+                    <Stack spacing={1}>
+                        <Grid container gap={1}>
+                            <Grid size={1}>
+                                <IconUser/>
+                            </Grid>
+                            <Grid size={10}>
+                                <Typography>{card.proprietario.data_user.nome ?? card.proprietario.data_user.razao_social}</Typography>
+                            </Grid>
+                        </Grid>
+                        <Grid container gap={1}>
+                            <Grid size={1}>
+                                <IconId/>
+                            </Grid>
+                            <Grid size={10}>
+                                <Typography>{card.proprietario.data_user.cnpj}</Typography>
+                            </Grid>
+                        </Grid>
+                        <Grid container gap={1}>
+                            <Grid size={1}>
+                                <IconHash/>
+                            </Grid>
+                            <Grid size={10}>
+                                <Typography>{card.id}</Typography>
+                            </Grid>
+                        </Grid>
+                        {/*<Grid container gap={1}>*/}
+                        {/*    <Grid size={1}>*/}
+                        {/*        <IconMapPin/>*/}
+                        {/*    </Grid>*/}
+                        {/*    <Grid size={10}>*/}
+                        {/*        /!*<Typography>{card.endereco.cidade_estado}</Typography>*!/*/}
+                        {/*    </Grid>*/}
+                        {/*</Grid>*/}
+                        <Grid container gap={1} justifyContent="end">
+                            <Button
+                                startIcon={<IconFileSearch/>}
+                                color="success"
+                                size="small"
+                                onClick={handleClick}
+                            >
+                                Analisar Documentos
+                            </Button>
+                        </Grid>
+                    </Stack>
                 </Grid>
-                <Grid container gap={1}>
-                    <Grid size={1}>
-                        <IconId/>
-                    </Grid>
-                    <Grid size={10}>
-                        <Typography>{card.data_user.cnpj}</Typography>
-                    </Grid>
+                <Grid size={1}>
+                    <IconButton component={Link} href={route('admin.produtor.show', card.proprietario.id)}>
+                        <IconEye/>
+                    </IconButton>
                 </Grid>
-                <Grid container gap={1}>
-                    <Grid size={1}>
-                        <IconHash/>
-                    </Grid>
-                    <Grid size={10}>
-                        <Typography>{card.id}</Typography>
-                    </Grid>
-                </Grid>
-                <Grid container gap={1}>
-                    <Grid size={1}>
-                        <IconMapPin/>
-                    </Grid>
-                    <Grid size={10}>
-                        <Typography>{card.endereco.cidade_estado}</Typography>
-                    </Grid>
-                </Grid>
-                <Grid container gap={1} justifyContent="end">
-                    {card.status === 'assinar_contrato' && <Grid size="auto">
-                        <Link href={`${route('admin.produtor.show', card.id)}?tab=contratos`}>
-                            <Button color="error" startIcon={<IconFileTypePdf/>} size="small">Contrato</Button>
-                        </Link>
-                    </Grid>}
-                    <Link href={route('admin.produtor.show', card.id)}>
-                        <Button startIcon={<IconEye/>} color="success" size="small">Abrir</Button>
-                    </Link>
-
-                    {/*<Grid size="auto">*/}
-                    {/*    <ShowDialog*/}
-                    {/*        id={card.id}*/}
-                    {/*        action={<Button startIcon={<IconEye/>} color="success" size="small">Abrir</Button>}/>*/}
-                    {/*</Grid>*/}
-                </Grid>
-            </Stack>
+            </Grid>
         )
-    }, [card])
+    }, [card.proprietario.data_user.nome, card.proprietario.data_user.razao_social, card.proprietario.data_user.cnpj, card.id, card.proprietario.id])
 }
 export default KanbanCardContent

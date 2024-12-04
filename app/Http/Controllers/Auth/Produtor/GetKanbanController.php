@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Usuarios\Produtor;
+namespace App\Http\Controllers\Auth\Produtor;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Produtor\ProdutorRepository;

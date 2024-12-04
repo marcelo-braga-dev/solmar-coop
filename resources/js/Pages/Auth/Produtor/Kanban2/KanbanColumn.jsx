@@ -1,12 +1,13 @@
+import {useDroppable} from '@dnd-kit/core';
 import KanbanCard from './KanbanCard';
-import {Box, Typography} from "@mui/material";
+import {Box,  Typography} from "@mui/material";
 
 const styles = {
     kanbanColumn: {
         backgroundColor: '#ffffff',
         borderRadius: '8px',
         padding: '10px',
-        minWidth: 400,
+        minWidth: 350,
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         display: 'flex',
         flexDirection: 'column',
@@ -27,14 +28,18 @@ const styles = {
 
 
 const KanbanColumn = ({column, tasks}) => {
+    const {setNodeRef} = useDroppable({
+        id: column.status,
+    });
+
     return (
-        <Box sx={styles.kanbanColumn}>
+        <Box ref={setNodeRef} style={styles.kanbanColumn}>
             <Box sx={{...styles.kanbanColumnTitle, backgroundColor: column.cor, color: column.corTexto}}>
                 <Typography variant="h5" sx={{textAlign: 'center'}}>{column.nome}</Typography>
                 <Typography variant="body1" sx={{textAlign: 'end'}}>Qtd. {tasks.length}</Typography>
             </Box>
             {tasks.map((task) => (
-                <KanbanCard key={task.id} task={task}/>
+                    <KanbanCard key={task.id} task={task}/>
             ))}
         </Box>
     );
