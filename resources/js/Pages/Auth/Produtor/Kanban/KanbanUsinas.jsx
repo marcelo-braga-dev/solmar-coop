@@ -1,6 +1,6 @@
 import KanbanColumns from "@/Pages/Auth/Produtor/Kanban/KanbanColumns.jsx";
 import React, {useEffect, useState} from "react";
-import {Box, Button, LinearProgress} from "@mui/material";
+import {Box, LinearProgress} from "@mui/material";
 import {useKanbanProdutor} from "@/Pages/Auth/Produtor/Kanban/ContextKanban.jsx";
 import AnalisarDocumentosDialog from "@/Pages/Auth/Produtor/Kanban/Dialogs/AnalisarDocumentosDialog.jsx";
 
@@ -38,7 +38,6 @@ const KanbanUsinas = () => {
 
     return (
         <Box>
-            <Button onClick={fetchUsinas}>BUSCAR</Button>
             {carregando && <LinearProgress color="inherit"/>}
 
             {!carregando && (
