@@ -2,7 +2,8 @@ import KanbanColumns from "@/Pages/Auth/Produtor/Kanban/KanbanColumns.jsx";
 import React, {useEffect, useState} from "react";
 import {Box, LinearProgress} from "@mui/material";
 import {useKanbanProdutor} from "@/Pages/Auth/Produtor/Kanban/ContextKanban.jsx";
-import AnalisarDocumentosDialog from "@/Pages/Auth/Produtor/Kanban/Dialogs/AnalisarDocumentosDialog.jsx";
+import AnalisarDocumentosDialog from "@/Pages/Auth/Produtor/Kanban/DialogsStatus/AnalisarDocumentosDialog.jsx";
+import AssinarContratoDialog from "@/Pages/Auth/Produtor/Kanban/DialogsStatus/AssinarContratoDialog.jsx";
 
 const initialColumns = [
     {status: 'analizar_documento', nome: 'Analizar Documentos', cor: '#007bff', corTexto: '#fff'},
@@ -16,7 +17,7 @@ const initialColumns = [
 
 const KanbanUsinas = () => {
     const {updatePage} = useKanbanProdutor()
-    // const [columns, setColumns] = useState(initialColumns);
+
     const columns = initialColumns;
     const [cards, setCards] = useState([]);
 
@@ -40,11 +41,10 @@ const KanbanUsinas = () => {
         <Box>
             {carregando && <LinearProgress color="inherit"/>}
 
-            {!carregando && (
-                <KanbanColumns columns={columns} cards={cards}/>
-            )}
+            {!carregando && <KanbanColumns columns={columns} cards={cards}/>}
 
             <AnalisarDocumentosDialog/>
+            <AssinarContratoDialog/>
         </Box>
     )
 }

@@ -1,17 +1,11 @@
 import Grid from "@mui/material/Grid2";
-import {IconFileSearch, IconEye, IconHash, IconId, IconUser} from "@tabler/icons-react";
-import {Button, IconButton, Stack, Typography} from "@mui/material";
+import {IconEye, IconHash, IconId, IconUser} from "@tabler/icons-react";
+import {IconButton, Stack, Typography} from "@mui/material";
 import React, {useMemo} from "react";
 import {Link} from "@inertiajs/react";
-import {useKanbanProdutor} from "@/Pages/Auth/Produtor/Kanban/ContextKanban.jsx";
+import KanbanButton from "@/Pages/Auth/Produtor/Kanban/KanbanButton.jsx";
 
 const KanbanCardContent = ({card}) => {
-
-    const {buttonClick} = useKanbanProdutor()
-
-    const handleClick = () => {
-        buttonClick(card.id, card.status)
-    }
 
     return useMemo(() => {
         return (
@@ -42,23 +36,8 @@ const KanbanCardContent = ({card}) => {
                                 <Typography>{card.id}</Typography>
                             </Grid>
                         </Grid>
-                        {/*<Grid container gap={1}>*/}
-                        {/*    <Grid size={1}>*/}
-                        {/*        <IconMapPin/>*/}
-                        {/*    </Grid>*/}
-                        {/*    <Grid size={10}>*/}
-                        {/*        /!*<Typography>{card.endereco.cidade_estado}</Typography>*!/*/}
-                        {/*    </Grid>*/}
-                        {/*</Grid>*/}
                         <Grid container gap={1} justifyContent="end">
-                            <Button
-                                startIcon={<IconFileSearch/>}
-                                color="success"
-                                size="small"
-                                onClick={handleClick}
-                            >
-                                Analisar Documentos
-                            </Button>
+                            <KanbanButton cardId={card.id} status={card.status}/>
                         </Grid>
                     </Stack>
                 </Grid>
@@ -69,6 +48,6 @@ const KanbanCardContent = ({card}) => {
                 </Grid>
             </Grid>
         )
-    }, [card.proprietario.data_user.nome, card.proprietario.data_user.razao_social, card.proprietario.data_user.cnpj, card.id, card.proprietario.id])
+    }, [card.proprietario.data_user.nome, card.proprietario.data_user.razao_social, card.proprietario.data_user.cnpj, card.id, card.proprietario.id, card.status])
 }
 export default KanbanCardContent

@@ -30,7 +30,7 @@ const KanbanColumn = ({column, tasks}) => {
     return (
         <Box sx={styles.kanbanColumn}>
             <Box sx={{...styles.kanbanColumnTitle, backgroundColor: column.cor, color: column.corTexto}}>
-                <Typography variant="h5" sx={{textAlign: 'center'}}>{column.nome}</Typography>
+                <Typography variant="h4" sx={{textAlign: 'center'}}>{column.nome}</Typography>
                 <Typography variant="body1" sx={{textAlign: 'end'}}>Qtd. {tasks.length}</Typography>
             </Box>
             {tasks.map((task) => (

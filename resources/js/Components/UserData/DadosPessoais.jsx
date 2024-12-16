@@ -21,7 +21,6 @@ const DadosPessoais = ({data, setData}) => {
 
     const handleFetch = async () => {
         const cnpj = data?.cnpj?.replace(/\D/g, "")
-        console.log(cnpj)
 
         if (!cnpj || cnpj.length !== 14) {
             console.log('Por favor, insira um CNPJ válido (14 dígitos).')
@@ -43,7 +42,6 @@ const DadosPessoais = ({data, setData}) => {
                 ie: empresa?.inscricoes_estaduais?.[0]?.inscricao_estadual,
                 data_fundacao: empresa?.estabelecimento?.data_inicio_atividade,
             });
-            console.log(response.data);
         } catch (err) {
             alertError(err?.response?.data?.detalhes)
             console.log('Erro ao buscar informações. Verifique o CNPJ ou tente novamente mais tarde.', err);
@@ -51,7 +49,6 @@ const DadosPessoais = ({data, setData}) => {
 
         }
     };
-    console.log(data)
 
     return (
         <Card sx={{marginBottom: 4}}>

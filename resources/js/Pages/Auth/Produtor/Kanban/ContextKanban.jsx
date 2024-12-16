@@ -11,7 +11,7 @@ export const KanbanProdutorProvider = ({children}) => {
     const [updatePage, setUpdatePage] = useState(false)
     const [openDialog, setOpenDialog] = useState(false)
 
-    const buttonClick = (id, status) => {
+    const openDialogStatus = (id, status) => {
         setUsinaId(id)
         setStatus(status)
         setOpenDialog(true)
@@ -27,7 +27,7 @@ export const KanbanProdutorProvider = ({children}) => {
 
     return (
         <KanbanProdutorContext.Provider
-            value={{status, usinaId, buttonClick, openDialog, closeDialog, updatePage, handleUpdatePage}}
+            value={{status, usinaId, openDialogStatus, openDialog, closeDialog, updatePage, handleUpdatePage}}
         >
             {children}
         </KanbanProdutorContext.Provider>
