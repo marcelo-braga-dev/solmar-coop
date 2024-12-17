@@ -1,4 +1,4 @@
-import {Button, Paper, TextField} from "@mui/material";
+import {Box, Button, Paper, TextField} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import {IconDownload, IconFileCheck, IconUpload} from "@tabler/icons-react";
 import {useRef} from "react";
@@ -27,7 +27,7 @@ const Contratos = ({contratado}) => {
     };
 
     return (
-        <>
+        <Box>
             <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
                 <Grid container justifyContent="space-between" alignItems="center">
                     <Grid size={1} paddingInlineEnd={2}>
@@ -47,17 +47,19 @@ const Contratos = ({contratado}) => {
                     <Grid size={1} paddingInlineEnd={2}>
                         <IconUpload color="blue" size={30}/>
                     </Grid>
-                    <Grid size={11} container justifyContent="space-betw een" gap={2}>
-                        <Grid size="auto">
-                            <TextField
-                                label="Subir Contrato Assinado"
-                                type="file"
-                                fullWidth
-                                slotProps={{inputLabel: {shrink: true}}}
-                            />
-                        </Grid>
-                        <Grid size="auto">
-                            <Button color="success" onClick={handleDownload} startIcon={<IconUpload/>}>Subir Contrato</Button>
+                    <Grid size={11}>
+                        <Grid container spacing={2}>
+                            <Grid size={{xs: 12, md: 8}}>
+                                <TextField
+                                    label="Subir Contrato Assinado"
+                                    type="file"
+                                    fullWidth
+                                    slotProps={{inputLabel: {shrink: true}}}
+                                />
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <Button color="success" onClick={handleDownload} startIcon={<IconUpload/>}>Subir Contrato</Button>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -68,7 +70,7 @@ const Contratos = ({contratado}) => {
                     <ContratoUsina/>
                 </div>
             </Paper>
-        </>)
+        </Box>)
 
 }
 export default Contratos
