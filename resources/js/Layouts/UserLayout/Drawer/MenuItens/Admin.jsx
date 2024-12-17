@@ -18,7 +18,6 @@ export const adminMenu = [
         icon: <IconUserBolt/>,
         id: 'produtores-solar',
         subItems: [
-            {id: 'produtores-kanban', title: 'Quadro de Status', link: route('auth.produtor.kanban.index')},
             {id: 'produtores-solar-cadastrados', title: 'Produtores Cadastrados', link: route('admin.produtor.index')},
             {id: 'produtores-solar-cadastrados-2', title: 'Cadastrar Produtor', link: route('admin.produtor.create')},
         ],
@@ -51,6 +50,7 @@ export const adminMenu = [
         icon: <IconSolarPanel2/>,
         id: 'usinas',
         subItems: [
+            {id: 'produtores-kanban', title: 'Quadro de Status', link: route('auth.produtor.kanban.index')},
             {id: 'usinas-cadastrados', title: 'Todas Usinas', link: route('auth.usinas.index')},
         ],
     }, {
