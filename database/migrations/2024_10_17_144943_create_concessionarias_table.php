@@ -19,7 +19,6 @@ return new class extends Migration {
         });
 
         Schema::table('usina_solars', function (Blueprint $table) {
-            $table->unsignedBigInteger('concessionaria_id')->after('prazo_locacao')->nullable();
             $table->foreign('concessionaria_id')->references('id')->on('concessionarias');
         });
     }
