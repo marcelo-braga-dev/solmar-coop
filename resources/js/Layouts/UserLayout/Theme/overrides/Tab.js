@@ -8,7 +8,7 @@ export default function Tab(theme) {
                     minHeight: 50,
                     color: theme.palette.text.primary,
                     '&.Mui-selected': {
-                        color: 'orange',
+                        color: 'green',
                     },
                 },
             },
@@ -16,7 +16,7 @@ export default function Tab(theme) {
         MuiTabs: {
             styleOverrides: {
                 indicator: {
-                    backgroundColor: 'orange',
+                    backgroundColor: 'green',
                 },
             },
         },

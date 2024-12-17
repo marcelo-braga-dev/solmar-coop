@@ -2,68 +2,83 @@ import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import {useEffect, useState} from "react";
 
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
-import {Card, CardContent, Divider, ListItemButton, Stack, Typography} from "@mui/material";
-import {IconSolarPanel2} from "@tabler/icons-react";
+import {Button, Card, CardContent, LinearProgress, Paper} from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 import {Link} from "@inertiajs/react";
+import {IconEye} from "@tabler/icons-react";
 
 const Page = () => {
-    const [concessionarias, setConcessionarias] = useState([])
+
+    const [usinas, setUsinas] = useState([])
+    const [carregando, setCarregando] = useState(false)
+
+    const fetchGet = async () => {
+        setCarregando(true)
+
+        try {
+            const {data} = await axios.get(route('auth.usinas.api.get-all'))
+
+            setUsinas(data)
+        } finally {
+            setCarregando(false)
+        }
+    }
 
     useEffect(() => {
-        const fetchGet = async () => {
-            const {data} = await axios.get(route('auth.concessionarias.get-all'))
-            setConcessionarias(data)
-        }
         fetchGet()
     }, []);
 
     return (
-        <Layout titlePage="Usinas Solares" menu="usinas" subMenu="usinas-cadastradas">
+        <Layout titlePage="Usinas Solares" menu="usinas" subMenu="usinas-cadastrados">
             <Card>
                 <CardContent>
-                    <List>
-                        {concessionarias.map(concessionaria => (<>
-                            <ListItem key={concessionaria.id}>
-                                <Link href={route('auth.concessionaria.usinas', concessionaria.id)}>
-                                    <ListItemButton>
-                                        <ListItemAvatar>
-                                            <Avatar>
-                                                <IconSolarPanel2/>
-                                            </Avatar>
-                                        </ListItemAvatar>
-                                        <Grid container>
-                                            <Grid size={12} marginBottom={1}>
-                                                <Typography fontWeight="bold" variant="h5">Concessionária: {concessionaria.nome} / {concessionaria.estado}</Typography>
-                                            </Grid>
-                                            <Grid size={12}>
-                                                <Typography variant="body1">Potência Total de Usinas nesta Concessionária: 800 kWp</Typography>
-                                            </Grid>
-                                            <Grid size={3}>
-                                                <Typography variant="body1">Qtd Usinas: 10</Typography>
-                                            </Grid>
-                                            <Grid size={3}>
-                                                <Typography variant="body1">Potência em uso: 5000 kWp</Typography>
-                                            </Grid>
-                                            <Grid size={3}>
-                                                <Typography variant="body1">Potência disponível: 3000 kWp</Typography>
-                                            </Grid>
-                                        </Grid>
-                                    </ListItemButton>
-                                </Link>
 
-                            </ListItem>
-                            <Divider/>
-                        </>))}
-                    </List>
+                    {carregando && <LinearProgress sx={{marginBlockEnd: 2}}/>}
+
+                    {usinas.map(usina => (
+                        <Link key={usina.id} href={route('auth.usinas.show', usina.id)}>
+                            <Paper variant="outlined">
+                                <Grid container>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <TextInfo title="Proprietário" text={usina.proprietario.nome}/>
+                                    </Grid>
+                                    {usina.proprietario?.data_user?.cnpj && <Grid size={{xs: 12, md: 3}}>
+                                        <TextInfo title="CNPJ" text={usina.proprietario?.data_user?.cnpj}/>
+                                    </Grid>}
+                                    {usina.proprietario?.data_user?.cpf && <Grid size={{xs: 12, md: 3}}>
+                                        <TextInfo title="CPF" text={usina.proprietario?.data_user?.cpf}/>
+                                    </Grid>}
+                                </Grid>
+
+                                <TextInfo title="Consultor(a)" text={usina.consultor.nome}/>
+
+                                <Grid container>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <TextInfo title="Concessionária" text={`${usina.concessionaria.nome}/${usina.concessionaria.estado}`}/>
+                                    </Grid>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <TextInfo title="Unidade Consumidora" text={usina.uc}/>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid container justifyContent="space-between">
+                                    <Grid size={{xs: 12, md: 4}}>
+                                        <TextInfo title="Potência da Usina" text={`${usina.potencia_usina} kWh`}/>
+                                    </Grid>
+                                    <Grid size={{xs: 12, md: 3}}>
+                                        <TextInfo title="Média Geração" text={`${usina.media_geracao} kWh/mês`}/>
+                                    </Grid>
+                                    <Grid size={{xs: 12, md: 3}}>
+                                        <TextInfo title="ID da Usina Solar" text={`#${usina.id}`}/>
+                                    </Grid>
+                                    <Grid size="auto" textAlign="end" alignItems="center">
+                                        <Button size="small" color="success" startIcon={<IconEye/>}>Ver</Button>
+                                    </Grid>
+                                </Grid>
+                            </Paper>
+                        </Link>
+                    ))}
                 </CardContent>
             </Card>
         </Layout>

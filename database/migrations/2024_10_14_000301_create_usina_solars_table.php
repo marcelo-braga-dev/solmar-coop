@@ -13,12 +13,22 @@ return new class extends Migration {
         Schema::create('usina_solars', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->integer('uc');
+            $table->unsignedBigInteger('seller_id');
+            $table->unsignedBigInteger('concessionaria_id');
+            $table->string('status')->index();
+            $table->decimal('taxa_comissao', 6, 3);
+            $table->integer('uc')->nullable();
             $table->decimal('media_geracao', 8, 2);
             $table->integer('prazo_locacao')->nullable();
+            $table->decimal('potencia_usina', 8, 3);
+            $table->string('inversores', 1024);
+            $table->string('modulos', 1024);
+            $table->decimal('taxa_reducao_consumo', 8, 3);
+
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('seller_id')->references('id')->on('users');
         });
     }
 

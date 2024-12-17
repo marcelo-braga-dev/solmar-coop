@@ -2,15 +2,13 @@
 
 namespace App\Repositories\Produtor;
 
-use App\DTO\Endereco\CreateEnderecoUsuarioDTO;
 use App\DTO\UsinaSolar\CreateUsinaDTO;
 use App\DTO\Usuario\CreateUsuarioDTO;
-use App\Models\Propostas\UsinaProposta;
 use App\Models\Users\Produtor;
 use App\Models\Users\User;
+use App\Models\Usina\UsinaSolar;
 use App\Services\Users\CreateUserService;
 use App\src\Roles\RolesUser;
-use App\Utils\AlertMessage;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +40,7 @@ class ProdutorRepository
                 // Usina Solar
                 $usinaDTO = CreateUsinaDTO::fromArray($user->id, $data->usina);
                 $usina = $usinaDTO->toArray();
-                UsinaProposta::create($usina);
+                UsinaSolar::create($usina);
 
                 return $user->id;
             });

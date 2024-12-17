@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Auth\Usinas;
 
 use App\Http\Controllers\Controller;
-use App\Models\Propostas\UsinaProposta;
-use App\Repositories\Produtor\ProdutorRepository;
+use App\Models\Usina\UsinaSolar;
 
-class GetUsinaController extends Controller
+class FindUsinaController extends Controller
 {
    public function __invoke($id)
    {
-       $date = UsinaProposta::find($id);
+       $date = UsinaSolar::find($id);
 
        return response()->json($date);
    }
