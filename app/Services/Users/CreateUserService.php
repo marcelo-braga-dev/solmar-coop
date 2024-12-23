@@ -18,7 +18,7 @@ class CreateUserService
             'name' => $produtor['nome'] ?? $produtor['razao_social'],
             'email' => $produtor['email'],
             'role_id' => $role,
-            'status' => 'novo',
+            'status' => 1,
             'password' => ($senha ?? null) ? Hash::make($senha) : Hash::make(uniqid()),
         ]);
     }

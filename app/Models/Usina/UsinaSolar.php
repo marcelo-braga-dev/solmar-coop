@@ -22,7 +22,6 @@ class UsinaSolar extends Model
         'taxa_comissao',
         'inversores',
         'modulos',
-        'taxa_reducao_consumo',
     ];
 
     use HasFactory;

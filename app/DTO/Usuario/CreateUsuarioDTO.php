@@ -12,7 +12,7 @@ class CreateUsuarioDTO
     public ?string $razaoSocial;
     public ?string $nomeFantasia;
     public ?string $cnpj;
-    public ?int $cpf;
+    public ?string $cpf;
     public ?string $rg;
     public ?string $ie;
     public ?string $im;

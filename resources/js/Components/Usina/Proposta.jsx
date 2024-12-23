@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid2";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 
 const Proposta = ({proposta}) => {
-    
+
     return (
         <Card sx={{marginBottom: 4}}>
             <CardHeader title="Proposta" avatar={<IconFileCheck/>} disableTypography/>
@@ -18,9 +18,6 @@ const Proposta = ({proposta}) => {
                     </Grid>
                     <Grid size={{xs: 12, md: 6}}>
                         <TextInfo title="Unidade Consumidora" text={proposta?.uc}/>
-                    </Grid>
-                    <Grid size={{xs: 12, md: 6}}>
-                        <TextInfo title="Taxa Reducao Consumo" text={`${proposta?.taxa_reducao_consumo}%`}/>
                     </Grid>
                     <Grid size={{xs: 12, md: 6}}>
                         <TextInfo title="Potência da Usina" text={`${proposta?.potencia_usina} kWp`}/>

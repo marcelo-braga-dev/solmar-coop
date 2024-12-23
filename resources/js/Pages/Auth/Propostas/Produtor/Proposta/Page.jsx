@@ -24,7 +24,6 @@ const PropostaComercial = ({cliente, proposta, endereco}) => {
                 <div style={styles.section}>
                     <div style={styles.sectionTitle}>Detalhes da Usina Solar</div>
                     <p><strong>Tipo de Usina:</strong> Solar Fotovoltaica</p>
-                    <p><strong>Taxa de Redução de Consumo:</strong> {proposta.taxa_reducao_consumo}%</p>
                     <p><strong>Potência Total da Usina:</strong> {proposta.potencia_usina} kWp</p>
                     <p><strong>Geração Média Mensal:</strong> {proposta.media_geracao} kWp</p>
                     <p><strong>Inversor:</strong> {proposta.inversores}</p>

@@ -51,6 +51,10 @@ class UserData extends Model
     //--------------
     public function setCnpjAttribute($value)
     {
-        $this->attributes['cnpj'] = preg_replace('/\D/', '', $value);
+        $this->attributes['cnpj'] = $value ? preg_replace('/\D/', '', $value) : null;
+    }
+    public function setCpfAttribute($value)
+    {
+        $this->attributes['cpf'] = $value ? preg_replace('/\D/', '', $value) : null;
     }
 }

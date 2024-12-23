@@ -30,21 +30,6 @@ const Proposta = ({data, setData}) => {
                             {concessionarias.map(item => <MenuItem key={item.id} value={item.id}>{item.nome} / {item.estado}</MenuItem>)}
                         </TextField>
                     </Grid>
-                    <Grid size={{xs: 12, md: 3}}>
-                        <TextField
-                            label="Taxa de Redução Consumo"
-                            onChange={e => setData({...data, usina: {...data.usina, taxa_reducao_consumo: e.target.value}})}
-                            type="number"
-                            required
-                            fullWidth
-                            slotProps={{
-                                htmlInput: {step: 0.01},
-                                input: {
-                                    endAdornment: <InputAdornment position="start">%</InputAdornment>,
-                                },
-                            }}
-                        />
-                    </Grid>
                 </Grid>
                 <Grid container spacing={3} marginBottom={4}>
                     <Grid size={{xs: 12, md: 3}}>

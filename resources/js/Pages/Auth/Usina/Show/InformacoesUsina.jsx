@@ -77,9 +77,6 @@ const InformacoesUsina = ({id}) => {
                     <Grid size={{xs: 12, md: 4}}>
                         <TextInfo title="Taxa Comissão" text={`${usina.taxa_comissao ?? ''}%`}/>
                     </Grid>
-                    <Grid size={{xs: 12, md: 4}}>
-                        <TextInfo title="Taxa Reducao Consumo" text={`${usina.taxa_reducao_consumo}%`}/>
-                    </Grid>
                 </Grid>
             </Paper>
 

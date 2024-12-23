@@ -17,7 +17,7 @@ const DadosPessoais = ({data, setData}) => {
 
     useEffect(() => {
         useInputMask()
-    }, []);
+    }, [data.tipo_pessoa]);
 
     const handleFetch = async () => {
         const cnpj = data?.cnpj?.replace(/\D/g, "")
@@ -28,8 +28,6 @@ const DadosPessoais = ({data, setData}) => {
         }
 
         try {
-            // const response = await axios.get(`https://www.receitaws.com.br/v1/cnpj/${cnpj}`);
-            // const response = await axios.get(`https://open.cnpja.com/office/${cnpj}`);
             const response = await axios.get(`https://publica.cnpj.ws/cnpj/${cnpj}`);
             const empresa = response.data
 
@@ -162,6 +160,7 @@ const DadosPessoais = ({data, setData}) => {
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="CPF:"
+                                className="cpf"
                                 onChange={e => setData('cpf', e.target.value)}
                                 required
                                 fullWidth/>
@@ -176,7 +175,6 @@ const DadosPessoais = ({data, setData}) => {
                                 label="Data Nascimento:"
                                 onChange={e => setData('data_nascimento', e.target.value)}
                                 type="date"
-                                required
                                 slotProps={{inputLabel: {shrink: true}}}
                                 fullWidth/>
                         </Grid>

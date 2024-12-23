@@ -17,7 +17,6 @@ class CreateUsinaDTO
     public float $potenciaUsina;
     public string $inversores;
     public string $modulos;
-    public float $taxaReducaoConsumo;
 
     public static function fromArray(int $userId, $data): CreateUsinaDTO
     {
@@ -32,7 +31,6 @@ class CreateUsinaDTO
         $dto->potenciaUsina = $data['potencia_usina'] ?? null;
         $dto->inversores = $data['inversores'] ?? null;
         $dto->modulos = $data['modulos'] ?? null;
-        $dto->taxaReducaoConsumo = $data['taxa_reducao_consumo'] ?? null;
 
         return $dto;
     }
@@ -50,7 +48,6 @@ class CreateUsinaDTO
             'potencia_usina' => $this->potenciaUsina,
             'inversores' => $this->inversores,
             'modulos' => $this->modulos,
-            'taxa_reducao_consumo' => $this->taxaReducaoConsumo,
         ];
     }
 }
