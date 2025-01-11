@@ -50,19 +50,21 @@ export const adminMenu = [
         icon: <IconSolarPanel2/>,
         id: 'usinas',
         subItems: [
-            {id: 'produtores-kanban', title: 'Quadro de Status', link: route('auth.produtor.kanban.index')},
             {id: 'usinas-cadastrados', title: 'Todas Usinas', link: route('auth.usinas.index')},
+            {id: 'produtores-kanban', title: 'Quadro de Status', link: route('auth.produtor.kanban.index')},
         ],
-    }, {
-        title: 'Financeiro',
-        icon: <IconReportMoney/>,
-        id: 'financeiro',
-        subItems: [
-            {id: 'financeiro-produtor', title: 'Produtores', link: route('admin.financeiro.produtor.index')},
-            {id: 'financeiro-cliente', title: 'Clientes', link: route('admin.financeiro.cliente.index')},
-            {id: 'financeiro-vendedor', title: 'Vendedores', link: route('admin.financeiro.vendedor.index')},
-        ],
-    }, {
+    },
+    // {
+    //     title: 'Financeiro',
+    //     icon: <IconReportMoney/>,
+    //     id: 'financeiro',
+    //     subItems: [
+    //         {id: 'financeiro-produtor', title: 'Produtores', link: route('admin.financeiro.produtor.index')},
+    //         {id: 'financeiro-cliente', title: 'Clientes', link: route('admin.financeiro.cliente.index')},
+    //         {id: 'financeiro-vendedor', title: 'Vendedores', link: route('admin.financeiro.vendedor.index')},
+    //     ],
+    // },
+    {
         title: 'Concessionárias Energia',
         icon: <IconBolt/>,
         id: 'concessionarias',
@@ -87,23 +89,26 @@ export const adminMenu = [
             {id: 'propostas-cliente', title: 'Propostas Clientes', link: route('auth.propostas.cliente.index')},
             {id: 'propostas-produtor', title: 'Propostas Produtores', link: route('auth.propostas.produtor.index')},
         ],
-    }, {
-        title: 'Contratos',
-        icon: <IconFileLike/>,
-        id: 'contratos',
-        subItems: [
-            {id: 'contratos-usinas', title: 'Contratos Usinas', link: route('auth.contratos.usina.index')},
-            {id: 'contratos-clientes', title: 'Contratos Clientes', link: route('auth.contratos.cliente.index')},
-        ],
-    }, {
-        title: 'Whatsapp',
-        icon: <IconBrandWhatsapp/>,
-        id: 'whatsapp',
-        subItems: [
-            {id: 'whatsapp-chat', title: 'Whatsapp App', link: route('auth.ferramentas.whatsapp.chat.index')},
-            {id: 'whatsapp-chatbot', title: 'Respostas Automáticas', link: route('auth.ferramentas.whatsapp.chatbot.index')},
-        ],
-    }, {
+    },
+    // {
+    //     title: 'Contratos',
+    //     icon: <IconFileLike/>,
+    //     id: 'contratos',
+    //     subItems: [
+    //         {id: 'contratos-usinas', title: 'Contratos Usinas', link: route('auth.contratos.usina.index')},
+    //         {id: 'contratos-clientes', title: 'Contratos Clientes', link: route('auth.contratos.cliente.index')},
+    //     ],
+    // },
+    // {
+    //     title: 'Whatsapp',
+    //     icon: <IconBrandWhatsapp/>,
+    //     id: 'whatsapp',
+    //     subItems: [
+    //         {id: 'whatsapp-chat', title: 'Whatsapp App', link: route('auth.ferramentas.whatsapp.chat.index')},
+    //         {id: 'whatsapp-chatbot', title: 'Respostas Automáticas', link: route('auth.ferramentas.whatsapp.chatbot.index')},
+    //     ],
+    // },
+    {
         title: 'Suporte',
         icon: <IconHeadset/>,
         id: 'suporte',
