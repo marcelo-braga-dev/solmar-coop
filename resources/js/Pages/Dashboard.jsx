@@ -7,17 +7,14 @@ const Page = () => {
             <Card sx={{marginBlockEnd: 3}}>
                 <CardContent>
                     <Typography>
-                        Ferramenta para Fazer a Gestão da Geração de Energia Solar
+                        Aplicativo para realizar o cadastro dos usuários do sistema, que são os produtores, clientes e consultores.
                     </Typography>
                     <Typography>
-                        A geração de energia solar tem se tornado uma solução cada vez mais popular para empresas, indústrias e residências que buscam reduzir custos com
-                        energia elétrica e adotar práticas mais sustentáveis. Contudo, para aproveitar ao máximo essa tecnologia, é essencial contar com uma ferramenta de
-                        gestão eficiente que permita monitorar e controlar a geração e o consumo de energia de forma prática e integrada.
+                        Informar quais são as concessionárias de energia elétrica, isso ajuda na organização das informações, assim como o histórico de atualziações.
                     </Typography>
                     <Typography>
-                        A adoção de uma ferramenta de gestão da geração de energia solar traz inúmeros benefícios. Para residências, ela ajuda a reduzir ainda mais os
-                        custos com energia elétrica, permitindo uma maior autonomia. Para empresas e indústrias, é uma forma de maximizar a eficiência energética e
-                        alcançar metas de sustentabilidade. Além disso, gestores têm acesso a dados detalhados que ajudam a planejar expansões ou atualizações no sistema.
+                        E umas das principais vantagens é a faciidade em cadastrar as usinas de energia solar, para você não perder os dados e saber quando cada
+                        informações é atualziada e também a qual proutor pertence.
                     </Typography>
                 </CardContent>
             </Card>
