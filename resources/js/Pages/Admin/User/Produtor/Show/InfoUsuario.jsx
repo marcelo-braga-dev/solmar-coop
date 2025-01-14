@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid2";
 const InfoUsuario = ({usuario, contatos, status}) => {
     return (
         <Grid container spacing={2}>
-            <Grid size={{md: 6}}>
+            <Grid size={{xs: 12, md: 6}}>
                 {status && <TextInfo title="Status" text={status}/>}
                 {usuario?.nome && <TextInfo title="Nome" text={usuario.nome}/>}
                 {usuario?.razao_social && <TextInfo title="Razão Social" text={usuario.razao_social}/>}
@@ -23,11 +23,14 @@ const InfoUsuario = ({usuario, contatos, status}) => {
                 {usuario?.ramo_atividade && <TextInfo title="Ramo de Atividade" text={usuario.ramo_atividade}/>}
                 {usuario?.cadastrado_em && <TextInfo title="Data Cadastro" text={usuario.cadastrado_em}/>}
             </Grid>
-            <Grid size={{md: 6}}>
+            <Grid size={{xs: 12, md: 6}}>
                 {contatos?.celular && <TextInfo title="Celular" text={contatos.celular}/>}
                 {contatos?.celular_2 && <TextInfo title="Celular 2" text={contatos.celular_2}/>}
                 {contatos?.telefone && <TextInfo title="Telefone" text={contatos.telefone}/>}
                 {contatos?.email && <TextInfo title="Email" text={contatos.email}/>}
+            </Grid>
+            <Grid size={{xs: 12}}>
+                {usuario?.endereco?.endereco_completo && <TextInfo title="Endereço do Produtor" text={usuario?.endereco?.endereco_completo}/>}
             </Grid>
         </Grid>
 

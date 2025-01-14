@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('concessionaria_id');
             $table->string('status')->index();
             $table->decimal('taxa_comissao', 6, 3)->nullable();
-            $table->integer('uc')->nullable();
+            $table->unsignedBigInteger('uc')->nullable();
             $table->decimal('media_geracao', 8, 2);
             $table->integer('prazo_locacao')->nullable();
             $table->decimal('potencia_usina', 8, 3);

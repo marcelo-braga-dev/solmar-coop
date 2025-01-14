@@ -61,11 +61,6 @@ class User extends Authenticatable
         return $this->hasOne(UserData::class, 'user_id', 'id');
     }
 
-    public function endereco(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(UserAddress::class, 'user_id', 'id');
-    }
-
     public function usina(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(UsinaSolar::class, 'user_id', 'id');

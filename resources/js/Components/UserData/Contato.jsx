@@ -19,7 +19,9 @@ const Contato = ({data, setData}) => {
                             label="Celular:"
                             required
                             className="mobile"
+                            value={data?.contato?.celular}
                             onChange={e => setData({...data, contato: {...data.contato, celular: e.target.value}})}
+                            slotProps={{inputLabel: {shrink: !!data?.contato?.celular}}}
                             fullWidth
                         />
                     </Grid>
@@ -27,7 +29,9 @@ const Contato = ({data, setData}) => {
                         <TextField
                             label="Celular 2:"
                             className="mobile"
+                            value={data?.contato?.celular_2}
                             onChange={e => setData({...data, contato: {...data.contato, celular_2: e.target.value}})}
+                            slotProps={{inputLabel: {shrink: !!data?.contato?.celular_2}}}
                             fullWidth
                         />
                     </Grid>
@@ -35,7 +39,9 @@ const Contato = ({data, setData}) => {
                         <TextField
                             label="Telefone:"
                             className="phone"
+                            value={data?.contato?.telefone}
                             onChange={e => setData({...data, contato: {...data.contato, telefone: e.target.value}})}
+                            slotProps={{inputLabel: {shrink: !!data?.contato?.telefone}}}
                             fullWidth
                         />
                     </Grid>
@@ -43,7 +49,9 @@ const Contato = ({data, setData}) => {
                         <TextField
                             label="Email:"
                             type="email"
+                            value={data?.contato?.email}
                             onChange={e => setData({...data, contato: {...data.contato, email: e.target.value}})}
+                            slotProps={{inputLabel: {shrink: !!data?.contato?.email}}}
                             fullWidth
                         />
                     </Grid>

@@ -4,6 +4,7 @@ namespace App\Models\Usina;
 
 use App\Models\Concessionarias;
 use App\Models\Users\User;
+use App\Models\Users\UserAddress;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,7 +29,7 @@ class UsinaSolar extends Model
 
     protected $hidden = ['concessionaria_id', 'seller_id', 'created_at', 'updated_at'];
 
-    protected $with = ['concessionaria', 'consultor', 'proprietario'];
+    protected $with = ['concessionaria', 'consultor', 'proprietario', 'endereco'];
 
     //--------------
     // relations
@@ -47,5 +48,10 @@ class UsinaSolar extends Model
     public function concessionaria()
     {
         return $this->belongsTo(Concessionarias::class, 'concessionaria_id', 'id');
+    }
+
+    public function endereco()
+    {
+        return $this->hasOne(UsinaAddress::class, 'usina_id', 'id');
     }
 }

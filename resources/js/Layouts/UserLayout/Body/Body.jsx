@@ -14,8 +14,8 @@ const Body = ({content}) => {
         <Box style={{
             flexGrow: 1,
             marginTop: 90,
-            paddingInlineStart: 40,
-            paddingInlineEnd: 50,
+            paddingInlineStart: matchDownMD ? 20 : 40,
+            paddingInlineEnd: matchDownMD ? 20 : 50,
             overflow: 'hidden',
         }}>
             <Container maxWidth="lg" style={{
@@ -23,12 +23,12 @@ const Body = ({content}) => {
                 padding: 0,
                 minHeight: 'calc(100vh - 90px)'
             }}>
-                <div style={{
+                <Box style={{
                     marginBottom: 50,
                     overflowX: 'auto',
                 }}>
                     {!matchDownMD ? content : (!openMenuDrawer && content)}
-                </div>
+                </Box>
             </Container>
         </Box>
     )

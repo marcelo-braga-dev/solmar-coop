@@ -21,12 +21,14 @@ const Page = () => {
 
     return (
         <Layout titlePage="Produtores Solar" menu="produtores-solar" subMenu="produtores-solar-cadastrados">
-            <Grid container marginBottom={4} justifyContent="space-between">
-                <Grid size={3}>
+            <Grid container marginBottom={1} justifyContent="space-between">
+                <Grid size={12}>
                     <Link href={route('admin.produtor.create')}>
                         <Button startIcon={<IconPlus/>} color="success">Cadastrar Produtor</Button>
                     </Link>
                 </Grid>
+            </Grid>
+            <Grid container marginBottom={2} justifyContent="end">
                 <Grid size="auto">
                     <Pagination count={1}/>
                 </Grid>
@@ -41,10 +43,10 @@ const Page = () => {
                     <CardContent>
                         <Link href={route('admin.produtor.show', item.id)}>
                             <Grid container justifyContent="space-between">
-                                <Grid size={11}>
+                                <Grid size={{xs: 10, md: 11}}>
                                     <Stack spacing={2}>
                                         <Grid container>
-                                            <Grid size={6}>
+                                            <Grid size={{xs: 12, md: 6}}>
                                                 <Stack spacing={2}>
                                                     {item?.data_user?.nome && <TextInfo title="Nome" text={item.data_user.nome}/>}
                                                     {item?.data_user?.razao_social && <TextInfo title="Razão Social" text={item.data_user.razao_social}/>}
@@ -53,7 +55,7 @@ const Page = () => {
                                                     {item?.endereco?.cidade_estado && <TextInfo title="Localização" text={item?.endereco?.cidade_estado}/>}
                                                 </Stack>
                                             </Grid>
-                                            <Grid size={6}>
+                                            <Grid size={{xs: 12, md: 6}}>
                                                 <Stack spacing={2}>
                                                     {item.status_nome && <TextInfo title="Status" text={item.status_nome}/>}
                                                     {item.id && <TextInfo title="Matrícula" text={item.id}/>}
@@ -62,13 +64,13 @@ const Page = () => {
                                         </Grid>
                                     </Stack>
                                 </Grid>
-                                <Grid size="auto">
+                                <Grid size={{xs: 2, md: 1}} justifyContent="end" display="flex">
                                     <IconEye/>
                                 </Grid>
                             </Grid>
                         </Link>
                         <Grid container justifyContent="space-between">
-                            <Grid >
+                            <Grid>
                                 {item.status === 'novo' && (
                                     <Link href={route('admin.produtor.status.analizar-documentos.show', item.id)}>
                                         <Button sx={{marginTop: 2}} color="warning" startIcon={<IconUserSearch size="20"/>} size="small">Analizar Documentos</Button>

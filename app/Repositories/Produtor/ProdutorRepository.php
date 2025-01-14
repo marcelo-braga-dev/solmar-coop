@@ -2,10 +2,12 @@
 
 namespace App\Repositories\Produtor;
 
+use App\DTO\Endereco\CreateEnderecoDTO;
 use App\DTO\UsinaSolar\CreateUsinaDTO;
 use App\DTO\Usuario\CreateUsuarioDTO;
 use App\Models\Users\Produtor;
 use App\Models\Users\User;
+use App\Models\Usina\UsinaAddress;
 use App\Models\Usina\UsinaSolar;
 use App\Services\Users\CreateUserService;
 use App\src\Roles\RolesUser;
@@ -35,12 +37,16 @@ class ProdutorRepository
                 $service->contato($user, $data);
 
                 // Endereco
-                $service->endereco($user, $data);
+                $service->endereco($user, $data->produtor_endereco);
 
                 // Usina Solar
                 $usinaDTO = CreateUsinaDTO::fromArray($user->id, $data->usina);
                 $usina = $usinaDTO->toArray();
-                UsinaSolar::create($usina);
+                $usinaData = UsinaSolar::create($usina);
+                $usinaEnderecoDTO = CreateEnderecoDTO::fromArray($data->usina_endereco);
+                $usinaEndereco = $usinaEnderecoDTO->toArray();
+
+                UsinaAddress::create(['usina_id' => $usinaData->id, ...$usinaEndereco]);
 
                 return $user->id;
             });
@@ -64,7 +70,7 @@ class ProdutorRepository
     public function findAllData($id)
     {
         return (new User)
-            ->with(['dataUser', 'endereco', 'usina', 'propostas', 'contatos'])
+            ->with(['dataUser', 'usina', 'propostas', 'contatos'])
             ->find($id);
     }
 

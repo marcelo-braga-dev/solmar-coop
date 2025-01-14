@@ -3,7 +3,7 @@ import {IconFileInvoice} from "@tabler/icons-react";
 import Grid from "@mui/material/Grid2";
 import {useEffect, useState} from "react";
 
-const Proposta = ({data, setData}) => {
+const Usina = ({data, setData}) => {
     const [concessionarias, setConcessionarias] = useState([])
 
     useEffect(() => {
@@ -23,6 +23,7 @@ const Proposta = ({data, setData}) => {
                         <TextField
                             label="Concessionária de Energia"
                             select
+                            value={data?.usina?.concessionaria_id}
                             onChange={e => setData({...data, usina: {...data.usina, concessionaria_id: e.target.value}})}
                             fullWidth
                             required
@@ -36,6 +37,7 @@ const Proposta = ({data, setData}) => {
                         <TextField
                             label="Unidade Consumidora"
                             type="number"
+                            value={data?.usina?.uc}
                             onChange={e => setData({...data, usina: {...data.usina, uc: e.target.value}})}
                             fullWidth
                             required
@@ -44,6 +46,7 @@ const Proposta = ({data, setData}) => {
                     <Grid size={{xs: 12, md: 3}}>
                         <TextField
                             label="Média Geração Mensal"
+                            value={data?.usina?.media_geracao}
                             onChange={e => setData({...data, usina: {...data.usina, media_geracao: e.target.value}})}
                             type="number"
                             required
@@ -58,6 +61,7 @@ const Proposta = ({data, setData}) => {
                     <Grid size={{xs: 12, md: 3}}>
                         <TextField
                             label="Potência Total da Usina"
+                            value={data?.usina?.potencia_usina}
                             onChange={e => setData({...data, usina: {...data.usina, potencia_usina: e.target.value}})}
                             type="number"
                             required
@@ -72,6 +76,7 @@ const Proposta = ({data, setData}) => {
                     <Grid size={{xs: 12, md: 3}}>
                         <TextField
                             label="Prazo Locação"
+                            value={data?.usina?.prazo_locacao}
                             onChange={e => setData({...data, usina: {...data.usina, prazo_locacao: e.target.value}})}
                             select
                             required
@@ -87,6 +92,7 @@ const Proposta = ({data, setData}) => {
                     <Grid size={{xs: 12, md: 6}}>
                         <TextField
                             label="Informações sobre Inversores"
+                            value={data?.usina?.inversores}
                             onChange={e => setData({...data, usina: {...data.usina, inversores: e.target.value}})}
                             required
                             fullWidth
@@ -97,6 +103,7 @@ const Proposta = ({data, setData}) => {
                     <Grid size={{xs: 12, md: 6}}>
                         <TextField
                             label="Informações sobre Módulos"
+                            value={data?.usina?.modulos}
                             onChange={e => setData({...data, usina: {...data.usina, modulos: e.target.value}})}
                             required
                             fullWidth
@@ -109,4 +116,4 @@ const Proposta = ({data, setData}) => {
         </Card>
     )
 }
-export default Proposta
+export default Usina

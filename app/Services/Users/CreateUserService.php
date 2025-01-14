@@ -14,23 +14,31 @@ class CreateUserService
 {
     public function user(array $produtor, int $role, ?string $senha)
     {
-        return User::create([
-            'name' => $produtor['nome'] ?? $produtor['razao_social'],
-            'email' => $produtor['email'],
-            'role_id' => $role,
-            'status' => 1,
-            'password' => ($senha ?? null) ? Hash::make($senha) : Hash::make(uniqid()),
-        ]);
+        try {
+            return User::create([
+                'name' => $produtor['nome'] ?? $produtor['razao_social'],
+                'email' => $produtor['email'],
+                'role_id' => $role,
+                'status' => 1,
+                'password' => ($senha ?? null) ? Hash::make($senha) : Hash::make(uniqid()),
+            ]);
+        } catch (\Exception $e) {
+            throw new \Exception('E-mail de acesso já está cadastrado em outro usuário!');
+        }
     }
 
     public function userData($user, $produtor)
     {
-        UserData::create(['user_id' => $user->id, ...$produtor]);
+        try {
+            UserData::create(['user_id' => $user->id, ...$produtor]);
+        } catch (\Exception) {
+         throw new \Exception('Dados do usuário inválidos ou duplicados!');
+        }
     }
 
-    function endereco($user, Request $data): void
+    function endereco($user, array $endereco): void
     {
-        $enderecoDTO = CreateEnderecoUsuarioDTO::fromArray($user->id, $data->endereco ?? []);
+        $enderecoDTO = CreateEnderecoUsuarioDTO::fromArray($user->id, $endereco ?? []);
         $endereco = $enderecoDTO->toArray();
         UserAddress::create($endereco);
     }

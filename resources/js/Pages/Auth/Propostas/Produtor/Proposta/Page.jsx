@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PropostaComercial = ({cliente, proposta, endereco}) => {
+const PropostaComercial = ({cliente, proposta}) => {
 
     return (
         <div style={styles.container}>
@@ -29,13 +29,13 @@ const PropostaComercial = ({cliente, proposta, endereco}) => {
                     <p><strong>Inversor:</strong> {proposta.inversores}</p>
                     <p><strong>Módulos:</strong> {proposta.modulos}</p>
                     <p><strong>Concessionária de Energia Elétrica:</strong> {proposta.concessionaria.nome} / {proposta.concessionaria.estado} </p>
-                    <p><strong>Localização:</strong>{
-                        `${endereco.rua ?? '-'},
-                        ${endereco.numero ?? '-'},
-                        ${endereco.bairro ?? '-'},
-                        ${endereco.cidade ?? '-'}/${endereco.estado ?? '-'} -
-                        Cep: ${endereco.cep ?? '-'}`}
-                    </p>
+                    {/*<p><strong>Localização:</strong>{*/}
+                    {/*    `${endereco.rua ?? '-'},*/}
+                    {/*    ${endereco.numero ?? '-'},*/}
+                    {/*    ${endereco.bairro ?? '-'},*/}
+                    {/*    ${endereco.cidade ?? '-'}/${endereco.estado ?? '-'} -*/}
+                    {/*    Cep: ${endereco.cep ?? '-'}`}*/}
+                    {/*</p>*/}
                     <p><strong>Duração do Contrato:</strong> {proposta.prazo_locacao} meses</p>
                 </div>
 

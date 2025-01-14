@@ -31,6 +31,7 @@ class UserData extends Model
     ];
 
     protected $appends = ['cadastrado_em'];
+    protected $with = ['endereco'];
 
     //--------------
     // getters
@@ -56,5 +57,13 @@ class UserData extends Model
     public function setCpfAttribute($value)
     {
         $this->attributes['cpf'] = $value ? preg_replace('/\D/', '', $value) : null;
+    }
+
+    //--------------
+    // relations
+    //--------------
+    public function endereco()
+    {
+        return $this->hasOne(UserAddress::class, 'user_id', 'user_id');
     }
 }

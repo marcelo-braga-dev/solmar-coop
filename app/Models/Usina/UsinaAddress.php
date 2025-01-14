@@ -1,16 +1,25 @@
 <?php
 
-namespace App\Models\Users;
+namespace App\Models\Usina;
 
 use App\Utils\FormatValues;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserAddress extends Model
+class UsinaAddress extends Model
 {
-    use HasFactory;
-
-    protected $fillable = ['user_id', 'cep', 'rua', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'referencia'];
+    protected $fillable = [
+        'usina_id',
+        'cep',
+        'rua',
+        'numero',
+        'complemento',
+        'bairro',
+        'cidade',
+        'estado',
+        'referencia',
+        'latitude',
+        'longitude'
+    ];
 
     protected $appends = ['cidade_estado', 'endereco_completo'];
 

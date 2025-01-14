@@ -1,4 +1,4 @@
-import {Button, Card, CardContent, CardHeader, MenuItem, TextField} from "@mui/material";
+import {Card, CardContent, CardHeader, IconButton, MenuItem, TextField} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -72,18 +72,15 @@ const DadosPessoais = ({data, setData}) => {
                             <TextField
                                 label="CNPJ"
                                 className="cnpj"
+                                value={data?.cnpj}
                                 onChange={e => setData('cnpj', e.target.value)}
                                 required
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{xs: 4, md: 8}}>
-                            <Button
-                                startIcon={<IconSearch/>}
-                                color="warning"
-                                onClick={handleFetch}
-                            >
-                                Buscar Dados
-                            </Button>
+                        <Grid size={{xs: 4, md: 8}} alignContent="center">
+                            <IconButton color="info" onClick={handleFetch}>
+                                <IconSearch/>
+                            </IconButton>
                         </Grid>
                         <Grid size={{xs: 12, md: 6}}>
                             <TextField
@@ -105,6 +102,7 @@ const DadosPessoais = ({data, setData}) => {
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Tipo de Empresa:"
+                                value={data.tipo_empresa}
                                 onChange={e => setData('tipo_empresa', e.target.value)}
                                 select
                                 fullWidth>
@@ -135,7 +133,9 @@ const DadosPessoais = ({data, setData}) => {
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Inscrição Municipal:"
+                                value={data.im}
                                 onChange={e => setData('im', e.target.value)}
+                                slotProps={{inputLabel: {shrink: !!data.im}}}
                                 fullWidth/>
                         </Grid>
                         <Grid size={{xs: 12, md: 4}}>
@@ -153,6 +153,7 @@ const DadosPessoais = ({data, setData}) => {
                         <Grid size={{xs: 12, md: 8}}>
                             <TextField
                                 label="Nome Completo:"
+                                value={data.nome}
                                 onChange={e => setData('nome', e.target.value)}
                                 required
                                 fullWidth/>
@@ -161,6 +162,7 @@ const DadosPessoais = ({data, setData}) => {
                             <TextField
                                 label="CPF:"
                                 className="cpf"
+                                value={data.cpf}
                                 onChange={e => setData('cpf', e.target.value)}
                                 required
                                 fullWidth/>
@@ -168,11 +170,15 @@ const DadosPessoais = ({data, setData}) => {
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="RG:"
+                                className="rg"
+                                value={data.rg}
+                                onChange={e => setData('rg', e.target.value)}
                                 fullWidth/>
                         </Grid>
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Data Nascimento:"
+                                value={data.data_nascimento}
                                 onChange={e => setData('data_nascimento', e.target.value)}
                                 type="date"
                                 slotProps={{inputLabel: {shrink: true}}}
@@ -181,6 +187,7 @@ const DadosPessoais = ({data, setData}) => {
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Gênero:"
+                                value={data.genero}
                                 onChange={e => setData('genero', e.target.value)}
                                 select
                                 fullWidth>
@@ -191,6 +198,7 @@ const DadosPessoais = ({data, setData}) => {
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="Estado Civil:"
+                                value={data.estado_civil}
                                 onChange={e => setData('estado_civil', e.target.value)}
                                 select
                                 fullWidth>
@@ -203,6 +211,7 @@ const DadosPessoais = ({data, setData}) => {
                         <Grid size={{xs: 12, md: 8}}>
                             <TextField
                                 label="Ocupação Profissional:"
+                                value={data.profissao}
                                 onChange={e => setData('profissao', e.target.value)}
                                 fullWidth/>
                         </Grid>
