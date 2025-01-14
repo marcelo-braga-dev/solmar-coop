@@ -1,5 +1,5 @@
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
-import {Button, Card, CardContent, Stack, Typography} from "@mui/material";
+import {Card, CardContent, Typography} from "@mui/material";
 
 const Page = () => {
     return (
@@ -16,16 +16,6 @@ const Page = () => {
                         E umas das principais vantagens é a faciidade em cadastrar as usinas de energia solar, para você não perder os dados e saber quando cada
                         informações é atualziada e também a qual proutor pertence.
                     </Typography>
-                </CardContent>
-            </Card>
-            <Card sx={{marginBlockEnd: 3}}>
-                <CardContent>
-                    <Stack spacing={3} direction="row">
-                        <Button color="success" href={route('admin.produtor.index')}>Produtores</Button>
-                        <Button color="success" href={route('admin.user.cliente.index')}>Consultores</Button>
-                        <Button color="success" href={route('auth.usinas.index')}>Usinas</Button>
-                        <Button color="success" href={route('admin.concessionaria.index')}>Concessionárias</Button>
-                    </Stack>
                 </CardContent>
             </Card>
         </Layout>
