@@ -6,7 +6,7 @@ import {useState} from "react";
 
 const DadosAcesso = ({data, setData}) => {
     const [senhaPorEmail, setSenhaPorEmail] = useState(!data.senha)
-    console.log(data.senha)
+
     return (
         <Card sx={{marginBottom: 4}}>
             <CardHeader title="Dados de Acesso" avatar={<IconKey/>} disableTypography/>

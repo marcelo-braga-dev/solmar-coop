@@ -77,7 +77,7 @@ const Page = () => {
             router.post(route('admin.produtor.store'), {
                 ...data,
                 usina_endereco: enderecoUsina,
-                produtor_endereco: enderecoProdutor,
+                endereco: enderecoProdutor,
             });
         }
     };

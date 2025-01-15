@@ -4,6 +4,7 @@ namespace App\Repositories\Cliente;
 
 use App\DTO\Endereco\CreateEnderecoUsuarioDTO;
 use App\DTO\Usuario\CreateUsuarioDTO;
+use App\Models\Cliente\ClienteData;
 use App\Models\Users\Cliente;
 use App\Models\Users\User;
 use App\Models\Users\UserAddress;
@@ -34,8 +35,14 @@ class ClienteRepository
             // Dados do Usuario
             $service->contato($user, $data);
 
+            ClienteData::create([
+                'user_id' => $user->id,
+                'media_consumo' => $data?->dados['media_consumo'],
+                'prazo_locacao' => $data?->dados['prazo_locacao']
+            ]);
+
             // Endereco
-            $service->endereco($user, $data);
+            $service->endereco($user, $data->endereco);
         });
     }
 

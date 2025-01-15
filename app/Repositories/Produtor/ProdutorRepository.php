@@ -37,7 +37,7 @@ class ProdutorRepository
                 $service->contato($user, $data);
 
                 // Endereco
-                $service->endereco($user, $data->produtor_endereco);
+                $service->endereco($user, $data->endereco);
 
                 // Usina Solar
                 $usinaDTO = CreateUsinaDTO::fromArray($user->id, $data->usina);
