@@ -37,13 +37,13 @@ class ProdutorRepository
                 $service->contato($user, $data);
 
                 // Endereco
-                $service->endereco($user, $data->endereco);
+                $service->endereco($user, $data->endereco ?? []);
 
                 // Usina Solar
                 $usinaDTO = CreateUsinaDTO::fromArray($user->id, $data->usina);
                 $usina = $usinaDTO->toArray();
                 $usinaData = UsinaSolar::create($usina);
-                $usinaEnderecoDTO = CreateEnderecoDTO::fromArray($data->usina_endereco);
+                $usinaEnderecoDTO = CreateEnderecoDTO::fromArray($data->usina_endereco ?? []);
                 $usinaEndereco = $usinaEnderecoDTO->toArray();
 
                 UsinaAddress::create(['usina_id' => $usinaData->id, ...$usinaEndereco]);

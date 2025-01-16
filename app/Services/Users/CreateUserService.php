@@ -36,7 +36,7 @@ class CreateUserService
         }
     }
 
-    function endereco($user, array $endereco): void
+    function endereco($user, array $endereco = []): void
     {
         $enderecoDTO = CreateEnderecoUsuarioDTO::fromArray($user->id, $endereco ?? []);
         $endereco = $enderecoDTO->toArray();

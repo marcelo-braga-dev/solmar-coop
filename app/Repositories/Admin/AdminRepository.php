@@ -35,7 +35,7 @@ class AdminRepository
             $service->contato($user, $data);
 
             // Endereco
-            $service->endereco($user, $data);
+            $service->endereco($user, $data->endereco ?? []);
         });
     }
 

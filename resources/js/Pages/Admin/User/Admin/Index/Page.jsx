@@ -2,7 +2,7 @@ import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import Grid from "@mui/material/Grid2";
 import {Link} from "@inertiajs/react";
 import {Button, Card, CardContent, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
-import {IconEye, IconFileText, IconPlus, IconUserSearch} from "@tabler/icons-react";
+import {IconEye, IconPlus} from "@tabler/icons-react";
 import React, {useEffect, useState} from "react";
 
 const Page = ({}) => {
@@ -13,6 +13,7 @@ const Page = ({}) => {
         const fetchVendedores = async () => {
             const response = await axios.get(route('admin.user.api.get')).finally(() => setCarregando(false))
             setUsuarios(response.data)
+            console.log(response.data)
         }
 
         fetchVendedores()
@@ -40,43 +41,61 @@ const Page = ({}) => {
                     <CardContent>
                         <Grid container justifyContent="space-between">
                             <Grid size={11}>
-                                <Stack spacing={2}>
-                                    <Stack direction="row" spacing={2}>
-                                        <Typography fontWeight="bold">Nome/Razão Social:</Typography>
-                                        <Typography>{item.name}</Typography>
-                                    </Stack>
-                                    <Grid container>
-                                        <Grid size={6}>
+                                <Stack marginBottom={1}>
+                                    {item?.data_user?.nome && <Stack direction="row" spacing={2}>
+                                        <Typography fontWeight="bold">Nome:</Typography>
+                                        <Typography>{item?.data_user?.nome}</Typography>
+                                    </Stack>}
+                                    {item?.data_user?.nome_fantasia && <Stack direction="row" spacing={2}>
+                                        <Typography fontWeight="bold">Nome Fantasia:</Typography>
+                                        <Typography>{item?.data_user?.nome_fantasia}</Typography>
+                                    </Stack>}
+                                    {item?.data_user?.razao_social && <Stack direction="row" spacing={2}>
+                                        <Typography fontWeight="bold">Razão Social:</Typography>
+                                        <Typography>{item?.data_user?.razao_social}</Typography>
+                                    </Stack>}
+                                </Stack>
+                                <Grid container>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        {item?.data_user?.cnpj && <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">CNPJ:</Typography>
+                                            <Typography>{item?.data_user?.cnpj}</Typography>
+                                        </Stack>}
+                                        {item?.data_user?.cpf && <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">CPF:</Typography>
+                                            <Typography>{item?.data_user?.cpf}</Typography>
+                                        </Stack>}
+                                    </Grid>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">Localização:</Typography>
+                                            <Typography>{item?.data_user?.endereco.cidade_estado}</Typography>
+                                        </Stack>
+                                    </Grid>
+                                </Grid>
+                                <Grid container>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">Status:</Typography>
+                                            <Typography>{item.status_nome}</Typography>
+                                        </Stack>
+                                    </Grid>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <Stack direction="row" spacing={2} justifyContent="space-between" display="flex">
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Matrícula:</Typography>
                                                 <Typography>{item.id}</Typography>
                                             </Stack>
-                                        </Grid>
-                                        <Grid size={6}>
-                                            <Stack direction="row" spacing={2}>
-                                                <Typography fontWeight="bold">Status:</Typography>
-                                                <Typography>{item.status_nome}</Typography>
+                                            <Stack direction="row" spacing={2} alignItems="center">
+                                                <Typography fontWeight="bold" variant="body1">Cadastrado em:</Typography>
+                                                <Typography variant="body1">{item.cadastrado_em}</Typography>
                                             </Stack>
-                                        </Grid>
+                                        </Stack>
                                     </Grid>
-                                    <Grid container>
-                                        <Grid size={6}>
-                                            <Stack direction="row" spacing={2}>
-                                                <Typography fontWeight="bold">CNPJ:</Typography>
-                                                <Typography>15.564.264/0001-87</Typography>
-                                            </Stack>
-                                        </Grid>
-                                        <Grid size={6}>
-                                            <Stack direction="row" spacing={2}>
-                                                <Typography fontWeight="bold">Localização:</Typography>
-                                                <Typography>Santos/SP</Typography>
-                                            </Stack>
-                                        </Grid>
-                                    </Grid>
-                                </Stack>
+                                </Grid>
                             </Grid>
                             <Grid size="auto">
-                                <Link href={route('admin.produtor.show', 1)}>
+                                <Link href={route('admin.user.cliente.show', item.id)}>
                                     <IconEye/>
                                 </Link>
                             </Grid>

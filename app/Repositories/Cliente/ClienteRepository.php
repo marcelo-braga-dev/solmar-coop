@@ -42,7 +42,7 @@ class ClienteRepository
             ]);
 
             // Endereco
-            $service->endereco($user, $data->endereco);
+            $service->endereco($user, $data->endereco ?? []);
         });
     }
 

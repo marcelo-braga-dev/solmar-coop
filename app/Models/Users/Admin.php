@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model
 {
-    use HasFactory;
-
     public function getAll()
     {
-        return User::where('role_id', 1);
+        return User::where('role_id', 1)
+            ->with('dataUser');
     }
 }
