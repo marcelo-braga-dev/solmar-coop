@@ -27,16 +27,16 @@ class UserAddress extends Model
 
     public function getEnderecoCompletoAttribute()
     {
-        return
-            $this->attributes['rua'] . ', '.
-            $this->attributes['numero'] . ', '.
-            $this->attributes['complemento'] . ', '.
-            $this->attributes['bairro'] . ', '.
-            $this->attributes['cidade'] . ', '.
-            $this->attributes['estado'] . ', '.
-            $this->attributes['cep'] . ', '.
-            $this->attributes['referencia']
-            ;
+        return implode(', ', array_filter([
+            trim(($this->attributes['rua'] ?? '') .
+                (isset($this->attributes['numero']) ? ', ' . $this->attributes['numero'] : '')),
+            $this->attributes['complemento'] ?? null,
+            $this->attributes['bairro'] ?? null,
+            trim(($this->attributes['cidade'] ?? '') .
+                (isset($this->attributes['estado']) ? ' - ' . $this->attributes['estado'] : '')),
+            trim(
+                (isset($this->attributes['cep']) ? '' . FormatValues::formatCep($this->attributes['cep']) : ''))
+        ]));
     }
 
     // ==== Setters ====

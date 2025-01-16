@@ -18,7 +18,7 @@ const DadosAcesso = ({data, setData}) => {
                             type="email"
                             value={data.email}
                             onChange={e => setData('email', e.target.value)}
-                            slotProps={{inputLabel: {shrink: !!data?.contato?.telefone}}}
+                            slotProps={{inputLabel: {shrink: !!data?.email}}}
                             required
                             fullWidth
                         />
@@ -38,6 +38,7 @@ const DadosAcesso = ({data, setData}) => {
                             label="Senha:"
                             value={data.senha}
                             onChange={e => setData('senha', e.target.value)}
+                            slotProps={{inputLabel: {shrink: !!data?.senha}}}
                             type="password"
                             required
                             fullWidth

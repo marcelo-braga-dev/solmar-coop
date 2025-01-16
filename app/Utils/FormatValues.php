@@ -13,6 +13,16 @@ class FormatValues
         return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "$1.$2.$3/$4-$5", $cnpj);
     }
 
+    public static function formatCpf($cpf)
+    {
+        if (!is_numeric($cpf)) return $cpf;
+
+        $cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
+
+        return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "$1.$2.$3-$4", $cpf);
+    }
+
+
     public static function formatCep($cep)
     {
         if (!is_numeric($cep)) return $cep;

@@ -14,6 +14,7 @@ class UserData extends Model
     protected $fillable = [
         'user_id',
         'tipo_pessoa',
+        'nome',
         'cpf',
         'data_nascimento',
         'rg',
@@ -47,6 +48,11 @@ class UserData extends Model
         return FormatValues::formatCnpj($this->attributes['cnpj']);
     }
 
+    public function getCpfAttribute()
+    {
+        return FormatValues::formatCpf($this->attributes['cpf']);
+    }
+
     //--------------
     // setters
     //--------------
@@ -65,5 +71,15 @@ class UserData extends Model
     public function endereco()
     {
         return $this->hasOne(UserAddress::class, 'user_id', 'user_id');
+    }
+
+    /**
+     * @param string[] $fillable
+     * @return UserData
+     */
+    public function setFillable(array $fillable): UserData
+    {
+        $this->fillable = $fillable;
+        return $this;
     }
 }
