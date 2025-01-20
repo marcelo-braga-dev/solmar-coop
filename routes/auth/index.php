@@ -13,6 +13,7 @@ Route::middleware(['auth'])
         require __DIR__ . '/ferramentas/index.php';
         require __DIR__ . '/suporte/index.php';
         require __DIR__ . '/perfil/index.php';
+        require __DIR__ . '/cliente/index.php';
     });
 
 

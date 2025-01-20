@@ -5,19 +5,23 @@ import {Button, Card, CardContent, LinearProgress, Pagination, Stack, Typography
 import {IconEye, IconPlus} from "@tabler/icons-react";
 import React, {useEffect, useState} from "react";
 
-const Page = ({}) => {
+const Page = () => {
     const [carregando, setCarregando] = useState(true)
     const [usuarios, setUsuarios] = useState([])
 
     useEffect(() => {
-        const fetchVendedores = async () => {
-            const response = await axios.get(route('admin.user.cliente.api.get')).finally(() => setCarregando(false))
-            setUsuarios(response.data)
-            console.log(response.data)
-        }
-
         fetchVendedores()
     }, []);
+
+    const fetchVendedores = async () => {
+        try {
+            const response = await axios.get(route('admin.user.cliente.api.get'))
+            setUsuarios(response.data)
+            console.log(response.data)
+        } finally {
+            setCarregando(false)
+        }
+    }
 
     return (
         <Layout titlePage="Cliente Consumidor Cadastrados" menu="clientes" subMenu="clientes-cadastrados">
@@ -44,34 +48,34 @@ const Page = ({}) => {
                         <Grid container justifyContent="space-between">
                             <Grid size={11}>
                                 <Stack marginBottom={1}>
-                                    {item.data_user.nome && <Stack direction="row" spacing={2}>
+                                    {item.user_data.nome && <Stack direction="row" spacing={2}>
                                         <Typography fontWeight="bold">Nome:</Typography>
-                                        <Typography>{item.data_user.nome}</Typography>
+                                        <Typography>{item.user_data.nome}</Typography>
                                     </Stack>}
-                                    {item.data_user.nome_fantasia && <Stack direction="row" spacing={2}>
+                                    {item.user_data.nome_fantasia && <Stack direction="row" spacing={2}>
                                         <Typography fontWeight="bold">Nome Fantasia:</Typography>
-                                        <Typography>{item.data_user.nome_fantasia}</Typography>
+                                        <Typography>{item.user_data.nome_fantasia}</Typography>
                                     </Stack>}
-                                    {item.data_user.razao_social && <Stack direction="row" spacing={2}>
+                                    {item.user_data.razao_social && <Stack direction="row" spacing={2}>
                                         <Typography fontWeight="bold">Razão Social:</Typography>
-                                        <Typography>{item.data_user.razao_social}</Typography>
+                                        <Typography>{item.user_data.razao_social}</Typography>
                                     </Stack>}
                                 </Stack>
                                 <Grid container>
                                     <Grid size={{xs: 12, md: 6}}>
-                                        {item.data_user.cnpj && <Stack direction="row" spacing={2}>
+                                        {item.user_data.cnpj && <Stack direction="row" spacing={2}>
                                             <Typography fontWeight="bold">CNPJ:</Typography>
-                                            <Typography>{item.data_user.cnpj}</Typography>
+                                            <Typography>{item.user_data.cnpj}</Typography>
                                         </Stack>}
-                                        {item.data_user.cpf && <Stack direction="row" spacing={2}>
+                                        {item.user_data.cpf && <Stack direction="row" spacing={2}>
                                             <Typography fontWeight="bold">CPF:</Typography>
-                                            <Typography>{item.data_user.cpf}</Typography>
+                                            <Typography>{item.user_data.cpf}</Typography>
                                         </Stack>}
                                     </Grid>
                                     <Grid size={{xs: 12, md: 6}}>
                                         <Stack direction="row" spacing={2}>
                                             <Typography fontWeight="bold">Localização:</Typography>
-                                            <Typography>{item.data_user.endereco.cidade_estado}</Typography>
+                                            <Typography>{item.user_data.endereco.cidade_estado}</Typography>
                                         </Stack>
                                     </Grid>
                                 </Grid>

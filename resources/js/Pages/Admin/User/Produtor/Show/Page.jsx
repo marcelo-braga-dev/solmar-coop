@@ -1,7 +1,7 @@
 import {useState} from "react";
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
 
-import {Box, Card, CardContent, Tab} from "@mui/material";
+import {Box, Button, Card, CardContent, Tab} from "@mui/material";
 import {TabPanel, TabList, TabContext} from '@mui/lab';
 
 import {IconFileLike, IconFileTypePdf, IconHistory, IconKey, IconSolarPanel, IconUserBolt} from "@tabler/icons-react";
@@ -10,7 +10,6 @@ import InfoUsuario from "./InfoUsuario.jsx";
 import Usina from "./Usina.jsx";
 import Contratos from "./Contratos.jsx";
 import Financeiro from "./Financeiro.jsx";
-import Propostas from "./Propostas.jsx";
 import Historico from "./Historico.jsx";
 import InfoDadosAcesso from "@/Pages/Admin/User/Produtor/Show/InfoDadosAcesso.jsx";
 
@@ -41,16 +40,17 @@ const Page = ({usuario, tab}) => {
                             </TabList>
                         </Box>
                         <TabPanel value="info">
-                            <InfoUsuario status={usuario.status_nome} usuario={usuario.data_user} contatos={usuario.contatos}/>
+                            <InfoUsuario status={usuario.status_nome} usuario={usuario.user_data} contatos={usuario.contatos}/>
                         </TabPanel>
                         <TabPanel value="usinas">
                             <Usina usina={usuario.propostas}/>
                         </TabPanel>
                         <TabPanel value="propostas">
-                            <Propostas propostas={usuario.propostas} cliente={usuario.data_user} endereco={usuario.endereco}/>
+                            <Button>Gerar Proposta</Button>
+                            {/*<Propostas propostas={usuario.propostas} cliente={usuario.user_data} endereco={usuario.endereco}/>*/}
                         </TabPanel>
                         <TabPanel value="contratos">
-                            <Contratos contratos={usuario.contratos} contratado={usuario.data_user}/>
+                            <Contratos contratos={usuario.contratos} contratado={usuario.user_data}/>
                         </TabPanel>
                         <TabPanel value="financeiro">
                             <Financeiro financeiro={usuario.financeiro}/>

@@ -5,7 +5,7 @@ import {useEffect} from "react";
 import useInputMask from "@/Utils/Masks/InputsMask.js";
 import {buscarCep} from "@/Utils/buscarCepUtil.js";
 
-const Endereco = ({title, endereco, setEndereco}) => {
+const Endereco = ({title, endereco, setEndereco, required}) => {
     useEffect(() => {
         useInputMask()
     }, []);
@@ -45,6 +45,7 @@ const Endereco = ({title, endereco, setEndereco}) => {
                             onBlur={handleBuscarCep}
                             onChange={e => setEndereco({...endereco, cep: e.target.value})}
                             slotProps={{inputLabel: {shrink: !!endereco?.cep}}}
+                            required={required}
                             fullWidth
                         />
                     </Grid>
@@ -54,6 +55,7 @@ const Endereco = ({title, endereco, setEndereco}) => {
                             value={endereco?.rua}
                             onChange={e => setEndereco({...endereco, rua: e.target.value})}
                             slotProps={{inputLabel: {shrink: !!endereco?.rua}}}
+                            required={required}
                             fullWidth
                         />
                     </Grid>
@@ -61,7 +63,7 @@ const Endereco = ({title, endereco, setEndereco}) => {
                         <TextField
                             label="Número:"
                             value={endereco?.numero}
-                            required={!!endereco?.rua}
+                            required={!!endereco?.rua || required}
                             onChange={e => setEndereco({...endereco, numero: e.target.value})}
                             slotProps={{inputLabel: {shrink: !!endereco?.numero}}}
                             fullWidth
@@ -83,6 +85,7 @@ const Endereco = ({title, endereco, setEndereco}) => {
                             label="Bairro:"
                             value={endereco?.bairro}
                             slotProps={{inputLabel: {shrink: !!endereco?.bairro}}}
+                            required={required}
                             onChange={e => setEndereco({...endereco, bairro: e.target.value})}
                             fullWidth
                         />
@@ -92,6 +95,7 @@ const Endereco = ({title, endereco, setEndereco}) => {
                             label="Cidade:"
                             value={endereco?.cidade}
                             slotProps={{inputLabel: {shrink: !!endereco?.cidade}}}
+                            required={required}
                             onChange={e => setEndereco({...endereco, cidade: e.target.value})}
                             fullWidth
                         />
@@ -101,6 +105,7 @@ const Endereco = ({title, endereco, setEndereco}) => {
                             label="Estado:"
                             value={endereco?.estado}
                             slotProps={{inputLabel: {shrink: !!endereco?.estado}}}
+                            required={required}
                             onChange={e => setEndereco({...endereco, estado: e.target.value})}
                             fullWidth
                         />

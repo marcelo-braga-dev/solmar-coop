@@ -17,7 +17,7 @@ const KanbanCardContent = ({card}) => {
                                 <IconUser/>
                             </Grid>
                             <Grid size={10}>
-                                <Typography>{card.proprietario.data_user.nome ?? card.proprietario.data_user.razao_social}</Typography>
+                                <Typography>{card.proprietario.user_data.nome ?? card.proprietario.user_data.razao_social}</Typography>
                             </Grid>
                         </Grid>
                         <Grid container gap={1}>
@@ -25,7 +25,7 @@ const KanbanCardContent = ({card}) => {
                                 <IconId/>
                             </Grid>
                             <Grid size={10}>
-                                <Typography>{card.proprietario.data_user.cnpj}</Typography>
+                                <Typography>{card.proprietario.user_data.cnpj}</Typography>
                             </Grid>
                         </Grid>
                         <Grid container gap={1}>
@@ -48,6 +48,6 @@ const KanbanCardContent = ({card}) => {
                 </Grid>
             </Grid>
         )
-    }, [card.proprietario.data_user.nome, card.proprietario.data_user.razao_social, card.proprietario.data_user.cnpj, card.id, card.proprietario.id, card.status])
+    }, [card.proprietario.user_data.nome, card.proprietario.user_data.razao_social, card.proprietario.user_data.cnpj, card.id, card.status, card.proprietario.id])
 }
 export default KanbanCardContent

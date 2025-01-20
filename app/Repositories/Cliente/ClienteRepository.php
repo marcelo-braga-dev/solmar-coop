@@ -2,44 +2,33 @@
 
 namespace App\Repositories\Cliente;
 
-use App\DTO\Endereco\CreateEnderecoUsuarioDTO;
 use App\DTO\Usuario\CreateUsuarioDTO;
-use App\Models\Cliente\ClienteData;
 use App\Models\Users\Cliente;
 use App\Models\Users\User;
-use App\Models\Users\UserAddress;
-use App\Models\Users\UserData;
 use App\Services\Users\CreateUserService;
-use App\src\Roles\RolesUser;
+use App\src\Roles\RoleUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class ClienteRepository
 {
     public function create(Request $data)
     {
         DB::transaction(function () use ($data) {
-            $role = (new RolesUser())->cliente();
+            $role = RoleUser::$CLIENTE;
             $service = new CreateUserService();
 
             $dto = CreateUsuarioDTO::fromArray($data);
-            $produtor = $dto->toArray();
+            $userData = $dto->toArray();
 
             // Conta Acesso
-            $user = $service->user($produtor, $role, $data->senha);
+            $user = $service->createUser($userData, $role, $data->senha);
 
             // Dados do Usuario
-            $service->userData($user, $produtor);
+            $user->userData()->create($userData);
 
             // Dados do Usuario
-            $service->contato($user, $data);
-
-            ClienteData::create([
-                'user_id' => $user->id,
-                'media_consumo' => $data?->dados['media_consumo'],
-                'prazo_locacao' => $data?->dados['prazo_locacao']
-            ]);
+            $user->contatos()->create(['email' => $data['contato']['email'] ?? $user->email, ...$data['contato']]);
 
             // Endereco
             $service->endereco($user, $data->endereco ?? []);
@@ -56,7 +45,7 @@ class ClienteRepository
     public function findAllData($id)
     {
         return (new User)
-            ->with('dataUser')
+            ->with('userData')
             ->with('endereco')
             ->with('usina')
             ->find($id);

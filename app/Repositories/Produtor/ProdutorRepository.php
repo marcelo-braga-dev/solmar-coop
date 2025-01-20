@@ -10,7 +10,7 @@ use App\Models\Users\User;
 use App\Models\Usina\UsinaAddress;
 use App\Models\Usina\UsinaSolar;
 use App\Services\Users\CreateUserService;
-use App\src\Roles\RolesUser;
+use App\src\Roles\RoleUser;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,20 +21,20 @@ class ProdutorRepository
     {
         try {
             return DB::transaction(function () use ($data) {
-                $role = (new RolesUser())->produtor();
+                $role = (new RoleUser())->produtor();
                 $service = new CreateUserService();
 
                 $dto = CreateUsuarioDTO::fromArray($data);
-                $produtor = $dto->toArray();
+                $userData = $dto->toArray();
 
                 // Conta Acesso
-                $user = $service->user($produtor, $role, $data->senha);
+                $user = $service->createUser($userData, $role, $data->senha);
 
                 // Dados do Usuario
-                $service->userData($user, $produtor);
+                $user->userData()->create(['user_id' => $user->id, ...$userData]);
 
                 // Dados do Usuario
-                $service->contato($user, $data);
+                $user->contatos()->create(['user_id' => $user->id, 'email' => $data['contato']['email'] ?? $user->email, ...$data['contato']]);
 
                 // Endereco
                 $service->endereco($user, $data->endereco ?? []);
@@ -70,14 +70,14 @@ class ProdutorRepository
     public function findAllData($id)
     {
         return (new User)
-            ->with(['dataUser', 'usina', 'propostas', 'contatos'])
+            ->with(['userData', 'usina', 'propostas', 'contatos'])
             ->find($id);
     }
 
     public function find($id)
     {
         return (new User)
-            ->with(['dataUser', 'endereco', 'usina', 'propostas', 'contatos'])
+            ->with(['userData', 'endereco', 'usina', 'propostas', 'contatos'])
             ->find($id);
     }
 }

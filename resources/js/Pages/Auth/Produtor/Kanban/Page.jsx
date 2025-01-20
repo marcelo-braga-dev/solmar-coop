@@ -6,7 +6,7 @@ import KanbanUsinas from "@/Pages/Auth/Produtor/Kanban/KanbanUsinas.jsx";
 const Page = () => {
 
     return (
-        <Layout titlePage="Quadro de Produtores" menu="produtores-solar" subMenu="produtores-kanban">
+        <Layout titlePage="Quadro de Produtores" menu="usinas" subMenu="produtores-kanban">
             <KanbanProdutorProvider>
                 <Grid sx={{height: 'calc(100vh - 10rem)'}}>
                     <KanbanUsinas/>

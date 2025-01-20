@@ -12,7 +12,7 @@ class Produtor extends Model
     public function produtores()
     {
         return (new User())->where('role_id', 3)
-            ->with(['dataUser', 'endereco'])
+            ->with(['userData', 'endereco'])
             ->orderBy('id', 'desc')
             ->get();
     }

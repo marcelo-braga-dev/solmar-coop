@@ -56,7 +56,7 @@ class User extends Authenticatable
     //--------------
     // relations
     //--------------
-    public function dataUser(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function userData(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(UserData::class, 'user_id', 'id');
     }

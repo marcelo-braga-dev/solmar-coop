@@ -42,7 +42,7 @@ class UsinaSolar extends Model
     public function proprietario()
     {
         return $this->belongsTo(User::class, 'user_id', 'id')
-            ->with('dataUser');
+            ->with('userData');
     }
 
     public function concessionaria()

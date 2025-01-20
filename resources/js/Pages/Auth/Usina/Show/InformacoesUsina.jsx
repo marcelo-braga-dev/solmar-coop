@@ -33,11 +33,11 @@ const InformacoesUsina = ({id}) => {
                     <Grid size={{xs: 12, md: 6}}>
                         <TextInfo title="Proprietário" text={usina?.proprietario?.nome}/>
                     </Grid>
-                    {usina?.proprietario?.data_user?.cnpj && <Grid size={{xs: 12, md: 3}}>
-                        <TextInfo title="CNPJ" text={usina.proprietario?.data_user?.cnpj}/>
+                    {usina?.proprietario?.user_data?.cnpj && <Grid size={{xs: 12, md: 3}}>
+                        <TextInfo title="CNPJ" text={usina.proprietario?.user_data?.cnpj}/>
                     </Grid>}
-                    {usina?.proprietario?.data_user?.cpf && <Grid size={{xs: 12, md: 3}}>
-                        <TextInfo title="CPF" text={usina?.proprietario?.data_user?.cpf}/>
+                    {usina?.proprietario?.user_data?.cpf && <Grid size={{xs: 12, md: 3}}>
+                        <TextInfo title="CPF" text={usina?.proprietario?.user_data?.cpf}/>
                     </Grid>}
                 </Grid>
             </Paper>

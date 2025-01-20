@@ -8,9 +8,9 @@ Route::name('admin.user.')
     ->group(function () {
         Route::resource('cliente', ClienteController::class);
 
-        Route::name('cliente.api.')
-            ->prefix('cliente-api')
-            ->group(function () {
-                Route::get('get-clientes', \App\Http\Controllers\Admin\Usuarios\Cliente\GetClienteController::class)->name('get');
-            });
+//        Route::name('cliente.api.')
+//            ->prefix('cliente-api')
+//            ->group(function () {
+//                Route::get('get-clientes', \App\Http\Controllers\Admin\Usuarios\Cliente\GetClienteController::class)->name('get');
+//            });
     });

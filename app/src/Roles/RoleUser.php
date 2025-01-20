@@ -2,8 +2,10 @@
 
 namespace App\src\Roles;
 
-class RolesUser
+class RoleUser
 {
+    static int $CLIENTE = 4;
+
     public function admin(): int
     {
         return 1;

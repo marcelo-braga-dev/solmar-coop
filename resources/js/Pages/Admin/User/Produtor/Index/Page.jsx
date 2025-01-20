@@ -48,10 +48,10 @@ const Page = () => {
                                         <Grid container>
                                             <Grid size={{xs: 12, md: 6}}>
                                                 <Stack spacing={2}>
-                                                    {item?.data_user?.nome && <TextInfo title="Nome" text={item.data_user.nome}/>}
-                                                    {item?.data_user?.razao_social && <TextInfo title="Razão Social" text={item.data_user.razao_social}/>}
-                                                    {item?.data_user?.nome_fantasia && <TextInfo title="Nome Fantasia" text={item?.data_user?.nome_fantasia}/>}
-                                                    {item?.data_user?.cnpj && <TextInfo title="CNPJ" text={item?.data_user?.cnpj}/>}
+                                                    {item?.user_data?.nome && <TextInfo title="Nome" text={item.user_data.nome}/>}
+                                                    {item?.user_data?.razao_social && <TextInfo title="Razão Social" text={item.user_data.razao_social}/>}
+                                                    {item?.user_data?.nome_fantasia && <TextInfo title="Nome Fantasia" text={item?.user_data?.nome_fantasia}/>}
+                                                    {item?.user_data?.cnpj && <TextInfo title="CNPJ" text={item?.user_data?.cnpj}/>}
                                                     {item?.endereco?.cidade_estado && <TextInfo title="Localização" text={item?.endereco?.cidade_estado}/>}
                                                 </Stack>
                                             </Grid>

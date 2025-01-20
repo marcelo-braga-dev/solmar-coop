@@ -26,8 +26,8 @@ export const adminMenu = [
         icon: <IconUsers/>,
         id: 'clientes',
         subItems: [
-            {id: 'clientes-cadastrados', title: 'Clientes Cadastrados', link: route('admin.user.cliente.index')},
-            {id: 'clientes-cadastrar', title: 'Cadastrar Cliente', link: route('admin.user.cliente.create')},
+            {id: 'clientes-cadastrados', title: 'Clientes Cadastrados', link: route('auth.cliente.index')},
+            {id: 'clientes-propostas', title: 'Propostas Cliente', link: route('auth.cliente.proposta.index')},
         ],
     }, {
         title: 'Consultores',

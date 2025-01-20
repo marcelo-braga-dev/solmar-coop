@@ -10,6 +10,6 @@ class Admin extends Model
     public function getAll()
     {
         return User::where('role_id', 1)
-            ->with('dataUser');
+            ->with('userData');
     }
 }

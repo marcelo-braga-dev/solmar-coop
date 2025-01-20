@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('cliente_propostas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->decimal('media_consumo', 8, 2)->nullable();
+            $table->integer('prazo_locacao')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

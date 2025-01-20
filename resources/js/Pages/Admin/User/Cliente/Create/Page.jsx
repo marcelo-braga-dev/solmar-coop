@@ -14,12 +14,10 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import {useState} from "react";
 import Grid from "@mui/material/Grid2";
-import ConsumoDados from "@/Pages/Admin/User/Cliente/Create/ConsumoDados.jsx";
 import Informacoes from "@/Pages/Admin/User/Produtor/Create/Informacoes.jsx";
 
 const steps = [
     'Dados do Cliente',
-    'Dados da Consumo',
     'Confirmar Informações',
 ];
 
@@ -27,7 +25,6 @@ const Page = () => {
     const [step, setStep] = useState(0);
 
     const [enderecoCliente, setEnderecoCliente] = useState({});
-    const [enderecoUC, setEnderecoUC] = useState({});
 
     const {data, setData} = useForm({
         tipo_pessoa: 'pj'
@@ -95,36 +92,6 @@ const Page = () => {
                 )}
 
                 {step === 1 && (
-                    <Box>
-                        <ConsumoDados data={data} setData={setData}/>
-                        <Endereco title="Endereço da Unidade Consumidora" endereco={enderecoUC} setEndereco={setEnderecoUC}/>
-
-                        <Paper sx={{padding: 2}}>
-                            <Grid container justifyContent="space-between">
-                                <Grid>
-                                    <Button
-                                        color="info"
-                                        startIcon={<IconArrowLeft/>}
-                                        onClick={handleStepBack}
-                                    >
-                                        Voltar
-                                    </Button>
-                                </Grid>
-                                <Grid>
-                                    <Button
-                                        color="warning"
-                                        endIcon={<IconArrowRight/>}
-                                        onClick={handleStepForward}
-                                    >
-                                        Avançar
-                                    </Button>
-                                </Grid>
-                            </Grid>
-                        </Paper>
-                    </Box>
-                )}
-
-                {step === 2 && (
                     <Box>
                         <Informacoes data={data} enderecoUsuario={enderecoCliente}/>
                         <Paper sx={{padding: 2}}>

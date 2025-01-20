@@ -1,12 +1,9 @@
 import {Button, Divider, Paper} from "@mui/material";
-import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 import Grid from "@mui/material/Grid2";
 import {IconDownload, IconFileTypePdf} from "@tabler/icons-react";
 import {useEffect, useRef, useState} from "react";
-import Page from "@/Pages/Auth/Propostas/Produtor/Proposta/Page.jsx";
-import {router} from "@inertiajs/react";
 
-const Propostas = ({propostas, cliente, endereco}) => {
+const Propostas = () => {
     const [layout, setLayout] = useState([])
     const proposalRef = useRef(null);
 
@@ -45,16 +42,16 @@ const Propostas = ({propostas, cliente, endereco}) => {
                         <IconFileTypePdf color="red" size={30}/>
                     </Grid>
                     <Grid size={11} container justifyContent="space-between" gap={2}>
-                        <Grid size="auto">
-                            {propostas?.media_geracao && <TextInfo title="Média Geração" text={`${propostas.media_geracao} kWh`}/>}
-                        </Grid>
-                        <Grid size="auto">
-                            {propostas?.prazo_locacao && <TextInfo title="Prazo Locação" text={`${propostas.prazo_locacao} dias`}/>}
-                        </Grid>
-                        <Grid size="auto">
-                            {propostas?.concessionaria_id &&
-                                <TextInfo title="Concessionária" text={`${propostas.concessionaria.nome}/${propostas.concessionaria.estado}`}/>}
-                        </Grid>
+                        {/*<Grid size="auto">*/}
+                        {/*    {propostas?.media_geracao && <TextInfo title="Média Geração" text={`${propostas.media_geracao} kWh`}/>}*/}
+                        {/*</Grid>*/}
+                        {/*<Grid size="auto">*/}
+                        {/*    {propostas?.prazo_locacao && <TextInfo title="Prazo Locação" text={`${propostas.prazo_locacao} dias`}/>}*/}
+                        {/*</Grid>*/}
+                        {/*<Grid size="auto">*/}
+                        {/*    {propostas?.concessionaria_id &&*/}
+                        {/*        <TextInfo title="Concessionária" text={`${propostas.concessionaria.nome}/${propostas.concessionaria.estado}`}/>}*/}
+                        {/*</Grid>*/}
                         <Grid size="auto">
                             <Button color="error" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF</Button>
                         </Grid>
@@ -70,7 +67,7 @@ const Propostas = ({propostas, cliente, endereco}) => {
                     <img src={layout.header} alt="Capa" loading="lazy" style={{width: '100%', height: '100%'}}/>
                 </div>
                 <div ref={proposalRef}>
-                    <Page proposta={propostas} cliente={cliente} endereco={endereco}/>
+                    {/*<Page proposta={propostas} cliente={cliente} endereco={endereco}/>*/}
                 </div>
             </Paper>}
         </>)
