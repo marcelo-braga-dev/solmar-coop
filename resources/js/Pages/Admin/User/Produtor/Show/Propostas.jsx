@@ -2,6 +2,7 @@ import {Button, Divider, Paper} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import {IconDownload, IconFileTypePdf} from "@tabler/icons-react";
 import {useEffect, useRef, useState} from "react";
+import PropostaComercial from "@/Pages/Auth/Propostas/Produtor/Proposta/Page.jsx";
 
 const Propostas = () => {
     const [layout, setLayout] = useState([])
@@ -67,7 +68,7 @@ const Propostas = () => {
                     <img src={layout.header} alt="Capa" loading="lazy" style={{width: '100%', height: '100%'}}/>
                 </div>
                 <div ref={proposalRef}>
-                    {/*<Page proposta={propostas} cliente={cliente} endereco={endereco}/>*/}
+                    <PropostaComercial/>
                 </div>
             </Paper>}
         </>)

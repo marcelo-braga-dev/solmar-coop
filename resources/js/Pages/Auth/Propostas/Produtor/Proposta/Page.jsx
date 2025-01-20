@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PropostaComercial = ({cliente, proposta}) => {
+const PropostaComercial = () => {
 
     return (
         <div style={styles.container}>
@@ -12,11 +12,11 @@ const PropostaComercial = ({cliente, proposta}) => {
             <div style={styles.content}>
                 <div style={styles.section}>
                     <div style={styles.sectionTitle}>Detalhes do Cliente</div>
-                    {cliente.nome && <p><strong>Nome:</strong> {cliente.nome}</p>}
-                    {cliente.nome_fantasia && <p><strong>Nome Fantasia:</strong> {cliente.nome_fantasia}</p>}
-                    {cliente.razao_social && <p><strong>Razão Social:</strong> {cliente.razao_social}</p>}
-                    {cliente.cnpj && <p><strong>CNPJ:</strong> {cliente.cnpj}</p>}
-                    {cliente.cpf && <p><strong>CPF:</strong> {cliente.cpf}</p>}
+                    {/*{cliente.nome && <p><strong>Nome:</strong> {cliente.nome}</p>}*/}
+                    {/*{cliente.nome_fantasia && <p><strong>Nome Fantasia:</strong> {cliente.nome_fantasia}</p>}*/}
+                    {/*{cliente.razao_social && <p><strong>Razão Social:</strong> {cliente.razao_social}</p>}*/}
+                    {/*{cliente.cnpj && <p><strong>CNPJ:</strong> {cliente.cnpj}</p>}*/}
+                    {/*{cliente.cpf && <p><strong>CPF:</strong> {cliente.cpf}</p>}*/}
                     {/*<p><strong>Email:</strong> joao@example.com</p>*/}
                     {/*<p><strong>Telefone:</strong> (11) 99999-9999</p>*/}
                 </div>
@@ -24,11 +24,11 @@ const PropostaComercial = ({cliente, proposta}) => {
                 <div style={styles.section}>
                     <div style={styles.sectionTitle}>Detalhes da Usina Solar</div>
                     <p><strong>Tipo de Usina:</strong> Solar Fotovoltaica</p>
-                    <p><strong>Potência Total da Usina:</strong> {proposta.potencia_usina} kWp</p>
-                    <p><strong>Geração Média Mensal:</strong> {proposta.media_geracao} kWp</p>
-                    <p><strong>Inversor:</strong> {proposta.inversores}</p>
-                    <p><strong>Módulos:</strong> {proposta.modulos}</p>
-                    <p><strong>Concessionária de Energia Elétrica:</strong> {proposta.concessionaria.nome} / {proposta.concessionaria.estado} </p>
+                    {/*<p><strong>Potência Total da Usina:</strong> {proposta.potencia_usina} kWp</p>*/}
+                    {/*<p><strong>Geração Média Mensal:</strong> {proposta.media_geracao} kWp</p>*/}
+                    {/*<p><strong>Inversor:</strong> {proposta.inversores}</p>*/}
+                    {/*<p><strong>Módulos:</strong> {proposta.modulos}</p>*/}
+                    {/*<p><strong>Concessionária de Energia Elétrica:</strong> {proposta.concessionaria.nome} / {proposta.concessionaria.estado} </p>*/}
                     {/*<p><strong>Localização:</strong>{*/}
                     {/*    `${endereco.rua ?? '-'},*/}
                     {/*    ${endereco.numero ?? '-'},*/}
@@ -36,7 +36,7 @@ const PropostaComercial = ({cliente, proposta}) => {
                     {/*    ${endereco.cidade ?? '-'}/${endereco.estado ?? '-'} -*/}
                     {/*    Cep: ${endereco.cep ?? '-'}`}*/}
                     {/*</p>*/}
-                    <p><strong>Duração do Contrato:</strong> {proposta.prazo_locacao} meses</p>
+                    {/*<p><strong>Duração do Contrato:</strong> {proposta.prazo_locacao} meses</p>*/}
                 </div>
 
                 <div style={styles.section}>
