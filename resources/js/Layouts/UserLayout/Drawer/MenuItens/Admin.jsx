@@ -1,8 +1,7 @@
 import React from "react";
 import {
     IconBolt,
-    IconBrandWhatsapp, IconChartHistogram,
-    IconFileLike,
+    IconBrandWhatsapp,
     IconHeadset, IconReportMoney,
     IconSolarPanel2, IconUserBolt,
     IconUserCog,
@@ -66,25 +65,28 @@ export const adminMenu = [
         subItems: [
             {id: 'concessionarias-todas', title: 'Todas Concessionárias', link: route('admin.concessionaria.index')},
         ],
-    }, {
-        title: 'Relatórios',
-        icon: <IconChartHistogram/>,
-        id: 'dashboards',
-        subItems: [
-            {id: 'dashboards-cadastrados', title: 'Produtores', link: route('admin.produtor.store')},
-            {id: 'dashboards-cadastrar', title: 'Clientes', link: route('admin.produtor.show', 1)},
-            {id: 'dashboards-cadastrar', title: 'Usinas', link: route('admin.produtor.show', 1)},
-            {id: 'dashboards-cadastrar', title: 'Consultores', link: route('admin.produtor.show', 1)},
-        ],
-    }, {
-        title: 'Contratos',
-        icon: <IconFileLike/>,
-        id: 'contratos',
-        subItems: [
-            {id: 'contratos-usinas', title: 'Contratos Usinas', link: route('auth.contratos.usina.index')},
-            {id: 'contratos-clientes', title: 'Contratos Clientes', link: route('auth.contratos.cliente.index')},
-        ],
-    }, {
+    },
+    // {
+    //     title: 'Relatórios',
+    //     icon: <IconChartHistogram/>,
+    //     id: 'dashboards',
+    //     subItems: [
+    //         {id: 'dashboards-cadastrados', title: 'Produtores', link: route('admin.produtor.store')},
+    //         {id: 'dashboards-cadastrar', title: 'Clientes', link: route('admin.produtor.show', 1)},
+    //         {id: 'dashboards-cadastrar', title: 'Usinas', link: route('admin.produtor.show', 1)},
+    //         {id: 'dashboards-cadastrar', title: 'Consultores', link: route('admin.produtor.show', 1)},
+    //     ],
+    // },
+    // {
+    //     title: 'Contratos',
+    //     icon: <IconFileLike/>,
+    //     id: 'contratos',
+    //     subItems: [
+    //         {id: 'contratos-usinas', title: 'Contratos Usinas', link: route('auth.contratos.usina.index')},
+    //         {id: 'contratos-clientes', title: 'Contratos Clientes', link: route('auth.contratos.cliente.index')},
+    //     ],
+    // },
+    {
         title: 'Whatsapp',
         icon: <IconBrandWhatsapp/>,
         id: 'whatsapp',
@@ -97,8 +99,7 @@ export const adminMenu = [
         icon: <IconHeadset/>,
         id: 'suporte',
         subItems: [
-            {id: 'suporte-produtores', title: 'Suporte a Produtores', link: route('auth.suporte.produtor.index')},
-            {id: 'suporte-clientes', title: 'Suporte a Clientes', link: route('auth.suporte.cliente.index')},
+            {id: 'suporte-produtores', title: 'Suporte Geral', link: route('auth.suporte.produtor.index')},
         ],
     }, {
         title: 'Perfil',

@@ -1,10 +1,10 @@
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import Grid from "@mui/material/Grid2";
-import {Button, Card, CardContent, CardHeader, MenuItem, TextField} from "@mui/material";
+import {Button, Card, CardContent, CardHeader, MenuItem, TextField, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import Endereco from "@/Components/UserData/Endereco.jsx";
 import ConsumoDados from "@/Pages/Admin/User/Cliente/Create/ConsumoDados.jsx";
-import {router, useForm} from "@inertiajs/react";
+import {Link, router, useForm} from "@inertiajs/react";
 
 const Page = () => {
     const [clientes, setClientes] = useState([])
@@ -33,7 +33,7 @@ const Page = () => {
                 <Card sx={{marginBlockEnd: 4}}>
                     <CardHeader title="Informações do Cliente Consumidor"/>
                     <CardContent>
-                        <Grid container>
+                        <Grid container spacing={2}>
                             <Grid size={{xs: 12, md: 4}}>
                                 <TextField
                                     label="Cliente Consumidor"
@@ -46,6 +46,13 @@ const Page = () => {
                                         return <MenuItem value={item.id}>#{item.id} {item.nome}</MenuItem>
                                     })}
                                 </TextField>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <Link href={route('auth.cliente.create')}>
+                                    <Typography>
+                                        Cadastrar Novo Cliente Consumidor
+                                    </Typography>
+                                </Link>
                             </Grid>
                         </Grid>
                     </CardContent>

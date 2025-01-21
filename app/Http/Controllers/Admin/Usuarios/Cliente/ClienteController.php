@@ -22,8 +22,6 @@ class ClienteController extends Controller
 
     public function store(Request $request)
     {
-        (new ClienteRepository())->create($request);
 
-        return redirect()->route('admin.user.cliente.index');
     }
 }
