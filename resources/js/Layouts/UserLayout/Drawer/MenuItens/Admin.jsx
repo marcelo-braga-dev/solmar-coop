@@ -2,7 +2,6 @@ import React from "react";
 import {
     IconBolt,
     IconBrandWhatsapp, IconChartHistogram,
-    IconFileCheck,
     IconFileLike,
     IconHeadset, IconReportMoney,
     IconSolarPanel2, IconUserBolt,
@@ -58,9 +57,7 @@ export const adminMenu = [
         icon: <IconReportMoney/>,
         id: 'financeiro',
         subItems: [
-            {id: 'financeiro-produtor', title: 'Produtores', link: route('admin.financeiro.produtor.index')},
-            {id: 'financeiro-cliente', title: 'Clientes', link: route('admin.financeiro.cliente.index')},
-            {id: 'financeiro-vendedor', title: 'Vendedores', link: route('admin.financeiro.vendedor.index')},
+            {id: 'financeiro-produtor', title: 'Fluxo de Caixa', link: route('admin.financeiro.produtor.index')},
         ],
     }, {
         title: 'Concessionárias Energia',
@@ -78,14 +75,6 @@ export const adminMenu = [
             {id: 'dashboards-cadastrar', title: 'Clientes', link: route('admin.produtor.show', 1)},
             {id: 'dashboards-cadastrar', title: 'Usinas', link: route('admin.produtor.show', 1)},
             {id: 'dashboards-cadastrar', title: 'Consultores', link: route('admin.produtor.show', 1)},
-        ],
-    }, {
-        title: 'Propostas Comerciais',
-        icon: <IconFileCheck/>,
-        id: 'propostas',
-        subItems: [
-            {id: 'propostas-cliente', title: 'Propostas Clientes', link: route('auth.propostas.cliente.index')},
-            {id: 'propostas-produtor', title: 'Propostas Produtores', link: route('auth.propostas.produtor.index')},
         ],
     }, {
         title: 'Contratos',
