@@ -19,13 +19,10 @@ class ClienteProposta extends Model
 
     protected $appends = ['criado_em'];
 
-    protected function casts(): array
-    {
-        return [
-            'taxa_reducao' => 'float',
-            'media_consumo' => 'float'
-        ];
-    }
+    protected $casts = [
+        'taxa_reducao' => 'float',
+        'media_consumo' => 'float'
+    ];
 
     protected $with = ['endereco', 'concessionaria', 'cliente'];
 
