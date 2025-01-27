@@ -6,7 +6,7 @@ const PropostaClientePage = ({dados}) => {
             <div style={styles.container}>
                 <div style={styles.overlayContainer}>
                     <div style={styles.overlayText}>
-                        <div style={styles.sectionTitle}>Informações do Cliente</div>
+                        <div style={styles.sectionTitle}>INFORMAÇÕES DO CLIENTE</div>
                         {dados?.cliente?.user_data?.nome && <p style={styles.sectionText}><strong>Nome:</strong> {dados?.cliente?.user_data?.nome}</p>}
                         {dados?.cliente?.user_data?.nome_fantasia && <p style={styles.sectionText}><strong>Nome Fantasia:</strong> {dados?.cliente?.user_data?.nome_fantasia}</p>}
                         {dados?.cliente?.user_data?.razao_social && <p style={styles.sectionText}><strong>Razão Social:</strong> {dados?.cliente?.user_data?.razao_social}</p>}
@@ -18,7 +18,7 @@ const PropostaClientePage = ({dados}) => {
                         {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}
                         {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
 
-                        <div style={styles.sectionTitle}>Proposta</div>
+                        <div style={styles.sectionTitle}>PROPOSTA</div>
                         {dados?.media_consumo && <p style={styles.sectionText}><strong>Média Consumo:</strong> {dados?.media_consumo} kWh</p>}
                         {dados?.prazo_locacao && <p style={styles.sectionText}><strong>Prazo do Contrato:</strong> {dados?.prazo_locacao} meses</p>}
                         {dados?.concessionaria?.nome && <p style={styles.sectionText}>
@@ -63,7 +63,7 @@ const styles = {
         marginTop: 30,
     },
     sectionText: {
-        fontSize: '16px',
+        fontSize: '20px',
         marginBottom: '5px',
     },
 };

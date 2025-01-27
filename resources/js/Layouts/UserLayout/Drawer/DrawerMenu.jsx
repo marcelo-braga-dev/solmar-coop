@@ -2,8 +2,9 @@ import {Drawer, List, ListItem, Collapse, Typography, Stack, Box} from '@mui/mat
 import {useMenu} from './DrawerContext.jsx';
 import {adminMenu} from "../Drawer/MenuItens/Admin";
 import {IconChevronDown, IconChevronUp, IconPoint, IconPointFilled} from "@tabler/icons-react";
-import {Link} from "@inertiajs/react";
+import {Link, usePage} from "@inertiajs/react";
 import {useMemo} from "react";
+import {consultorMenu} from "../Drawer/MenuItens/Consultor.jsx";
 
 const styleDrawer = {
     width: 280,
@@ -20,8 +21,9 @@ const styleDrawerItem = {pl: 4, borderBottom: 'none'};
 export default function SideMenu() {
 
     const {openedMenu, openedSubMenu, toggleMenu, openMenuDrawer} = useMenu();
+    const roleId = usePage().props.auth.user.role_id;
 
-    const menuItems = adminMenu;
+    const menuItems = roleId === 1 ? adminMenu : consultorMenu;
 
     const menuPrimary = useMemo(() => {
         return menuItems.map((item) => (
@@ -50,7 +52,7 @@ export default function SideMenu() {
                 </Collapse>
             </div>
         ))
-    }, [toggleMenu, menuItems, openedMenu, openedSubMenu]);
+    }, [toggleMenu, openedMenu, openedSubMenu]);
 
     return (
         openMenuDrawer && <Drawer

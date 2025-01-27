@@ -12,47 +12,66 @@ class GerarPropostaUsinaController extends Controller
     {
         $html = $request->input('html');
 
-        // Caminho para a imagem da capa (usar 'asset()' para gerar URL acessível publicamente)
-        $dirCapa = public_path('storage/propostas/produtores/layout/capa.jpg');
+        // Caminho para as imagens das páginas
+        $dirCapa = public_path('storage/propostas/cliente/paginas/1.jpg');
+        $image2 = public_path('storage/propostas/cliente/paginas/2.jpg');
+        $image3 = public_path('storage/propostas/cliente/paginas/3.jpg');
+        $image4 = public_path('storage/propostas/cliente/paginas/4.jpg');
+        $image5 = public_path('storage/propostas/cliente/paginas/5.jpg');
+
+        // HTML para a capa
         $capa = '
-        <div style="text-align: center; page-break-after: always;">
-            <img src="' . $dirCapa . '" alt="Capa" style="width: 100%; height: auto;" />
-        </div>';
+    <div style="position: relative; text-align: center; width: 100%; height: 100%;">
+        <img src="' . $dirCapa . '" alt="Background" style="width: 100%; height: 100%" />
+    </div>
+    ';
 
-        // Caminho para a imagem do cabeçalho
-        $dirHeader = public_path('storage/propostas/produtores/layout/cabecalho.jpg');
-        $headerHtml = '<img src="' . $dirHeader . '" alt="Cabeçalho" style="width: 100%; height: auto; margin-botton: 15px">';
+        // HTML para a segunda página com sobreposição de texto
+        $page2 = '
+    <div style="position: relative; text-align: center; width: 100%; height: 100%;">
+        <img src="' . $image2 . '" alt="Background" style="width: 100%; height: 100%" />
+        <div style="
+            position: absolute;
+            top: 50;
+            left: 10;
+            width: 100%;
+            text-align: left;
+        ">
+            ' . $html . '
+        </div>
+    </div>
 
-        // Caminho para a imagem do rodape
-        $dirFooter = public_path('storage/propostas/produtores/layout/rodape.jpg');
-        $footerHtml = '<img src="' . $dirFooter . '" alt="Cabeçalho" style="width: 100%; height: auto;">';
 
-        // Adiciona o cabeçalho logo após cada ocorrência de 'style="text-align: center; page-break-after: always;"'
-        $html = preg_replace(
-            '/<div style="break-after: page;"><\/div>/i',
-            '<div style="text-align: center; page-break-after: always;"></div>' . $headerHtml,
-            $html
-        );
+    ';
 
-        // Adiciona img1
-        $img1 = public_path('storage/propostas/produtores/assets/img1.jpg');
-        $img1Html = '<img src="' . $img1 . '" alt="Cabeçalho" style="width: 100%; height: auto;">';
-        $html = preg_replace(
-            '/<div id="img1"><\/div>/i',
-            $img1Html,
-            $html
-        );
+        // Outras páginas
+        $page3 = '
+    <div style="position: relative; text-align: center; width: 100%; height: 100%;">
+        <img src="' . $image3 . '" alt="Background" style="width: 100%; height: 100%" />
+    </div>
+    ';
+        $page4 = '
+    <div style="position: relative; text-align: center; width: 100%; height: 100%;">
+        <img src="' . $image4 . '" alt="Background" style="width: 100%; height: 100%" />
+    </div>
+    ';
+        $page5 = '
+    <div style="position: relative; text-align: center; width: 100%; height: 100%;">
+        <img src="' . $image5 . '" alt="Background" style="width: 100%; height: 100%" />
+    </div>
+    ';
 
-        // Gera o PDF com o Snappy, configurando o cabeçalho e ajustando margens
-        $pdf = PDF::loadHTML($capa . $headerHtml . $html . $footerHtml)
+        // Gera o PDF com Snappy
+        $pdf = PDF::loadHTML($capa . $page2 . $page3 . $page4 . $page5)
             ->setOption('encoding', 'UTF-8')
             ->setOption('enable-local-file-access', true)
-            ->setOption('margin-top', '2mm')
-            ->setOption('margin-bottom', '2mm');
+            ->setOption('margin-top', '0mm')
+            ->setOption('margin-bottom', '0mm');
 
-        // Retorna o PDF para download
+        // Retorna o PDF gerado
         return $pdf->inline('proposta_comercial_' . uniqid() . '.pdf');
     }
+
 
     public function layoutPdf()
     {
