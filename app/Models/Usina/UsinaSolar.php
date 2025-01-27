@@ -4,7 +4,6 @@ namespace App\Models\Usina;
 
 use App\Models\Concessionarias;
 use App\Models\Users\User;
-use App\Models\Users\UserAddress;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

@@ -32,34 +32,34 @@ const Page = () => {
                             <Grid container justifyContent="space-between">
                                 <Grid size={11}>
                                     <Stack marginBottom={1}>
-                                        {item.user.user_data.nome && <Stack direction="row" spacing={2}>
+                                        {item.cliente.user_data.nome && <Stack direction="row" spacing={2}>
                                             <Typography fontWeight="bold">Nome:</Typography>
-                                            <Typography>{item.user.user_data.nome}</Typography>
+                                            <Typography>{item.cliente.user_data.nome}</Typography>
                                         </Stack>}
-                                        {item.user.user_data.nome_fantasia && <Stack direction="row" spacing={2}>
+                                        {item.cliente.user_data.nome_fantasia && <Stack direction="row" spacing={2}>
                                             <Typography fontWeight="bold">Nome Fantasia:</Typography>
-                                            <Typography>{item.user.user_data.nome_fantasia}</Typography>
+                                            <Typography>{item.cliente.user_data.nome_fantasia}</Typography>
                                         </Stack>}
-                                        {item.user.user_data.razao_social && <Stack direction="row" spacing={2}>
+                                        {item.cliente.user_data.razao_social && <Stack direction="row" spacing={2}>
                                             <Typography fontWeight="bold">Razão Social:</Typography>
-                                            <Typography>{item.user.user_data.razao_social}</Typography>
+                                            <Typography>{item.cliente.user_data.razao_social}</Typography>
                                         </Stack>}
                                     </Stack>
                                     <Grid container>
                                         <Grid size={{xs: 12, md: 6}}>
-                                            {item.user.user_data.cnpj && <Stack direction="row" spacing={2}>
+                                            {item.cliente.user_data.cnpj && <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">CNPJ:</Typography>
-                                                <Typography>{item.user.user_data.cnpj}</Typography>
+                                                <Typography>{item.cliente.user_data.cnpj}</Typography>
                                             </Stack>}
-                                            {item.user.user_data.cpf && <Stack direction="row" spacing={2}>
+                                            {item.cliente.user_data.cpf && <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">CPF:</Typography>
-                                                <Typography>{item.user.user_data.cpf}</Typography>
+                                                <Typography>{item.cliente.user_data.cpf}</Typography>
                                             </Stack>}
                                         </Grid>
                                         <Grid size={{xs: 12, md: 6}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Localização:</Typography>
-                                                <Typography>{item.user.user_data.endereco.cidade_estado}</Typography>
+                                                <Typography>{item.cliente.user_data.endereco.cidade_estado}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>
@@ -80,7 +80,6 @@ const Page = () => {
                                             </Stack>
                                         </Grid>
                                     </Grid>
-                                    {/*</Grid>*/}
                                 </Grid>
                                 <Grid size="auto">
                                     <IconEye/>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth\Cliente\Propostas;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cliente\ClienteProposta;
 use App\Repositories\Cliente\ClientePropostaRepository;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -28,6 +29,8 @@ class PropostaController extends Controller
 
     public function show($id)
     {
-        return Inertia::render('Auth/Cliente/Proposta/Show/Page');
+        $idProposta = $id;
+
+        return Inertia::render('Auth/Cliente/Proposta/Show/Page', compact('idProposta'));
     }
 }

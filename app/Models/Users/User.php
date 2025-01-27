@@ -53,6 +53,8 @@ class User extends Authenticatable
 
     protected $appends = ['nome', 'status_nome', 'cadastrado_em', 'dados_acesso'];
 
+    protected $with = ['userData', 'contatos'];
+
     //--------------
     // relations
     //--------------

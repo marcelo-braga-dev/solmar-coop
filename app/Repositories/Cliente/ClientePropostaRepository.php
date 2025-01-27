@@ -11,10 +11,24 @@ class ClientePropostaRepository
     public function create(Request $data)
     {
         DB::transaction(function () use ($data) {
-            ClienteProposta::create([
+            $proposta = ClienteProposta::create([
                 'user_id' => $data->cliente_id,
+                'concessionaria_id' => $data?->concessionaria_id,
                 'media_consumo' => $data?->dados['media_consumo'],
                 'prazo_locacao' => $data?->dados['prazo_locacao']
+            ]);
+
+            $proposta->endereco()->create([
+                'cep' => $data?->endereco['cep'] ?? null,
+                'rua' => $data?->endereco['rua'] ?? null,
+                'numero' => $data?->endereco['numero'] ?? null,
+                'complemento' => $data?->endereco['complemento'] ?? null,
+                'bairro' => $data?->endereco['bairro'] ?? null,
+                'cidade' => $data?->endereco['cidade'] ?? null,
+                'estado' => $data?->endereco['estado'] ?? null,
+                'referencia' => $data?->endereco['referencia'] ?? null,
+//                'latitude' => $data?->endereco[''],
+//                'longitude' => $data?->endereco[''],
             ]);
         });
     }
@@ -22,7 +36,6 @@ class ClientePropostaRepository
     public function get()
     {
         return (new ClienteProposta)
-            ->with('user.userData')
             ->orderByDesc('id')
             ->get();
     }

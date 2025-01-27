@@ -1,10 +1,10 @@
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
-import Propostas from "@/Pages/Admin/User/Produtor/Show/Propostas.jsx";
+import PropostaCliente from "@/Pages/Auth/Propostas/Cliente/Proposta/Page.jsx";
 
-const Page = () => {
+const Page = ({idProposta}) => {
     return (
         <Layout titlePage="Proposta Cliente Consumidor" menu="clientes" subMenu="clientes-propostas">
-            <Propostas/>
+            <PropostaCliente idProposta={idProposta}/>
         </Layout>
     )
 }

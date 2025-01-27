@@ -57,8 +57,12 @@ class GerarPropostaUsinaController extends Controller
     public function layoutPdf()
     {
         return [
-            'capa' => url('storage/propostas/produtores/layout/capa.jpg'),
-            'header' => url('storage/propostas/produtores/layout/cabecalho.jpg'),
+            'capa' => url('storage/propostas/cliente/paginas/1.jpg'),
+            'header' => url('storage/propostas/cliente/paginas/cabecalho.jpg'),
+            'page_2' => url('storage/propostas/cliente/paginas/2.jpg'),
+            'page_3' => url('storage/propostas/cliente/paginas/3.jpg'),
+            'page_4' => url('storage/propostas/cliente/paginas/4.jpg'),
+            'page_5' => url('storage/propostas/cliente/paginas/5.jpg'),
         ];
     }
 }

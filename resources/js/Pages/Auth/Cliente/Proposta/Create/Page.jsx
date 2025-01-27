@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import Endereco from "@/Components/UserData/Endereco.jsx";
 import ConsumoDados from "@/Pages/Admin/User/Cliente/Create/ConsumoDados.jsx";
 import {Link, router, useForm} from "@inertiajs/react";
+import ConcessionariaSelect from "@/Pages/Auth/Cliente/Proposta/Create/Concessionaria.jsx";
 
 const Page = () => {
     const [clientes, setClientes] = useState([])
@@ -59,6 +60,8 @@ const Page = () => {
                 </Card>
 
                 <ConsumoDados data={data} setData={setData}/>
+
+                <ConcessionariaSelect data={data} setData={setData}/>
 
                 <Endereco title="Endereço da Unidade Consumidora" endereco={endereco} setEndereco={setEndereco} required/>
 

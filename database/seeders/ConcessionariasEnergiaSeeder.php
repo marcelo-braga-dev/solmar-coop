@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Concessionarias;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ConcessionariasEnergiaSeeder extends Seeder
