@@ -21,8 +21,10 @@ const PropostaClientePage = ({dados}) => {
                         <div style={styles.sectionTitle}>PROPOSTA</div>
                         {dados?.media_consumo && <p style={styles.sectionText}><strong>Média Consumo:</strong> {dados?.media_consumo} kWh</p>}
                         {dados?.prazo_locacao && <p style={styles.sectionText}><strong>Prazo do Contrato:</strong> {dados?.prazo_locacao} meses</p>}
+                        {dados?.taxa_reducao && <p style={styles.sectionText}><strong>Redução da Conta de Energia:</strong> {dados?.taxa_reducao}%</p>}
                         {dados?.concessionaria?.nome && <p style={styles.sectionText}>
                             <strong>Concessionária:</strong> {dados?.concessionaria?.nome} / {dados?.concessionaria?.estado}</p>}
+                        {dados?.criado_em && <p style={styles.sectionText}><strong>Data da Emissão da Proposta:</strong> {dados?.criado_em}</p>}
 
                     </div>
                 </div>

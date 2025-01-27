@@ -14,6 +14,7 @@ class ClientePropostaRepository
             $proposta = ClienteProposta::create([
                 'user_id' => $data->cliente_id,
                 'concessionaria_id' => $data?->concessionaria_id,
+                'taxa_reducao' => $data?->taxa_reducao,
                 'media_consumo' => $data?->dados['media_consumo'],
                 'prazo_locacao' => $data?->dados['prazo_locacao']
             ]);

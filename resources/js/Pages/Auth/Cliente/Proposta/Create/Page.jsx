@@ -3,9 +3,10 @@ import Grid from "@mui/material/Grid2";
 import {Button, Card, CardContent, CardHeader, MenuItem, TextField, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import Endereco from "@/Components/UserData/Endereco.jsx";
-import ConsumoDados from "@/Pages/Admin/User/Cliente/Create/ConsumoDados.jsx";
+import ConsumoDados from "./ConsumoDados.jsx";
 import {Link, router, useForm} from "@inertiajs/react";
 import ConcessionariaSelect from "@/Pages/Auth/Cliente/Proposta/Create/Concessionaria.jsx";
+import PropostaCard from "@/Pages/Auth/Cliente/Proposta/Create/PropostaCard.jsx";
 
 const Page = () => {
     const [clientes, setClientes] = useState([])
@@ -20,7 +21,6 @@ const Page = () => {
     const getClientes = async () => {
         const response = await axios.get(route('auth.cliente.api.get'))
         setClientes(response.data)
-        console.log(response.data)
     }
 
     const submit = (e) => {
@@ -62,6 +62,8 @@ const Page = () => {
                 <ConsumoDados data={data} setData={setData}/>
 
                 <ConcessionariaSelect data={data} setData={setData}/>
+
+                <PropostaCard  data={data} setData={setData}/>
 
                 <Endereco title="Endereço da Unidade Consumidora" endereco={endereco} setEndereco={setEndereco} required/>
 

@@ -60,6 +60,9 @@ const PropostaCliente = ({idProposta}) => {
                             {dados?.prazo_locacao && <TextInfo title="Prazo Locação" text={`${dados?.prazo_locacao} meses`}/>}
                         </Grid>
                         <Grid size="auto">
+                            {dados?.taxa_reducao && <TextInfo title="Redução da Conta" text={`${dados?.taxa_reducao}%`}/>}
+                        </Grid>
+                        <Grid size="auto">
                             {dados?.concessionaria?.id &&
                                 <TextInfo title="Concessionária" text={`${dados?.concessionaria?.nome}/${dados?.concessionaria?.estado}`}/>}
                         </Grid>
