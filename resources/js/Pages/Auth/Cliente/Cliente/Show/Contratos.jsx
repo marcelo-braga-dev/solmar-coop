@@ -1,6 +1,6 @@
 import {Box, Button, Paper, TextField} from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import {IconDownload, IconFileCheck, IconUpload} from "@tabler/icons-react";
+import {IconDownload, IconFileTypePdf, IconUpload} from "@tabler/icons-react";
 import {useRef} from "react";
 import ContratoUsina from "@/Pages/Auth/Contratos/Usinas/Contrato/ContratoUsina.jsx";
 
@@ -31,7 +31,7 @@ const Contratos = ({contratado}) => {
             <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
                 <Grid container justifyContent="space-between" alignItems="center">
                     <Grid size={1} paddingInlineEnd={2}>
-                        <IconFileCheck color="green" size={30}/>
+                        <IconFileTypePdf color="red" size={30}/>
                     </Grid>
                     <Grid size={11} container justifyContent="space-between" gap={2}>
                         <Grid/>
@@ -44,10 +44,10 @@ const Contratos = ({contratado}) => {
 
             <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
                 <Grid container justifyContent="space-between" alignItems="center">
-                    <Grid size={1} paddingInlineEnd={2}>
+                    <Grid size={{xs: 1}} paddingInlineEnd={2}>
                         <IconUpload color="blue" size={30}/>
                     </Grid>
-                    <Grid size={11}>
+                    <Grid size={{xs: 10}}>
                         <Grid container spacing={2}>
                             <Grid size={{xs: 12, md: 8}}>
                                 <TextField
@@ -65,7 +65,7 @@ const Contratos = ({contratado}) => {
                 </Grid>
             </Paper>
 
-            <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
+            <Paper variant="outlined">
                 <div ref={proposalRef}>
                     <ContratoUsina/>
                 </div>

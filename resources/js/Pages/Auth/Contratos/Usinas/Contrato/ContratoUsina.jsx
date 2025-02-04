@@ -7,7 +7,7 @@ const ContratoUsina = () => {
     const dataFormatada = format(new Date(), "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
 
     return (
-        <Container maxWidth="md" style={{ marginTop: '20px', marginBottom: '20px' }}>
+        <Container style={{ marginTop: '20px', marginBottom: '20px' }}>
             <Typography variant="h4" align="center" gutterBottom>
                 Contrato de Locação de Usina Solar e Gestão de Créditos de Energia
             </Typography>

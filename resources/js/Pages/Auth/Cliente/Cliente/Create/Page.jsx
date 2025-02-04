@@ -51,7 +51,7 @@ const Page = () => {
     }
 
     return (
-        <Layout titlePage="Cadastro de Cliente Consumidor" menu="clientes" subMenu="clientes-cadastrar" backPage>
+        <Layout titlePage="Cadastro de Cliente Consumidor" menu="clientes" subMenu="clientes-cadastrados" backPage>
             <Card sx={{marginBlockEnd: 3}}>
                 <CardContent>
                     <Box sx={{width: '100%'}}>

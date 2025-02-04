@@ -26,7 +26,7 @@ class ClienteController extends Controller
 
         $usuario = (new ProdutorRepository())->findAllData($id);
 
-        return Inertia::render('Admin/User/Cliente/Show/Page', compact('usuario', 'tab'));
+        return Inertia::render('Auth/Cliente/Cliente/Show/Page', compact('usuario', 'tab'));
     }
 
     public function store(Request $request)

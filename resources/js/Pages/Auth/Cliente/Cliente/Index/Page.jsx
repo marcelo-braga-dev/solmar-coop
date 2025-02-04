@@ -26,7 +26,7 @@ const Page = () => {
         <Layout titlePage="Cliente Consumidor Cadastrados" menu="clientes" subMenu="clientes-cadastrados">
             <Grid container marginBottom={1} justifyContent="space-between">
                 <Grid>
-                    <Link href={route('admin.user.cliente.create')}>
+                    <Link href={route('auth.cliente.create')}>
                         <Button startIcon={<IconPlus/>} color="success">Cadastrar Cliente Consumidor</Button>
                     </Link>
                 </Grid>
@@ -86,16 +86,16 @@ const Page = () => {
                                                 <Typography>{item.status_nome}</Typography>
                                             </Stack>
                                         </Grid>
-                                        <Grid size={{xs: 12, md: 6}}>
-                                            <Stack direction="row" spacing={2} justifyContent="space-between" display="flex">
-                                                <Stack direction="row" spacing={2}>
-                                                    <Typography fontWeight="bold">Matrícula:</Typography>
-                                                    <Typography>{item.id}</Typography>
-                                                </Stack>
-                                                <Stack direction="row" spacing={2} alignItems="center">
-                                                    <Typography fontWeight="bold" variant="body1">Cadastrado em:</Typography>
-                                                    <Typography variant="body1">{item.cadastrado_em}</Typography>
-                                                </Stack>
+                                        <Grid size={{xs: 12, md: 3}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold">Matrícula:</Typography>
+                                                <Typography>{item.id}</Typography>
+                                            </Stack>
+                                        </Grid>
+                                        <Grid size={{xs: 12, md: 3}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold" variant="body1">Cadastrado em:</Typography>
+                                                <Typography variant="body1">{item.cadastrado_em}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>

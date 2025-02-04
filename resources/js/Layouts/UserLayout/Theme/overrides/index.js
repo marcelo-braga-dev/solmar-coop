@@ -19,6 +19,7 @@ import Tabs from './Tabs';
 import Typography from './Typography';
 import TextField from './TextField';
 import CardHeader from './CardHeader';
+import TabPanel from './TabPanel.js';
 
 // ==============================|| OVERRIDES - MAIN ||============================== //
 
@@ -40,6 +41,7 @@ export default function ComponentsOverrides(theme) {
         Tabs(),
         Typography(),
         TextField(theme),
-        CardHeader()
+        CardHeader(),
+        TabPanel(theme),
     );
 }

@@ -8,6 +8,7 @@ import DadosPessoais from "@/Components/UserData/DadosPessoais.jsx";
 import Endereco from "@/Components/UserData/Endereco.jsx";
 import Contato from "@/Components/UserData/Contato.jsx";
 import DadosAcesso from "@/Components/UserData/DadosAcesso.jsx";
+import {useState} from "react";
 
 const Page = () => {
 
@@ -15,9 +16,11 @@ const Page = () => {
         tipo_pessoa: 'pj'
     })
 
+    const [endereco, setEndereco] = useState({});
+
     const submit = (e) => {
         e.preventDefault()
-        router.post(route('admin.user.vendedor.store'), {...data})
+        router.post(route('admin.user.vendedor.store'), {...data, endereco})
     }
 
     return (
@@ -25,7 +28,7 @@ const Page = () => {
             <form onSubmit={submit}>
 
                 <DadosPessoais data={data} setData={setData}/>
-                <Endereco data={data} setData={setData}/>
+                <Endereco title="Endereço do Cliente" endereco={endereco} setEndereco={setEndereco}/>
                 <Contato data={data} setData={setData}/>
                 <DadosAcesso data={data} setData={setData}/>
 

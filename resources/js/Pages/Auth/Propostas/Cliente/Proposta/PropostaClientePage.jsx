@@ -13,8 +13,8 @@ const PropostaClientePage = ({dados}) => {
                         {dados?.cliente?.user_data?.cnpj && <p style={styles.sectionText}><strong>CNPJ:</strong> {dados?.cliente?.user_data?.cnpj}</p>}
                         {dados?.cliente?.user_data?.cpf && <p style={styles.sectionText}><strong>CPF:</strong> {dados?.cliente?.user_data?.cpf}</p>}
                         {dados?.cliente?.contatos?.celular && <p style={styles.sectionText}><strong>Celular:</strong> {dados?.cliente?.contatos?.celular}</p>}
-                        {dados?.cliente?.contatos?.celular_2 && <p style={styles.sectionText}><strong>Celular:</strong> {dados?.cliente?.contatos?.celular_2}</p>}
-                        {dados?.cliente?.contatos?.telefone && <p style={styles.sectionText}><strong>Telefone:</strong> {dados?.cliente?.contatos?.telefone}</p>}
+                        {/*{dados?.cliente?.contatos?.celular_2 && <p style={styles.sectionText}><strong>Celular:</strong> {dados?.cliente?.contatos?.celular_2}</p>}*/}
+                        {/*{dados?.cliente?.contatos?.telefone && <p style={styles.sectionText}><strong>Telefone:</strong> {dados?.cliente?.contatos?.telefone}</p>}*/}
                         {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}
                         {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
 

@@ -27,9 +27,13 @@ const Page = ({usuario, tab}) => {
                 <CardContent>
                     <TabContext value={tabSelected}>
                         <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-                            <TabList onChange={handleChangeTab} variant="scrollable" scrollButtons="auto"
+                            <TabList onChange={handleChangeTab}
+                                     variant="scrollable"
+                                     scrollButtons
+                                     allowScrollButtonsMobile
                                      textColor="primary"
-                                     indicatorColor="primary">
+                                     indicatorColor="primary"
+                            >
                                 <Tab label="Informações do Cliente" value="info" icon={<IconUserBolt size={20}/>} iconPosition="start"/>
                                 <Tab label="Propostas Comerciais" value="propostas" icon={<IconFileLike size={20}/>} iconPosition="start"/>
                                 <Tab label="Contratos" value="contratos" icon={<IconFileTypePdf size={20}/>} iconPosition="start"/>

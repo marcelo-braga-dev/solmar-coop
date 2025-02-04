@@ -1,6 +1,6 @@
 import {Button, Divider, Paper} from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import {IconDownload, IconFileTypePdf} from "@tabler/icons-react";
+import {IconDownload} from "@tabler/icons-react";
 import {useEffect, useRef, useState} from "react";
 import PropostaClientePage from "@/Pages/Auth/Propostas/Cliente/Proposta/PropostaClientePage.jsx";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
@@ -49,26 +49,21 @@ const PropostaCliente = ({idProposta}) => {
         <>
             <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
                 <Grid container justifyContent="space-between" alignItems="center">
-                    <Grid size={1} paddingInlineEnd={2}>
-                        <IconFileTypePdf color="red" size={30}/>
+                    <Grid size={{xs: 6, md: 3}}>
+                        {dados?.media_consumo && <TextInfo title="Média Consumo" text={`${dados.media_consumo} kWh`}/>}
                     </Grid>
-                    <Grid size={11} container justifyContent="space-between" gap={2}>
-                        <Grid size="auto">
-                            {dados?.media_consumo && <TextInfo title="Média Consumo" text={`${dados.media_consumo} kWh`}/>}
-                        </Grid>
-                        <Grid size="auto">
-                            {dados?.prazo_locacao && <TextInfo title="Prazo Locação" text={`${dados?.prazo_locacao} meses`}/>}
-                        </Grid>
-                        <Grid size="auto">
-                            {dados?.taxa_reducao && <TextInfo title="Redução da Conta" text={`${dados?.taxa_reducao}%`}/>}
-                        </Grid>
-                        <Grid size="auto">
-                            {dados?.concessionaria?.id &&
-                                <TextInfo title="Concessionária" text={`${dados?.concessionaria?.nome}/${dados?.concessionaria?.estado}`}/>}
-                        </Grid>
-                        <Grid size="auto">
-                            <Button color="error" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF</Button>
-                        </Grid>
+                    <Grid size={{xs: 6, md: 3}}>
+                        {dados?.prazo_locacao && <TextInfo title="Prazo Locação" text={`${dados?.prazo_locacao} meses`}/>}
+                    </Grid>
+                    <Grid size={{xs: 6, md: 3}}>
+                        {dados?.taxa_reducao && <TextInfo title="Redução da Conta" text={`${dados?.taxa_reducao}%`}/>}
+                    </Grid>
+                    <Grid size={{xs: 6, md: 3}}>
+                        {dados?.concessionaria?.id &&
+                            <TextInfo title="Concessionária" text={`${dados?.concessionaria?.nome}/${dados?.concessionaria?.estado}`}/>}
+                    </Grid>
+                    <Grid size={{xs: 6}}>
+                        <Button color="error" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF</Button>
                     </Grid>
                 </Grid>
             </Paper>
