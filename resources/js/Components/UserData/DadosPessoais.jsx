@@ -23,7 +23,6 @@ const DadosPessoais = ({data, setData}) => {
         const cnpj = data?.cnpj?.replace(/\D/g, "")
 
         if (!cnpj || cnpj.length !== 14) {
-            console.log('Por favor, insira um CNPJ válido (14 dígitos).')
             return;
         }
 
@@ -62,7 +61,7 @@ const DadosPessoais = ({data, setData}) => {
                                 onChange={e => setData('tipo_pessoa', e.target.value)}
                             >
                                 <FormControlLabel value="pj" control={<Radio/>} label="Pessoa Jurídica"/>
-                                <FormControlLabel value="pf" control={<Radio/>} label="Pesso Física"/>
+                                <FormControlLabel value="pf" control={<Radio/>} label="Pessoa Física"/>
                             </RadioGroup>
                         </FormControl>
                     </Grid>

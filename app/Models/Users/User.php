@@ -88,9 +88,19 @@ class User extends Authenticatable
 
     public function getDadosAcessoAttribute()
     {
+        switch ($this->attributes['status']) {
+            case '0':
+                $statusNome = 'Bloqueado'; break;
+            case '1':
+                $statusNome = 'Ativo';; break;
+            default:
+                $statusNome =  'Desconhecido';
+        }
+
         return [
             'email' => $this->attributes['email'],
             'status' => $this->attributes['status'],
+            'status_nome' => $statusNome,
         ];
     }
 
@@ -103,6 +113,8 @@ class User extends Authenticatable
     public function getStatusNomeAttribute()
     {
         switch ($this->attributes['status']) {
+            case '1':
+                return 'Ativo';
             case 'novo':
                 return 'Aguardando Análise Documentos';
             case 'documentacao-aprovada':

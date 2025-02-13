@@ -13,7 +13,6 @@ const Page = ({}) => {
         const fetchVendedores = async () => {
             const response = await axios.get(route('admin.user.api.get')).finally(() => setCarregando(false))
             setUsuarios(response.data)
-            console.log(response.data)
         }
 
         fetchVendedores()

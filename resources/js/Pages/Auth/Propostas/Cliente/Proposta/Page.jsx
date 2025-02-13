@@ -18,7 +18,6 @@ const PropostaCliente = ({idProposta}) => {
     const fethcDadosProposta = async () => {
         const response = await axios.get(route('auth.propostas.pdf.cliente.get-dados', idProposta))
         setDados(response.data)
-        console.log(response.data)
     }
 
     const fethcLayout = async () => {
@@ -67,31 +66,38 @@ const PropostaCliente = ({idProposta}) => {
                     </Grid>
                 </Grid>
             </Paper>
-            {layout.capa && <Paper sx={{padding: 2}} variant="outlined">
-                <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
-                    <img src={layout.capa} alt="Capa" loading="lazy"/>
-                </div>
+            {layout.capa && (
+                <Grid container>
+                    <Grid size={{xs: 12}} sx={{display: {xs: 'none', lg: 'block'}}}>
+                        <Paper sx={{padding: 2}} variant="outlined">
+                            <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
+                                <img src={layout.capa} alt="Capa" loading="lazy"/>
+                            </div>
 
-                <div ref={proposalRef}>
-                    <PropostaClientePage dados={dados}/>
-                </div>
+                            <div ref={proposalRef}>
+                                <PropostaClientePage dados={dados}/>
+                            </div>
 
-                <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
-                    <img src={layout.page_2} alt="Capa" loading="lazy"/>
-                </div>
-                <Divider sx={{marginBottom: 5}}/>
-                <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
-                    <img src={layout.page_3} alt="Capa" loading="lazy"/>
-                </div>
-                <Divider sx={{marginBottom: 5}}/>
-                <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
-                    <img src={layout.page_4} alt="Capa" loading="lazy"/>
-                </div>
-                <Divider sx={{marginBottom: 5}}/>
-                <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
-                    <img src={layout.page_5} alt="Capa" loading="lazy"/>
-                </div>
-            </Paper>}
+                            <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
+                                <img src={layout.page_2} alt="Capa" loading="lazy"/>
+                            </div>
+                            <Divider sx={{marginBottom: 5}}/>
+                            <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
+                                <img src={layout.page_3} alt="Capa" loading="lazy"/>
+                            </div>
+                            <Divider sx={{marginBottom: 5}}/>
+                            <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
+                                <img src={layout.page_4} alt="Capa" loading="lazy"/>
+                            </div>
+                            <Divider sx={{marginBottom: 5}}/>
+                            <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
+                                <img src={layout.page_5} alt="Capa" loading="lazy"/>
+                            </div>
+                        </Paper>
+                    </Grid>
+
+                </Grid>
+            )}
         </>)
 }
 export default PropostaCliente

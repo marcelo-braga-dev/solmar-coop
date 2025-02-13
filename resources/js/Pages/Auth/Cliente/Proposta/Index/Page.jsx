@@ -80,6 +80,17 @@ const Page = () => {
                                             </Stack>
                                         </Grid>
                                     </Grid>
+
+                                    <Divider sx={{marginBlock: 1}}/>
+
+                                    <Grid container justifyContent="end">
+                                        <Grid size={{xs: 'auto'}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold" variant="body2">Criado em:</Typography>
+                                                <Typography variant="body2">{item.criado_em}</Typography>
+                                            </Stack>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
                                 <Grid size="auto">
                                     <IconEye/>

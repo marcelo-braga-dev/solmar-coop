@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth\Cliente;
 use App\Http\Controllers\Controller;
 use App\Repositories\Cliente\ClienteRepository;
 use App\Repositories\Produtor\ProdutorRepository;
+use App\Utils\AlertMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class ClienteController extends Controller
@@ -31,7 +33,12 @@ class ClienteController extends Controller
 
     public function store(Request $request)
     {
-        (new ClienteRepository())->create($request);
+        try {
+            (new ClienteRepository())->create($request);
+        } catch (\DomainException $exception) {
+            AlertMessage::error($exception->getMessage());
+            return redirect()->back();
+        }
 
         return redirect()->route('auth.cliente.index');
     }

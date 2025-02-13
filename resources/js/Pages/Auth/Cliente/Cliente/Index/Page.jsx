@@ -8,15 +8,22 @@ import React, {useEffect, useState} from "react";
 const Page = () => {
     const [carregando, setCarregando] = useState(true)
     const [usuarios, setUsuarios] = useState([])
+    const [lastPage, setLastPage] = useState()
+    const [page, setPage] = React.useState();
+
+    const handleChange = (event, value) => {
+        setPage(value);
+    };
 
     useEffect(() => {
         fetchRegistros()
-    }, []);
+    }, [page]);
 
     const fetchRegistros = async () => {
         try {
-            const response = await axios.get(route('auth.cliente.api.get'))
-            setUsuarios(response.data)
+            const response = await axios.get(route('auth.cliente.api.get', {page}))
+            setUsuarios(response.data.data)
+            setLastPage(response.data.last_page)
         } finally {
             setCarregando(false)
         }
@@ -24,16 +31,11 @@ const Page = () => {
 
     return (
         <Layout titlePage="Cliente Consumidor Cadastrados" menu="clientes" subMenu="clientes-cadastrados">
-            <Grid container marginBottom={1} justifyContent="space-between">
+            <Grid container marginBottom={2} justifyContent="space-between">
                 <Grid>
                     <Link href={route('auth.cliente.create')}>
-                        <Button startIcon={<IconPlus/>} color="success">Cadastrar Cliente Consumidor</Button>
+                        <Button startIcon={<IconPlus/>} color="warning">Cadastrar Cliente Consumidor</Button>
                     </Link>
-                </Grid>
-            </Grid>
-            <Grid container marginBottom={4} justifyContent="end">
-                <Grid size="auto">
-                    <Pagination count={1}/>
                 </Grid>
             </Grid>
 
@@ -108,6 +110,12 @@ const Page = () => {
                     </Card>
                 </Link>
             ))}
+
+            <Grid container marginBottom={4} justifyContent="center">
+                <Grid size="auto">
+                    <Pagination count={lastPage} page={page} onChange={handleChange}/>
+                </Grid>
+            </Grid>
         </Layout>
     )
 }

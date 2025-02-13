@@ -20,7 +20,7 @@ const Page = () => {
 
     const getClientes = async () => {
         const response = await axios.get(route('auth.cliente.api.get'))
-        setClientes(response.data)
+        setClientes(response.data.data)
     }
 
     const submit = (e) => {
@@ -44,7 +44,7 @@ const Page = () => {
                                     fullWidth
                                 >
                                     {clientes.map(item => {
-                                        return <MenuItem value={item.id}>#{item.id} {item.nome}</MenuItem>
+                                        return <MenuItem value={item.id} key={item.id}>#{item.id} {item.nome}</MenuItem>
                                     })}
                                 </TextField>
                             </Grid>

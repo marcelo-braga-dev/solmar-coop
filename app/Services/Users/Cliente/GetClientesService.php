@@ -12,6 +12,6 @@ class GetClientesService
         return User::where('role_id', RoleUser::$CLIENTE)
             ->with('userData')
             ->orderByDesc('id')
-            ->get();
+            ->paginate();
     }
 }

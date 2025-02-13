@@ -14,12 +14,16 @@ class ClienteRepository
 {
     public function create(Request $data)
     {
-        DB::transaction(function () use ($data) {
-            $role = RoleUser::$CLIENTE;
-            $service = new CreateUserService();
-
+        try {
             $dto = CreateUsuarioDTO::fromArray($data);
             $userData = $dto->toArray();
+        } catch (\TypeError) {
+            throw new \DomainException('Dados Inválidos!');
+        }
+
+        DB::transaction(function () use ($data, $userData) {
+            $role = RoleUser::$CLIENTE;
+            $service = new CreateUserService();
 
             // Conta Acesso
             $user = $service->createUser($userData, $role, $data->senha);

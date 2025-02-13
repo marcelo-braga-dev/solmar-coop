@@ -14,7 +14,6 @@ import InfoDadosAcesso from "@/Pages/Admin/User/Produtor/Show/InfoDadosAcesso.js
 import {Link} from "@inertiajs/react";
 
 const Page = ({usuario, tab}) => {
-
     const [tabSelected, setTabSelected] = useState( tab ?? 'info')
 
     const handleChangeTab = (event, newValue) => {
