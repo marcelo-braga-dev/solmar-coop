@@ -21,16 +21,11 @@ const Page = () => {
 
     return (
         <Layout titlePage="Produtores Solar" menu="produtores-solar" subMenu="produtores-solar-cadastrados">
-            <Grid container marginBottom={1} justifyContent="space-between">
+            <Grid container marginBottom={3} justifyContent="space-between">
                 <Grid size={12}>
                     <Link href={route('admin.produtor.create')}>
                         <Button startIcon={<IconPlus/>} color="success">Cadastrar Produtor</Button>
                     </Link>
-                </Grid>
-            </Grid>
-            <Grid container marginBottom={2} justifyContent="end">
-                <Grid size="auto">
-                    <Pagination count={1}/>
                 </Grid>
             </Grid>
 
@@ -86,6 +81,12 @@ const Page = () => {
                     </CardContent>
                 </Card>
             ))}
+
+            <Grid container marginBottom={2} justifyContent="center">
+                <Grid size="auto">
+                    <Pagination count={1}/>
+                </Grid>
+            </Grid>
         </Layout>
     )
 }
