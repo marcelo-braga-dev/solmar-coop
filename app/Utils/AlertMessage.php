@@ -17,7 +17,7 @@ class AlertMessage
     public static function error(?string $message): void
     {
         Session::flash('alert', [
-            'message' => $message ?: 'Ação realizada com sucesso!',
+            'message' => $message ?: 'Erro desconhecido!',
             'type' => 'error',
         ]);
     }

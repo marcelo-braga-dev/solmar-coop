@@ -25,46 +25,13 @@ const Page = () => {
     const [step, setStep] = useState(0);
     const [enderecoUsina, setEnderecoUsina] = useState({});
     const [enderecoProdutor, setEnderecoProdutor] = useState({});
-    const [errors, setErrors] = useState({});
 
     const {data, setData} = useForm({
         tipo_pessoa: 'pj'
     });
 
-    const validateStep = () => {
-        let stepErrors = {};
-        if (step === 0) {
-            if (data.tipo_pessoa === 'pj') {
-                if (!data.cnpj) stepErrors.cnpj = "O CNPJ é obrigatório.";
-                if (!data.razao_social) stepErrors.razao_social = "A Razão Social é obrigatório.";
-            }
-
-            if (data.tipo_pessoa === 'pf') {
-                if (!data.nome) stepErrors.cnpj = "O Nome é obrigatório.";
-                if (!data.cpf) stepErrors.razao_social = "O CPF é obrigatório.";
-            }
-
-            if (!data?.contato?.celular) stepErrors.telefone = "O Telefone é obrigatório.";
-            if (!data.email) stepErrors.email = "O E-mail é obrigatório.";
-        } else if (step === 1) {
-            if (!data?.usina?.concessionaria_id &&
-                !data?.usina?.uc &&
-                !data?.usina?.media_geracao &&
-                !data?.usina?.potencia_usina &&
-                !data?.usina?.prazo_locacao &&
-                !data?.usina?.inversores &&
-                !data?.usina?.modulos) {
-                stepErrors.usina = "Preencha todas as informações.";
-            }
-        }
-        setErrors(stepErrors);
-        return Object.keys(stepErrors).length === 0;
-    };
-
     const handleStepForward = () => {
-        if (validateStep()) {
-            setStep((e) => ++e);
-        }
+        setStep((e) => ++e);
     };
 
     const handleStepBack = () => {
@@ -73,13 +40,17 @@ const Page = () => {
 
     const submit = (e) => {
         e.preventDefault();
-        if (validateStep()) {
+
+        if (step === 2) {
             router.post(route('admin.produtor.store'), {
                 ...data,
                 usina_endereco: enderecoUsina,
                 endereco: enderecoProdutor,
             });
+            return
         }
+
+        handleStepForward()
     };
 
     return (
@@ -101,9 +72,9 @@ const Page = () => {
             <form onSubmit={submit}>
                 {step === 0 && (
                     <Box>
-                        <DadosPessoais data={data} setData={setData} errors={errors}/>
+                        <DadosPessoais data={data} setData={setData}/>
                         <Endereco title="Endereço do Produtor" endereco={enderecoProdutor} setEndereco={setEnderecoProdutor}/>
-                        <Contato data={data} setData={setData} errors={errors}/>
+                        <Contato data={data} setData={setData}/>
                         <DadosAcesso data={data} setData={setData}/>
 
                         <Paper sx={{padding: 2}}>
@@ -113,7 +84,7 @@ const Page = () => {
                                     <Button
                                         color="warning"
                                         endIcon={<IconArrowRight/>}
-                                        onClick={handleStepForward}
+                                        type="submit"
                                     >
                                         Avançar
                                     </Button>
@@ -142,8 +113,8 @@ const Page = () => {
                                 <Grid>
                                     <Button
                                         color="warning"
+                                        type="submit"
                                         endIcon={<IconArrowRight/>}
-                                        onClick={handleStepForward}
                                     >
                                         Avançar
                                     </Button>

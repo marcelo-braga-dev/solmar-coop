@@ -11,12 +11,13 @@ import Box from "@mui/material/Box";
 const Layout = ({titlePage, menu, subMenu, backPage, children}) => {
 
     const alert = usePage().props.alert
+    const errors = usePage().props.errors
 
     useActiveMenu(titlePage, menu, subMenu)
 
     return (
         <MenuProvider menu={menu} subMenu={subMenu}>
-            <SnackbarProvider initialAlert={alert}>
+            <SnackbarProvider initialAlert={alert} errors={errors}>
                 <Head title={titlePage ?? ''}/>
                 <Navbar titlePage={titlePage ?? ''} backPage={backPage}/>
                 <Box style={{display: 'flex', backgroundColor: '#f5f5f5'}}>

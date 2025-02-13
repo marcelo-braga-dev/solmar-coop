@@ -23,17 +23,38 @@ class ProdutorController extends Controller
 
     public function store(Request $request)
     {
+        $request->merge([
+            'cpf' => isset($request->cpf) ? preg_replace('/\D/', '', $request->cpf) : null,
+            'cnpj' => isset($request->cnpj) ? preg_replace('/\D/', '', $request->cnpj) : null,
+        ]);
+
+        try {
+            $request->validate([
+                'email' => 'required|email|unique:users,email',
+                'cpf' => 'nullable|unique:user_data,cpf',
+                'cnpj' => 'nullable|unique:user_data,cnpj',
+            ], [
+                'email.unique' => 'Este e-mail já está cadastrado.',
+                'cpf.unique' => 'Este CPF já está cadastrado.',
+                'cnpj.unique' => 'Este CNPJ já está cadastrado.'
+            ]);
+
+        } catch (\Illuminate\Validation\ValidationException $exception) {
+            AlertMessage::error($exception->getMessage());
+            return redirect()->back();
+        }
+
         try {
             $userId = (new ProdutorRepository())->create($request);
 
             AlertMessage::success('Cadastrado com sucesso!');
-
             return redirect()->route('admin.produtor.show', [$userId, 'tab' => 'propostas']);
         } catch (\Exception $exception) {
             AlertMessage::error($exception->getMessage());
             return redirect()->back();
         }
     }
+
 
     public function show($id, Request $request)
     {
