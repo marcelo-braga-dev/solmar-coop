@@ -20,6 +20,6 @@ class AnalizarDocumentosController extends Controller
     {
         (new User())->find($id)->update(['status' => 'documentacao-aprovada']);
 
-        return redirect()->route('admin.produtor.index');
+        return redirect()->route('auth.produtor.index');
     }
 }

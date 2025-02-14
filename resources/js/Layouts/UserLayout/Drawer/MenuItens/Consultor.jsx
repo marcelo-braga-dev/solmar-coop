@@ -14,8 +14,8 @@ export const consultorMenu = [
         icon: <IconUserBolt/>,
         id: 'produtores-solar',
         subItems: [
-            {id: 'produtores-solar-cadastrados', title: 'Produtores Cadastrados', link: route('admin.produtor.index')},
-            {id: 'produtores-solar-cadastrados-2', title: 'Cadastrar Produtor', link: route('admin.produtor.create')},
+            {id: 'produtores-solar-cadastrados', title: 'Produtores Cadastrados', link: route('auth.produtor.index')},
+            {id: 'produtores-solar-cadastrados-2', title: 'Cadastrar Produtor', link: route('auth.produtor.create')},
         ],
     }, {
         title: 'Cliente Consumidor',

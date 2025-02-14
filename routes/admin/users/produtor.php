@@ -1,14 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\Usuarios\Produtor\CadastradosProdutorApiController;
-use App\Http\Controllers\Admin\Usuarios\Produtor\ProdutorController;
 use App\Http\Controllers\Admin\Usuarios\Produtor\Status\AnalizarDocumentosController;
 use App\Http\Controllers\Admin\Usuarios\Produtor\Status\UpdateStatusController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('admin.')
     ->group(function () {
-        Route::resource('produtor', ProdutorController::class);
 
         Route::name('produtor.status.')
             ->prefix('produtor-status')

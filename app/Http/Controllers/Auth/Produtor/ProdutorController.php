@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Usuarios\Produtor;
+namespace App\Http\Controllers\Auth\Produtor;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Produtor\ProdutorRepository;
 use App\Utils\AlertMessage;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 
 class ProdutorController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Admin/User/Produtor/Index/Page');
+        return Inertia::render('Auth/Produtor/Index/Page');
     }
 
     public function create()
     {
-        return Inertia::render('Admin/User/Produtor/Create/Page');
+        return Inertia::render('Auth/Produtor/Create/Page');
     }
 
     public function store(Request $request)
@@ -48,13 +47,12 @@ class ProdutorController extends Controller
             $userId = (new ProdutorRepository())->create($request);
 
             AlertMessage::success('Cadastrado com sucesso!');
-            return redirect()->route('admin.produtor.show', [$userId, 'tab' => 'propostas']);
+            return redirect()->route('auth.produtor.show', [$userId, 'tab' => 'propostas']);
         } catch (\Exception $exception) {
             AlertMessage::error($exception->getMessage());
             return redirect()->back();
         }
     }
-
 
     public function show($id, Request $request)
     {
@@ -62,6 +60,6 @@ class ProdutorController extends Controller
 
         $usuario = (new ProdutorRepository())->findAllData($id);
 
-        return Inertia::render('Admin/User/Produtor/Show/Page', compact('usuario', 'tab'));
+        return Inertia::render('Auth/Produtor/Show/Page', compact('usuario', 'tab'));
     }
 }
