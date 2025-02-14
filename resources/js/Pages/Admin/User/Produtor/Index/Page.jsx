@@ -23,7 +23,7 @@ const Page = () => {
         <Layout titlePage="Produtores Solar" menu="produtores-solar" subMenu="produtores-solar-cadastrados">
             <Grid container marginBottom={3} justifyContent="space-between">
                 <Grid size={12}>
-                    <Link href={route('admin.produtor.create')}>
+                    <Link href={route('auth.produtor.create')}>
                         <Button startIcon={<IconPlus/>} color="success">Cadastrar Produtor</Button>
                     </Link>
                 </Grid>

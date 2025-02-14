@@ -42,7 +42,7 @@ const Page = () => {
         e.preventDefault();
 
         if (step === 2) {
-            router.post(route('admin.produtor.store'), {
+            router.post(route('auth.produtor.store'), {
                 ...data,
                 usina_endereco: enderecoUsina,
                 endereco: enderecoProdutor,
