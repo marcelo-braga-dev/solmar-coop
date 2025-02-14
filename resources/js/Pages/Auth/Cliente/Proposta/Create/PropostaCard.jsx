@@ -1,8 +1,9 @@
-import {Card, CardContent, CardHeader, InputAdornment, TextField} from "@mui/material";
+import {Card, CardContent, CardHeader} from "@mui/material";
 import {IconFileInvoice} from "@tabler/icons-react";
 import Grid from "@mui/material/Grid2";
+import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 
-const PropostaCard = ({data, setData}) => {
+const PropostaCard = () => {
 
     return (
         <Card sx={{marginBottom: 4}}>
@@ -10,23 +11,7 @@ const PropostaCard = ({data, setData}) => {
             <CardContent>
                 <Grid container spacing={3}>
                     <Grid size={{xs: 12, md: 3}}>
-                        <TextField
-                            label="Taxa Redução da Conta"
-                            type="number"
-                            value={data?.usina?.concessionaria_id}
-                            onChange={e => setData('taxa_reducao', e.target.value)}
-                            slotProps={{
-                                input: {
-                                    endAdornment: <InputAdornment position="center">%</InputAdornment>,
-                                },
-                                htmlInput: {
-                                    step: 0.01,
-                                    min: 0
-                                }
-                            }}
-                            fullWidth
-                            required
-                        />
+                        <TextInfo title="Taxa Redução da Conta de Energia" text="20%"/>
                     </Grid>
                 </Grid>
             </CardContent>

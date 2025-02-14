@@ -21,7 +21,7 @@ class ClientePropostaAddress extends Model
         'longitude',
     ];
 
-    protected $appends = ['endereco_completo'];
+    protected $appends = ['cidade_estado','endereco_completo'];
 
     // ==== Setters ====
     public function setCepAttribute($value)
@@ -41,5 +41,10 @@ class ClientePropostaAddress extends Model
             trim(
                 (isset($this->attributes['cep']) ? '' . FormatValues::formatCep($this->attributes['cep']) : ''))
         ]));
+    }
+
+    public function getCidadeEstadoAttribute()
+    {
+        return ($this->attributes['cidade'] ?: '-') . '/' . ($this->attributes['estado'] ?: '-');
     }
 }

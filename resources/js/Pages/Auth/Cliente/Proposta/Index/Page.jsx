@@ -59,7 +59,7 @@ const Page = () => {
                                         <Grid size={{xs: 12, md: 6}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Localização:</Typography>
-                                                <Typography>{item.cliente.user_data.endereco.cidade_estado}</Typography>
+                                                <Typography>{item?.endereco?.cidade_estado}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>
@@ -83,8 +83,14 @@ const Page = () => {
 
                                     <Divider sx={{marginBlock: 1}}/>
 
-                                    <Grid container justifyContent="end">
-                                        <Grid size={{xs: 'auto'}}>
+                                    <Grid container justifyContent="space-between">
+                                        <Grid size={{xs: 12, md: 'auto'}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold" variant="body2">Id da proposta:</Typography>
+                                                <Typography variant="body2">#{item.id}</Typography>
+                                            </Stack>
+                                        </Grid>
+                                        <Grid size={{xs: 12, md: 'auto'}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold" variant="body2">Criado em:</Typography>
                                                 <Typography variant="body2">{item.criado_em}</Typography>

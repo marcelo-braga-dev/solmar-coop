@@ -14,7 +14,7 @@ class ClientePropostaRepository
             $proposta = ClienteProposta::create([
                 'user_id' => $data->cliente_id,
                 'concessionaria_id' => $data?->concessionaria_id,
-                'taxa_reducao' => $data?->taxa_reducao,
+                'taxa_reducao' => 20,
                 'media_consumo' => $data?->dados['media_consumo'],
                 'prazo_locacao' => $data?->dados['prazo_locacao']
             ]);
@@ -27,9 +27,7 @@ class ClientePropostaRepository
                 'bairro' => $data?->endereco['bairro'] ?? null,
                 'cidade' => $data?->endereco['cidade'] ?? null,
                 'estado' => $data?->endereco['estado'] ?? null,
-                'referencia' => $data?->endereco['referencia'] ?? null,
-//                'latitude' => $data?->endereco[''],
-//                'longitude' => $data?->endereco[''],
+                'referencia' => $data?->endereco['referencia'] ?? null
             ]);
         });
     }
