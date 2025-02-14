@@ -42,7 +42,7 @@ const KanbanCardContent = ({card}) => {
                     </Stack>
                 </Grid>
                 <Grid size={1}>
-                    <IconButton component={Link} href={route('admin.produtor.show', card.proprietario.id)}>
+                    <IconButton component={Link} href={route('auth.produtor.show', card.proprietario.id)}>
                         <IconEye/>
                     </IconButton>
                 </Grid>

@@ -36,7 +36,7 @@ const Page = () => {
             {produtores.map(item => (
                 <Card key={item.id} sx={{marginBottom: 3}}>
                     <CardContent>
-                        <Link href={route('admin.produtor.show', item.id)}>
+                        <Link href={route('auth.produtor.show', item.id)}>
                             <Grid container justifyContent="space-between">
                                 <Grid size={{xs: 10, md: 11}}>
                                     <Stack spacing={2}>

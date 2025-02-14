@@ -12,6 +12,14 @@ import {
 
 export const adminMenu = [
     {
+        title: 'Cliente Consumidor',
+        icon: <IconUsers/>,
+        id: 'clientes',
+        subItems: [
+            {id: 'clientes-cadastrados', title: 'Clientes Cadastrados', link: route('auth.cliente.index')},
+            {id: 'clientes-propostas', title: 'Propostas Cliente', link: route('auth.cliente.proposta.index')},
+        ],
+    }, {
         title: 'Produtores Solar',
         icon: <IconUserBolt/>,
         id: 'produtores-solar',
@@ -20,12 +28,12 @@ export const adminMenu = [
             {id: 'produtores-solar-cadastrados-2', title: 'Cadastrar Produtor', link: route('auth.produtor.create')},
         ],
     }, {
-        title: 'Cliente Consumidor',
-        icon: <IconUsers/>,
-        id: 'clientes',
+        title: 'Usinas Solar',
+        icon: <IconSolarPanel2/>,
+        id: 'usinas',
         subItems: [
-            {id: 'clientes-cadastrados', title: 'Clientes Cadastrados', link: route('auth.cliente.index')},
-            {id: 'clientes-propostas', title: 'Propostas Cliente', link: route('auth.cliente.proposta.index')},
+            {id: 'produtores-kanban', title: 'Quadro de Status', link: route('auth.produtor.kanban.index')},
+            {id: 'usinas-cadastrados', title: 'Todas Usinas', link: route('auth.usinas.index')},
         ],
     }, {
         title: 'Consultores',
@@ -42,14 +50,6 @@ export const adminMenu = [
         subItems: [
             {id: 'admin-cadastrados', title: 'Admins Cadastrados', link: route('admin.user.admin.index')},
             {id: 'admin-cadastrar', title: 'Cadastrar Admins', link: route('admin.user.admin.create')},
-        ],
-    }, {
-        title: 'Usinas Solar',
-        icon: <IconSolarPanel2/>,
-        id: 'usinas',
-        subItems: [
-            {id: 'produtores-kanban', title: 'Quadro de Status', link: route('auth.produtor.kanban.index')},
-            {id: 'usinas-cadastrados', title: 'Todas Usinas', link: route('auth.usinas.index')},
         ],
     }, {
         title: 'Financeiro',
