@@ -56,7 +56,7 @@ const PropostaCliente = ({idProposta}) => {
             const url = URL.createObjectURL(blob);
 
             // Abrir o PDF em uma nova aba
-            // window.open(url, '_self');
+            window.open(url, '_self');
 
             // Ou baixar automaticamente
             const a = document.createElement('a');
