@@ -55,19 +55,21 @@ const PropostaCliente = ({idProposta}) => {
             const blob = await response.blob();
             const url = URL.createObjectURL(blob);
 
-            // Abrir o PDF em uma nova aba
-            window.open(url, '_self');
+            // Abre o PDF corretamente no WebView
+            // window.location.href = url;
 
-            // Ou baixar automaticamente
+            // Ou força o download no WebView
             const a = document.createElement('a');
             a.href = url;
             a.download = 'proposta_comercial.pdf';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
+
         } catch (error) {
             console.error('Erro ao gerar o PDF:', error);
         }
+
     };
 
     return (
