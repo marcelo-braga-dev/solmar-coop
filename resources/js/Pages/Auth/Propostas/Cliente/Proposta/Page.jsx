@@ -8,7 +8,6 @@ import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 const PropostaCliente = ({idProposta}) => {
     const [layout, setLayout] = useState([])
     const [dados, setDados] = useState([])
-    const [urlPdf, setUrlPdf] = useState('vazio')
     const proposalRef = useRef(null);
 
     useEffect(() => {
@@ -28,26 +27,17 @@ const PropostaCliente = ({idProposta}) => {
 
     const generatePdf = async () => {
         const htmlContent = proposalRef.current.innerHTML;
+        try {
+            const response = await axios.post(route('auth.propostas.pdf.cliente.gerar-pdf'), {html: htmlContent})
 
-        axios.post(route('auth.propostas.pdf.cliente.gerar-pdf'), {html: htmlContent}, {
-            // responseType: 'blob'
-        })
-            .then(response => {
-                const url = response.data.urlPdf
-                console.log('RESPOSTA: ', response.data.urlPdf)
-                setUrlPdf(response.data.urlPdf);
-
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', 'proposta_comercial.pdf');
-                document.body.appendChild(link);
-                link.click();
-            })
-            .catch(error => {
-                console.error('Erro ao gerar o PDF:', error);
-            });
-        return;
-
+            const url = response.data.urlPdf
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'proposta_comercial.pdf');
+            document.body.appendChild(link);
+            link.click();
+        } finally {
+        }
     };
 
     return (
@@ -68,8 +58,7 @@ const PropostaCliente = ({idProposta}) => {
                             <TextInfo title="Concessionária" text={`${dados?.concessionaria?.nome}/${dados?.concessionaria?.estado}`}/>}
                     </Grid>
                     <Grid size={{xs: 6}}>
-                        <Button color="warning" onClick={generatePdf} startIcon={<IconDownload/>}>Gerar PDF</Button>
-                        {urlPdf && <Button color="error" href={urlPdf} startIcon={<IconDownload/>}>XX</Button>}
+                        <Button color="error" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF</Button>
                     </Grid>
                 </Grid>
             </Paper>
