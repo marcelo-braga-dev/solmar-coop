@@ -88,7 +88,7 @@ const PropostaCliente = ({idProposta}) => {
                             <TextInfo title="Concessionária" text={`${dados?.concessionaria?.nome}/${dados?.concessionaria?.estado}`}/>}
                     </Grid>
                     <Grid size={{xs: 6}}>
-                        <Button color="error" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF</Button>
+                        <Button color="error" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF da Proposta</Button>
                     </Grid>
                 </Grid>
             </Paper>
