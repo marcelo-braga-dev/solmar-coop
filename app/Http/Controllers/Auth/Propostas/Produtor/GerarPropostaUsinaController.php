@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth\Propostas\Produtor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class GerarPropostaUsinaController extends Controller
 {
@@ -68,15 +70,35 @@ class GerarPropostaUsinaController extends Controller
             ->setOption('margin-top', '0mm')
             ->setOption('margin-bottom', '0mm');
 
-        // Retorna o PDF gerado
-//        return $pdf->download('proposta_comercial_' . uniqid() . '.pdf');
-        // Obtém o conteúdo do PDF como string (binário)
-        $pdfContent = $pdf->output();
 
-        // Retorna o PDF como um BLOB na resposta
-        return response($pdfContent)
-            ->header('Content-Type', 'application/pdf')
-            ->header('Content-Disposition', 'inline; filename="proposta_comercial_' . uniqid() . '.pdf"');
+        // Nome do arquivo com identificador único
+        $fileName = 'proposta_' . Str::random(10) . '.pdf';
+        $filePath = "public/pdfs/$fileName"; // Caminho no armazenamento
+
+
+
+        Storage::put($filePath, $pdf->output());
+
+        // URL pública do PDF
+        $pdfUrl = Storage::url($filePath);
+
+        return response()->json(['urlPdf' => url($pdfUrl)]);
+
+//        // Retorna o PDF gerado
+////        return $pdf->download('proposta_comercial_' . uniqid() . '.pdf');
+//        // Obtém o conteúdo do PDF como string (binário)
+//        $pdfContent = $pdf->output();
+//
+//        // Retorna o PDF como um BLOB na resposta
+//        return response($pdfContent)
+//            ->header('Content-Type', 'application/pdf')
+//            ->header('Content-Disposition', 'inline; filename="proposta_comercial_' . uniqid() . '.pdf"');
+
+
+
+
+
+
     }
 
 

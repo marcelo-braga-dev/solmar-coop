@@ -8,6 +8,7 @@ import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 const PropostaCliente = ({idProposta}) => {
     const [layout, setLayout] = useState([])
     const [dados, setDados] = useState([])
+    const [urlPdf, setUrlPdf] = useState('vazio')
     const proposalRef = useRef(null);
 
     useEffect(() => {
@@ -27,6 +28,26 @@ const PropostaCliente = ({idProposta}) => {
 
     const generatePdf = async () => {
         const htmlContent = proposalRef.current.innerHTML;
+
+        axios.post(route('auth.propostas.pdf.cliente.gerar-pdf'), {html: htmlContent}, {
+            // responseType: 'blob'
+        })
+            .then(response => {
+                console.log('RESPOSTA: ', response.data.urlPdf)
+                setUrlPdf(response.data.urlPdf);
+                // const url = window.URL.createObjectURL(new Blob([response.data]));
+                // const link = document.createElement('a');
+                // link.href = url;
+                // link.setAttribute('download', 'proposta_comercial.pdf');
+                // document.body.appendChild(link);
+                // link.click();
+            })
+            .catch(error => {
+                console.error('Erro ao gerar o PDF:', error);
+            });
+
+
+        return;
         //
         // axios.post(route('auth.propostas.pdf.cliente.gerar-pdf'), {html: htmlContent}, {
         //     responseType: 'blob'
@@ -43,32 +64,32 @@ const PropostaCliente = ({idProposta}) => {
         //         console.error('Erro ao gerar o PDF:', error);
         //     });
 
-        try {
-            const response = await fetch(route('auth.propostas.pdf.cliente.gerar-pdf'), {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ html: '<h1>Texto no PDF</h1>' }),
-            });
-
-            const blob = await response.blob();
-            const url = URL.createObjectURL(blob);
-
-            // Abre o PDF corretamente no WebView
-            // window.location.href = url;
-
-            // Ou força o download no WebView
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'proposta_comercial.pdf';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-
-        } catch (error) {
-            console.error('Erro ao gerar o PDF:', error);
-        }
+        // try {
+        //     const response = await fetch(route('auth.propostas.pdf.cliente.gerar-pdf'), {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({ html: '<h1>Texto no PDF</h1>' }),
+        //     });
+        //
+        //     const blob = await response.blob();
+        //     const url = URL.createObjectURL(blob);
+        //
+        //     // Abre o PDF corretamente no WebView
+        //     // window.location.href = url;
+        //     setUrlPdf(url);
+        //     // Ou força o download no WebView
+        //     const a = document.createElement('a');
+        //     a.href = url;
+        //     a.download = 'proposta_comercial.pdf';
+        //     document.body.appendChild(a);
+        //     a.click();
+        //     document.body.removeChild(a);
+        //
+        // } catch (error) {
+        //     console.error('Erro ao gerar o PDF:', error);
+        // }
 
     };
 
@@ -90,7 +111,9 @@ const PropostaCliente = ({idProposta}) => {
                             <TextInfo title="Concessionária" text={`${dados?.concessionaria?.nome}/${dados?.concessionaria?.estado}`}/>}
                     </Grid>
                     <Grid size={{xs: 6}}>
+                        {urlPdf}
                         <Button color="error" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF da Proposta</Button>
+                        <Button color="error" href={urlPdf} startIcon={<IconDownload/>}>XX</Button>
                     </Grid>
                 </Grid>
             </Paper>
