@@ -56,7 +56,7 @@ const PropostaCliente = ({idProposta}) => {
             const url = URL.createObjectURL(blob);
 
             // Abre o PDF corretamente no WebView
-            window.location.href = url;
+            // window.location.href = url;
 
             // Ou força o download no WebView
             const a = document.createElement('a');
