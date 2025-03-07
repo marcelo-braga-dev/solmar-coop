@@ -73,14 +73,14 @@ class GerarPropostaUsinaController extends Controller
 
         // Nome do arquivo com identificador único
         $fileName = 'proposta_' . Str::random(10) . '.pdf';
-        $filePath = "public/pdfs/$fileName"; // Caminho no armazenamento
+        $filePath = "pdfs/$fileName"; // Caminho no armazenamento
 
 
 
-        Storage::put($filePath, $pdf->output());
+        Storage::disk('public')->put($filePath, $pdf->output());
 
         // URL pública do PDF
-        $pdfUrl = Storage::url($filePath);
+        $pdfUrl = asset("storage/$filePath");
 
         return response()->json(['urlPdf' => url($pdfUrl)]);
 
