@@ -69,7 +69,14 @@ class GerarPropostaUsinaController extends Controller
             ->setOption('margin-bottom', '0mm');
 
         // Retorna o PDF gerado
-        return $pdf->inline('proposta_comercial_' . uniqid() . '.pdf');
+//        return $pdf->download('proposta_comercial_' . uniqid() . '.pdf');
+        // Obtém o conteúdo do PDF como string (binário)
+        $pdfContent = $pdf->output();
+
+        // Retorna o PDF como um BLOB na resposta
+        return response($pdfContent)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'inline; filename="proposta_comercial_' . uniqid() . '.pdf"');
     }
 
 
