@@ -73,9 +73,7 @@ class GerarPropostaUsinaController extends Controller
 
         // Nome do arquivo com identificador único
         $fileName = 'proposta_' . Str::random(10) . '.pdf';
-        $filePath = "pdfs/$fileName"; // Caminho no armazenamento
-
-
+        $filePath = "pdfs/propostas/$fileName"; // Caminho no armazenamento
 
         Storage::disk('public')->put($filePath, $pdf->output());
 
@@ -83,22 +81,6 @@ class GerarPropostaUsinaController extends Controller
         $pdfUrl = asset("storage/$filePath");
 
         return response()->json(['urlPdf' => url($pdfUrl)]);
-
-//        // Retorna o PDF gerado
-////        return $pdf->download('proposta_comercial_' . uniqid() . '.pdf');
-//        // Obtém o conteúdo do PDF como string (binário)
-//        $pdfContent = $pdf->output();
-//
-//        // Retorna o PDF como um BLOB na resposta
-//        return response($pdfContent)
-//            ->header('Content-Type', 'application/pdf')
-//            ->header('Content-Disposition', 'inline; filename="proposta_comercial_' . uniqid() . '.pdf"');
-
-
-
-
-
-
     }
 
 
