@@ -8,8 +8,8 @@
         "php": "^8.2",
         "barryvdh/laravel-dompdf": "^3.0",
         "barryvdh/laravel-snappy": "^1.0",
-        "inertiajs/inertia-laravel": "^1.0",
-        "laravel/framework": "^11.9",
+        "inertiajs/inertia-laravel": "^2.0",
+        "laravel/framework": "^12.9.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "tightenco/ziggy": "^2.0"
