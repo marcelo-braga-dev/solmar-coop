@@ -2,7 +2,7 @@ import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import Grid from "@mui/material/Grid2";
 import {Link} from "@inertiajs/react";
 import {Button, Card, CardContent, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
-import {IconEye, IconPlus} from "@tabler/icons-react";
+import {IconPlus} from "@tabler/icons-react";
 import React, {useEffect, useState} from "react";
 
 const Page = () => {
@@ -48,7 +48,7 @@ const Page = () => {
                     <Card sx={{marginBottom: 3}}>
                         <CardContent>
                             <Grid container justifyContent="space-between">
-                                <Grid size={11}>
+                                <Grid size={12}>
                                     <Stack marginBottom={1}>
                                         {item.user_data.nome && <Stack direction="row" spacing={2}>
                                             <Typography fontWeight="bold">Nome:</Typography>
@@ -101,9 +101,6 @@ const Page = () => {
                                             </Stack>
                                         </Grid>
                                     </Grid>
-                                </Grid>
-                                <Grid size="auto">
-                                    <IconEye/>
                                 </Grid>
                             </Grid>
                         </CardContent>

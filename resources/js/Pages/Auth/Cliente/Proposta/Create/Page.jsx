@@ -29,7 +29,7 @@ const Page = () => {
     }
 
     return (
-        <Layout titlePage="Criar Proposta - Cliente Consumidor" menu="clientes" subMenu="clientes-propostas" backPage>
+        <Layout titlePage="Gerar Proposta - Cliente Consumidor" menu="clientes" subMenu="clientes-propostas" backPage>
             <form onSubmit={submit}>
                 <Card sx={{marginBlockEnd: 4}}>
                     <CardHeader title="Informações do Cliente Consumidor"/>

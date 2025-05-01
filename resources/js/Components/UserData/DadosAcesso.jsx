@@ -30,7 +30,7 @@ const DadosAcesso = ({data, setData}) => {
                                     defaultChecked={!data.senha}
                                     onChange={e => setSenhaPorEmail(e.target.checked)}
                                 />}
-                                label="Enviar senha de acesso por email?"/>
+                                label="Enviar senha de acesso por email"/>
                         </FormGroup>
                     </Grid>
                     {!senhaPorEmail && <Grid size={{xs: 12, md: 6}}>

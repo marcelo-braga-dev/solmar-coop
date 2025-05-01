@@ -11,6 +11,7 @@ Route::middleware(['auth'])
         require __DIR__ . '/users/vendedor.php';
         require __DIR__ . '/financeiro.php';
         require __DIR__ . '/concessionaria.php';
+        require __DIR__ . '/config.php';
     });
 
 

@@ -2,7 +2,7 @@ import React from "react";
 import {
     IconBolt,
     IconBrandWhatsapp,
-    IconHeadset, IconReportMoney,
+    IconHeadset, IconReportMoney, IconSettings,
     IconSolarPanel2, IconUserBolt,
     IconUserCog,
     IconUserDollar,
@@ -101,7 +101,15 @@ export const adminMenu = [
         subItems: [
             {id: 'suporte-produtores', title: 'Suporte Geral', link: route('auth.suporte.produtor.index')},
         ],
-    }, {
+    },
+    {
+        title: 'Configurações',
+        icon: <IconSettings/>,
+        id: 'config',
+        subItems: [
+            {id: 'config-geral', title: 'Configurações Gerais', link: route('admin.config.geral.index')},
+        ],
+    },{
         title: 'Perfil',
         icon: <IconUserSquare/>,
         id: 'perfil',

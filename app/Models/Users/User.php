@@ -73,11 +73,6 @@ class User extends Authenticatable
         return $this->hasOne(UserContact::class, 'user_id', 'id');
     }
 
-    public function propostas(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(UsinaSolar::class, 'user_id', 'id');
-    }
-
     //--------------
     // getters
     //--------------

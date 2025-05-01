@@ -26,7 +26,7 @@ const Page = () => {
     }
 
     return (
-        <Layout titlePage="Cadastro de Cliente ConsumidorXX" menu="clientes" subMenu="clientes-cadastrados" backPage>
+        <Layout titlePage="Cadastro de Cliente Consumidor" menu="clientes" subMenu="clientes-cadastrados" backPage>
 
             <form onSubmit={submit}>
                 <Box>

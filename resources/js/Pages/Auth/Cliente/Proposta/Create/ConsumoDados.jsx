@@ -32,9 +32,11 @@ const ConsumoDados = ({data, setData}) => {
                             required
                             fullWidth
                         >
-                            <MenuItem value={60}>60 meses</MenuItem>
-                            <MenuItem value={120}>125 meses</MenuItem>
-                            <MenuItem value={240}>240 meses</MenuItem>
+                            <MenuItem value={12}>12 meses (1 ano)</MenuItem>
+                            <MenuItem value={24}>24 meses (2 anos)</MenuItem>
+                            <MenuItem value={36}>36 meses (3 anos)</MenuItem>
+                            <MenuItem value={48}>48 meses (4 anos)</MenuItem>
+                            <MenuItem value={60}>60 meses (5 anos)</MenuItem>
                         </TextField>
                     </Grid>
                 </Grid>

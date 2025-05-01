@@ -70,14 +70,14 @@ class ProdutorRepository
     public function findAllData($id)
     {
         return (new User)
-            ->with(['userData', 'usina', 'propostas', 'contatos'])
+            ->with(['userData', 'usina', 'contatos'])
             ->find($id);
     }
 
     public function find($id)
     {
         return (new User)
-            ->with(['userData', 'endereco', 'usina', 'propostas', 'contatos'])
+            ->with(['userData', 'endereco', 'usina', 'contatos'])
             ->find($id);
     }
 }

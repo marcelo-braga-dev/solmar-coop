@@ -172,6 +172,7 @@ const DadosPessoais = ({data, setData}) => {
                                 className="rg"
                                 value={data.rg}
                                 onChange={e => setData('rg', e.target.value)}
+                                onBlur={e => setData('rg', e.target.value)}
                                 fullWidth/>
                         </Grid>
                         <Grid size={{xs: 12, md: 4}}>

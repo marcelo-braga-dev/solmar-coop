@@ -1,9 +1,10 @@
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import Grid from "@mui/material/Grid2";
 import {Button, Card, CardContent, Divider, Stack, Typography} from "@mui/material";
-import {IconEye, IconPlus} from "@tabler/icons-react";
+import {IconPlus} from "@tabler/icons-react";
 import {Link} from "@inertiajs/react";
 import React, {useEffect, useState} from "react";
+import {convertMesesParaAnos} from "@/Utils/Datas/convertMesesParaAnos.js";
 
 const Page = () => {
     const [registros, setRegistros] = useState([])
@@ -21,7 +22,7 @@ const Page = () => {
         <Layout titlePage="Propostas - Cliente Consumidor" menu="clientes" subMenu="clientes-propostas">
             <Grid container sx={{marginBlockEnd: 4}}>
                 <Link href={route('auth.cliente.proposta.create')}>
-                    <Button color="success" startIcon={<IconPlus/>}>Criar Proposta</Button>
+                    <Button color="success" startIcon={<IconPlus/>}>Gerar Proposta</Button>
                 </Link>
             </Grid>
 
@@ -30,7 +31,7 @@ const Page = () => {
                     <Card sx={{marginBottom: 3}}>
                         <CardContent>
                             <Grid container justifyContent="space-between">
-                                <Grid size={11}>
+                                <Grid size={12}>
                                     <Stack marginBottom={1}>
                                         {item.cliente.user_data.nome && <Stack direction="row" spacing={2}>
                                             <Typography fontWeight="bold">Nome:</Typography>
@@ -75,8 +76,25 @@ const Page = () => {
                                         </Grid>
                                         <Grid size={{xs: 12, md: 6}}>
                                             <Stack direction="row" spacing={2}>
-                                                <Typography fontWeight="bold">Prazo locação:</Typography>
-                                                <Typography>{item.prazo_locacao} meses</Typography>
+                                                <Typography fontWeight="bold">Prazo Assinatura:</Typography>
+                                                <Typography>{item.prazo_locacao} meses ({convertMesesParaAnos(item.prazo_locacao)} anos)</Typography>
+                                            </Stack>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Divider sx={{marginBlock: 1}}/>
+
+                                    <Grid container>
+                                        <Grid size={{xs: 12, md: 6}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold">Taxa Redução da Conta:</Typography>
+                                                <Typography>{item.taxa_reducao}%</Typography>
+                                            </Stack>
+                                        </Grid>
+                                        <Grid size={{xs: 12, md: 6}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold">Concessionária:</Typography>
+                                                <Typography>{item.concessionaria.nome}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>
@@ -97,9 +115,6 @@ const Page = () => {
                                             </Stack>
                                         </Grid>
                                     </Grid>
-                                </Grid>
-                                <Grid size="auto">
-                                    <IconEye/>
                                 </Grid>
                             </Grid>
                         </CardContent>

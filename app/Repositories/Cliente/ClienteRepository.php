@@ -3,7 +3,6 @@
 namespace App\Repositories\Cliente;
 
 use App\DTO\Usuario\CreateUsuarioDTO;
-use App\Models\Users\Cliente;
 use App\Models\Users\User;
 use App\Services\Users\CreateUserService;
 use App\src\Roles\RoleUser;
@@ -41,9 +40,18 @@ class ClienteRepository
 
     public function getAll()
     {
-        return (new Cliente())->getAll()
+        return User::where('role_id', RoleUser::$CLIENTE)
+            ->with('userData')
             ->orderByDesc('id')
             ->get();
+    }
+
+    public function getPaginate()
+    {
+        return User::where('role_id', RoleUser::$CLIENTE)
+            ->with('userData')
+            ->orderByDesc('id')
+            ->paginate();
     }
 
     public function findAllData($id)

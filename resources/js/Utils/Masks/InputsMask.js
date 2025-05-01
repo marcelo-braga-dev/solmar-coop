@@ -7,18 +7,18 @@ const useInputMask = () => {
         $('.time').find('input').mask('00:00:00');
         $('.date_time').find('input').mask('00/00/0000 00:00:00');
         $('.cep').find('input').mask('00000-000');
-        $('.phone').find('input').mask('+00 (00) 0000-0000');
-        $('.mobile').find('input').mask('+00 (00) 0 0000-0000');
+        $('.phone').find('input').mask('(00) 0000-0000');
+        $('.mobile').find('input').mask('(00) 0 0000-0000');
         $('.cpf').find('input').mask('000.000.000-00');
         $('.cnpj').find('input').mask('00.000.000/0000-00');
         $('.money').find('input').mask('000.000.000.000.000,00', {reverse: true});
-        $('.rg').find('input').mask('000.000.000-A', {
-            reverse: true,
-            translation: {
-                A: {pattern: /[A-Za-z0-9]/},
-
-            }
-        });
+        $('.rg').find('input').mask('000.000.000-X',
+            {
+                reverse: true,
+                translation: {
+                    X: {pattern: /[A-Za-z0-9]/},
+                }
+            });
     })
 }
 export default useInputMask

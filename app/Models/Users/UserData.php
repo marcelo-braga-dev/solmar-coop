@@ -53,6 +53,21 @@ class UserData extends Model
         return FormatValues::formatCpf($this->attributes['cpf']);
     }
 
+    public function getGeneroAttribute()
+    {
+        if ($this->attributes['genero'] == 'm') return 'Masculino';
+        return 'Feminino';
+    }
+
+    public function getDataNascimentoAttribute()
+    {
+        if ($this->attributes['data_nascimento']) {
+            $data = Carbon::parse($this->attributes['data_nascimento'] ?? null);
+            return $data->format('d/m/Y');
+        }
+        return null;
+    }
+
     //--------------
     // setters
     //--------------
