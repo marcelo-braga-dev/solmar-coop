@@ -1,5 +1,4 @@
 import {Stack, Typography} from "@mui/material";
-import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 
 const Historico = ({historico}) => {
     return (

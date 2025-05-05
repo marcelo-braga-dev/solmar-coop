@@ -6,12 +6,11 @@ import {TabPanel, TabList, TabContext} from '@mui/lab';
 
 import {IconFileLike, IconFileTypePdf, IconHistory, IconKey, IconSolarPanel, IconUserBolt} from "@tabler/icons-react";
 
-import InfoUsuario from "./InfoUsuario.jsx";
 import Usina from "./Usina.jsx";
 import Contratos from "./Contratos.jsx";
-import Financeiro from "./Financeiro.jsx";
 import Historico from "./Historico.jsx";
-import InfoDadosAcesso from "@/Pages/Admin/User/Produtor/Show/InfoDadosAcesso.jsx";
+import InfoDadosAcesso from "./InfoDadosAcesso.jsx";
+import DataUser from "@/Components/DataUser/DataUser.jsx";
 
 const Page = ({usuario, tab}) => {
 
@@ -34,25 +33,21 @@ const Page = ({usuario, tab}) => {
                                 <Tab label="Usinas Solar" value="usinas" icon={<IconSolarPanel size={20}/>} iconPosition="start"/>
                                 <Tab label="Propostas Comerciais" value="propostas" icon={<IconFileLike size={20}/>} iconPosition="start"/>
                                 <Tab label="Contratos" value="contratos" icon={<IconFileTypePdf size={20}/>} iconPosition="start"/>
-                                <Tab label="Financeiro" value="financeiro" icon={<IconFileTypePdf size={20}/>} iconPosition="start"/>
                                 <Tab label="Histórico" value="historico" icon={<IconHistory size={20}/>} iconPosition="start"/>
-                                <Tab label="Dadosd de Acesso" value="acesso" icon={<IconKey size={20}/>} iconPosition="start"/>
+                                <Tab label="Dados de Acesso" value="acesso" icon={<IconKey size={20}/>} iconPosition="start"/>
                             </TabList>
                         </Box>
                         <TabPanel value="info">
-                            <InfoUsuario status={usuario.status_nome} usuario={usuario.user_data} contatos={usuario.contatos}/>
+                            <DataUser dataUser={usuario}/>
                         </TabPanel>
                         <TabPanel value="usinas">
-                            <Usina usina={usuario.propostas}/>
+                            <Usina/>
                         </TabPanel>
                         <TabPanel value="propostas">
                             <Button>Gerar Proposta</Button>
                         </TabPanel>
                         <TabPanel value="contratos">
                             <Contratos contratos={usuario.contratos} contratado={usuario.user_data}/>
-                        </TabPanel>
-                        <TabPanel value="financeiro">
-                            <Financeiro financeiro={usuario.financeiro}/>
                         </TabPanel>
                         <TabPanel value="historico">
                             <Historico historico={usuario.historico}/>

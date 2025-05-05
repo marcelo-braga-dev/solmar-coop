@@ -1,5 +1,5 @@
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
-import PropostaCliente from "@/Pages/Auth/Propostas/Cliente/Proposta/Page.jsx";
+import PropostaCliente from "./PropostaCliente.jsx";
 
 const Page = ({idProposta}) => {
     return (

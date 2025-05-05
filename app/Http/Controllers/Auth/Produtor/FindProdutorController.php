@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth\Produtor;
 use App\Http\Controllers\Controller;
 use App\Repositories\Produtor\ProdutorRepository;
 
-class GetProdutorController extends Controller
+class FindProdutorController extends Controller
 {
    public function __invoke($id)
    {

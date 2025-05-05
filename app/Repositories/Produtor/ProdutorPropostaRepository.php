@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Repositories\Produtor;
+
+use App\Models\Produtor\ProdutorPropostas;
+
+class ProdutorPropostaRepository
+{
+    public function get()
+    {
+        return (new ProdutorPropostas)
+            ->orderByDesc('id')
+            ->get();
+    }
+
+    public function store($data)
+    {
+        $proposta = (new ProdutorPropostas())->create([
+            'produtor_id' => $data->produtor_id,
+            'consultor_id' => auth()->id(),
+            'concessionaria_id' => $data->concessionaria_id,
+            'potencia' => $data->potencia,
+//            'potencia_ac' => $data->,
+            'geracao' => $data->geracao,
+            'valor' => $data->valor,
+        ]);
+
+        $proposta->endereco()->create($data['endereco'] ?? []);
+    }
+}

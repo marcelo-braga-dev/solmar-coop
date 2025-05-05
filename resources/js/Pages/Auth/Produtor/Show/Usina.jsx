@@ -1,21 +1,56 @@
-import {Paper, Stack, Typography} from "@mui/material";
+import {Paper, Stack} from "@mui/material";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
+import Grid from "@mui/material/Grid2";
+import {convertMesesParaAnos} from "@/Utils/Datas/convertMesesParaAnos.js";
+import {formatarEndereco} from "@/Utils/Datas/formatarEndereco.js";
+import {useEffect, useState} from "react";
 
-const Usina = ({usina}) => {
+const Usina = () => {
+    const [usinas, setUsinas] = useState([])
+
+    useEffect(() => {
+        getUsinasProdutor()
+    }, []);
+    const getUsinasProdutor = async () => {
+        const response = await axios.get(route('auth.usinas.api.get-produtor', 80))
+        setUsinas(response.data)
+    }
+
     return (
         <Paper variant="outlined">
             <Stack spacing={2}>
-                {!usina && <Typography>Não há registros de usinas solar.</Typography>}
-                {usina?.media_geracao && <TextInfo title="Média Geração" text={`${usina.media_geracao} kWh/mes`}/>}
-                {usina?.prazo_locacao && <TextInfo title="Prazo Locação" text={`${usina.prazo_locacao} dias`}/>}
-                {usina?.potencia_usina && <TextInfo title="Potência Total da Usina" text={`${usina.potencia_usina} kWp`}/>}
-                {usina?.inversores && <TextInfo title="Inversores" text={usina.inversores}/>}
-                {usina?.modulos && <TextInfo title="Módulos" text={usina.modulos}/>}
-                {usina?.concessionaria_id && <TextInfo title="Concessionária" text={`${usina.concessionaria.nome}/${usina.concessionaria.estado}`}/>}
-                {usina?.endereco?.endereco_completo && <TextInfo title="Endereço da Usina" text={usina?.endereco?.endereco_completo}/>}
+                {usinas.map(usina => {
+                    return (
+                        <Grid container>
+                            <Grid size={{xs: 12, md: 6}}>
+                                <TextInfo title="Prazo de Locação"
+                                          text={`${usina?.prazo_locacao} meses (${convertMesesParaAnos(usina?.prazo_locacao)} anos)`}/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 6}}>
+                                <TextInfo title="Potência Total da Usina" text={`${usina?.potencia_usina} kWp`}/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 6}}>
+                                <TextInfo title="Média de Geração" text={`${usina?.media_geracao} kWh/mês`}/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 6}}>
+                                <TextInfo title="Unidade Consumidora" text={usina?.uc}/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 6}}>
+                                <TextInfo title="Concessionária" text={usina?.concessionaria?.nome}/>
+                            </Grid>
+                            <TextInfo title="Endereço da Usina" text={formatarEndereco(usina?.endereco)}/>
+
+                            <Grid size={{xs: 12, md: 6}}>
+                                <TextInfo title="Informaçõe sobre os Inversores" text={usina?.inversores}/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 6}}>
+                                <TextInfo title="Informaçõe sobre os Módulos" text={usina?.modulos}/>
+                            </Grid>
+                        </Grid>
+                    )
+                })}
             </Stack>
         </Paper>
-
     )
 }
 export default Usina

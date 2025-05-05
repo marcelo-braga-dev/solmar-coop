@@ -7,7 +7,7 @@ const InfoDadosAcesso = ({dados}) => {
         <Grid container>
             <Grid>
                 <TextInfo title="Email" text={dados.email}/>
-                <TextInfo title="Status" text={dados.status}/>
+                <TextInfo title="Status" text={dados.status_nome}/>
             </Grid>
         </Grid>
     )

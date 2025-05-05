@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\Usuarios\Produtor\CadastradosProdutorApiController;
-use App\Http\Controllers\Auth\Produtor\GetProdutorController;
+use App\Http\Controllers\Admin\Usuarios\Produtor\GetProdutorApiController;
+use App\Http\Controllers\Auth\Produtor\FindProdutorController;
 use App\Http\Controllers\Auth\Produtor\ProdutorController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +13,7 @@ Route::name('auth.')
         Route::name('produtor.api.')
             ->prefix('produtor-api')
             ->group(function () {
-                Route::get('cadastrados', CadastradosProdutorApiController::class)->name('get-all');
-                Route::get('get/{id}', GetProdutorController::class)->name('get');
+                Route::get('get-all', GetProdutorApiController::class)->name('get-all');
+                Route::get('get/{id}', FindProdutorController::class)->name('get');
             });
     });

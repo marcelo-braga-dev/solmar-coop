@@ -2,7 +2,7 @@ import {Button, Divider, Paper} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import {IconDownload} from "@tabler/icons-react";
 import {useEffect, useRef, useState} from "react";
-import PropostaClientePage from "@/Pages/Auth/Propostas/Cliente/Proposta/PropostaClientePage.jsx";
+import PropostaClientePage from "./DadosProposta.jsx";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 
 const PropostaCliente = ({idProposta}) => {

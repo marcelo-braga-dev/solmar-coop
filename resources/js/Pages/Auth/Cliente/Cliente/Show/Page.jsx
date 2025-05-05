@@ -9,7 +9,7 @@ import {IconFileLike, IconFileTypePdf, IconHistory, IconKey, IconUserBolt} from 
 import InfoUsuario from "./InfoUsuario.jsx";
 import Contratos from "./Contratos.jsx";
 import Historico from "./Historico.jsx";
-import InfoDadosAcesso from "@/Pages/Admin/User/Produtor/Show/InfoDadosAcesso.jsx";
+import InfoDadosAcesso from "./InfoDadosAcesso.jsx";
 import ClientePropostas from "@/Pages/Auth/Cliente/Cliente/Show/ClientePropostas.jsx";
 
 const Page = ({usuario, tab}) => {

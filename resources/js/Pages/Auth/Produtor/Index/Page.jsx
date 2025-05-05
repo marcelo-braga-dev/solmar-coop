@@ -2,7 +2,7 @@ import {Link} from "@inertiajs/react";
 import {Button, Card, CardContent, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import Grid from "@mui/material/Grid2";
-import {IconEye, IconFileText, IconPlus, IconUserSearch} from "@tabler/icons-react";
+import {IconFileText, IconPlus, IconUserSearch} from "@tabler/icons-react";
 import React, {useEffect, useState} from "react";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 
@@ -39,7 +39,7 @@ const Page = () => {
                     <CardContent>
                         <Link href={route('auth.produtor.show', item.id)}>
                             <Grid container justifyContent="space-between">
-                                <Grid size={{xs: 10, md: 11}}>
+                                <Grid size={{xs: 12}}>
                                     <Stack spacing={2}>
                                         <Grid container>
                                             <Grid size={{xs: 12, md: 6}}>
@@ -59,9 +59,6 @@ const Page = () => {
                                             </Grid>
                                         </Grid>
                                     </Stack>
-                                </Grid>
-                                <Grid size={{xs: 2, md: 1}} justifyContent="end" display="flex">
-                                    <IconEye/>
                                 </Grid>
                             </Grid>
                         </Link>

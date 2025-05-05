@@ -4,7 +4,7 @@ namespace App\Utils;
 
 class ConvertValues
 {
-    public static function convertMoneyToFloat(?string $valor): float
+    public static function moneyToFloat(?string $valor): float
     {
         if (is_null($valor) || $valor === '') {
             return 0;
@@ -19,5 +19,10 @@ class ConvertValues
         $valorLimpo = str_replace(',', '.', $valorLimpo);
 
         return is_numeric($valorLimpo) ? (float)$valorLimpo : 0.0;
+    }
+
+    public static function floatToMoney(?float $valor): string
+    {
+        return number_format($valor, 2, ',', '.');
     }
 }

@@ -25,7 +25,7 @@ export const adminMenu = [
         id: 'produtores-solar',
         subItems: [
             {id: 'produtores-solar-cadastrados', title: 'Produtores Cadastrados', link: route('auth.produtor.index')},
-            {id: 'produtores-solar-cadastrados-2', title: 'Cadastrar Produtor', link: route('auth.produtor.create')},
+            {id: 'produtores-propostas', title: 'Propostas Produtor', link: route('auth.produtor.proposta.index')},
         ],
     }, {
         title: 'Usinas Solar',

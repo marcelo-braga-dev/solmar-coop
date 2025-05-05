@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Usuarios\Produtor;
 use App\Http\Controllers\Controller;
 use App\Repositories\Produtor\ProdutorRepository;
 
-class CadastradosProdutorApiController extends Controller
+class GetProdutorApiController extends Controller
 {
     public function __invoke()
     {

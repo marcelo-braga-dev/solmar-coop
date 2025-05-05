@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {Dialog, DialogContent} from "@mui/material";
 import {useKanbanProdutor} from "@/Pages/Auth/Produtor/Kanban/ContextKanban.jsx";
-import Contratos from "@/Pages/Admin/User/Produtor/Show/Contratos.jsx";
+// import Contratos from "@/Pages/Admin/User/Produtor/Show/Contratos.jsx";
 
 const AnalisarDocumentosDialog = () => {
     const {openDialog, closeDialog, usinaId, status} = useKanbanProdutor();
@@ -38,7 +38,7 @@ const AnalisarDocumentosDialog = () => {
             fullWidth
         >
             <DialogContent>
-                <Contratos/>
+                {/*<Contratos/>*/}
             </DialogContent>
         </Dialog>
     );

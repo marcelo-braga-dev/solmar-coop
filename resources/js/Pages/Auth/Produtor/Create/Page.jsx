@@ -7,13 +7,13 @@ import DadosPessoais from "@/Components/UserData/DadosPessoais.jsx";
 import Endereco from "@/Components/UserData/Endereco.jsx";
 import Contato from "@/Components/UserData/Contato.jsx";
 import DadosAcesso from "@/Components/UserData/DadosAcesso.jsx";
-import Usina from "@/Pages/Admin/User/Produtor/Create/Usina.jsx";
+import Usina from "./Usina.jsx";
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Grid from "@mui/material/Grid2";
-import Informacoes from "@/Pages/Admin/User/Produtor/Create/Informacoes.jsx";
+import Informacoes from "./Informacoes.jsx";
 
 const steps = [
     'Informações do Produtor',
@@ -72,6 +72,12 @@ const Page = () => {
             <form onSubmit={submit}>
                 {step === 0 && (
                     <Box>
+                        <Card sx={{marginBottom: 4}}>
+                            <CardContent>
+                                Etapa 1: Insira as informações do <strong>Produtor</strong>.
+                            </CardContent>
+                        </Card>
+
                         <DadosPessoais data={data} setData={setData}/>
                         <Endereco title="Endereço do Produtor" endereco={enderecoProdutor} setEndereco={setEnderecoProdutor}/>
                         <Contato data={data} setData={setData}/>
@@ -96,6 +102,12 @@ const Page = () => {
 
                 {step === 1 && (
                     <Box>
+                        <Card sx={{marginBottom: 4}}>
+                            <CardContent>
+                                Etapa 2: Insira as informações da <strong>Usina Solar</strong>.
+                            </CardContent>
+                        </Card>
+
                         <Usina data={data} setData={setData}/>
                         <Endereco title="Endereço da Usina Solar" endereco={enderecoUsina} setEndereco={setEnderecoUsina}/>
 
@@ -126,7 +138,13 @@ const Page = () => {
 
                 {step === 2 && (
                     <Box>
-                        <Informacoes data={data}/>
+                        <Card sx={{marginBottom: 4}}>
+                            <CardContent>
+                                Etapa 3: Verifique se as informações inseridas estão corretas.
+                            </CardContent>
+                        </Card>
+
+                        <Informacoes data={data} enderecoUsuario={enderecoProdutor} enderecoUsina={enderecoUsina}/>
 
                         <Paper sx={{padding: 2}}>
                             <Grid container justifyContent="space-between">

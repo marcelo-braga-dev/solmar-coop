@@ -56,7 +56,8 @@ class UserData extends Model
     public function getGeneroAttribute()
     {
         if ($this->attributes['genero'] == 'm') return 'Masculino';
-        return 'Feminino';
+        if ($this->attributes['genero'] == 'f') return 'Feminino';
+        return '';
     }
 
     public function getDataNascimentoAttribute()

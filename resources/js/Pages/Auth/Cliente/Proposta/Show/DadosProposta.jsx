@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PropostaClientePage = ({dados}) => {
+const DadosProposta = ({dados}) => {
     return (
         <>
             <div style={styles.container}>
@@ -70,4 +70,4 @@ const styles = {
     },
 };
 
-export default PropostaClientePage;
+export default DadosProposta;
