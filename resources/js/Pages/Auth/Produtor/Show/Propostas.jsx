@@ -2,7 +2,7 @@ import {Button, Divider, Paper} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import {IconDownload, IconFileTypePdf} from "@tabler/icons-react";
 import {useEffect, useRef, useState} from "react";
-import PropostaComercial from "@/Pages/Auth/Propostas/Produtor/Proposta/Page.jsx";
+import PropostaComercial from "./Page.jsx";
 
 const Propostas = () => {
     const [layout, setLayout] = useState([])
