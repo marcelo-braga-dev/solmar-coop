@@ -3,7 +3,7 @@ import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 import Grid from "@mui/material/Grid2";
 import {IconDownload, IconFileTypePdf} from "@tabler/icons-react";
 import {useEffect, useRef, useState} from "react";
-import Page from "@/Pages/Auth/Propostas/Produtor/Proposta/Page.jsx";
+import Page from "./Page";
 
 const Propostas = ({propostas, cliente, endereco}) => {
     const [layout, setLayout] = useState([])
