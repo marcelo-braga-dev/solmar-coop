@@ -5,6 +5,7 @@ namespace App\src\Roles;
 class RoleUser
 {
     static int $CLIENTE = 4;
+    static int $CONSULTOR = 2;
 
     public function admin(): int
     {

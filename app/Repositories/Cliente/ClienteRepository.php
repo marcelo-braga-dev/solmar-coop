@@ -25,7 +25,7 @@ class ClienteRepository
             $service = new CreateUserService();
 
             // Conta Acesso
-            $user = $service->createUser($userData, $role, $data->senha);
+            $user = $service->createUser($userData, $role, $data->senha, auth()->id());
 
             // Dados do Usuario
             $user->userData()->create($userData);
@@ -49,6 +49,7 @@ class ClienteRepository
     public function getPaginate()
     {
         return User::where('role_id', RoleUser::$CLIENTE)
+            ->somenteMeusClientes()
             ->with('userData')
             ->orderByDesc('id')
             ->paginate();

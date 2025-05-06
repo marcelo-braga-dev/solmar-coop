@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\Hash;
 
 class CreateUserService
 {
-    public function createUser(array $produtor, int $role, ?string $senha)
+    public function createUser(array $produtor, int $role, ?string $senha, ?int $vendedor = null)
     {
         try {
             return User::create([
                 'name' => $produtor['nome'] ?? $produtor['razao_social'],
                 'email' => $produtor['email'],
                 'role_id' => $role,
+                'consultor_id' => $vendedor,
                 'status' => 1,
                 'password' => ($senha ?? null) ? Hash::make($senha) : Hash::make(uniqid()),
             ]);

@@ -14,7 +14,6 @@ const Page = () => {
 
     const getRegistros = async () => {
         const response = await axios.get(route('auth.produtor.proposta.api.get'))
-        console.log(response.data)
         setRegistros(response.data)
     }
 
@@ -102,20 +101,20 @@ const Page = () => {
 
                                     <Divider sx={{marginBlock: 1}}/>
 
-                                    {/*<Grid container justifyContent="space-between">*/}
-                                    {/*    <Grid size={{xs: 12, md: 'auto'}}>*/}
-                                    {/*        <Stack direction="row" spacing={2}>*/}
-                                    {/*            <Typography fontWeight="bold" variant="body2">Id da proposta:</Typography>*/}
-                                    {/*            <Typography variant="body2">#{item.id}</Typography>*/}
-                                    {/*        </Stack>*/}
-                                    {/*    </Grid>*/}
-                                    {/*    <Grid size={{xs: 12, md: 'auto'}}>*/}
-                                    {/*        <Stack direction="row" spacing={2}>*/}
-                                    {/*            <Typography fontWeight="bold" variant="body2">Criado em:</Typography>*/}
-                                    {/*            <Typography variant="body2">{item.criado_em}</Typography>*/}
-                                    {/*        </Stack>*/}
-                                    {/*    </Grid>*/}
-                                    {/*</Grid>*/}
+                                    <Grid container justifyContent="space-between">
+                                        <Grid size={{xs: 12, md: 'auto'}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold" variant="body2">Id da proposta:</Typography>
+                                                <Typography variant="body2">#{item.id}</Typography>
+                                            </Stack>
+                                        </Grid>
+                                        <Grid size={{xs: 12, md: 'auto'}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold" variant="body2">Criado em:</Typography>
+                                                <Typography variant="body2">{item.criado_em}</Typography>
+                                            </Stack>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                         </CardContent>

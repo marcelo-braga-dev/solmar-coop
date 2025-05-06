@@ -4,8 +4,10 @@ namespace App\Models\Cliente;
 
 use App\Models\Concessionarias;
 use App\Models\Users\User;
+use App\src\Roles\RoleUser;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class ClienteProposta extends Model
 {
@@ -16,6 +18,19 @@ class ClienteProposta extends Model
         'concessionaria_id',
         'prazo_locacao'
     ];
+
+    protected static function booted()
+    {
+        static::addGlobalScope('consultor_filter', function ($query) {
+            $user = Auth::user();
+
+            if ($user && $user->role_id == RoleUser::$CONSULTOR) {
+                $query->whereHas('cliente', function ($q) use ($user) {
+                    $q->where('consultor_id', $user->id);
+                });
+            }
+        });
+    }
 
     protected $appends = ['criado_em'];
 

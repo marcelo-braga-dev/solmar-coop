@@ -13,7 +13,6 @@ return new class extends Migration {
         Schema::create('produtor_propostas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('produtor_id');
-            $table->unsignedBigInteger('consultor_id');
             $table->unsignedBigInteger('concessionaria_id');
             $table->decimal('potencia', 10, 2);
             $table->integer('potencia_ac', false, true)->nullable();
@@ -22,7 +21,6 @@ return new class extends Migration {
             $table->timestamps();
 
             $table->foreign('produtor_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('consultor_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('concessionaria_id')->references('id')->on('concessionarias')->onDelete('cascade');
         });
     }

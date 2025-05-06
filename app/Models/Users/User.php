@@ -4,10 +4,12 @@ namespace App\Models\Users;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Usina\UsinaSolar;
+use App\src\Roles\RoleUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -24,6 +26,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'consultor_id',
         'status',
     ];
 
@@ -51,13 +54,35 @@ class User extends Authenticatable
         ];
     }
 
+//    protected static function booted()
+//    {
+//        static::addGlobalScope(new ConsultorScope);
+//    }
+
     protected $appends = ['nome', 'status_nome', 'cadastrado_em', 'dados_acesso'];
 
     protected $with = ['userData', 'contatos'];
 
+    public function scopeSomenteMeusClientes($query)
+    {
+        $user = Auth::user();
+
+        // Aplica o filtro apenas se o usuário for um consultor
+        if ($user && $user->role_id == RoleUser::$CONSULTOR) {
+            return $query->where('consultor_id', $user->id);
+        }
+
+        return $query;
+    }
+
     //--------------
     // relations
     //--------------
+
+    public function consultor()
+    {
+        return $this->belongsTo(User::class, 'consultor_id');
+    }
     public function userData(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(UserData::class, 'user_id', 'id');
@@ -71,6 +96,16 @@ class User extends Authenticatable
     public function contatos(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(UserContact::class, 'user_id', 'id');
+    }
+
+    public function vendedor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'consultor_id');
+    }
+
+    public function clientes()
+    {
+        return $this->hasMany(User::class, 'consultor_id');
     }
 
     //--------------

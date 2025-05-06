@@ -28,7 +28,7 @@ class ProdutorRepository
                 $userData = $dto->toArray();
 
                 // Conta Acesso
-                $user = $service->createUser($userData, $role, $data->senha);
+                $user = $service->createUser($userData, $role, $data->senha, auth()->id());
 
                 // Dados do Usuario
                 $user->userData()->create(['user_id' => $user->id, ...$userData]);
