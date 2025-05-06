@@ -31,7 +31,7 @@ class GerarPropostaProdutorController extends Controller
         <img src="' . $image2 . '" alt="Background" style="width: 100%; height: 100%" />
         <div style="
             position: absolute;
-            top: 50;
+            top: 350;
             left: 10;
             width: 100%;
             text-align: left;
