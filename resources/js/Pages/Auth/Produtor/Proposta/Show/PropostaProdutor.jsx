@@ -22,14 +22,14 @@ const PropostaProdutor = ({idProposta}) => {
     }
 
     const fethcLayout = async () => {
-        const response = await axios.get(route('auth.propostas.pdf.cliente.layout-pdf'))
+        const response = await axios.get(route('auth.produtor.proposta.api.layout-pdf'))
         setLayout(response.data)
     }
 
     const generatePdf = async () => {
         const htmlContent = proposalRef.current.innerHTML;
         try {
-            const response = await axios.post(route('auth.propostas.pdf.cliente.gerar-pdf'), {html: htmlContent})
+            const response = await axios.post(route('auth.produtor.proposta.api.gerar-pdf'), {html: htmlContent})
 
             const url = response.data.urlPdf
             const link = document.createElement('a');

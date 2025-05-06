@@ -53,12 +53,6 @@ const DadosProposta = ({dados}) => {
                             </tbody>
                         </table>
 
-                        {/*<p style={styles.sectionText}><strong>Tarifa Consumidor Grupo B:</strong> R$ 0,81</p>*/}
-                        {/*<p style={styles.sectionText}><strong>Redução de consumo para Consumidor:</strong> R$ 0,20 (25%)</p>*/}
-                        {/*<p style={styles.sectionText}><strong>Dedução operacionalização:</strong> R$ 0,20</p>*/}
-                        {/*<p style={styles.sectionText}><strong>Produção Média Anual de energia:</strong> {dados?.geracao_anual} kWh/ano</p>*/}
-                        {/*<p style={styles.sectionText}><strong>Pagamento anual Bruto:</strong> R$ 81,000.00 ano.(Produção Anual * 0.41)</p>*/}
-
                     </div>
                 </div>
             </div>
@@ -84,7 +78,7 @@ const styles = {
         height: '100%',
         color: '#000',
         padding: 100,
-        paddingBlockStart: 150,
+        paddingBlockStart: 300,
         display: 'flex',
         flexDirection: 'column',
     },
