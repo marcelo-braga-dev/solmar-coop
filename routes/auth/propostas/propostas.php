@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\Propostas\Cliente\ClientePropostaController;
+use App\Http\Controllers\Auth\Propostas\Cliente\GetDadosPropostaClienteController;
 use App\Http\Controllers\Auth\Propostas\Produtor\GerarPropostaUsinaController;
-use App\Http\Controllers\Auth\Propostas\Produtor\GetDadosPropostaClienteController;
 use App\Http\Controllers\Auth\Propostas\Produtor\ProdutorPropostaController;
 use Illuminate\Support\Facades\Route;
 

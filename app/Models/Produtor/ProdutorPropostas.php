@@ -37,7 +37,7 @@ class ProdutorPropostas extends Model
 
     protected $with = ['produtor', 'concessionaria', 'endereco'];
 
-    protected $appends = ['criado_em'];
+    protected $appends = ['geracao_anual', 'retorno_anual_bruto', 'criado_em'];
 
     public function produtor()
     {
@@ -95,5 +95,15 @@ class ProdutorPropostas extends Model
     public function getCriadoEmAttribute()
     {
         return Carbon::parse($this->attributes['created_at'])->format('d/m/Y H:i:s');
+    }
+
+    public function getGeracaoAnualAttribute()
+    {
+        return ConvertValues::floatToMoney($this->attributes['geracao'] * 12);
+    }
+
+    public function getRetornoAnualBrutoAttribute()
+    {
+        return ConvertValues::floatToMoney($this->attributes['geracao'] * 12 * 0.41);
     }
 }

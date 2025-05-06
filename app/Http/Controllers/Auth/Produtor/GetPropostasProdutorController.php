@@ -9,7 +9,7 @@ class GetPropostasProdutorController extends Controller
 {
    public function __invoke()
    {
-       $registros = (new ProdutorPropostaRepository())->get();
+       $registros = (new ProdutorPropostaRepository())->getAll();
 
        return response()->json($registros);
    }

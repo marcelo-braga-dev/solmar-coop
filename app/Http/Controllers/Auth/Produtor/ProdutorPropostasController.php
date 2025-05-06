@@ -27,4 +27,11 @@ class ProdutorPropostasController extends Controller
         AlertMessage::success('Proposta gerada com sucesso!');
         return redirect()->route('auth.produtor.proposta.index');
     }
+
+    public function show($id)
+    {
+        $proposta = (new ProdutorPropostaRepository)->get($id);
+
+        return Inertia::render('Auth/Produtor/Proposta/Show/Page', ['idProposta' => $id]);
+    }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\Produtor\GetPropostasProdutorController;
 use App\Http\Controllers\Auth\Produtor\ProdutorPropostasController;
+use App\Http\Controllers\Auth\Propostas\Produtor\GetDadosPropostaProdutorController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('auth.produtor.')
@@ -13,5 +14,6 @@ Route::name('auth.produtor.')
             ->prefix('proposta-api')
             ->group(function () {
                 Route::get('get', GetPropostasProdutorController::class)->name('get');
+                Route::get('get-dados/{id}', GetDadosPropostaProdutorController::class)->name('get-dados');
             });
     });

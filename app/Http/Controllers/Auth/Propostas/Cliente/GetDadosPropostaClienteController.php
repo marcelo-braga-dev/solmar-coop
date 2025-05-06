@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth\Propostas\Produtor;
+namespace App\Http\Controllers\Auth\Propostas\Cliente;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cliente\ClienteProposta;

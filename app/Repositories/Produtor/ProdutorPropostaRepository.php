@@ -6,7 +6,12 @@ use App\Models\Produtor\ProdutorPropostas;
 
 class ProdutorPropostaRepository
 {
-    public function get()
+    public function get(int $id)
+    {
+        return ProdutorPropostas::find($id);
+    }
+
+    public function getAll()
     {
         return (new ProdutorPropostas)
             ->orderByDesc('id')

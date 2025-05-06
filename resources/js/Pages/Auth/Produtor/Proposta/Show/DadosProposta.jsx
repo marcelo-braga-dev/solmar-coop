@@ -1,0 +1,112 @@
+import React from 'react';
+
+const DadosProposta = ({dados}) => {
+    return (
+        <>
+            <div style={styles.container}>
+                <div style={styles.overlayContainer}>
+                    <div style={styles.overlayText}>
+                        <div style={styles.sectionTitle}>INFORMAÇÕES DO INVESTIDOR</div>
+                        {dados?.produtor?.user_data?.nome && <p style={styles.sectionText}><strong>Nome:</strong> {dados?.produtor?.user_data?.nome}</p>}
+                        {dados?.produtor?.user_data?.nome_fantasia &&
+                            <p style={styles.sectionText}><strong>Nome Fantasia:</strong> {dados?.produtor?.user_data?.nome_fantasia}</p>}
+                        {dados?.produtor?.user_data?.razao_social &&
+                            <p style={styles.sectionText}><strong>Razão Social:</strong> {dados?.produtor?.user_data?.razao_social}</p>}
+                        {dados?.produtor?.user_data?.cnpj && <p style={styles.sectionText}><strong>CNPJ:</strong> {dados?.produtor?.user_data?.cnpj}</p>}
+                        {dados?.produtor?.user_data?.cpf && <p style={styles.sectionText}><strong>CPF:</strong> {dados?.produtor?.user_data?.cpf}</p>}
+                        {dados?.produtor?.contatos?.celular && <p style={styles.sectionText}><strong>Celular:</strong> {dados?.produtor?.contatos?.celular}</p>}
+                        {dados?.produtor?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.produtor?.contatos?.email}</p>}
+                        {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
+
+                        <div style={styles.sectionTitle}>INFORMAÇÕES DA USINA SOLAR</div>
+                        {dados?.geracao && <p style={styles.sectionText}><strong>Média Geração:</strong> {dados?.geracao} kWh/mês</p>}
+                        {dados?.potencia && <p style={styles.sectionText}><strong>Potência da Usina:</strong> {dados?.potencia} kWp</p>}
+                        {dados?.taxa_reducao && <p style={styles.sectionText}><strong>Redução da Conta de Energia:</strong> {dados?.taxa_reducao}%</p>}
+                        {dados?.concessionaria?.nome && <p style={styles.sectionText}>
+                            <strong>Concessionária:</strong> {dados?.concessionaria?.nome} / {dados?.concessionaria?.estado}</p>}
+
+                        <div style={styles.sectionTitle}>PROPOSTA DE INVESTIMENTO</div>
+                        {dados?.valor && <p style={styles.sectionText}><strong>Valor do Investimento:</strong> R$ {dados?.valor}</p>}
+
+                        <table style={styles.table}>
+                            <tbody>
+                            <tr>
+                                <td>Tarifa Consumidor Grupo B</td>
+                                <td>R$ 0,81</td>
+                            </tr>
+                            <tr>
+                                <td>Redução de consumo para Consumidor</td>
+                                <td>R$ 0,20 (25%)</td>
+                            </tr>
+                            <tr>
+                                <td>Dedução operacionalização</td>
+                                <td>R$ 0,20</td>
+                            </tr>
+                            <tr>
+                                <td>Produção Média Anual de energia</td>
+                                <td>{dados?.geracao_anual} kWh/ano</td>
+                            </tr>
+                            <tr>
+                                <td>Pagamento anual Bruto</td>
+                                <td>R$ {dados?.retorno_anual_bruto} ano (Produção Anual * 0.41)</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        {/*<p style={styles.sectionText}><strong>Tarifa Consumidor Grupo B:</strong> R$ 0,81</p>*/}
+                        {/*<p style={styles.sectionText}><strong>Redução de consumo para Consumidor:</strong> R$ 0,20 (25%)</p>*/}
+                        {/*<p style={styles.sectionText}><strong>Dedução operacionalização:</strong> R$ 0,20</p>*/}
+                        {/*<p style={styles.sectionText}><strong>Produção Média Anual de energia:</strong> {dados?.geracao_anual} kWh/ano</p>*/}
+                        {/*<p style={styles.sectionText}><strong>Pagamento anual Bruto:</strong> R$ 81,000.00 ano.(Produção Anual * 0.41)</p>*/}
+
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
+
+const styles = {
+    container: {
+        width: '100%',
+        margin: '0 auto',
+        fontFamily: 'Arial, sans-serif',
+    },
+    overlayContainer: {
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+    },
+    overlayText: {
+        position: 'absolute',
+        left: '0',
+        width: '100%',
+        height: '100%',
+        color: '#000',
+        padding: 100,
+        paddingBlockStart: 150,
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    section: {
+        marginBottom: '20px',
+    },
+    sectionTitle: {
+        fontSize: '20px',
+        fontWeight: 'bold',
+        marginBottom: '10px',
+        marginTop: 30,
+    },
+    table: {
+        fontSize: '20px',
+        fontWeight: 'bold',
+        marginBottom: '10px',
+        marginTop: 30,
+    },
+    sectionText: {
+        fontSize: '20px',
+        marginBottom: '5px',
+    },
+};
+
+export default DadosProposta;

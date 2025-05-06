@@ -26,7 +26,7 @@ const Page = () => {
             </Grid>
 
             {registros.map(item => (
-                <Link key={item.id} href={route('auth.cliente.proposta.show', item.id)}>
+                <Link key={item.id} href={route('auth.produtor.proposta.show', item.id)}>
                     <Card sx={{marginBottom: 3}}>
                         <CardContent>
                             <Grid container justifyContent="space-between">
