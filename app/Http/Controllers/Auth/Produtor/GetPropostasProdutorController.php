@@ -7,10 +7,10 @@ use App\Repositories\Produtor\ProdutorPropostaRepository;
 
 class GetPropostasProdutorController extends Controller
 {
-   public function __invoke()
-   {
-       $registros = (new ProdutorPropostaRepository())->getAll();
+    public function __invoke($id)
+    {
+        $registros = (new ProdutorPropostaRepository())->getProdutor($id);
 
-       return response()->json($registros);
-   }
+        return response()->json($registros);
+    }
 }

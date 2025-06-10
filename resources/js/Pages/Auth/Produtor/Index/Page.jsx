@@ -30,6 +30,8 @@ const Page = () => {
                 </Grid>
             </Grid>
 
+            <Typography marginBottom={2} variant="h5">Produtores Cadastrados</Typography>
+
             {carregando && <LinearProgress color="inherit"/>}
 
             {produtores.length === 0 && !carregando && <Typography>Nenhum Produtor Cadastrado.</Typography>}

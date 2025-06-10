@@ -1,76 +1,133 @@
-import {Button, Divider, Paper} from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import {IconDownload, IconFileTypePdf} from "@tabler/icons-react";
-import {useEffect, useRef, useState} from "react";
-import PropostaComercial from "./Page.jsx";
+import {Button, Divider, Paper, Stack, Typography} from "@mui/material";
+import {IconFileTypePdf} from "@tabler/icons-react";
+import {Link} from "@inertiajs/react";
+import Box from "@mui/material/Box";
+import React, {useEffect, useState} from "react";
 
 const Propostas = () => {
-    const [layout, setLayout] = useState([])
-    const proposalRef = useRef(null);
-
-    const generatePdf = () => {
-        const htmlContent = proposalRef.current.innerHTML;
-
-        axios.post(route('auth.propostas.pdf.usina.gerar-pdf'), {html: htmlContent}, {
-            responseType: 'blob'
-        })
-            .then(response => {
-                const url = window.URL.createObjectURL(new Blob([response.data]));
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', 'proposta_comercial.pdf');
-                document.body.appendChild(link);
-                link.click();
-            })
-            .catch(error => {
-                console.error('Erro ao gerar o PDF:', error);
-            });
-    };
+    const [propostas, setPropostas] = useState([])
 
     useEffect(() => {
-        const fethcLayout = async () => {
-            const response = await axios.get(route('auth.propostas.pdf.usina.layout-pdf'))
-            setLayout(response.data)
-        }
-        fethcLayout()
+        getRegistros()
     }, []);
 
+    const getRegistros = async () => {
+        const response = await axios.get(route('auth.produtor.proposta.api.get-produtor', 80))
+        setPropostas(response.data)
+    }
+
     return (
-        <>
-            <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
-                <Grid container justifyContent="space-between" alignItems="center">
-                    <Grid size={1} paddingInlineEnd={2}>
-                        <IconFileTypePdf color="red" size={30}/>
-                    </Grid>
-                    <Grid size={11} container justifyContent="space-between" gap={2}>
-                        {/*<Grid size="auto">*/}
-                        {/*    {propostas?.media_geracao && <TextInfo title="Média Geração" text={`${propostas.media_geracao} kWh`}/>}*/}
-                        {/*</Grid>*/}
-                        {/*<Grid size="auto">*/}
-                        {/*    {propostas?.prazo_locacao && <TextInfo title="Prazo Locação" text={`${propostas.prazo_locacao} dias`}/>}*/}
-                        {/*</Grid>*/}
-                        {/*<Grid size="auto">*/}
-                        {/*    {propostas?.concessionaria_id &&*/}
-                        {/*        <TextInfo title="Concessionária" text={`${propostas.concessionaria.nome}/${propostas.concessionaria.estado}`}/>}*/}
-                        {/*</Grid>*/}
-                        <Grid size="auto">
-                            <Button color="error" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF</Button>
-                        </Grid>
-                    </Grid>
+        <Box>
+            <Grid container marginBottom={4}>
+                <Grid>
+                    <Link href={route('auth.produtor.proposta.create')}>
+                        <Button color="error" startIcon={<IconFileTypePdf/>}>Gerar Proposta</Button>
+                    </Link>
                 </Grid>
-            </Paper>
-            {layout.capa && <Paper sx={{padding: 2}} variant="outlined">
-                <div style={{textAlign: 'center', pageBreakAfter: 'always'}}>
-                    <img src={layout.capa} alt="Capa" loading="lazy"/>
-                </div>
-                <Divider sx={{marginBottom: 5}}/>
-                <div style={{marginBottom: 30}}>
-                    <img src={layout.header} alt="Capa" loading="lazy" style={{width: '100%', height: '100%'}}/>
-                </div>
-                <div ref={proposalRef}>
-                    <PropostaComercial/>
-                </div>
+            </Grid>
+
+            <Typography variant="h5">Propostas Geradas</Typography>
+
+            {propostas.length === 0 && <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
+                <Typography variant="body2">Não há histórico de propostas geradas.</Typography>
             </Paper>}
-        </>)
+
+            {propostas.map(item => (
+                <Link key={item.id} href={route('auth.produtor.proposta.show', item.id)}>
+                    <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
+                        <Grid container justifyContent="space-between">
+                            <Grid size={12}>
+                                <Stack marginBottom={1}>
+                                    {item.produtor.user_data.nome && <Stack direction="row" spacing={2}>
+                                        <Typography fontWeight="bold">Nome:</Typography>
+                                        <Typography>{item.produtor.user_data.nome}</Typography>
+                                    </Stack>}
+                                    {item.produtor.user_data.nome_fantasia && <Stack direction="row" spacing={2}>
+                                        <Typography fontWeight="bold">Nome Fantasia:</Typography>
+                                        <Typography>{item.produtor.user_data.nome_fantasia}</Typography>
+                                    </Stack>}
+                                    {item.produtor.user_data.razao_social && <Stack direction="row" spacing={2}>
+                                        <Typography fontWeight="bold">Razão Social:</Typography>
+                                        <Typography>{item.produtor.user_data.razao_social}</Typography>
+                                    </Stack>}
+                                </Stack>
+
+                                <Grid container>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        {item.produtor.user_data.cnpj && <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">CNPJ:</Typography>
+                                            <Typography>{item.produtor.user_data.cnpj}</Typography>
+                                        </Stack>}
+                                        {item.produtor.user_data.cpf && <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">CPF:</Typography>
+                                            <Typography>{item.produtor.user_data.cpf}</Typography>
+                                        </Stack>}
+                                    </Grid>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">Localização:</Typography>
+                                            <Typography>{item?.endereco?.cidade_estado}</Typography>
+                                        </Stack>
+                                    </Grid>
+                                </Grid>
+
+                                <Divider sx={{marginBlock: 1}}/>
+
+                                <Grid container>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">Média Geração:</Typography>
+                                            <Typography>{item.geracao} kWh/mês</Typography>
+                                        </Stack>
+                                    </Grid>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">Potência da Usina:</Typography>
+                                            <Typography>{item.potencia} kWp</Typography>
+                                        </Stack>
+                                    </Grid>
+                                </Grid>
+
+                                <Divider sx={{marginBlock: 1}}/>
+
+                                <Grid container>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">Valor da Proposta:</Typography>
+                                            <Typography>R$ {item.valor}</Typography>
+                                        </Stack>
+                                    </Grid>
+                                    <Grid size={{xs: 12, md: 6}}>
+                                        <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold">Concessionária:</Typography>
+                                            <Typography>{item.concessionaria.nome} / {item.concessionaria.estado}</Typography>
+                                        </Stack>
+                                    </Grid>
+                                </Grid>
+
+                                <Divider sx={{marginBlock: 1}}/>
+
+                                <Grid container justifyContent="space-between">
+                                    <Grid size={{xs: 12, md: 'auto'}}>
+                                        <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold" variant="body2">Id da proposta:</Typography>
+                                            <Typography variant="body2">#{item.id}</Typography>
+                                        </Stack>
+                                    </Grid>
+                                    <Grid size={{xs: 12, md: 'auto'}}>
+                                        <Stack direction="row" spacing={2}>
+                                            <Typography fontWeight="bold" variant="body2">Criado em:</Typography>
+                                            <Typography variant="body2">{item.criado_em}</Typography>
+                                        </Stack>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Paper>
+                </Link>
+            ))}
+
+        </Box>)
 }
 export default Propostas

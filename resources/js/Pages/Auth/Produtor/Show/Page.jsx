@@ -1,7 +1,7 @@
 import {useState} from "react";
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
 
-import {Box, Button, Card, CardContent, Tab} from "@mui/material";
+import {Box, Card, CardContent, Tab} from "@mui/material";
 import {TabPanel, TabList, TabContext} from '@mui/lab';
 
 import {IconFileLike, IconFileTypePdf, IconHistory, IconKey, IconSolarPanel, IconUserBolt} from "@tabler/icons-react";
@@ -11,10 +11,11 @@ import Contratos from "./Contratos.jsx";
 import Historico from "./Historico.jsx";
 import InfoDadosAcesso from "./InfoDadosAcesso.jsx";
 import DataUser from "@/Components/DataUser/DataUser.jsx";
+import Propostas from "@/Pages/Auth/Produtor/Show/Propostas.jsx";
 
 const Page = ({usuario, tab}) => {
 
-    const [tabSelected, setTabSelected] = useState( tab ?? 'info')
+    const [tabSelected, setTabSelected] = useState(tab ?? 'info')
 
     const handleChangeTab = (event, newValue) => {
         setTabSelected(newValue);
@@ -44,7 +45,7 @@ const Page = ({usuario, tab}) => {
                             <Usina/>
                         </TabPanel>
                         <TabPanel value="propostas">
-                            <Button>Gerar Proposta</Button>
+                            <Propostas dataUser={usuario}/>
                         </TabPanel>
                         <TabPanel value="contratos">
                             <Contratos contratos={usuario.contratos} contratado={usuario.user_data}/>

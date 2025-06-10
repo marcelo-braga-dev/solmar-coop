@@ -13,7 +13,7 @@ const Page = () => {
     }, []);
 
     const getRegistros = async () => {
-        const response = await axios.get(route('auth.produtor.proposta.api.get'))
+        const response = await axios.get(route('auth.produtor.proposta.api.get-all'))
         setRegistros(response.data)
     }
 
@@ -24,6 +24,8 @@ const Page = () => {
                     <Button color="success" startIcon={<IconPlus/>}>Gerar Proposta Produtor</Button>
                 </Link>
             </Grid>
+
+            <Typography variant="h5" marginBottom={2}>Histórico de Proposta Geradas</Typography>
 
             {registros.map(item => (
                 <Link key={item.id} href={route('auth.produtor.proposta.show', item.id)}>

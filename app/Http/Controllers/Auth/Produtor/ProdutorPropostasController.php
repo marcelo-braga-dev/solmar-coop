@@ -30,7 +30,7 @@ class ProdutorPropostasController extends Controller
 
     public function show($id)
     {
-        $proposta = (new ProdutorPropostaRepository)->get($id);
+        $proposta = (new ProdutorPropostaRepository)->find($id);
 
         return Inertia::render('Auth/Produtor/Proposta/Show/Page', ['idProposta' => $id]);
     }

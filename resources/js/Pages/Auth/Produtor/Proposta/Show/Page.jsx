@@ -3,7 +3,7 @@ import PropostaProdutor from "./PropostaProdutor.jsx";
 
 const Page = ({idProposta}) => {
     return (
-        <Layout titlePage="Proposta Produtor Solar" menu="produtores-solar" subMenu="produtores-propostas">
+        <Layout titlePage="Proposta Produtor Solar" menu="produtores-solar" subMenu="produtores-propostas" backPage>
             <PropostaProdutor idProposta={idProposta}/>
         </Layout>
     )

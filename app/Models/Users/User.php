@@ -54,11 +54,6 @@ class User extends Authenticatable
         ];
     }
 
-//    protected static function booted()
-//    {
-//        static::addGlobalScope(new ConsultorScope);
-//    }
-
     protected $appends = ['nome', 'status_nome', 'cadastrado_em', 'dados_acesso'];
 
     protected $with = ['userData', 'contatos'];

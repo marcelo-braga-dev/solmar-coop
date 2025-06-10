@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\Produtor\GetPropostasProdutorController;
+use App\Http\Controllers\Auth\Produtor\PropostasProdutorController;
 use App\Http\Controllers\Auth\Produtor\ProdutorPropostasController;
 use App\Http\Controllers\Auth\Propostas\Produtor\GerarPropostaProdutorController;
 use App\Http\Controllers\Auth\Propostas\Produtor\GetDadosPropostaProdutorController;
@@ -14,7 +15,8 @@ Route::name('auth.produtor.')
         Route::name('proposta.api.')
             ->prefix('proposta-api')
             ->group(function () {
-                Route::get('get', GetPropostasProdutorController::class)->name('get');
+                Route::get('get-produtor/{id}', GetPropostasProdutorController::class)->name('get-produtor');
+                Route::get('get-all', PropostasProdutorController::class)->name('get-all');
                 Route::get('get-dados/{id}', GetDadosPropostaProdutorController::class)->name('get-dados');
 
                 Route::get('layout-pdf', [GerarPropostaProdutorController::class, 'layoutPdf'])->name('layout-pdf');

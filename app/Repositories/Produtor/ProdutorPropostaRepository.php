@@ -3,12 +3,21 @@
 namespace App\Repositories\Produtor;
 
 use App\Models\Produtor\ProdutorPropostas;
+use App\Models\Users\User;
 
 class ProdutorPropostaRepository
 {
-    public function get(int $id)
+    public function find(int $id)
     {
         return ProdutorPropostas::find($id);
+    }
+
+    public function getProdutor(int $id)
+    {
+        return (new ProdutorPropostas())
+            ->where('produtor_id', $id)
+            ->orderByDesc('id')
+            ->get();
     }
 
     public function getAll()
