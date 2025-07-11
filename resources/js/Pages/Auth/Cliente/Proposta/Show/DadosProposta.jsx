@@ -101,7 +101,7 @@ const DadosProposta = ({dados}) => {
                         <td>{convertFloatToMoney((dados?.valor_medio * 3) - (valorConsorcio(dados?.valor_medio) * 3))}</td>
                     </tr>
                     <tr style={{textAlign: 'center'}}>
-                        <td>Semestre</td>
+                        <td>Semestral</td>
                         <td>{convertFloatToMoney(dados?.valor_medio * 6)}</td>
                         <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio) * 6)}</td>
                         <td>{convertFloatToMoney((dados?.valor_medio * 6) - (valorConsorcio(dados?.valor_medio) * 6))}</td>
@@ -115,7 +115,6 @@ const DadosProposta = ({dados}) => {
                     </tbody>
                 </table>
             </div>
-
         </>
     );
 };
