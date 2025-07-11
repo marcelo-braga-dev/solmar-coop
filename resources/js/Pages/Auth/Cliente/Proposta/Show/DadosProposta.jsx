@@ -166,7 +166,7 @@ const styles = {
         fontFamily: 'Arial, sans-serif',
         width: '70%',
         margin: '0 auto',
-        marginTop: 650,
+        marginTop: 700,
         height: '100%',
         position: 'absolute',
         color: '#000',
