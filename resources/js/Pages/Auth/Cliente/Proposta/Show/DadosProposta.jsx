@@ -35,19 +35,7 @@ const DadosProposta = ({dados}) => {
                         <div style={{display: 'inline-flex', marginTop: 160}}>
                             {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
                         </div>
-                        <div style={{display: 'inline-flex', marginTop: 190}}>
-                            <div style={styles.sectionTitle}>PROPOSTA</div>
-                            <div style={{display: 'flex'}}>
-                                {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
-                                    <p style={styles.sectionText}><strong>Gasto Mensal:</strong> {convertFloatToMoney(dados?.valor_medio)}</p></div>}
 
-                                {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
-                                    <p style={styles.sectionText}><strong>Média Consumo:</strong> {dados?.media_consumo} kWh</p></div>}
-
-                                {dados?.prazo_locacao && <div style={{marginInlineEnd: 30}}>
-                                    <p style={styles.sectionText}><strong>Prazo do Contrato:</strong> {dados?.prazo_locacao} meses</p></div>}
-                            </div>
-                        </div>
 
                         {/*<div style={{display: 'flex'}}>*/}
                         {/*    {dados?.criado_em && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>*/}
@@ -58,6 +46,32 @@ const DadosProposta = ({dados}) => {
 
 
                     </div>
+                </div>
+            </div>
+
+            <div style={styles.containerTaxa}>
+
+                    <div style={styles.sectionTitle}>PROPOSTA</div>
+                    <div style={{display: 'flex'}}>
+                        {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
+                            <p style={styles.sectionText}><strong>Gasto Mensal:</strong> {convertFloatToMoney(dados?.valor_medio)}</p></div>}
+
+                        {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
+                            <p style={styles.sectionText}><strong>Média Consumo:</strong> {dados?.media_consumo} kWh</p></div>}
+
+                        {dados?.prazo_locacao && <div style={{marginInlineEnd: 30}}>
+                            <p style={styles.sectionText}><strong>Prazo do Contrato:</strong> {dados?.prazo_locacao} meses</p></div>}
+                    </div>
+
+            </div>
+
+            <div style={styles.containerTaxa}>
+                <div style={{textAlign: 'center', fontWeight: 800, marginBlock: 10, fontSize: 20, color: "green"}}>
+                    TAXA DE REDUÇÃO NA CONTA DE ENERGIA: {dados?.taxa_reducao}%
+                </div>
+                <div style={{textAlign: 'center', fontWeight: 800, marginBlockEnd: 10, fontSize: 20, color: "green"}}>
+                    Sua Média de Desconto Anual será de <br/>
+                    <div style={{fontSize: 30}}>{convertFloatToMoney(dados?.desconto_anual)}</div>
                 </div>
             </div>
 
@@ -149,6 +163,19 @@ const styles = {
     sectionText: {
         fontSize: 16,
         marginBottom: '5px',
+    },
+
+    containerProposta: {
+        fontFamily: 'Arial, sans-serif',
+        width: '100%',
+        margin: '0 auto',
+        marginTop: 400,
+        position: 'absolute',
+        left: '0',
+        color: '#000',
+        paddingBlockStart: 150,
+        display: 'flex',
+        flexDirection: 'column',
     },
 
     containerTaxa: {
