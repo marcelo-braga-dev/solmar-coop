@@ -69,7 +69,7 @@ const DadosProposta = ({dados}) => {
 
             </div>
             <div style={styles.containerTable}>
-                <table>
+                <table style={{textAlign: 'center'}}>
                     <thead>
                     <tr>
                         <th></th>
@@ -149,18 +149,20 @@ const styles = {
     },
 
     containerTable: {
+        textAlign: 'center',
         fontFamily: 'Arial, sans-serif',
-        width: '100%',
+        width: '70%',
         margin: '0 auto',
         marginTop: 500,
         height: '100%',
         position: 'absolute',
-        left: '0',
+        // left: '150',
         color: '#000',
-        padding: 100,
-        paddingBlockStart: 150,
+        // padding: 100,
+        // paddingBlockStart: 150,
         display: 'flex',
         flexDirection: 'column',
+        // textAlign: 'center'
     },
 
     containerTaxa: {
