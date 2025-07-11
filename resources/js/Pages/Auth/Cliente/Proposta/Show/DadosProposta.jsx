@@ -69,7 +69,7 @@ const DadosProposta = ({dados}) => {
             </div>
 
             <div style={styles.containerTaxa}>
-                <div style={{textAlign: 'center', fontWeight: 800, marginBlock: 10, fontSize: 20, color: "green"}}>
+                <div style={{textAlign: 'center', fontWeight: 800, marginBlock: 20, fontSize: 20, color: "green"}}>
                     TAXA DE REDUÇÃO NA CONTA DE ENERGIA: {dados?.taxa_reducao}%
                 </div>
                 <div style={{textAlign: 'center', fontWeight: 800, marginBlockEnd: 10, fontSize: 20, color: "green"}}>
@@ -172,7 +172,7 @@ const styles = {
         fontFamily: 'Arial, sans-serif',
         width: '100%',
         margin: '0 auto',
-        marginTop: 180,
+        marginTop: 150,
         position: 'absolute',
         left: '0',
         color: '#000',
