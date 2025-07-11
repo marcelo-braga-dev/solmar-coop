@@ -202,7 +202,7 @@ const styles = {
         fontFamily: 'Arial, sans-serif',
         width: '70%',
         margin: '0 auto',
-        marginTop: 680,
+        marginTop: 500,
         height: '100%',
         position: 'absolute',
         color: '#000',
