@@ -32,7 +32,7 @@ const DadosProposta = ({dados}) => {
 
                             {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}
                         </div>
-                        <div style={{display: 'inline-flex'}}>
+                        <div style={{display: 'inline-flex', marginTop: 150}}>
                             {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
                         </div>
                         {/*<div style={styles.sectionTitle}>PROPOSTA</div>*/}
