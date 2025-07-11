@@ -4,7 +4,7 @@ import convertFloatToMoney from "@/Utils/Datas/convertFloatToMoney.js";
 const DadosProposta = ({dados}) => {
 
     const valorConsorcio = (valor) => {
-        return  valor * (1 - dados?.taxa_reducao / 100)
+        return valor * (1 - dados?.taxa_reducao / 100)
     }
 
     return (
@@ -32,9 +32,9 @@ const DadosProposta = ({dados}) => {
 
                             {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}
                         </div>
-
-                        {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
-
+                        <div style={{display: 'inline-flex'}}>
+                            {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
+                        </div>
                         {/*<div style={styles.sectionTitle}>PROPOSTA</div>*/}
                         {/*<div style={{display: 'flex'}}>*/}
                         {/*    {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>*/}
