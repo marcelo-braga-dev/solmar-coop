@@ -175,7 +175,7 @@ const styles = {
         fontFamily: 'Arial, sans-serif',
         width: '100%',
         margin: '0 auto',
-        marginTop: 250,
+        marginTop: 300,
         position: 'absolute',
         left: '0',
         color: '#000',
