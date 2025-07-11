@@ -166,16 +166,13 @@ const styles = {
         fontFamily: 'Arial, sans-serif',
         width: '70%',
         margin: '0 auto',
-        marginTop: 600,
+        marginTop: 650,
         height: '100%',
         position: 'absolute',
-        // left: '150',
         color: '#000',
-        // padding: 100,
-        // paddingBlockStart: 150,
         display: 'flex',
         flexDirection: 'column',
-        // textAlign: 'center'
+        fontSize: 16
     },
 };
 
