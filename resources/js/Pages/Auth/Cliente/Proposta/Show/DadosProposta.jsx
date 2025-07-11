@@ -49,7 +49,7 @@ const DadosProposta = ({dados}) => {
                 </div>
             </div>
 
-            <div style={styles.containerTaxa}>
+            <div style={styles.containerProposta}>
 
                     <div style={styles.sectionTitle}>PROPOSTA</div>
                     <div style={{display: 'flex'}}>
