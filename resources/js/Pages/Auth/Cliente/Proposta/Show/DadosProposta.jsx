@@ -12,29 +12,7 @@ const DadosProposta = ({dados}) => {
             <div style={styles.container}>
                 <div style={styles.overlayContainer}>
                     <div style={styles.overlayText}>
-                        <div style={styles.sectionTitle}>INFORMAÇÕES DO CLIENTE</div>
-                        {dados?.cliente?.user_data?.nome && <p style={styles.sectionText}><strong>Nome:</strong> {dados?.cliente?.user_data?.nome}</p>}
-                        {dados?.cliente?.user_data?.nome_fantasia &&
-                            <p style={styles.sectionText}><strong>Nome Fantasia:</strong> {dados?.cliente?.user_data?.nome_fantasia}</p>}
-                        {dados?.cliente?.user_data?.razao_social &&
-                            <p style={styles.sectionText}><strong>Razão Social:</strong> {dados?.cliente?.user_data?.razao_social}</p>}
 
-                        <div style={{display: 'inline-flex'}}>
-
-                            {dados?.cliente?.user_data?.cnpj && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}><strong>CNPJ:</strong>
-                                {dados?.cliente?.user_data?.cnpj}</p></div>}
-
-                            {dados?.cliente?.user_data?.cpf && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}><strong>CPF:</strong>
-                                {dados?.cliente?.user_data?.cpf}</p></div>}
-
-                            {dados?.cliente?.contatos?.celular && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>
-                                <strong>Celular:</strong> {dados?.cliente?.contatos?.celular}</p></div>}
-
-                            {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}
-                        </div>
-                        <div style={{display: 'inline-flex', marginTop: 160}}>
-                            {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
-                        </div>
 
 
                         {/*<div style={{display: 'flex'}}>*/}
@@ -46,6 +24,32 @@ const DadosProposta = ({dados}) => {
 
 
                     </div>
+                </div>
+            </div>
+
+            <div style={styles.containerCliente}>
+                <div style={styles.sectionTitle}>INFORMAÇÕES DO CLIENTE</div>
+                {dados?.cliente?.user_data?.nome && <p style={styles.sectionText}><strong>Nome:</strong> {dados?.cliente?.user_data?.nome}</p>}
+                {dados?.cliente?.user_data?.nome_fantasia &&
+                    <p style={styles.sectionText}><strong>Nome Fantasia:</strong> {dados?.cliente?.user_data?.nome_fantasia}</p>}
+                {dados?.cliente?.user_data?.razao_social &&
+                    <p style={styles.sectionText}><strong>Razão Social:</strong> {dados?.cliente?.user_data?.razao_social}</p>}
+
+                <div style={{display: 'inline-flex'}}>
+
+                    {dados?.cliente?.user_data?.cnpj && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}><strong>CNPJ:</strong>
+                        {dados?.cliente?.user_data?.cnpj}</p></div>}
+
+                    {dados?.cliente?.user_data?.cpf && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}><strong>CPF:</strong>
+                        {dados?.cliente?.user_data?.cpf}</p></div>}
+
+                    {dados?.cliente?.contatos?.celular && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>
+                        <strong>Celular:</strong> {dados?.cliente?.contatos?.celular}</p></div>}
+
+                    {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}
+                </div>
+                <div style={{display: 'inline-flex', marginTop: 160}}>
+                    {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
                 </div>
             </div>
 
@@ -62,7 +66,6 @@ const DadosProposta = ({dados}) => {
                         {dados?.prazo_locacao && <div style={{marginInlineEnd: 30}}>
                             <p style={styles.sectionText}><strong>Prazo do Contrato:</strong> {dados?.prazo_locacao} meses</p></div>}
                     </div>
-
             </div>
 
             <div style={styles.containerTaxa}>
@@ -163,6 +166,19 @@ const styles = {
     sectionText: {
         fontSize: 16,
         marginBottom: '5px',
+    },
+
+    containerCliente: {
+        fontFamily: 'Arial, sans-serif',
+        width: '100%',
+        margin: '0 auto',
+        marginTop: 200,
+        position: 'absolute',
+        left: '0',
+        color: '#000',
+        paddingBlockStart: 150,
+        display: 'flex',
+        flexDirection: 'column',
     },
 
     containerProposta: {
