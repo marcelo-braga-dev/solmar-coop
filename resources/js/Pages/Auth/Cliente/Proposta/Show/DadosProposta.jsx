@@ -29,7 +29,7 @@ const DadosProposta = ({dados}) => {
                     {dados?.cliente?.user_data?.cnpj && <div style={{marginInlineEnd: 30, padding: 20, margin: 15}}><p style={styles.sectionText}><strong>CNPJ:</strong>
                         {dados?.cliente?.user_data?.cnpj}</p></div>}
 
-                    {dados?.cliente?.user_data?.cpf && <div style={{marginInlineEnd: 30, padding: 20, margin: 15}}><p style={styles.sectionText}><strong>CPF:</strong>
+                    {dados?.cliente?.user_data?.cpf && <div style={{marginInlineEnd: 30, paddingInline: 20, marginInline: 15}}><p style={styles.sectionText}><strong>CPF:</strong>
                         {dados?.cliente?.user_data?.cpf}</p></div>}
 
                     {dados?.cliente?.contatos?.celular && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>
