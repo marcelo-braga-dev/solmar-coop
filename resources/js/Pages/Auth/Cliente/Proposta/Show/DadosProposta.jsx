@@ -54,14 +54,15 @@ const DadosProposta = ({dados}) => {
                                 <strong>Validade da Proposta:</strong> 30 dias</p></div>}
                         </div>
 
-                        <div style={{textAlign: 'center', fontWeight: 800, marginBlock: 10, fontSize: 20, color: "green"}}>
-                            TAXA DE REDUÇÃO NA CONTA DE ENERGIA: {dados?.taxa_reducao}%
+                        <div style={styles.containerTaxa}>
+                            <div style={{textAlign: 'center', fontWeight: 800, marginBlock: 10, fontSize: 20, color: "green"}}>
+                                TAXA DE REDUÇÃO NA CONTA DE ENERGIA: {dados?.taxa_reducao}%
+                            </div>
+                            <div style={{textAlign: 'center', fontWeight: 800, marginBlockEnd: 10, fontSize: 20, color: "green"}}>
+                                Sua Média de Desconto Anual será de <br/>
+                                <div style={{fontSize: 30}}>{convertFloatToMoney(dados?.desconto_anual)}</div>
+                            </div>
                         </div>
-                        <div style={{textAlign: 'center', fontWeight: 800, marginBlockEnd: 10, fontSize: 20, color: "green"}}>
-                            Sua Média de Desconto Anual será de <br/>
-                            <div style={{fontSize: 30}}>{convertFloatToMoney(dados?.desconto_anual)}</div>
-                        </div>
-
 
                     </div>
                 </div>
@@ -148,6 +149,7 @@ const styles = {
     },
 
     containerTable: {
+        fontFamily: 'Arial, sans-serif',
         width: '100%',
         margin: '0 auto',
         marginTop: 500,
@@ -156,6 +158,19 @@ const styles = {
         left: '0',
         color: '#000',
         padding: 100,
+        paddingBlockStart: 150,
+        display: 'flex',
+        flexDirection: 'column',
+    },
+
+    containerTaxa: {
+        fontFamily: 'Arial, sans-serif',
+        width: '100%',
+        margin: '0 auto',
+        marginTop: 400,
+        position: 'absolute',
+        left: '0',
+        color: '#000',
         paddingBlockStart: 150,
         display: 'flex',
         flexDirection: 'column',
