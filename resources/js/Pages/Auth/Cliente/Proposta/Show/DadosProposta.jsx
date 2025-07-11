@@ -32,20 +32,22 @@ const DadosProposta = ({dados}) => {
 
                             {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}
                         </div>
-                        <div style={{display: 'inline-flex', marginTop: 150}}>
+                        <div style={{display: 'inline-flex', marginTop: 160}}>
                             {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
                         </div>
-                        {/*<div style={styles.sectionTitle}>PROPOSTA</div>*/}
-                        {/*<div style={{display: 'flex'}}>*/}
-                        {/*    {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>*/}
-                        {/*        <p style={styles.sectionText}><strong>Gasto Mensal:</strong> {convertFloatToMoney(dados?.valor_medio)}</p></div>}*/}
+                        <div style={{display: 'inline-flex', marginTop: 190}}>
+                            <div style={styles.sectionTitle}>PROPOSTA</div>
+                            <div style={{display: 'flex'}}>
+                                {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
+                                    <p style={styles.sectionText}><strong>Gasto Mensal:</strong> {convertFloatToMoney(dados?.valor_medio)}</p></div>}
 
-                        {/*    {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>*/}
-                        {/*        <p style={styles.sectionText}><strong>Média Consumo:</strong> {dados?.media_consumo} kWh</p></div>}*/}
+                                {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
+                                    <p style={styles.sectionText}><strong>Média Consumo:</strong> {dados?.media_consumo} kWh</p></div>}
 
-                        {/*    {dados?.prazo_locacao && <div style={{marginInlineEnd: 30}}>*/}
-                        {/*        <p style={styles.sectionText}><strong>Prazo do Contrato:</strong> {dados?.prazo_locacao} meses</p></div>}*/}
-                        {/*</div>*/}
+                                {dados?.prazo_locacao && <div style={{marginInlineEnd: 30}}>
+                                    <p style={styles.sectionText}><strong>Prazo do Contrato:</strong> {dados?.prazo_locacao} meses</p></div>}
+                            </div>
+                        </div>
 
                         {/*<div style={{display: 'flex'}}>*/}
                         {/*    {dados?.criado_em && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>*/}
