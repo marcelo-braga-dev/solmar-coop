@@ -152,10 +152,11 @@ const styles = {
         fontFamily: 'Arial, sans-serif',
         width: '100%',
         margin: '0 auto',
-        marginTop: 450,
+        marginTop: 300,
         position: 'absolute',
         left: '0',
         color: '#000',
+        paddingBlockStart: 150,
         display: 'flex',
         flexDirection: 'column',
     },
@@ -172,7 +173,6 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         fontSize: 16,
-        marginInlineStart: 100
     },
 };
 
