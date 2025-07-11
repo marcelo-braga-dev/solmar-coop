@@ -56,20 +56,21 @@ const DadosProposta = ({dados}) => {
                         {/*        <strong>Validade da Proposta:</strong> 30 dias</p></div>}*/}
                         {/*</div>*/}
 
-                        <div style={styles.containerTaxa}>
-                            <div style={{textAlign: 'center', fontWeight: 800, marginBlock: 10, fontSize: 20, color: "green"}}>
-                                TAXA DE REDUÇÃO NA CONTA DE ENERGIA: {dados?.taxa_reducao}%
-                            </div>
-                            <div style={{textAlign: 'center', fontWeight: 800, marginBlockEnd: 10, fontSize: 20, color: "green"}}>
-                                Sua Média de Desconto Anual será de <br/>
-                                <div style={{fontSize: 30}}>{convertFloatToMoney(dados?.desconto_anual)}</div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
-
             </div>
+
+            <div style={styles.containerTaxa}>
+                <div style={{textAlign: 'center', fontWeight: 800, marginBlock: 10, fontSize: 20, color: "green"}}>
+                    TAXA DE REDUÇÃO NA CONTA DE ENERGIA: {dados?.taxa_reducao}%
+                </div>
+                <div style={{textAlign: 'center', fontWeight: 800, marginBlockEnd: 10, fontSize: 20, color: "green"}}>
+                    Sua Média de Desconto Anual será de <br/>
+                    <div style={{fontSize: 30}}>{convertFloatToMoney(dados?.desconto_anual)}</div>
+                </div>
+            </div>
+
             <div style={styles.containerTable}>
                 <table style={{textAlign: 'center', width: '100%'}}>
                     <thead>
