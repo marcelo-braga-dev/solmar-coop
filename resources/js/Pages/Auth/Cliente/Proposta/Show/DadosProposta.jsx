@@ -37,7 +37,7 @@ const DadosProposta = ({dados}) => {
 
                     {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}
                 </div>
-                <div style={{display: 'inline-flex', marginTop: 160}}>
+                <div style={{display: 'inline-flex', marginTop: 100}}>
                     {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
                 </div>
             </div>
