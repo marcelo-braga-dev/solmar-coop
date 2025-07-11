@@ -29,8 +29,9 @@ const DadosProposta = ({dados}) => {
                     {dados?.cliente?.user_data?.cnpj && <div style={{marginInlineEnd: 30, padding: 20, margin: 15}}><p style={styles.sectionText}><strong>CNPJ:</strong>
                         {dados?.cliente?.user_data?.cnpj}</p></div>}
 
-                    {dados?.cliente?.user_data?.cpf && <div style={{marginInlineEnd: 30, paddingInline: 20, marginInline: 15}}><p style={styles.sectionText}><strong>CPF:</strong>
-                        {dados?.cliente?.user_data?.cpf}</p></div>}
+                    {dados?.cliente?.user_data?.cpf &&
+                        <div style={{marginInlineEnd: 30, paddingInline: 20, marginInline: 15}}><p style={styles.sectionText}><strong>CPF:</strong>
+                            {dados?.cliente?.user_data?.cpf}</p></div>}
 
                     {dados?.cliente?.contatos?.celular && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>
                         <strong>Celular:</strong> {dados?.cliente?.contatos?.celular}</p></div>}
@@ -38,7 +39,7 @@ const DadosProposta = ({dados}) => {
                     {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}
                 </div>
 
-                    {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
+                {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
 
             </div>
 
@@ -174,7 +175,7 @@ const styles = {
         fontFamily: 'Arial, sans-serif',
         width: '100%',
         margin: '0 auto',
-        marginTop: 350,
+        marginTop: 250,
         position: 'absolute',
         left: '0',
         color: '#000',
