@@ -9,23 +9,12 @@ const DadosProposta = ({dados}) => {
 
     return (
         <>
-            <div style={styles.container}>
-                <div style={styles.overlayContainer}>
-                    <div style={styles.overlayText}>
-
-
-
-                        {/*<div style={{display: 'flex'}}>*/}
-                        {/*    {dados?.criado_em && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>*/}
-                        {/*        <strong>Data da Emissão da Proposta:</strong> {dados?.criado_em}</p></div>}*/}
-                        {/*    {dados?.criado_em && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>*/}
-                        {/*        <strong>Validade da Proposta:</strong> 30 dias</p></div>}*/}
-                        {/*</div>*/}
-
-
-                    </div>
-                </div>
-            </div>
+            {/*<div style={{display: 'flex'}}>*/}
+            {/*    {dados?.criado_em && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>*/}
+            {/*        <strong>Data da Emissão da Proposta:</strong> {dados?.criado_em}</p></div>}*/}
+            {/*    {dados?.criado_em && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>*/}
+            {/*        <strong>Validade da Proposta:</strong> 30 dias</p></div>}*/}
+            {/*</div>*/}
 
             <div style={styles.containerCliente}>
                 <div style={styles.sectionTitle}>INFORMAÇÕES DO CLIENTE</div>
@@ -37,7 +26,7 @@ const DadosProposta = ({dados}) => {
 
                 <div style={{display: 'inline-flex'}}>
 
-                    {dados?.cliente?.user_data?.cnpj && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}><strong>CNPJ:</strong>
+                    {dados?.cliente?.user_data?.cnpj && <div style={{marginInlineEnd: 30, padding: 20, margin: 15}}><p style={styles.sectionText}><strong>CNPJ:</strong>
                         {dados?.cliente?.user_data?.cnpj}</p></div>}
 
                     {dados?.cliente?.user_data?.cpf && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}><strong>CPF:</strong>
@@ -54,18 +43,17 @@ const DadosProposta = ({dados}) => {
             </div>
 
             <div style={styles.containerProposta}>
+                <div style={styles.sectionTitle}>PROPOSTA</div>
+                <div style={{display: 'flex'}}>
+                    {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
+                        <p style={styles.sectionText}><strong>Gasto Mensal:</strong> {convertFloatToMoney(dados?.valor_medio)}</p></div>}
 
-                    <div style={styles.sectionTitle}>PROPOSTA</div>
-                    <div style={{display: 'flex'}}>
-                        {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
-                            <p style={styles.sectionText}><strong>Gasto Mensal:</strong> {convertFloatToMoney(dados?.valor_medio)}</p></div>}
+                    {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
+                        <p style={styles.sectionText}><strong>Média Consumo:</strong> {dados?.media_consumo} kWh</p></div>}
 
-                        {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
-                            <p style={styles.sectionText}><strong>Média Consumo:</strong> {dados?.media_consumo} kWh</p></div>}
-
-                        {dados?.prazo_locacao && <div style={{marginInlineEnd: 30}}>
-                            <p style={styles.sectionText}><strong>Prazo do Contrato:</strong> {dados?.prazo_locacao} meses</p></div>}
-                    </div>
+                    {dados?.prazo_locacao && <div style={{marginInlineEnd: 30}}>
+                        <p style={styles.sectionText}><strong>Prazo do Contrato:</strong> {dados?.prazo_locacao} meses</p></div>}
+                </div>
             </div>
 
             <div style={styles.containerTaxa}>
