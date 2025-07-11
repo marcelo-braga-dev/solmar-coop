@@ -5,6 +5,7 @@ namespace App\Models\Cliente;
 use App\Models\Concessionarias;
 use App\Models\Users\User;
 use App\src\Roles\RoleUser;
+use App\Utils\ConvertValues;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,9 @@ class ClienteProposta extends Model
         'media_consumo',
         'taxa_reducao',
         'concessionaria_id',
-        'prazo_locacao'
+        'prazo_locacao',
+        'valor_medio',
+        'unidade_consumidora'
     ];
 
     protected static function booted()
@@ -32,20 +35,40 @@ class ClienteProposta extends Model
         });
     }
 
-    protected $appends = ['criado_em'];
+    protected $appends = ['criado_em', 'desconto_anual'];
 
     protected $casts = [
         'taxa_reducao' => 'float',
-        'media_consumo' => 'float'
+        'valor_medio' => 'float',
+        'media_consumo' => 'float',
     ];
 
     protected $with = ['endereco', 'concessionaria', 'cliente'];
 
+    //--------------
+    // getters
+    //--------------
     public function getCriadoEmAttribute()
     {
         return Carbon::parse($this->attributes['created_at'])->format('d/m/Y H:i:s');
     }
 
+    public function getDescontoAnualAttribute()
+    {
+        return $this->attributes['valor_medio'] * 12 * ($this->attributes['taxa_reducao'] / 100);
+    }
+
+    //--------------
+    // setters
+    //--------------
+    public function setValorMedioAttribute($value)
+    {
+        $this->attributes['valor_medio'] = $value ? ConvertValues::moneyToFloat($value) : null;
+    }
+
+    //--------------
+    // relations
+    //--------------
     public function cliente()
     {
         return $this->hasOne(User::class, 'id', 'user_id');

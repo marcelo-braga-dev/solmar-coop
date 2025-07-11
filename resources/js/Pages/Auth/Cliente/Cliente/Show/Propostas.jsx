@@ -39,7 +39,6 @@ const Propostas = ({propostas, cliente, endereco}) => {
     return (
         <>
             <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
-                XXXXXXXXXXXXxxXXXX12
                 <Grid container justifyContent="space-between" alignItems="center">
                     <Grid size={1} paddingInlineEnd={2}>
                         <IconFileTypePdf color="red" size={30}/>

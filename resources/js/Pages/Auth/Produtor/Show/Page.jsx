@@ -48,7 +48,7 @@ const Page = ({usuario, tab}) => {
                             <Propostas dataUser={usuario}/>
                         </TabPanel>
                         <TabPanel value="contratos">
-                            <Contratos contratos={usuario.contratos} contratado={usuario.user_data}/>
+                            <Contratos produtorId={usuario.user_data.user_id}/>
                         </TabPanel>
                         <TabPanel value="historico">
                             <Historico historico={usuario.historico}/>

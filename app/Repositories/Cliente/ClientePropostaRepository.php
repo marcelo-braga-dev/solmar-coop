@@ -17,7 +17,9 @@ class ClientePropostaRepository
                 'concessionaria_id' => $data?->concessionaria_id,
                 'taxa_reducao' => (new ConfigService())->getTaxaReducao(),
                 'media_consumo' => $data?->dados['media_consumo'],
-                'prazo_locacao' => $data?->dados['prazo_locacao']
+                'prazo_locacao' => $data?->dados['prazo_locacao'],
+                'valor_medio' => $data?->dados['valor_medio'],
+                'unidade_consumidora' => $data?->dados['unidade_consumidora'],
             ]);
 
             $proposta->endereco()->create([

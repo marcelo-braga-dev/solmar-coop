@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth\Cliente\Propostas;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cliente\ClienteProposta;
 use App\Repositories\Cliente\ClientePropostaRepository;
+use App\Utils\AlertMessage;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -24,7 +24,8 @@ class PropostaController extends Controller
     {
         (new ClientePropostaRepository())->create($request);
 
-        return redirect()->route('auth.cliente.proposta.index')->with('success', 'Proposta cadastrado com sucesso.');
+        AlertMessage::success('Proposta cadastrado com sucesso.');
+        return redirect()->route('auth.cliente.proposta.index');
     }
 
     public function show($id)

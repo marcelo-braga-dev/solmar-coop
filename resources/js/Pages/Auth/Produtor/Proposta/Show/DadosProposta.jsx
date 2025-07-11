@@ -6,28 +6,32 @@ const DadosProposta = ({dados}) => {
             <div style={styles.container}>
                 <div style={styles.overlayContainer}>
                     <div style={styles.overlayText}>
-                        <div style={styles.sectionTitle}>INFORMAÇÕES DO INVESTIDOR</div>
-                        {dados?.produtor?.user_data?.nome && <p style={styles.sectionText}><strong>Nome:</strong> {dados?.produtor?.user_data?.nome}</p>}
-                        {dados?.produtor?.user_data?.nome_fantasia &&
-                            <p style={styles.sectionText}><strong>Nome Fantasia:</strong> {dados?.produtor?.user_data?.nome_fantasia}</p>}
-                        {dados?.produtor?.user_data?.razao_social &&
-                            <p style={styles.sectionText}><strong>Razão Social:</strong> {dados?.produtor?.user_data?.razao_social}</p>}
-                        {dados?.produtor?.user_data?.cnpj && <p style={styles.sectionText}><strong>CNPJ:</strong> {dados?.produtor?.user_data?.cnpj}</p>}
-                        {dados?.produtor?.user_data?.cpf && <p style={styles.sectionText}><strong>CPF:</strong> {dados?.produtor?.user_data?.cpf}</p>}
-                        {dados?.produtor?.contatos?.celular && <p style={styles.sectionText}><strong>Celular:</strong> {dados?.produtor?.contatos?.celular}</p>}
-                        {dados?.produtor?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.produtor?.contatos?.email}</p>}
-                        {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
+                        <div>
+                            <div style={styles.sectionTitle}>INFORMAÇÕES DO INVESTIDOR</div>
+                            {dados?.produtor?.user_data?.nome && <p style={styles.sectionText}><strong>Nome:</strong> {dados?.produtor?.user_data?.nome}</p>}
+                            {dados?.produtor?.user_data?.nome_fantasia &&
+                                <p style={styles.sectionText}><strong>Nome Fantasia:</strong> {dados?.produtor?.user_data?.nome_fantasia}</p>}
+                            {dados?.produtor?.user_data?.razao_social &&
+                                <p style={styles.sectionText}><strong>Razão Social:</strong> {dados?.produtor?.user_data?.razao_social}</p>}
+                            {dados?.produtor?.user_data?.cnpj && <p style={styles.sectionText}><strong>CNPJ:</strong> {dados?.produtor?.user_data?.cnpj}</p>}
+                            {dados?.produtor?.user_data?.cpf && <p style={styles.sectionText}><strong>CPF:</strong> {dados?.produtor?.user_data?.cpf}</p>}
+                            {dados?.produtor?.contatos?.celular && <p style={styles.sectionText}><strong>Celular:</strong> {dados?.produtor?.contatos?.celular}</p>}
+                            {dados?.produtor?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.produtor?.contatos?.email}</p>}
+                            {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
+                        </div>
 
-                        <div style={styles.sectionTitle}>INFORMAÇÕES DA USINA SOLAR</div>
-                        {dados?.geracao && <p style={styles.sectionText}><strong>Média Geração:</strong> {dados?.geracao} kWh/mês</p>}
-                        {dados?.potencia && <p style={styles.sectionText}><strong>Potência da Usina:</strong> {dados?.potencia} kWp</p>}
-                        {dados?.taxa_reducao && <p style={styles.sectionText}><strong>Redução da Conta de Energia:</strong> {dados?.taxa_reducao}%</p>}
-                        {dados?.concessionaria?.nome && <p style={styles.sectionText}>
-                            <strong>Concessionária:</strong> {dados?.concessionaria?.nome} / {dados?.concessionaria?.estado}</p>}
-
-                        <div style={styles.sectionTitle}>PROPOSTA DE INVESTIMENTO</div>
-                        {dados?.valor && <p style={styles.sectionText}><strong>Valor do Investimento:</strong> R$ {dados?.valor}</p>}
-
+                        <div>
+                            <div style={styles.sectionTitle}>INFORMAÇÕES DA USINA SOLAR</div>
+                            {dados?.geracao && <p style={styles.sectionText}><strong>Média Geração:</strong> {dados?.geracao} kWh/mês</p>}
+                            {dados?.potencia && <p style={styles.sectionText}><strong>Potência da Usina:</strong> {dados?.potencia} kWp</p>}
+                            {dados?.taxa_reducao && <p style={styles.sectionText}><strong>Redução da Conta de Energia:</strong> {dados?.taxa_reducao}%</p>}
+                            {dados?.concessionaria?.nome && <p style={styles.sectionText}>
+                                <strong>Concessionária:</strong> {dados?.concessionaria?.nome} / {dados?.concessionaria?.estado}</p>}
+                        </div>
+                        <div>
+                            <div style={styles.sectionTitle}>PROPOSTA DE INVESTIMENTO</div>
+                            {dados?.valor && <p style={styles.sectionText}><strong>Valor do Investimento:</strong> R$ {dados?.valor}</p>}
+                        </div>
                         <table style={styles.table}>
                             <tbody>
                             <tr>
@@ -90,6 +94,7 @@ const styles = {
         fontWeight: 'bold',
         marginBottom: '10px',
         marginTop: 30,
+        borderBottom: '1px solid black'
     },
     table: {
         fontSize: '20px',
@@ -98,7 +103,7 @@ const styles = {
         marginTop: 30,
     },
     sectionText: {
-        fontSize: '20px',
+        fontSize: '18px',
         marginBottom: '5px',
     },
 };

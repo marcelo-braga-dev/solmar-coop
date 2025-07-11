@@ -1,75 +1,52 @@
-import {Box, Button, Paper, TextField} from "@mui/material";
+import {Box, Button, Paper, Typography} from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import {IconDownload, IconFileCheck, IconUpload} from "@tabler/icons-react";
-import {useRef} from "react";
-import ContratoUsina from "@/Pages/Auth/Contratos/Usinas/Contrato/ContratoUsina.jsx";
+import {Link} from "@inertiajs/react";
+import {useEffect, useState} from "react";
+import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 
-const Contratos = ({contratado}) => {
+const Contratos = ({produtorId}) => {
+    const [contratos, setContratos] = useState([])
 
-    const proposalRef = useRef(null);
+    useEffect(() => {
+        getContratos()
+    }, []);
 
-    const handleDownload = async () => {
-        try {
-            const response = await axios.get(route('auth.contratos.pdf.usina.gerar-pdf'), {
-                responseType: 'blob',
-            });
+    const getContratos = async () => {
+        const response = await axios.get(route('auth.produtor-contratos-api.get-all', produtorId))
 
-            const url = window.URL.createObjectURL(new Blob([response.data], {type: 'application/pdf'}));
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', `${contratado?.razao_social}_contrato_usina.pdf`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } catch (error) {
-            console.error('Erro ao gerar o PDF:', error);
-        }
-    };
+        setContratos(response.data)
+        console.log(response.data)
+    }
 
     return (
         <Box>
-            <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
-                <Grid container justifyContent="space-between" alignItems="center">
-                    <Grid size={1} paddingInlineEnd={2}>
-                        <IconFileCheck color="green" size={30}/>
-                    </Grid>
-                    <Grid size={11} container justifyContent="space-between" gap={2}>
-                        <Grid/>
-                        <Grid size="auto">
-                            <Button color="error" onClick={handleDownload} startIcon={<IconDownload/>}>Baixar PDF</Button>
-                        </Grid>
-                    </Grid>
+            <Grid container>
+                <Grid marginBottom={4} size={12}>
+                    <Link href={route('auth.produtor-contratos.create', {userId: produtorId})}>
+                        <Button color="success">Emitir Contrato</Button>
+                    </Link>
                 </Grid>
-            </Paper>
-
-            <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
-                <Grid container justifyContent="space-between" alignItems="center">
-                    <Grid size={1} paddingInlineEnd={2}>
-                        <IconUpload color="blue" size={30}/>
-                    </Grid>
-                    <Grid size={11}>
-                        <Grid container spacing={2}>
-                            <Grid size={{xs: 12, md: 8}}>
-                                <TextField
-                                    label="Subir Contrato Assinado"
-                                    type="file"
-                                    fullWidth
-                                    slotProps={{inputLabel: {shrink: true}}}
-                                />
-                            </Grid>
-                            <Grid size={{xs: 12, md: 4}}>
-                                <Button color="success" onClick={handleDownload} startIcon={<IconUpload/>}>Subir Contrato</Button>
-                            </Grid>
-                        </Grid>
-                    </Grid>
+                <Grid marginBottom={2} size={12}>
+                    <Typography variant="h5">Histórico de Contratos Emitidos</Typography>
                 </Grid>
-            </Paper>
+                {contratos.length === 0 && (
+                    <Grid marginBottom={2} size={12}>
+                        <Typography variant="caption">Não há Registros de Contratos Emitidos.</Typography>
+                    </Grid>
+                )}
 
-            <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
-                <div ref={proposalRef}>
-                    <ContratoUsina/>
-                </div>
-            </Paper>
+                {contratos.map(item => (
+                    <Grid marginBottom={2} size={12}>
+                        <Link href={route('auth.produtor-contratos.show', 1)}>
+                            <Paper variant="outlined">
+                                <TextInfo text={item.usina_nome} title="Usina"/>
+                                <Button color="success">Abrir</Button>
+                            </Paper>
+                        </Link>
+                    </Grid>
+                ))}
+
+            </Grid>
         </Box>)
 
 }
