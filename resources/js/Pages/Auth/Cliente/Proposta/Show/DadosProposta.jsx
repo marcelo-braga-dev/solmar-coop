@@ -61,47 +61,50 @@ const DadosProposta = ({dados}) => {
                             Sua Média de Desconto Anual será de <br/>
                             <div style={{fontSize: 30}}>{convertFloatToMoney(dados?.desconto_anual)}</div>
                         </div>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Na Concessionária</th>
-                                <th>No Consórcio</th>
-                                <th>Desconto Total</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr style={{textAlign: 'center'}}>
-                                <td>Mensal</td>
-                                <td>{convertFloatToMoney(dados?.valor_medio)}</td>
-                                <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio))}</td>
-                                <td>{convertFloatToMoney(dados?.valor_medio - valorConsorcio(dados?.valor_medio))}</td>
-                            </tr>
-                            <tr style={{textAlign: 'center'}}>
-                                <td>Trimestral</td>
-                                <td>{convertFloatToMoney(dados?.valor_medio * 3)}</td>
-                                <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio) * 3)}</td>
-                                <td>{convertFloatToMoney((dados?.valor_medio * 3) - (valorConsorcio(dados?.valor_medio) * 3))}</td>
-                            </tr>
-                            <tr style={{textAlign: 'center'}}>
-                                <td>Semestre</td>
-                                <td>{convertFloatToMoney(dados?.valor_medio * 6)}</td>
-                                <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio) * 6)}</td>
-                                <td>{convertFloatToMoney((dados?.valor_medio * 6) - (valorConsorcio(dados?.valor_medio) * 6))}</td>
-                            </tr>
-                            <tr style={{textAlign: 'center'}}>
-                                <td>Anual</td>
-                                <td>{convertFloatToMoney(dados?.valor_medio * 12)}</td>
-                                <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio) * 12)}</td>
-                                <td>{convertFloatToMoney((dados?.valor_medio * 12) - (valorConsorcio(dados?.valor_medio) * 12))}</td>
-                            </tr>
-                            </tbody>
-                        </table>
+
+
                     </div>
                 </div>
 
             </div>
-
+            <div style={styles.containerTable}>
+                <table>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Na Concessionária</th>
+                        <th>No Consórcio</th>
+                        <th>Desconto Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr style={{textAlign: 'center'}}>
+                        <td>Mensal</td>
+                        <td>{convertFloatToMoney(dados?.valor_medio)}</td>
+                        <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio))}</td>
+                        <td>{convertFloatToMoney(dados?.valor_medio - valorConsorcio(dados?.valor_medio))}</td>
+                    </tr>
+                    <tr style={{textAlign: 'center'}}>
+                        <td>Trimestral</td>
+                        <td>{convertFloatToMoney(dados?.valor_medio * 3)}</td>
+                        <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio) * 3)}</td>
+                        <td>{convertFloatToMoney((dados?.valor_medio * 3) - (valorConsorcio(dados?.valor_medio) * 3))}</td>
+                    </tr>
+                    <tr style={{textAlign: 'center'}}>
+                        <td>Semestre</td>
+                        <td>{convertFloatToMoney(dados?.valor_medio * 6)}</td>
+                        <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio) * 6)}</td>
+                        <td>{convertFloatToMoney((dados?.valor_medio * 6) - (valorConsorcio(dados?.valor_medio) * 6))}</td>
+                    </tr>
+                    <tr style={{textAlign: 'center'}}>
+                        <td>Anual</td>
+                        <td>{convertFloatToMoney(dados?.valor_medio * 12)}</td>
+                        <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio) * 12)}</td>
+                        <td>{convertFloatToMoney((dados?.valor_medio * 12) - (valorConsorcio(dados?.valor_medio) * 12))}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </>
     );
@@ -142,6 +145,20 @@ const styles = {
     sectionText: {
         fontSize: 16,
         marginBottom: '5px',
+    },
+
+    containerTable: {
+        width: '100%',
+        margin: '0 auto',
+        marginTop: 500,
+        height: '100%',
+        position: 'absolute',
+        left: '0',
+        color: '#000',
+        padding: 100,
+        paddingBlockStart: 150,
+        display: 'flex',
+        flexDirection: 'column',
     },
 };
 
