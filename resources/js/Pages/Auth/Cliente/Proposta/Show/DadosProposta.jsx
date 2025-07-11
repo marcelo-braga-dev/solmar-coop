@@ -200,9 +200,7 @@ const styles = {
     containerTable: {
         textAlign: 'center',
         fontFamily: 'Arial, sans-serif',
-        width: '70%',
-        // margin: '0 auto',
-        paddingStart: '100px',
+        width: '80%',
         marginTop: 530,
         height: '100%',
         position: 'absolute',
