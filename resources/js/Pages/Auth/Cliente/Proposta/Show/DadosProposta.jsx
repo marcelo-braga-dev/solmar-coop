@@ -154,6 +154,7 @@ const styles = {
     sectionText: {
         fontSize: 16,
         marginBottom: '5px',
+        marginRight: '15px'
     },
 
     containerCliente: {
