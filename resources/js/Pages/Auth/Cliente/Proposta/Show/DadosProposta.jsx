@@ -69,7 +69,7 @@ const DadosProposta = ({dados}) => {
 
             </div>
             <div style={styles.containerTable}>
-                <table style={{textAlign: 'center'}}>
+                <table style={{textAlign: 'center', width: '100%'}}>
                     <thead>
                     <tr>
                         <th></th>
