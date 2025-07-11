@@ -19,19 +19,19 @@ const DadosProposta = ({dados}) => {
                         {dados?.cliente?.user_data?.razao_social &&
                             <p style={styles.sectionText}><strong>Razão Social:</strong> {dados?.cliente?.user_data?.razao_social}</p>}
 
-                        {/*<div style={{display: 'flex'}}>*/}
+                        <div style={{display: 'inline-flex'}}>
 
-                        {/*    {dados?.cliente?.user_data?.cnpj && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}><strong>CNPJ:</strong>*/}
-                        {/*        {dados?.cliente?.user_data?.cnpj}</p></div>}*/}
+                            {dados?.cliente?.user_data?.cnpj && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}><strong>CNPJ:</strong>
+                                {dados?.cliente?.user_data?.cnpj}</p></div>}
 
-                        {/*    {dados?.cliente?.user_data?.cpf && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}><strong>CPF:</strong>*/}
-                        {/*        {dados?.cliente?.user_data?.cpf}</p></div>}*/}
+                            {dados?.cliente?.user_data?.cpf && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}><strong>CPF:</strong>
+                                {dados?.cliente?.user_data?.cpf}</p></div>}
 
-                        {/*    {dados?.cliente?.contatos?.celular && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>*/}
-                        {/*        <strong>Celular:</strong> {dados?.cliente?.contatos?.celular}</p></div>}*/}
+                            {dados?.cliente?.contatos?.celular && <div style={{marginInlineEnd: 30}}><p style={styles.sectionText}>
+                                <strong>Celular:</strong> {dados?.cliente?.contatos?.celular}</p></div>}
 
-                        {/*    {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}*/}
-                        {/*</div>*/}
+                            {dados?.cliente?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.cliente?.contatos?.email}</p>}
+                        </div>
 
                         {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
 
