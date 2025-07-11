@@ -148,6 +148,19 @@ const styles = {
         marginBottom: '5px',
     },
 
+    containerTaxa: {
+        fontFamily: 'Arial, sans-serif',
+        width: '100%',
+        margin: '0 auto',
+        marginTop: 250,
+        position: 'absolute',
+        left: '0',
+        color: '#000',
+        paddingBlockStart: 150,
+        display: 'flex',
+        flexDirection: 'column',
+    },
+
     containerTable: {
         textAlign: 'center',
         fontFamily: 'Arial, sans-serif',
@@ -163,19 +176,6 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         // textAlign: 'center'
-    },
-
-    containerTaxa: {
-        fontFamily: 'Arial, sans-serif',
-        width: '100%',
-        margin: '0 auto',
-        marginTop: 400,
-        position: 'absolute',
-        left: '0',
-        color: '#000',
-        paddingBlockStart: 150,
-        display: 'flex',
-        flexDirection: 'column',
     },
 };
 
