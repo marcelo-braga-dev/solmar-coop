@@ -5,7 +5,7 @@ import PropostaBaixar from "@/Pages/Auth/Cliente/Proposta/Show/Propostas.jsx";
 
 const Page = ({idProposta}) => {
     return (
-        <Layout titlePage="Proposta Cliente Consumidor" menu="clientes" subMenu="clientes-propostas">
+        <Layout titlePage="Proposta Cliente Consumidor" menu="clientes" subMenu="clientes-propostas" backPage>
             {/*<PropostaCliente idProposta={idProposta}/>*/}
             {/*<PropostaModelo/>*/}
             <PropostaBaixar idProposta={idProposta}/>

@@ -17,7 +17,7 @@ function PropostaBaixar({idProposta}) {
     }, []);
 
     const gerarPdfEEnviar = async () => {
-        const blob = await pdf(<PropostaPdf idProposta={idProposta} imagemBase64={imagemGrafico}/>).toBlob();
+        const blob = await pdf(<PropostaPdf idProposta={idProposta} imagemGrafico={imagemGrafico}/>).toBlob();
 
         const formData = new FormData();
         formData.append('file', blob, 'proposta.pdf');
