@@ -18,7 +18,7 @@ const DadosProposta = ({dados}) => {
 
             <div style={styles.containerCliente}>
                 <div style={styles.sectionTitle}>INFORMAÇÕES DO CLIENTE</div>
-                {dados?.cliente?.user_data?.nome && <p style={styles.sectionText}><strong>Nome:</strong> {dados?.cliente?.user_data?.nome}</p>}
+                {/*{dados?.cliente?.user_data?.nome && <p style={styles.sectionText}><strong>Nome:</strong> {dados?.cliente?.user_data?.nome}</p>}*/}
                 {dados?.cliente?.user_data?.nome_fantasia &&
                     <p style={styles.sectionText}><strong>Nome Fantasia:</strong> {dados?.cliente?.user_data?.nome_fantasia}</p>}
                 {dados?.cliente?.user_data?.razao_social &&
@@ -47,7 +47,7 @@ const DadosProposta = ({dados}) => {
                 <div style={styles.sectionTitle}>PROPOSTA</div>
                 <div style={{display: 'flex'}}>
                     {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
-                        <p style={styles.sectionText}><strong>Gasto Mensal:</strong> {convertFloatToMoney(dados?.valor_medio)}</p></div>}
+                        <p style={styles.sectionText}><strong>Média de Gasto Mensal:</strong> {convertFloatToMoney(dados?.valor_medio)}</p></div>}
 
                     {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
                         <p style={styles.sectionText}><strong>Média Consumo:</strong> {dados?.media_consumo} kWh</p></div>}
@@ -59,16 +59,6 @@ const DadosProposta = ({dados}) => {
 
             <div style={styles.containerTaxa}>
                 <div style={{textAlign: 'center', fontWeight: 800, marginBlock: 20, fontSize: 20, color: "green"}}>
-                    TAXA DE REDUÇÃO NA CONTA DE ENERGIA: {dados?.taxa_reducao}%
-                </div>
-                <div style={{textAlign: 'center', fontWeight: 800, marginBlockEnd: 10, fontSize: 20, color: "green"}}>
-                    Sua Média de Desconto Anual será de <br/>
-                    <div style={{fontSize: 30}}>{convertFloatToMoney(dados?.desconto_anual)}</div>
-                </div>
-            </div>
-
-            <div style={styles.containerTaxa}>
-                <div style={{textAlign: 'center', fontWeight: 800, marginBlock: 10, fontSize: 20, color: "green"}}>
                     TAXA DE REDUÇÃO NA CONTA DE ENERGIA: {dados?.taxa_reducao}%
                 </div>
                 <div style={{textAlign: 'center', fontWeight: 800, marginBlockEnd: 10, fontSize: 20, color: "green"}}>

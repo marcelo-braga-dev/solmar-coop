@@ -8,7 +8,7 @@ const Page = ({idProposta}) => {
         <Layout titlePage="Proposta Cliente Consumidor" menu="clientes" subMenu="clientes-propostas">
             {/*<PropostaCliente idProposta={idProposta}/>*/}
             {/*<PropostaModelo/>*/}
-            <PropostaBaixar/>
+            <PropostaBaixar idProposta={idProposta}/>
         </Layout>
     )
 }
