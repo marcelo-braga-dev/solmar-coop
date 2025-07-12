@@ -1,15 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {PDFViewer, PDFDownloadLink} from '@react-pdf/renderer';
 import PropostaPdf from './PropostaModelo.jsx';
 import {Button} from "@mui/material";
 import { pdf } from '@react-pdf/renderer';
 
 import VisualizadorPDF from './VisualizadorPDF';
+import {IconDownload} from "@tabler/icons-react";
+import Grid from "@mui/material/Grid2";
 
 function PropostaBaixar() {
+    const [urlPdf, setUrlPdf] = useState('https://crm.casaverdecoop.com.br/storage/pdfs/proposta_VWxXZVnuxw.pdf')
 
-    const pdfUrl = 'https://crm.casaverdecoop.com.br/storage/pdfs/proposta_VWxXZVnuxw.pdf';
-
+    useEffect(() => {
+        gerarPdfEEnviar()
+    }, []);
     const gerarPdfEEnviar = async () => {
         const blob = await pdf(<PropostaPdf />).toBlob();
 
@@ -22,6 +26,7 @@ function PropostaBaixar() {
             });
 
             const url = response.data.url;
+            setUrlPdf(url)
             window.open(url, '_blank');
         } catch (error) {
             console.error('Erro ao enviar PDF:', error);
@@ -45,14 +50,14 @@ function PropostaBaixar() {
             {/*    {({ loading }) => (loading ? 'Gerando PDF...' : 'Baixar PDF')}*/}
             {/*</PDFDownloadLink>*/}
 
-            MOBILE
-            <Button onClick={gerarPdfEEnviar}>GERAR MOBILE</Button>
-            <div>
-                <h1>Proposta Comercial</h1>
-                <VisualizadorPDF pdfUrl={pdfUrl} />
-            </div>
-            MOBILE FIM
-
+            <Grid container>
+                <Grid size={12} marginBottom={4}>
+                    <Button color="error" startIcon={<IconDownload/>} onClick={gerarPdfEEnviar}>Baixar PDF</Button>
+                </Grid>
+                <Grid size={12}>
+                    <VisualizadorPDF pdfUrl={urlPdf} />
+                </Grid>
+            </Grid>
 
             {/*<div style={{ border: '1px solid #ccc', height: '80vh', marginBottom: 20 }}>*/}
             {/*    <PDFViewer width="100%" height="100%">*/}
