@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {PDFViewer, PDFDownloadLink} from '@react-pdf/renderer';
 import PropostaPdf from './PropostaModelo.jsx';
 import {Button} from "@mui/material";
-import { pdf } from '@react-pdf/renderer';
+import {pdf} from '@react-pdf/renderer';
 
 import VisualizadorPDF from './VisualizadorPDF';
 import {IconDownload} from "@tabler/icons-react";
@@ -16,14 +15,14 @@ function PropostaBaixar() {
     }, []);
 
     const gerarPdfEEnviar = async () => {
-        const blob = await pdf(<PropostaPdf />).toBlob();
+        const blob = await pdf(<PropostaPdf/>).toBlob();
 
         const formData = new FormData();
         formData.append('file', blob, 'proposta.pdf');
 
         try {
             const response = await axios.post(route('auth.propostas.pdf.cliente.gerar-pdf'), formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
+                headers: {'Content-Type': 'multipart/form-data'},
             });
 
             const url = response.data.url;
@@ -39,36 +38,21 @@ function PropostaBaixar() {
     }
 
     return (
-        <div style={{ padding: 20 }}>
-            {/* Botão para download */}
-            {/*<PDFDownloadLink*/}
-            {/*    document={<PropostaPdf />}*/}
-            {/*    fileName="proposta_lucelino_lima.pdf"*/}
-            {/*    style={{*/}
-            {/*        padding: 10,*/}
-            {/*        backgroundColor: '#007bff',*/}
-            {/*        color: 'white',*/}
-            {/*        textDecoration: 'none',*/}
-            {/*        borderRadius: 4,*/}
-            {/*    }}*/}
-            {/*>*/}
-            {/*    {({ loading }) => (loading ? 'Gerando PDF...' : 'Baixar PDF')}*/}
-            {/*</PDFDownloadLink>*/}
+        <div style={{padding: 20}}>
 
             <Grid container>
                 <Grid size={12} marginBottom={4}>
                     <Button color="error" startIcon={<IconDownload/>} onClick={abrirPdf}>Baixar PDF</Button>
                 </Grid>
                 <Grid size={12}>
-                    {urlPdf && <VisualizadorPDF pdfUrl={urlPdf}/>}
+                    {urlPdf ? <VisualizadorPDF pdfUrl={urlPdf}/> : 'Carregando...'}
                 </Grid>
             </Grid>
 
-            {/*<div style={{ border: '1px solid #ccc', height: '80vh', marginBottom: 20 }}>*/}
             {/*    <PDFViewer width="100%" height="100%">*/}
             {/*        <PropostaPdf />*/}
             {/*    </PDFViewer>*/}
-            {/*</div>*/}
+
         </div>
     );
 }
