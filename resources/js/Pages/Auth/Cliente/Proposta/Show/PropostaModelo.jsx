@@ -1,4 +1,3 @@
-import React, {useEffect, useState} from 'react';
 import {
     Document,
     Page,
@@ -10,17 +9,7 @@ import {
 import convertFloatToMoney from "@/Utils/Datas/convertFloatToMoney.js";
 
 // Componente do PDF
-const PropostaModelo = ({idProposta, imagemGrafico}) => {
-    const [dados, setDados] = useState([])
-
-    useEffect(() => {
-        fethcDadosProposta()
-    }, []);
-
-    const fethcDadosProposta = async () => {
-        const response = await axios.get(route('auth.propostas.pdf.cliente.get-dados', idProposta))
-        setDados(response.data)
-    }
+const PropostaModelo = ({dados}) => {
 
     const valorConsorcio = (valor) => {
         return valor * (1 - dados?.taxa_reducao / 100)
@@ -103,7 +92,7 @@ const PropostaModelo = ({idProposta, imagemGrafico}) => {
                 </View>
 
                 <Text style={{marginTop: 20, fontSize: 14}}>Desconto Acumulado Durante o Contrato de {dados?.prazo_locacao} meses</Text>
-                {imagemGrafico && <Image style={{width: '100%', height: 120, marginTop: 20,}} src={imagemGrafico}/>}
+                {/*{imagemGrafico && <Image style={{width: '100%', height: 120, marginTop: 20,}} src={imagemGrafico}/>}*/}
             </View>
         </Page>
 
