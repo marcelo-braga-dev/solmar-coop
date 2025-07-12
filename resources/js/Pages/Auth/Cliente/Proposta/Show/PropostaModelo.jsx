@@ -10,7 +10,7 @@ import {
 import convertFloatToMoney from "@/Utils/Datas/convertFloatToMoney.js";
 
 // Componente do PDF
-const PropostaModelo = ({idProposta}) => {
+const PropostaModelo = ({idProposta, imagemGrafico}) => {
     const [dados, setDados] = useState([])
 
     useEffect(() => {
@@ -20,7 +20,6 @@ const PropostaModelo = ({idProposta}) => {
     const fethcDadosProposta = async () => {
         const response = await axios.get(route('auth.propostas.pdf.cliente.get-dados', idProposta))
         setDados(response.data)
-        console.log(response.data)
     }
 
     const valorConsorcio = (valor) => {
@@ -28,7 +27,6 @@ const PropostaModelo = ({idProposta}) => {
     }
 
     return <Document>
-
         {/* Página de Capa */}
         <Page size="A4">
             <Image style={styles.capa} src="/storage/propostas/cliente/capa.jpg"/>
@@ -41,13 +39,17 @@ const PropostaModelo = ({idProposta}) => {
                 <Text style={styles.sectionTitle}>INFORMAÇÕES DO CLIENTE</Text>
                 <View style={styles.fieldGroup}>
                     {dados?.cliente?.user_data?.nome && <Text style={styles.field}><Text style={styles.label}>Nome:</Text> {dados?.cliente?.user_data?.nome}</Text>}
-                    {dados?.cliente?.user_data?.nome_fantasia && <Text style={styles.field}><Text style={styles.label}>Nome Fantasia:</Text> {dados?.cliente?.user_data?.nome_fantasia}</Text>}
-                    {dados?.cliente?.user_data?.razao_social && <Text style={styles.field}><Text style={styles.label}>Razão Social:</Text> {dados?.cliente?.user_data?.razao_social}</Text>}
+                    {dados?.cliente?.user_data?.nome_fantasia &&
+                        <Text style={styles.field}><Text style={styles.label}>Nome Fantasia:</Text> {dados?.cliente?.user_data?.nome_fantasia}</Text>}
+                    {dados?.cliente?.user_data?.razao_social &&
+                        <Text style={styles.field}><Text style={styles.label}>Razão Social:</Text> {dados?.cliente?.user_data?.razao_social}</Text>}
                     {dados?.cliente?.user_data?.cnpj && <Text style={styles.field}><Text style={styles.label}>CNPJ:</Text> {dados?.cliente?.user_data?.cnpj}</Text>}
                     {dados?.cliente?.user_data?.cpf && <Text style={styles.field}><Text style={styles.label}>CPF:</Text> {dados?.cliente?.user_data?.cpf}</Text>}
-                    {dados?.cliente?.contatos?.celular && <Text style={styles.field}><Text style={styles.label}>Celular:</Text> {dados?.cliente?.contatos?.celular}</Text>}
+                    {dados?.cliente?.contatos?.celular &&
+                        <Text style={styles.field}><Text style={styles.label}>Celular:</Text> {dados?.cliente?.contatos?.celular}</Text>}
                     {dados?.cliente?.contatos?.email && <Text style={styles.field}><Text style={styles.label}>E-mail:</Text> {dados?.cliente?.contatos?.email}</Text>}
-                    {dados?.endereco?.endereco_completo && <Text style={styles.field}><Text style={styles.label}>Endereço:</Text> {dados?.endereco?.endereco_completo}</Text>}
+                    {dados?.endereco?.endereco_completo &&
+                        <Text style={styles.field}><Text style={styles.label}>Endereço:</Text> {dados?.endereco?.endereco_completo}</Text>}
                 </View>
 
                 {/* Proposta */}
@@ -59,39 +61,15 @@ const PropostaModelo = ({idProposta}) => {
                 </View>
 
                 <View style={{marginBottom: 12, textAlign: 'center'}}>
-                    <Text style={{fontWeight: 'bold', color: 'green', fontSize: 14, marginBottom: 4}}><Text>Taxa de Redução na Conta de Energia:</Text> {dados?.taxa_reducao}%</Text>
-                    <Text style={{fontWeight: 'bold', color: 'green', fontSize: 14, marginBottom: 4}}><Text>Desconto Anual Estimado:</Text> {convertFloatToMoney(dados?.desconto_anual)}</Text>
+                    <Text style={{fontWeight: 'bold', color: 'green', fontSize: 14, marginBottom: 4}}><Text>Taxa de Redução na Conta de
+                        Energia:</Text> {dados?.taxa_reducao}%</Text>
+                    <Text style={{fontWeight: 'bold', color: 'green', fontSize: 14, marginBottom: 4}}><Text>Desconto Anual
+                        Estimado:</Text> {convertFloatToMoney(dados?.desconto_anual)}</Text>
                 </View>
 
                 {/* Tabela */}
                 <Text style={styles.sectionTitle}>DESCONTOS ESTIMADOS</Text>
                 <View style={styles.table}>
-                    <tr style={{textAlign: 'center'}}>
-                        <td>Mensal</td>
-                        <td>{convertFloatToMoney(dados?.valor_medio)}</td>
-                        <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio))}</td>
-                        <td>{convertFloatToMoney(dados?.valor_medio - valorConsorcio(dados?.valor_medio))}</td>
-                    </tr>
-                    <tr style={{textAlign: 'center'}}>
-                        <td>Trimestral</td>
-                        <td>{convertFloatToMoney(dados?.valor_medio * 3)}</td>
-                        <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio) * 3)}</td>
-                        <td>{convertFloatToMoney((dados?.valor_medio * 3) - (valorConsorcio(dados?.valor_medio) * 3))}</td>
-                    </tr>
-                    <tr style={{textAlign: 'center'}}>
-                        <td>Semestral</td>
-                        <td>{convertFloatToMoney(dados?.valor_medio * 6)}</td>
-                        <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio) * 6)}</td>
-                        <td>{convertFloatToMoney((dados?.valor_medio * 6) - (valorConsorcio(dados?.valor_medio) * 6))}</td>
-                    </tr>
-                    <tr style={{textAlign: 'center'}}>
-                        <td>Anual</td>
-                        <td>{convertFloatToMoney(dados?.valor_medio * 12)}</td>
-                        <td>{convertFloatToMoney(valorConsorcio(dados?.valor_medio) * 12)}</td>
-                        <td>{convertFloatToMoney((dados?.valor_medio * 12) - (valorConsorcio(dados?.valor_medio) * 12))}</td>
-                    </tr>
-
-
                     <View style={styles.tableRow}>
                         <Text style={styles.tableColHeader}></Text>
                         <Text style={styles.tableColHeader}>Na Concessionária</Text>
@@ -123,11 +101,12 @@ const PropostaModelo = ({idProposta}) => {
                         <Text style={styles.tableCol}>{convertFloatToMoney((dados?.valor_medio * 12) - (valorConsorcio(dados?.valor_medio) * 12))}</Text>
                     </View>
                 </View>
+
+                <Text style={{marginTop: 20, fontSize: 14}}>Desconto Acumulado Durante o Contrato de {dados?.prazo_locacao} meses</Text>
+                {imagemGrafico && <Image style={{width: '100%', height: 120, marginTop: 20,}} src={imagemGrafico}/>}
             </View>
         </Page>
-        {/*<Page size="A4">*/}
-        {/*    <Image style={styles.capa} src="/storage/propostas/cliente/paginas/2.jpg"/>*/}
-        {/*</Page>*/}
+
         <Page size="A4">
             <Image style={styles.capa} src="/storage/propostas/cliente/paginas/3.jpg"/>
         </Page>

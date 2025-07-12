@@ -6,16 +6,18 @@ import {pdf, PDFViewer} from '@react-pdf/renderer';
 import VisualizadorPDF from './VisualizadorPDF';
 import {IconDownload} from "@tabler/icons-react";
 import Grid from "@mui/material/Grid2";
+import DescontosGrafico from "@/Pages/Auth/Cliente/Proposta/Show/Graficos/DescontosGrafico.jsx";
 
 function PropostaBaixar({idProposta}) {
     const [urlPdf, setUrlPdf] = useState()
+    const [imagemGrafico, setImagemGrafico] = useState(null);
 
     useEffect(() => {
         gerarPdfEEnviar()
     }, []);
 
     const gerarPdfEEnviar = async () => {
-        const blob = await pdf(<PropostaPdf idProposta={idProposta}/>).toBlob();
+        const blob = await pdf(<PropostaPdf idProposta={idProposta} imagemBase64={imagemGrafico}/>).toBlob();
 
         const formData = new FormData();
         formData.append('file', blob, 'proposta.pdf');
@@ -50,7 +52,6 @@ function PropostaBaixar({idProposta}) {
 
     return (
         <div style={{padding: 20}}>
-
             <Grid container>
                 <Grid size={12} marginBottom={4}>
                     <Button color="error" startIcon={<IconDownload/>} onClick={abrirPdf}>Baixar PDF</Button>
@@ -62,9 +63,14 @@ function PropostaBaixar({idProposta}) {
 
             {!isWebView && <div style={{width: '100%', height: '70vh', border: '1px solid #ccc'}}>
                 <PDFViewer width="100%" height="100%">
-                    <PropostaPdf idProposta={idProposta}/>
+                    <PropostaPdf idProposta={idProposta} imagemGrafico={imagemGrafico}/>
                 </PDFViewer>
             </div>}
+
+            <div style={{marginTop: 50}}>
+                <DescontosGrafico onExport={setImagemGrafico} idProposta={idProposta}/>
+            </div>
+
 
         </div>
     );
