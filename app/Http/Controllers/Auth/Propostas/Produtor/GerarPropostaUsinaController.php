@@ -8,10 +8,20 @@ use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+use Barryvdh\Snappy\Facades\SnappyPdf;
+
 class GerarPropostaUsinaController extends Controller
 {
     public function gerarPdf(Request $request)
     {
+        if ($request->hasFile('file')) {
+            $path = $request->file('file')->store('pdfs', 'public');
+            return response()->json(['url' => asset("storage/{$path}")]);
+        }
+
+        return response()->json(['error' => 'Nenhum arquivo recebido'], 400);
+
+
         $html = $request->input('html');
 
         // Caminho para as imagens das páginas
