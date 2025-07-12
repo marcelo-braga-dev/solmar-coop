@@ -9,11 +9,12 @@ import {IconDownload} from "@tabler/icons-react";
 import Grid from "@mui/material/Grid2";
 
 function PropostaBaixar() {
-    const [urlPdf, setUrlPdf] = useState('https://crm.casaverdecoop.com.br/storage/pdfs/proposta_VWxXZVnuxw.pdf')
+    const [urlPdf, setUrlPdf] = useState()
 
     useEffect(() => {
         gerarPdfEEnviar()
     }, []);
+
     const gerarPdfEEnviar = async () => {
         const blob = await pdf(<PropostaPdf />).toBlob();
 
@@ -27,11 +28,15 @@ function PropostaBaixar() {
 
             const url = response.data.url;
             setUrlPdf(url)
-            window.open(url, '_blank');
+
         } catch (error) {
             console.error('Erro ao enviar PDF:', error);
         }
     };
+
+    const abrirPdf = () => {
+        window.open(urlPdf, '_blank');
+    }
 
     return (
         <div style={{ padding: 20 }}>
@@ -52,10 +57,10 @@ function PropostaBaixar() {
 
             <Grid container>
                 <Grid size={12} marginBottom={4}>
-                    <Button color="error" startIcon={<IconDownload/>} onClick={gerarPdfEEnviar}>Baixar PDF</Button>
+                    <Button color="error" startIcon={<IconDownload/>} onClick={abrirPdf}>Baixar PDF</Button>
                 </Grid>
                 <Grid size={12}>
-                    <VisualizadorPDF pdfUrl={urlPdf} />
+                    {urlPdf && <VisualizadorPDF pdfUrl={urlPdf}/>}
                 </Grid>
             </Grid>
 
