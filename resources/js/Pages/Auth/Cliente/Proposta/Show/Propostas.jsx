@@ -15,7 +15,7 @@ function PropostaBaixar({idProposta}) {
 
     useEffect(() => {
         fethcDadosProposta()
-    }, []);
+    }, [imagemGrafico]);
 
     const gerarPdfEEnviar = async (info) => {
         const blob = await pdf(<PropostaPdf idProposta={idProposta} imagemGrafico={imagemGrafico} dados={info}/>).toBlob();
