@@ -6,6 +6,7 @@ import {router, useForm} from "@inertiajs/react";
 import PropostaCard from "@/Pages/Auth/Cliente/Proposta/Create/PropostaCard.jsx";
 import DadosPessoais from "@/Components/UserData/DadosPessoais.jsx";
 import Contato from "@/Components/UserData/Contato.jsx";
+import {Button} from "@mui/material";
 
 const Page = () => {
     const [endereco, setEndereco] = useState({})
