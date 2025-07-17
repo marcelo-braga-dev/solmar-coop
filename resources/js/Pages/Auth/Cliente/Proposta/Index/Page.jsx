@@ -20,11 +20,22 @@ const Page = () => {
 
     return (
         <Layout titlePage="Propostas - Cliente Consumidor" menu="clientes" subMenu="clientes-propostas">
-            <Grid container sx={{marginBlockEnd: 4}}>
-                <Link href={route('auth.cliente.proposta.create')}>
-                    <Button color="success" startIcon={<IconPlus/>}>Gerar Proposta</Button>
-                </Link>
-            </Grid>
+            <Card sx={{marginBottom: 3}}>
+                <CardContent>
+                    <Grid container>
+                        <Grid container justifyContent="space-between">
+                            <Grid size={12} marginBottom={2}>
+                                <Typography variant="h5">Lista de Propostas Emitidas para Clientes Consumidor</Typography>
+                            </Grid>
+                            <Grid size={12}>
+                                <Link href={route('auth.cliente.proposta.create')}>
+                                    <Button color="success" startIcon={<IconPlus/>}>Gerar Proposta</Button>
+                                </Link>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </CardContent>
+            </Card>
 
             {registros.map(item => (
                 <Link key={item.id} href={route('auth.cliente.proposta.show', item.id)}>
@@ -47,7 +58,7 @@ const Page = () => {
                                         </Stack>}
                                     </Stack>
                                     <Grid container>
-                                        <Grid size={{xs: 12, md: 6}}>
+                                        <Grid size={{xs: 12, md: 4}}>
                                             {item.cliente.user_data.cnpj && <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">CNPJ:</Typography>
                                                 <Typography>{item.cliente.user_data.cnpj}</Typography>
@@ -68,33 +79,22 @@ const Page = () => {
                                     <Divider sx={{marginBlock: 1}}/>
 
                                     <Grid container>
-                                        <Grid size={{xs: 12, md: 6}}>
+                                        <Grid size={{xs: 12, md: 4}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Média Consumo:</Typography>
                                                 <Typography>{item.media_consumo} kWh/mês</Typography>
                                             </Stack>
                                         </Grid>
-                                        <Grid size={{xs: 12, md: 6}}>
+                                        <Grid size={{xs: 12, md: 4}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Prazo Assinatura:</Typography>
                                                 <Typography>{item.prazo_locacao} meses ({convertMesesParaAnos(item.prazo_locacao)} anos)</Typography>
                                             </Stack>
                                         </Grid>
-                                    </Grid>
-
-                                    <Divider sx={{marginBlock: 1}}/>
-
-                                    <Grid container>
-                                        <Grid size={{xs: 12, md: 6}}>
+                                        <Grid size={{xs: 12, md: 4}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Taxa Redução da Conta:</Typography>
                                                 <Typography>{item.taxa_reducao}%</Typography>
-                                            </Stack>
-                                        </Grid>
-                                        <Grid size={{xs: 12, md: 6}}>
-                                            <Stack direction="row" spacing={2}>
-                                                <Typography fontWeight="bold">Concessionária:</Typography>
-                                                <Typography>{item.concessionaria?.nome}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>
