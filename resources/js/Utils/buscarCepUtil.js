@@ -3,14 +3,14 @@ import axios from 'axios';
 export const buscarCep = async (cep) => {
     try {
         const cepBuscar = cep.replace(/\D/g, '');
-        const response = await axios.get(`https://viacep.com.br/ws/${cepBuscar}/json/`);
+        const response = await axios.get(`https://brasilapi.com.br/api/cep/v1/${cepBuscar}`);
 
-        if (response.data && !response.data.erro) {
+        if (response.data) {
             return {
-                logradouro: response.data.logradouro || '',
-                bairro: response.data.bairro || '',
-                cidade: response.data.localidade || '',
-                estado: response.data.uf || ''
+                logradouro: response.data.street || '',
+                bairro: response.data.neighborhood || '',
+                cidade: response.data.city || '',
+                estado: response.data.state || ''
             };
         } else {
             throw new Error('CEP não encontrado.');

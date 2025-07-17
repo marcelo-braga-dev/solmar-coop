@@ -69,7 +69,7 @@ const Page = ({}) => {
                                         <Grid size={{xs: 12, md: 6}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Localização:</Typography>
-                                                <Typography>{item.user_data.endereco.cidade_estado}</Typography>
+                                                <Typography>{item.user_data?.endereco?.cidade_estado}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>

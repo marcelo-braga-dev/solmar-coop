@@ -11,7 +11,7 @@ import useInputMask from "@/Utils/Masks/InputsMask.js";
 import axios from 'axios';
 import {useAlertMessage} from "@/Contexts/Alerts/SnackbarProvider.jsx";
 
-const DadosPessoais = ({data, setData}) => {
+const DadosPessoais = ({data, setData, title, completo}) => {
 
     const {alertError} = useAlertMessage()
 
@@ -49,7 +49,7 @@ const DadosPessoais = ({data, setData}) => {
 
     return (
         <Card sx={{marginBottom: 4}}>
-            <CardHeader title="Dados Cadastrais" avatar={<IconClipboardText/>}/>
+            <CardHeader title={title ?? "Dados Cadastrais"} avatar={<IconClipboardText/>}/>
             <CardContent>
                 <Grid container spacing={3}>
                     <Grid size={12}>
@@ -81,7 +81,7 @@ const DadosPessoais = ({data, setData}) => {
                                 <IconSearch/>
                             </IconButton>
                         </Grid>
-                        <Grid size={{xs: 12, md: 6}}>
+                        <Grid size={12}>
                             <TextField
                                 label="Razão Social:"
                                 value={data.razao_social}
@@ -90,63 +90,66 @@ const DadosPessoais = ({data, setData}) => {
                                 slotProps={{inputLabel: {shrink: !!data.razao_social}}}
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{xs: 12, md: 6}}>
-                            <TextField
-                                label="Nome Fantasia:"
-                                value={data.nome_fantasia}
-                                onChange={e => setData('nome_fantasia', e.target.value)}
-                                slotProps={{inputLabel: {shrink: !!data.nome_fantasia}}}
-                                fullWidth/>
-                        </Grid>
-                        <Grid size={{xs: 12, md: 4}}>
-                            <TextField
-                                label="Tipo de Empresa:"
-                                value={data.tipo_empresa}
-                                onChange={e => setData('tipo_empresa', e.target.value)}
-                                select
-                                fullWidth>
-                                <MenuItem value="Microempreendedor Individual (MEI)">Microempreendedor Individual (MEI)</MenuItem>
-                                <MenuItem value="Sociedade Limitada (LTDA)">Sociedade Limitada (LTDA)</MenuItem>
-                                <MenuItem value="Empresa Individual (EI)">Empresa Individual (EI)</MenuItem>
-                                <MenuItem value="Associação">Associação</MenuItem>
-                                <MenuItem value="Sociedade Simples (SS)">Sociedade Simples (SS)</MenuItem>
-                                <MenuItem value="Sociedade Anônima (SA)">Sociedade Anônima (SA)</MenuItem>
-                                <MenuItem value="Sociedade Limitada Unipessoal (SLU)">Sociedade Limitada Unipessoal (SLU)</MenuItem>
-                            </TextField>
-                        </Grid>
-                        <Grid size={{xs: 12, md: 4}}>
-                            <TextField
-                                label="Ramo Atividade:"
-                                value={data.ramo_atividade}
-                                onChange={e => setData('ramo_atividade', e.target.value)}
-                                slotProps={{inputLabel: {shrink: !!data.ramo_atividade}}}
-                                fullWidth/>
-                        </Grid>
-                        <Grid size={{xs: 12, md: 4}}>
-                            <TextField
-                                label="Inscrição Estadual:"
-                                value={data.ie}
-                                onChange={e => setData('ie', e.target.value)}
-                                fullWidth/>
-                        </Grid>
-                        <Grid size={{xs: 12, md: 4}}>
-                            <TextField
-                                label="Inscrição Municipal:"
-                                value={data.im}
-                                onChange={e => setData('im', e.target.value)}
-                                slotProps={{inputLabel: {shrink: !!data.im}}}
-                                fullWidth/>
-                        </Grid>
-                        <Grid size={{xs: 12, md: 4}}>
-                            <TextField
-                                label="Data Fundação:"
-                                value={data.data_fundacao}
-                                onChange={e => setData('data_fundacao', e.target.value)}
-                                type="date"
-                                slotProps={{inputLabel: {shrink: true}}}
-                                fullWidth/>
-                        </Grid>
+                        {completo && (<>
+                            <Grid size={{xs: 12, md: 6}}>
+                                <TextField
+                                    label="Nome Fantasia:"
+                                    value={data.nome_fantasia}
+                                    onChange={e => setData('nome_fantasia', e.target.value)}
+                                    slotProps={{inputLabel: {shrink: !!data.nome_fantasia}}}
+                                    fullWidth/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <TextField
+                                    label="Tipo de Empresa:"
+                                    value={data.tipo_empresa}
+                                    onChange={e => setData('tipo_empresa', e.target.value)}
+                                    select
+                                    fullWidth>
+                                    <MenuItem value="Microempreendedor Individual (MEI)">Microempreendedor Individual (MEI)</MenuItem>
+                                    <MenuItem value="Sociedade Limitada (LTDA)">Sociedade Limitada (LTDA)</MenuItem>
+                                    <MenuItem value="Empresa Individual (EI)">Empresa Individual (EI)</MenuItem>
+                                    <MenuItem value="Associação">Associação</MenuItem>
+                                    <MenuItem value="Sociedade Simples (SS)">Sociedade Simples (SS)</MenuItem>
+                                    <MenuItem value="Sociedade Anônima (SA)">Sociedade Anônima (SA)</MenuItem>
+                                    <MenuItem value="Sociedade Limitada Unipessoal (SLU)">Sociedade Limitada Unipessoal (SLU)</MenuItem>
+                                </TextField>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <TextField
+                                    label="Ramo Atividade:"
+                                    value={data.ramo_atividade}
+                                    onChange={e => setData('ramo_atividade', e.target.value)}
+                                    slotProps={{inputLabel: {shrink: !!data.ramo_atividade}}}
+                                    fullWidth/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <TextField
+                                    label="Inscrição Estadual:"
+                                    value={data.ie}
+                                    onChange={e => setData('ie', e.target.value)}
+                                    fullWidth/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <TextField
+                                    label="Inscrição Municipal:"
+                                    value={data.im}
+                                    onChange={e => setData('im', e.target.value)}
+                                    slotProps={{inputLabel: {shrink: !!data.im}}}
+                                    fullWidth/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <TextField
+                                    label="Data Fundação:"
+                                    value={data.data_fundacao}
+                                    onChange={e => setData('data_fundacao', e.target.value)}
+                                    type="date"
+                                    slotProps={{inputLabel: {shrink: true}}}
+                                    fullWidth/>
+                            </Grid>
+                        </>)}
                     </>}
+
 
                     {data.tipo_pessoa === 'pf' && <>
                         <Grid size={{xs: 12, md: 8}}>
@@ -166,55 +169,57 @@ const DadosPessoais = ({data, setData}) => {
                                 required
                                 fullWidth/>
                         </Grid>
-                        <Grid size={{xs: 12, md: 4}}>
-                            <TextField
-                                label="RG:"
-                                className="rg"
-                                value={data.rg}
-                                onChange={e => setData('rg', e.target.value)}
-                                onBlur={e => setData('rg', e.target.value)}
-                                fullWidth/>
-                        </Grid>
-                        <Grid size={{xs: 12, md: 4}}>
-                            <TextField
-                                label="Data Nascimento:"
-                                value={data.data_nascimento}
-                                onChange={e => setData('data_nascimento', e.target.value)}
-                                type="date"
-                                slotProps={{inputLabel: {shrink: true}}}
-                                fullWidth/>
-                        </Grid>
-                        <Grid size={{xs: 12, md: 4}}>
-                            <TextField
-                                label="Gênero:"
-                                value={data.genero}
-                                onChange={e => setData('genero', e.target.value)}
-                                select
-                                fullWidth>
-                                <MenuItem value="m">Masculino</MenuItem>
-                                <MenuItem value="f">Feminino</MenuItem>
-                            </TextField>
-                        </Grid>
-                        <Grid size={{xs: 12, md: 4}}>
-                            <TextField
-                                label="Estado Civil:"
-                                value={data.estado_civil}
-                                onChange={e => setData('estado_civil', e.target.value)}
-                                select
-                                fullWidth>
-                                <MenuItem value="Solteiro(a)">Solteiro(a)</MenuItem>
-                                <MenuItem value="Casado(a)">Casado(a)</MenuItem>
-                                <MenuItem value="Divorciado(a)">Divorciado(a)</MenuItem>
-                                <MenuItem value="Viuvo(a)">Viuvo(a)</MenuItem>
-                            </TextField>
-                        </Grid>
-                        <Grid size={{xs: 12, md: 8}}>
-                            <TextField
-                                label="Ocupação Profissional:"
-                                value={data.profissao}
-                                onChange={e => setData('profissao', e.target.value)}
-                                fullWidth/>
-                        </Grid>
+                        {completo && (<>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <TextField
+                                    label="RG:"
+                                    className="rg"
+                                    value={data.rg}
+                                    onChange={e => setData('rg', e.target.value)}
+                                    onBlur={e => setData('rg', e.target.value)}
+                                    fullWidth/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <TextField
+                                    label="Data Nascimento:"
+                                    value={data.data_nascimento}
+                                    onChange={e => setData('data_nascimento', e.target.value)}
+                                    type="date"
+                                    slotProps={{inputLabel: {shrink: true}}}
+                                    fullWidth/>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <TextField
+                                    label="Gênero:"
+                                    value={data.genero}
+                                    onChange={e => setData('genero', e.target.value)}
+                                    select
+                                    fullWidth>
+                                    <MenuItem value="m">Masculino</MenuItem>
+                                    <MenuItem value="f">Feminino</MenuItem>
+                                </TextField>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <TextField
+                                    label="Estado Civil:"
+                                    value={data.estado_civil}
+                                    onChange={e => setData('estado_civil', e.target.value)}
+                                    select
+                                    fullWidth>
+                                    <MenuItem value="Solteiro(a)">Solteiro(a)</MenuItem>
+                                    <MenuItem value="Casado(a)">Casado(a)</MenuItem>
+                                    <MenuItem value="Divorciado(a)">Divorciado(a)</MenuItem>
+                                    <MenuItem value="Viuvo(a)">Viuvo(a)</MenuItem>
+                                </TextField>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 8}}>
+                                <TextField
+                                    label="Ocupação Profissional:"
+                                    value={data.profissao}
+                                    onChange={e => setData('profissao', e.target.value)}
+                                    fullWidth/>
+                            </Grid>
+                        </>)}
                     </>}
                 </Grid>
             </CardContent>

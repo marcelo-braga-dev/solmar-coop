@@ -14,7 +14,7 @@ class CreateUserService
         try {
             return User::create([
                 'name' => $produtor['nome'] ?? $produtor['razao_social'],
-                'email' => $produtor['email'],
+                'email' => $produtor['email'] ?? null,
                 'role_id' => $role,
                 'consultor_id' => $vendedor,
                 'status' => 1,

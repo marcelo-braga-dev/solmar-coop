@@ -49,7 +49,7 @@ const InformacoesUsina = ({id}) => {
             <Paper variant="outlined">
                 <Grid container>
                     <Grid size={{xs: 12, md: 6}}>
-                        <TextInfo title="Concessionária" text={`${usina.concessionaria.nome}/${usina.concessionaria.estado}`}/>
+                        <TextInfo title="Concessionária" text={`${usina.concessionaria?.nome}/${usina.concessionaria.estado}`}/>
                     </Grid>
                     <Grid size={{xs: 12, md: 6}}>
                         <TextInfo title="Unidade Consumidora" text={usina.uc}/>

@@ -30,7 +30,6 @@ const ConsumoDados = ({data, setData}) => {
                             value={data?.dados?.media_consumo}
                             onChange={e => setData({...data, dados: {...data.dados, media_consumo: e.target.value}})}
                             type="number"
-                            required
                             fullWidth
                             slotProps={{
                                 input: {
@@ -55,15 +54,15 @@ const ConsumoDados = ({data, setData}) => {
                             <MenuItem value={60}>60 meses (5 anos)</MenuItem>
                         </TextField>
                     </Grid>
-                    <Grid size={{xs: 12, md: 3}}>
-                        <TextField
-                            label="Número da Unidade Consumidora"
-                            value={data?.dados?.unidade_consumidora}
-                            onChange={e => setData({...data, dados: {...data.dados, unidade_consumidora: e.target.value}})}
-                            required
-                            fullWidth
-                        />
-                    </Grid>
+                    {/*<Grid size={{xs: 12, md: 3}}>*/}
+                    {/*    <TextField*/}
+                    {/*        label="Número da Unidade Consumidora"*/}
+                    {/*        value={data?.dados?.unidade_consumidora}*/}
+                    {/*        onChange={e => setData({...data, dados: {...data.dados, unidade_consumidora: e.target.value}})}*/}
+                    {/*        required*/}
+                    {/*        fullWidth*/}
+                    {/*    />*/}
+                    {/*</Grid>*/}
                 </Grid>
             </CardContent>
         </Card>

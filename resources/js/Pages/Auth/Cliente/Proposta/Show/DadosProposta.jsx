@@ -46,7 +46,7 @@ const DadosProposta = ({dados}) => {
             <div style={styles.containerProposta}>
                 <div style={styles.sectionTitle}>PROPOSTA</div>
                 <div style={{display: 'flex'}}>
-                    {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>
+                    {dados?.valor_medio && <div style={{marginInlineEnd: 30}}>
                         <p style={styles.sectionText}><strong>Média de Gasto Mensal:</strong> {convertFloatToMoney(dados?.valor_medio)}</p></div>}
 
                     {dados?.media_consumo && <div style={{marginInlineEnd: 30}}>

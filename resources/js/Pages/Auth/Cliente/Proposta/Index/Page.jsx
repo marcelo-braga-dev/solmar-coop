@@ -94,7 +94,7 @@ const Page = () => {
                                         <Grid size={{xs: 12, md: 6}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Concessionária:</Typography>
-                                                <Typography>{item.concessionaria.nome}</Typography>
+                                                <Typography>{item.concessionaria?.nome}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>

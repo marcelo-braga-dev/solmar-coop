@@ -19,7 +19,7 @@ const PropostaCard = () => {
 
     return (
         <Card sx={{marginBottom: 4}}>
-            <CardHeader title="Proposta" avatar={<IconFileInvoice/>} disableTypography/>
+            <CardHeader title="Informaçõe da Proposta" avatar={<IconFileInvoice/>} disableTypography/>
             <CardContent>
                 <Grid container spacing={3}>
                     <Grid size={{xs: 12, md: 3}}>

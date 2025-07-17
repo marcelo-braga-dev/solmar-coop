@@ -1,8 +1,7 @@
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import Grid from "@mui/material/Grid2";
 import {Link} from "@inertiajs/react";
-import {Button, Card, CardContent, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
-import {IconPlus} from "@tabler/icons-react";
+import {Card, CardContent, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
 import React, {useEffect, useState} from "react";
 
 const Page = () => {
@@ -31,13 +30,6 @@ const Page = () => {
 
     return (
         <Layout titlePage="Cliente Consumidor Cadastrados" menu="clientes" subMenu="clientes-cadastrados">
-            <Grid container marginBottom={2} justifyContent="space-between">
-                <Grid>
-                    <Link href={route('auth.cliente.create')}>
-                        <Button startIcon={<IconPlus/>} color="warning">Cadastrar Cliente Consumidor</Button>
-                    </Link>
-                </Grid>
-            </Grid>
 
             {carregando && <LinearProgress color="inherit"/>}
 
@@ -77,7 +69,7 @@ const Page = () => {
                                         <Grid size={{xs: 12, md: 6}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Localização:</Typography>
-                                                <Typography>{item.user_data.endereco.cidade_estado}</Typography>
+                                                <Typography>{item.user_data?.endereco?.cidade_estado}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>

@@ -52,7 +52,7 @@ const Propostas = ({propostas, cliente, endereco}) => {
                         </Grid>
                         <Grid size="auto">
                             {propostas?.concessionaria_id &&
-                                <TextInfo title="Concessionária" text={`${propostas.concessionaria.nome}/${propostas.concessionaria.estado}`}/>}
+                                <TextInfo title="Concessionária" text={`${propostas.concessionaria?.nome}/${propostas.concessionaria.estado}`}/>}
                         </Grid>
                         <Grid size="auto">
                             <Button color="error" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF</Button>

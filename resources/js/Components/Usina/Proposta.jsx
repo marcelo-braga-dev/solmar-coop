@@ -14,7 +14,7 @@ const Proposta = ({proposta}) => {
 
                 <Grid container>
                     <Grid size={{xs: 12, md: 6}}>
-                        <TextInfo title="Concessionária de Energia" text={`${proposta?.concessionaria.nome}/${proposta?.concessionaria.estado}`}/>
+                        <TextInfo title="Concessionária de Energia" text={`${proposta?.concessionaria?.nome}/${proposta?.concessionaria.estado}`}/>
                     </Grid>
                     <Grid size={{xs: 12, md: 6}}>
                         <TextInfo title="Unidade Consumidora" text={proposta?.uc}/>
