@@ -37,7 +37,7 @@ const Page = () => {
         <Layout titlePage="Gerar Proposta - Cliente Consumidor" menu="clientes" subMenu="clientes-propostas" backPage>
             <form onSubmit={submit}>
 
-                <Card sx={{marginBottom: 4}}>
+                {cadastrarCliente && <Card sx={{marginBottom: 4}}>
                     <CardContent>
                         <Grid container spacing={2}>
                             <Grid size={{xs: 12, md: 12}}>
@@ -45,14 +45,14 @@ const Page = () => {
                                     color="warning"
                                     startIcon={<IconUserPlus/>}
                                     onClick={() => setCadastrarCliente(e => !e)}
-                                    variant={cadastrarCliente ? "contained" : "outlined"}
+                                    variant="outlined"
                                 >
-                                    {cadastrarCliente ? 'Selecionar Cliente Já Cadastrado' : 'Cadastrar Novo Cliente'}
+                                    Selecionar Cliente Já Cadastrado
                                 </Button>
                             </Grid>
                         </Grid>
                     </CardContent>
-                </Card>
+                </Card>}
 
                 {!cadastrarCliente && <Card sx={{marginBottom: 4}}>
                     <CardHeader title="Dados do Cliente" avatar={<IconClipboardText/>}/>
@@ -70,6 +70,16 @@ const Page = () => {
                                         return <MenuItem value={item.id} key={item.id}>{item.nome} ({item?.user_data?.cpf}{item?.user_data?.cnpj})</MenuItem>
                                     })}
                                 </TextField>
+                            </Grid>
+                            <Grid size={{xs: 12, md: 4}}>
+                                <Button
+                                    color="warning"
+                                    startIcon={<IconUserPlus/>}
+                                    onClick={() => setCadastrarCliente(e => !e)}
+                                    variant={cadastrarCliente ? "contained" : "outlined"}
+                                >
+                                   Cadastrar Novo Cliente
+                                </Button>
                             </Grid>
                         </Grid>
                     </CardContent>
