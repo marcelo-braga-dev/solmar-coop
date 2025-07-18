@@ -1,19 +1,32 @@
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Endereco from "@/Components/UserData/Endereco.jsx";
 import ConsumoDados from "./ConsumoDados.jsx";
 import {router, useForm} from "@inertiajs/react";
 import PropostaCard from "@/Pages/Auth/Cliente/Proposta/Create/PropostaCard.jsx";
 import DadosPessoais from "@/Components/UserData/DadosPessoais.jsx";
 import Contato from "@/Components/UserData/Contato.jsx";
-import {Button} from "@mui/material";
+import {Button, Card, CardContent, CardHeader, MenuItem, TextField} from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import {IconClipboardText, IconUserPlus} from "@tabler/icons-react";
 
 const Page = () => {
     const [endereco, setEndereco] = useState({})
+    const [clientes, setClientes] = useState([])
+    const [cadastrarCliente, setCadastrarCliente] = useState(false)
 
     const {data, setData} = useForm({
         tipo_pessoa: 'pj'
     })
+
+    useEffect(() => {
+        getClientes()
+    }, []);
+
+    const getClientes = async () => {
+        const response = await axios.get(route('auth.cliente.api.get'))
+        setClientes(response.data.data)
+    }
 
     const submit = (e) => {
         e.preventDefault()
@@ -24,13 +37,51 @@ const Page = () => {
         <Layout titlePage="Gerar Proposta - Cliente Consumidor" menu="clientes" subMenu="clientes-propostas" backPage>
             <form onSubmit={submit}>
 
-                <DadosPessoais data={data} setData={setData} title="Dados do Cliente"/>
+                <Card sx={{marginBottom: 4}}>
+                    <CardContent>
+                        <Grid container spacing={2}>
+                            <Grid size={{xs: 12, md: 12}}>
+                                <Button
+                                    color="warning"
+                                    startIcon={<IconUserPlus/>}
+                                    onClick={() => setCadastrarCliente(e => !e)}
+                                    variant={cadastrarCliente ? "contained" : "outlined"}
+                                >
+                                    {cadastrarCliente ? 'Selecionar Cliente Já Cadastrado' : 'Cadastrar Novo Cliente'}
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </CardContent>
+                </Card>
 
-                <Contato data={data} setData={setData}/>
+                {!cadastrarCliente && <Card sx={{marginBottom: 4}}>
+                    <CardHeader title="Dados do Cliente" avatar={<IconClipboardText/>}/>
+                    <CardContent>
+                        <Grid container spacing={3}>
+                            <Grid size={{xs: 12, md: 6}}>
+                                <TextField
+                                    label="Selecione o Cliente Consumidor..."
+                                    select
+                                    required
+                                    onChange={e => setData('cliente_id', e.target.value)}
+                                    fullWidth
+                                >
+                                    {clientes.map(item => {
+                                        return <MenuItem value={item.id} key={item.id}>{item.nome} ({item?.user_data?.cpf}{item?.user_data?.cnpj})</MenuItem>
+                                    })}
+                                </TextField>
+                            </Grid>
+                        </Grid>
+                    </CardContent>
+                </Card>}
+
+                {cadastrarCliente && <DadosPessoais data={data} setData={setData} title="Dados do Cliente"/>}
+
+                {cadastrarCliente && <Contato data={data} setData={setData}/>}
 
                 <ConsumoDados data={data} setData={setData}/>
 
-                <PropostaCard  data={data} setData={setData}/>
+                <PropostaCard data={data} setData={setData}/>
 
                 <Endereco title="Endereço da Unidade Consumidora" endereco={endereco} setEndereco={setEndereco} required/>
 

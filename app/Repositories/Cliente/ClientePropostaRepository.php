@@ -17,7 +17,7 @@ class ClientePropostaRepository
     {
         DB::transaction(function () use ($data) {
 
-            $clienteId = $this->verificarOuCriarUsuarioPorDocumento($data->all());
+            $clienteId = $data->cliente_id ?? $this->verificarOuCriarUsuarioPorDocumento($data->all());
 
             $proposta = ClienteProposta::create([
                 'user_id' => $clienteId,

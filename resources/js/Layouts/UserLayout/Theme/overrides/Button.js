@@ -43,6 +43,19 @@ export default function Button(theme) {
         },
     };
 
+    const warningStyleOutlined = {
+        '&.MuiButton-outlinedWarning': {
+            color: '#fa8128',
+            borderColor: '#fa8128',
+            backgroundColor: '#ffffff',
+            '&:hover': {
+                backgroundColor: '#fff3e0',
+                borderColor: '#e6731e',
+                color: '#e6731e',
+            },
+        },
+    };
+
     const infoStyle = {
         '&.MuiButton-colorInfo': {
             color: '#fff',
@@ -78,12 +91,14 @@ export default function Button(theme) {
                 variant: 'contained',
             },
             styleOverrides: {
-                root: { ...rootStyle },
+                root: {...rootStyle},
                 contained: {
                     ...disabledStyle,
                 },
                 outlined: {
                     ...disabledStyle,
+                    ...warningStyleOutlined
+
                 },
                 sizeSmall: {
                     fontSize: '0.8rem',
