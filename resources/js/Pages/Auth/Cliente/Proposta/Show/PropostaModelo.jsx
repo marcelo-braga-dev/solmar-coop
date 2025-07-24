@@ -125,8 +125,9 @@ const PropostaModelo = ({dados, imagemGrafico}) => {
 
                 <Text style={{marginTop: 20, fontSize: 14}}>Desconto Acumulado Durante o Contrato de {dados?.prazo_locacao} meses</Text>
                 {imagemGrafico && <Image style={{width: '100%', height: 120, marginTop: 20,}} src={imagemGrafico}/>}
-                <View style={{marginBottom: 12}}>
-                    <Text  style={{ fontSize: 8, marginTop: 4}}>
+
+                <View style={{marginTop: 12}}>
+                    <Text  style={{ fontSize: 8}}>
                         *Os valores apresentados neste documento têm caráter meramente ilustrativo e podem não refletir os valores reais obtidos.
                     </Text>
                 </View>
