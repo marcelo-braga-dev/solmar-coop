@@ -97,7 +97,7 @@ const PropostaModelo = ({dados, imagemGrafico}) => {
         </Page>
 
         <Page size="A4">
-            <Image style={styles.capa} src="/storage/propostas/cliente/paginas/3.jpg"/>
+            <Image style={styles.capa} src="/storage/propostas/cliente/paginas/_3.jpg"/>
         </Page>
         <Page size="A4">
             <Image style={styles.capa} src="/storage/propostas/cliente/paginas/4.jpg"/>
