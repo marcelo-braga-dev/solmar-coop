@@ -18,7 +18,6 @@ const PropostaProdutor = ({idProposta}) => {
     const fethcDadosProposta = async () => {
         const response = await axios.get(route('auth.produtor.proposta.api.get-dados', {id: idProposta}))
         setDados(response.data)
-        console.log(response.data)
     }
 
     const fethcLayout = async () => {
@@ -46,17 +45,13 @@ const PropostaProdutor = ({idProposta}) => {
             <Paper variant="outlined" sx={{padding: 2, marginBottom: 4}}>
                 <Grid container justifyContent="space-between" alignItems="center">
                     <Grid size={{xs: 6, md: 3}}>
-                        {dados?.geracao && <TextInfo title="Média Geração" text={`${dados.geracao} kWh/mês`}/>}
+                        {dados?.geracao_media && <TextInfo title="Média Geração" text={`${dados.geracao_media} kWh/mês`}/>}
                     </Grid>
                     <Grid size={{xs: 6, md: 3}}>
                         {dados?.potencia && <TextInfo title="Potência da Usina" text={`${dados?.potencia} kWp`}/>}
                     </Grid>
                     <Grid size={{xs: 6, md: 3}}>
-                        {dados?.valor && <TextInfo title="Valor do Investimento" text={`R$ ${dados?.valor}`}/>}
-                    </Grid>
-                    <Grid size={{xs: 6, md: 3}}>
-                        {dados?.concessionaria?.id &&
-                            <TextInfo title="Concessionária" text={`${dados?.concessionaria?.nome}/${dados?.concessionaria?.estado}`}/>}
+                        {dados?.valor_investimento && <TextInfo title="Valor do Investimento" text={`R$ ${dados?.valor_investimento}`}/>}
                     </Grid>
                     <Grid size={{xs: 6}}>
                         <Button color="error" onClick={generatePdf} startIcon={<IconDownload/>}>Baixar PDF</Button>

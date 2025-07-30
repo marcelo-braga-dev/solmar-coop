@@ -95,7 +95,7 @@ const Propostas = () => {
                                     <Grid size={{xs: 12, md: 6}}>
                                         <Stack direction="row" spacing={2}>
                                             <Typography fontWeight="bold">Valor da Proposta:</Typography>
-                                            <Typography>R$ {item.valor}</Typography>
+                                            <Typography>R$ {item.valor_investimento}</Typography>
                                         </Stack>
                                     </Grid>
                                     <Grid size={{xs: 12, md: 6}}>

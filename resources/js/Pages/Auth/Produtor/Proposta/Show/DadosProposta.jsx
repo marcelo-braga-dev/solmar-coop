@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DadosProposta = ({dados}) => {
+const DadosProposta = ({dados}) => {console.log(dados)
     return (
         <>
             <div style={styles.container}>
@@ -17,20 +17,19 @@ const DadosProposta = ({dados}) => {
                             {dados?.produtor?.user_data?.cpf && <p style={styles.sectionText}><strong>CPF:</strong> {dados?.produtor?.user_data?.cpf}</p>}
                             {dados?.produtor?.contatos?.celular && <p style={styles.sectionText}><strong>Celular:</strong> {dados?.produtor?.contatos?.celular}</p>}
                             {dados?.produtor?.contatos?.email && <p style={styles.sectionText}><strong>E-mail:</strong> {dados?.produtor?.contatos?.email}</p>}
-                            {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço:</strong> {dados?.endereco?.endereco_completo}</p>}
                         </div>
 
                         <div>
                             <div style={styles.sectionTitle}>INFORMAÇÕES DA USINA SOLAR</div>
-                            {dados?.geracao && <p style={styles.sectionText}><strong>Média Geração:</strong> {dados?.geracao} kWh/mês</p>}
+                            {dados?.geracao_media && <p style={styles.sectionText}><strong>Média Geração:</strong> {dados?.geracao_media} kWh/mês</p>}
                             {dados?.potencia && <p style={styles.sectionText}><strong>Potência da Usina:</strong> {dados?.potencia} kWp</p>}
                             {dados?.taxa_reducao && <p style={styles.sectionText}><strong>Redução da Conta de Energia:</strong> {dados?.taxa_reducao}%</p>}
-                            {dados?.concessionaria?.nome && <p style={styles.sectionText}>
-                                <strong>Concessionária:</strong> {dados?.concessionaria?.nome} / {dados?.concessionaria?.estado}</p>}
+                            {dados?.endereco?.endereco_completo && <p style={styles.sectionText}><strong>Endereço da Usina:</strong> {dados?.endereco?.endereco_completo}</p>}
                         </div>
                         <div>
                             <div style={styles.sectionTitle}>PROPOSTA DE INVESTIMENTO</div>
-                            {dados?.valor && <p style={styles.sectionText}><strong>Valor do Investimento:</strong> R$ {dados?.valor}</p>}
+                            {dados?.valor_investimento && <p style={styles.sectionText}><strong>Valor do Investimento:</strong> R$ {dados?.valor_investimento}</p>}
+                            {dados?.prazo_locacao && <p style={styles.sectionText}><strong>Prazo do Contrato:</strong> {dados?.prazo_locacao} meses</p>}
                         </div>
                         <table style={styles.table}>
                             <tbody>

@@ -22,7 +22,7 @@ class ProdutorPropostasController extends Controller
 
     public function store(Request $request)
     {
-        (new ProdutorPropostaRepository())->store($request);
+        (new ProdutorPropostaRepository())->store($request->all());
 
         AlertMessage::success('Proposta gerada com sucesso!');
         return redirect()->route('auth.produtor.proposta.index');

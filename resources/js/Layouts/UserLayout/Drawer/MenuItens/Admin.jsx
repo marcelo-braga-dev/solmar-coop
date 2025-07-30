@@ -3,7 +3,7 @@ import {
     IconBolt,
     IconBrandWhatsapp,
     IconHeadset, IconReportMoney, IconSettings,
-    IconSolarPanel2, IconUserBolt,
+    IconUserBolt,
     IconUserCog,
     IconUserDollar,
     IconUsers,
@@ -27,15 +27,17 @@ export const adminMenu = [
             {id: 'produtores-solar-cadastrados', title: 'Produtores Cadastrados', link: route('auth.produtor.index')},
             {id: 'produtores-propostas', title: 'Propostas Produtor', link: route('auth.produtor.proposta.index')},
         ],
-    }, {
-        title: 'Usinas Solar',
-        icon: <IconSolarPanel2/>,
-        id: 'usinas',
-        subItems: [
-            {id: 'produtores-kanban', title: 'Quadro de Status', link: route('auth.produtor.kanban.index')},
-            {id: 'usinas-cadastrados', title: 'Todas Usinas', link: route('auth.usinas.index')},
-        ],
-    }, {
+    },
+    // {
+    //     title: 'Usinas Solar',
+    //     icon: <IconSolarPanel2/>,
+    //     id: 'usinas',
+    //     subItems: [
+    //         {id: 'produtores-kanban', title: 'Quadro de Status', link: route('auth.produtor.kanban.index')},
+    //         {id: 'usinas-cadastrados', title: 'Todas Usinas', link: route('auth.usinas.index')},
+    //     ],
+    // },
+    {
         title: 'Consultores',
         icon: <IconUserDollar/>,
         id: 'vendedores',

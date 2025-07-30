@@ -4,13 +4,14 @@ import Grid from "@mui/material/Grid2";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 import {useEffect, useState} from "react";
 
-const PropostaCard = () => {
+const PropostaCard = ({setData}) => {
 
     const [taxaReducao, setTaxaReducao] = useState()
 
     const getTaxaRuducao = async () => {
         const response = await axios.get(route('auth.config.api.get-taxa-reducao-conta'))
         setTaxaReducao(response.data)
+        setData('taxa_reducao', response.data)
     }
 
     useEffect(() => {

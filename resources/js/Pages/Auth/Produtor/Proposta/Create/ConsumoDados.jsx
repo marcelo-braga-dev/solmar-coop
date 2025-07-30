@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid2";
-import {Card, CardContent, CardHeader, InputAdornment, TextField} from "@mui/material";
+import {Card, CardContent, CardHeader, InputAdornment, MenuItem, TextField} from "@mui/material";
 import {IconFileInvoice} from "@tabler/icons-react";
 import {useEffect} from "react";
 import useInputMask from "@/Utils/Masks/InputsMask.js";
@@ -12,14 +12,14 @@ const ConsumoDados = ({data, setData}) => {
 
     return (
         <Card sx={{marginBottom: 4}}>
-            <CardHeader title="Dados de Consumo" avatar={<IconFileInvoice/>} disableTypography/>
+            <CardHeader title="Informações da Usina" avatar={<IconFileInvoice/>} disableTypography/>
             <CardContent>
                 <Grid container spacing={3}>
                     <Grid size={{xs: 12, md: 3}}>
                         <TextField
                             label="Potência da Usina"
-                            value={data?.dados?.media_consumo}
-                            onChange={e => setData({...data, potencia: e.target.value})}
+                            value={data?.dados?.potencia}
+                            onChange={e => setData({...data, dados: {...data.dados, potencia: e.target.value}})}
                             type="number"
                             required
                             fullWidth
@@ -33,9 +33,9 @@ const ConsumoDados = ({data, setData}) => {
 
                     <Grid size={{xs: 12, md: 3}}>
                         <TextField
-                            label="Geração por Mês"
-                            value={data?.dados?.media_consumo}
-                            onChange={e => setData({...data, geracao: e.target.value})}
+                            label="Média Geração Mensal"
+                            value={data?.dados?.geracao_media}
+                            onChange={e => setData({...data, dados: {...data.dados, geracao_media: e.target.value}})}
                             type="number"
                             required
                             fullWidth
@@ -50,8 +50,8 @@ const ConsumoDados = ({data, setData}) => {
                     <Grid size={{xs: 12, md: 3}}>
                         <TextField
                             label="Valor do Investimento"
-                            value={data?.dados?.valor}
-                            onBlur={e => setData({...data, valor: e.target.value})}
+                            value={data?.dados?.valor_investimento}
+                            onBlur={e => setData({...data, dados: {...data.dados, valor_investimento: e.target.value}})}
                             className="money"
                             required
                             fullWidth
@@ -61,6 +61,23 @@ const ConsumoDados = ({data, setData}) => {
                                 },
                             }}
                         />
+                    </Grid>
+
+                    <Grid size={{xs: 12, md: 3}}>
+                        <TextField
+                            label="Prazo Contrato"
+                            value={data?.dados?.prazo_locacao}
+                            onChange={e => setData({...data, dados: {...data.dados, prazo_locacao: e.target.value}})}
+                            select
+                            required
+                            fullWidth
+                        >
+                            <MenuItem value={12}>12 meses (1 ano)</MenuItem>
+                            <MenuItem value={24}>24 meses (2 anos)</MenuItem>
+                            <MenuItem value={36}>36 meses (3 anos)</MenuItem>
+                            <MenuItem value={48}>48 meses (4 anos)</MenuItem>
+                            <MenuItem value={60}>60 meses (5 anos)</MenuItem>
+                        </TextField>
                     </Grid>
                 </Grid>
             </CardContent>

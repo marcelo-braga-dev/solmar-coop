@@ -14,12 +14,15 @@ use Illuminate\Support\Facades\Auth;
 class ProdutorPropostas extends Model
 {
     protected $fillable = [
+        'consultor_id',
         'produtor_id',
-        'concessionaria_id',
+        'taxa_reducao',
+        'prazo_locacao',
+        //'concessionaria_id',
         'potencia',
-        'potencia_ac',
-        'geracao',
-        'valor'
+        //'potencia_ac',
+        'geracao_media',//'geracao',
+        'valor_investimento',//'valor'
     ];
 
     protected static function booted()
@@ -35,7 +38,7 @@ class ProdutorPropostas extends Model
         });
     }
 
-    protected $with = ['produtor', 'concessionaria', 'endereco'];
+    protected $with = ['produtor', 'endereco'];
 
     protected $appends = ['geracao_anual', 'retorno_anual_bruto', 'criado_em'];
 
@@ -49,11 +52,6 @@ class ProdutorPropostas extends Model
         return $this->belongsTo(User::class, 'consultor_id');
     }
 
-    public function concessionaria()
-    {
-        return $this->belongsTo(Concessionarias::class, 'concessionaria_id', 'id');
-    }
-
     public function endereco()
     {
         return $this->hasOne(ProdutorPropostasEnderecos::class, 'proposta_id', 'id');
@@ -65,21 +63,21 @@ class ProdutorPropostas extends Model
         $this->attributes['potencia'] = $value ? ConvertValues::moneyToFloat($value) : null;
     }
 
-    public function setGeracaoAttribute($value)
+    public function setGeracaoMediaAttribute($value)
     {
-        $this->attributes['geracao'] = $value ? ConvertValues::moneyToFloat($value) : null;
+        $this->attributes['geracao_media'] = $value ? ConvertValues::moneyToFloat($value) : null;
     }
 
-    public function setValorAttribute($value)
+    public function setValorInvestimentoAttribute($value)
     {
-        $this->attributes['valor'] = $value ? ConvertValues::moneyToFloat($value) : null;
+        $this->attributes['valor_investimento'] = $value ? ConvertValues::moneyToFloat($value) : null;
     }
 
     // ==== Getters ====
 
-    public function getValorAttribute()
+    public function getValorInvestimentoAttribute()
     {
-        return ConvertValues::floatToMoney($this->attributes['valor']);
+        return ConvertValues::floatToMoney($this->attributes['valor_investimento']);
     }
 
     public function getPotenciaAttribute()
@@ -87,9 +85,9 @@ class ProdutorPropostas extends Model
         return ConvertValues::floatToMoney($this->attributes['potencia']);
     }
 
-    public function getGeracaoAttribute()
+    public function getGeracaoMediaAttribute()
     {
-        return ConvertValues::floatToMoney($this->attributes['geracao']);
+        return ConvertValues::floatToMoney($this->attributes['geracao_media']);
     }
 
     public function getCriadoEmAttribute()
@@ -99,11 +97,11 @@ class ProdutorPropostas extends Model
 
     public function getGeracaoAnualAttribute()
     {
-        return ConvertValues::floatToMoney($this->attributes['geracao'] * 12);
+        return ConvertValues::floatToMoney($this->attributes['geracao_media'] * 12);
     }
 
     public function getRetornoAnualBrutoAttribute()
     {
-        return ConvertValues::floatToMoney($this->attributes['geracao'] * 12 * 0.41);
+        return ConvertValues::floatToMoney($this->attributes['geracao_media'] * 12 * 0.41);
     }
 }

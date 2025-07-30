@@ -73,7 +73,7 @@ const Page = () => {
                                         <Grid size={{xs: 12, md: 6}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Média Geração:</Typography>
-                                                <Typography>{item.geracao} kWh/mês</Typography>
+                                                <Typography>{item.geracao_media} kWh/mês</Typography>
                                             </Stack>
                                         </Grid>
                                         <Grid size={{xs: 12, md: 6}}>
@@ -90,13 +90,7 @@ const Page = () => {
                                         <Grid size={{xs: 12, md: 6}}>
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Valor da Proposta:</Typography>
-                                                <Typography>R$ {item.valor}</Typography>
-                                            </Stack>
-                                        </Grid>
-                                        <Grid size={{xs: 12, md: 6}}>
-                                            <Stack direction="row" spacing={2}>
-                                                <Typography fontWeight="bold">Concessionária:</Typography>
-                                                <Typography>{item.concessionaria?.nome} / {item.concessionaria.estado}</Typography>
+                                                <Typography>R$ {item.valor_investimento}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>
