@@ -2,7 +2,7 @@ import {Link} from "@inertiajs/react";
 import {Button, Card, CardContent, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import Grid from "@mui/material/Grid2";
-import {IconFileText, IconPlus, IconUserSearch} from "@tabler/icons-react";
+import {IconFileText, IconUserSearch} from "@tabler/icons-react";
 import React, {useEffect, useState} from "react";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 
@@ -22,13 +22,6 @@ const Page = () => {
 
     return (
         <Layout titlePage="Produtores Solar" menu="produtores-solar" subMenu="produtores-solar-cadastrados">
-            <Grid container marginBottom={3} justifyContent="space-between">
-                <Grid size={12}>
-                    <Link href={route('auth.produtor.create')}>
-                        <Button startIcon={<IconPlus/>} color="success">Cadastrar Produtor</Button>
-                    </Link>
-                </Grid>
-            </Grid>
 
             <Typography marginBottom={2} variant="h5">Produtores Cadastrados</Typography>
 
