@@ -23,7 +23,14 @@ const Page = () => {
     return (
         <Layout titlePage="Produtores Solar" menu="produtores-solar" subMenu="produtores-solar-cadastrados">
 
-            <Typography marginBottom={2} variant="h5">Produtores Cadastrados</Typography>
+            <Grid container spacing={2} justifyContent="space-between" alignItems="center">
+                <Grid>
+                    <Typography variant="h5" marginBottom={3}>Todos os Produtores Solar Cadastrados</Typography>
+                </Grid>
+                <Grid>
+                    {/*<Pagination count={lastPage} page={page} onChange={handleChange}/>*/}
+                </Grid>
+            </Grid>
 
             {carregando && <LinearProgress color="inherit"/>}
 

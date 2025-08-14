@@ -9,11 +9,13 @@ import Contato from "@/Components/UserData/Contato.jsx";
 import {Button, Card, CardContent, CardHeader, MenuItem, TextField} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import {IconClipboardText, IconUserPlus} from "@tabler/icons-react";
+import {AlertError} from "@/Components/Snackbar/AlertError.jsx";
 
 const Page = () => {
     const [endereco, setEndereco] = useState({})
     const [clientes, setClientes] = useState([])
     const [cadastrarCliente, setCadastrarCliente] = useState(false)
+    const [error, setError] = useState(false)
 
     const {data, setData} = useForm({
         tipo_pessoa: 'pj'
@@ -33,9 +35,20 @@ const Page = () => {
         router.post(route('auth.cliente.proposta.store'), {...data, endereco})
     }
 
+    const verificarUsuarioExistente = (valor) => {
+        const resultado = clientes.find(cliente => cliente.user_data?.cnpj === valor || cliente.user_data?.cpf === valor);
+
+        if (resultado) {
+            setData('cliente_id', resultado.id)
+            setCadastrarCliente(false)
+            setError(true)
+        }
+    }
+
     return (
         <Layout titlePage="Gerar Proposta - Cliente Consumidor" menu="clientes" subMenu="clientes-propostas" backPage>
             <form onSubmit={submit}>
+                {error && <AlertError message="Usuário com o mesmo documento já cadastrado!" close={setError}/>}
 
                 {cadastrarCliente && <Card sx={{marginBottom: 4}}>
                     <CardContent>
@@ -61,13 +74,15 @@ const Page = () => {
                             <Grid size={{xs: 12, md: 6}}>
                                 <TextField
                                     label="Selecione o Cliente Consumidor..."
+                                    value={data.cliente_id}
                                     select
                                     required
                                     onChange={e => setData('cliente_id', e.target.value)}
                                     fullWidth
                                 >
                                     {clientes.map(item => {
-                                        return <MenuItem value={item.id} key={item.id}>{item.nome} ({item?.user_data?.cpf}{item?.user_data?.cnpj})</MenuItem>
+                                        const doc = item?.user_data?.cnpj ?? item?.user_data?.cpf;
+                                        return <MenuItem value={item.id} key={item.id}>{item.nome} ({doc})</MenuItem>
                                     })}
                                 </TextField>
                             </Grid>
@@ -75,17 +90,17 @@ const Page = () => {
                                 <Button
                                     color="warning"
                                     startIcon={<IconUserPlus/>}
-                                    onClick={() => setCadastrarCliente(e => !e)}
+                                    onClick={() => setCadastrarCliente(prev => !prev)}
                                     variant={cadastrarCliente ? "contained" : "outlined"}
                                 >
-                                   Cadastrar Novo Cliente
+                                    Cadastrar Novo Cliente
                                 </Button>
                             </Grid>
                         </Grid>
                     </CardContent>
                 </Card>}
 
-                {cadastrarCliente && <DadosPessoais data={data} setData={setData} title="Dados do Cliente"/>}
+                {cadastrarCliente && <DadosPessoais data={data} setData={setData} title="Dados do Cliente" verificarUsuarioExistente={verificarUsuarioExistente}/>}
 
                 {cadastrarCliente && <Contato data={data} setData={setData}/>}
 

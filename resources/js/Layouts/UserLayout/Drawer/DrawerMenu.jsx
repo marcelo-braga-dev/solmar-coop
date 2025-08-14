@@ -32,7 +32,7 @@ export default function SideMenu() {
                     onClick={() => toggleMenu(item.id)}
                     sx={{cursor: 'pointer', borderBottom: 'none', justifyContent: 'space-between'}}
                 >
-                    <Stack direction="row" spacing={2} alignItems="center">
+                    <Stack direction="row" spacing={2} alignItems="center" sx={{color: item?.cor}}>
                         {item.icon}
                         <Typography variant="body1">{item.title}</Typography>
                     </Stack>

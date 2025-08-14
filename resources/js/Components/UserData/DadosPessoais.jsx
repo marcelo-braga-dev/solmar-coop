@@ -11,7 +11,7 @@ import useInputMask from "@/Utils/Masks/InputsMask.js";
 import axios from 'axios';
 import {useAlertMessage} from "@/Contexts/Alerts/SnackbarProvider.jsx";
 
-const DadosPessoais = ({data, setData, title, completo}) => {
+const DadosPessoais = ({data, setData, title, completo, verificarUsuarioExistente}) => {
 
     const {alertError} = useAlertMessage()
 
@@ -73,6 +73,7 @@ const DadosPessoais = ({data, setData, title, completo}) => {
                                 className="cnpj"
                                 value={data?.cnpj}
                                 onChange={e => setData('cnpj', e.target.value)}
+                                onBlur={e => verificarUsuarioExistente(e.target.value)}
                                 required
                                 fullWidth/>
                         </Grid>
@@ -152,20 +153,21 @@ const DadosPessoais = ({data, setData, title, completo}) => {
 
 
                     {data.tipo_pessoa === 'pf' && <>
-                        <Grid size={{xs: 12, md: 8}}>
-                            <TextField
-                                label="Nome Completo:"
-                                value={data.nome}
-                                onChange={e => setData('nome', e.target.value)}
-                                required
-                                fullWidth/>
-                        </Grid>
                         <Grid size={{xs: 12, md: 4}}>
                             <TextField
                                 label="CPF:"
                                 className="cpf"
                                 value={data.cpf}
                                 onChange={e => setData('cpf', e.target.value)}
+                                onBlur={e => verificarUsuarioExistente(e.target.value)}
+                                required
+                                fullWidth/>
+                        </Grid>
+                        <Grid size={{xs: 12, md: 12}}>
+                            <TextField
+                                label="Nome Completo:"
+                                value={data.nome}
+                                onChange={e => setData('nome', e.target.value)}
                                 required
                                 fullWidth/>
                         </Grid>

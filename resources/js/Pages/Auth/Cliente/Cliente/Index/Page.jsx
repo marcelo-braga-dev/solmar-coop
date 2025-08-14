@@ -7,8 +7,8 @@ import React, {useEffect, useState} from "react";
 const Page = () => {
     const [carregando, setCarregando] = useState(true)
     const [usuarios, setUsuarios] = useState([])
-    const [lastPage, setLastPage] = useState()
-    const [page, setPage] = React.useState();
+    const [lastPage, setLastPage] = useState(1)
+    const [page, setPage] = useState(1);
 
     const handleChange = (event, value) => {
         setPage(value);
@@ -30,6 +30,14 @@ const Page = () => {
 
     return (
         <Layout titlePage="Cliente Consumidor Cadastrados" menu="clientes" subMenu="clientes-cadastrados">
+            <Grid container spacing={2} justifyContent="space-between" alignItems="center">
+                <Grid>
+                    <Typography variant="h5" marginBottom={3}>Todos os Clientes Cadastrados</Typography>
+                </Grid>
+                <Grid>
+                    <Pagination count={lastPage} page={page} onChange={handleChange}/>
+                </Grid>
+            </Grid>
 
             {carregando && <LinearProgress color="inherit"/>}
 
@@ -102,7 +110,7 @@ const Page = () => {
 
             <Grid container marginBottom={4} justifyContent="center">
                 <Grid size="auto">
-                    <Pagination count={lastPage} page={page} onChange={handleChange}/>
+                    <Pagination count={lastPage} page={page} onChange={handleChange} disabled={carregando}/>
                 </Grid>
             </Grid>
         </Layout>

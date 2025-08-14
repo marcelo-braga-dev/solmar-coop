@@ -15,6 +15,7 @@ export const adminMenu = [
         title: 'Cliente Consumidor',
         icon: <IconUsers/>,
         id: 'clientes',
+        cor: 'orange',
         subItems: [
             {id: 'clientes-cadastrados', title: 'Clientes Cadastrados', link: route('auth.cliente.index')},
             {id: 'clientes-propostas', title: 'Propostas Cliente', link: route('auth.cliente.proposta.index')},
@@ -23,24 +24,17 @@ export const adminMenu = [
         title: 'Produtores Solar',
         icon: <IconUserBolt/>,
         id: 'produtores-solar',
+        cor: 'blue',
         subItems: [
             {id: 'produtores-solar-cadastrados', title: 'Produtores Cadastrados', link: route('auth.produtor.index')},
             {id: 'produtores-propostas', title: 'Propostas Produtor', link: route('auth.produtor.proposta.index')},
         ],
     },
-    // {
-    //     title: 'Usinas Solar',
-    //     icon: <IconSolarPanel2/>,
-    //     id: 'usinas',
-    //     subItems: [
-    //         {id: 'produtores-kanban', title: 'Quadro de Status', link: route('auth.produtor.kanban.index')},
-    //         {id: 'usinas-cadastrados', title: 'Todas Usinas', link: route('auth.usinas.index')},
-    //     ],
-    // },
     {
         title: 'Consultores',
         icon: <IconUserDollar/>,
         id: 'vendedores',
+        cor: 'green',
         subItems: [
             {id: 'vendedores-cadastrados', title: 'Consultores Cadastrados', link: route('admin.user.vendedor.index')},
             {id: 'vendedores-cadastrar', title: 'Cadastrar Consultor', link: route('admin.user.vendedor.create')},
@@ -49,6 +43,7 @@ export const adminMenu = [
         title: 'Administradores',
         icon: <IconUserCog/>,
         id: 'admin',
+        cor: 'brown',
         subItems: [
             {id: 'admin-cadastrados', title: 'Admins Cadastrados', link: route('admin.user.admin.index')},
             {id: 'admin-cadastrar', title: 'Cadastrar Admins', link: route('admin.user.admin.create')},

@@ -18,7 +18,7 @@ const ConsumoDados = ({data, setData}) => {
                             fullWidth
                             slotProps={{
                                 input: {
-                                    startAdornment: <InputAdornment position="center">R$</InputAdornment>,
+                                    startAdornment: <InputAdornment position="start">R$</InputAdornment>,
                                 }
                             }}
                         />
