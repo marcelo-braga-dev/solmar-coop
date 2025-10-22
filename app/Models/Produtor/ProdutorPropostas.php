@@ -30,15 +30,15 @@ class ProdutorPropostas extends Model
         static::addGlobalScope('consultor_filter', function ($query) {
             $user = Auth::user();
 
-            if ($user && $user->role_id == RoleUser::$CONSULTOR) {
-                $query->whereHas('produtor', function ($q) use ($user) {
-                    $q->where('consultor_id', $user->id);
-                });
-            }
+            if ($user && $user->role_id == RoleUser::$ADMIN) return;
+
+            $query->whereHas('produtor', function ($q) use ($user) {
+                $q->where('consultor_id', $user->id);
+            });
         });
     }
 
-    protected $with = ['produtor', 'endereco'];
+    protected $with = ['produtor', 'endereco', 'consultor'];
 
     protected $appends = ['geracao_anual', 'retorno_anual_bruto', 'criado_em'];
 

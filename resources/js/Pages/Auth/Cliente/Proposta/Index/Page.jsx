@@ -24,18 +24,24 @@ const Page = () => {
                 <CardContent>
                     <Grid container>
                         <Grid container justifyContent="space-between">
-                            <Grid size={12} marginBottom={2}>
-                                <Typography variant="h5">Lista de Propostas Emitidas para Clientes Consumidor</Typography>
-                            </Grid>
                             <Grid size={12}>
                                 <Link href={route('auth.cliente.proposta.create')}>
-                                    <Button color="success" startIcon={<IconPlus/>}>Gerar Proposta</Button>
+                                    <Button color="Warning" startIcon={<IconPlus/>}>Cadastrar Cliente e Emitir Proposta</Button>
                                 </Link>
                             </Grid>
                         </Grid>
                     </Grid>
                 </CardContent>
             </Card>
+
+            <Grid container spacing={2} justifyContent="space-between" alignItems="center">
+                <Grid>
+                    <Typography variant="h5" marginBottom={3}>Lista de Propostas Emitidas para Clientes Consumidor</Typography>
+                </Grid>
+                <Grid>
+                    {/*<Pagination count={lastPage} page={page} onChange={handleChange}/>*/}
+                </Grid>
+            </Grid>
 
             {registros.map(item => (
                 <Link key={item.id} href={route('auth.cliente.proposta.show', item.id)}>
@@ -95,6 +101,15 @@ const Page = () => {
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Taxa Redução da Conta:</Typography>
                                                 <Typography>{item.taxa_reducao}%</Typography>
+                                            </Stack>
+                                        </Grid>
+                                    </Grid>
+                                    <Divider sx={{marginBlock: 1}}/>
+                                    <Grid container>
+                                        <Grid size={{xs: 12, md: 6}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold">Consultor:</Typography>
+                                                <Typography>{item?.cliente?.consultor?.nome}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>

@@ -1,12 +1,13 @@
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import Grid from "@mui/material/Grid2";
 import {Link} from "@inertiajs/react";
-import {Card, CardContent, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
+import {Button, Card, CardContent, Divider, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
 import React, {useEffect, useState} from "react";
+import {IconPlus} from "@tabler/icons-react";
 
 const Page = () => {
     const [carregando, setCarregando] = useState(true)
-    const [usuarios, setUsuarios] = useState([])
+    const [clientes, setClientes] = useState([])
     const [lastPage, setLastPage] = useState(1)
     const [page, setPage] = useState(1);
 
@@ -21,7 +22,8 @@ const Page = () => {
     const fetchRegistros = async () => {
         try {
             const response = await axios.get(route('auth.cliente.api.get', {page}))
-            setUsuarios(response.data.data)
+            setClientes(response.data.data)
+            console.log(response.data.data)
             setLastPage(response.data.last_page)
         } finally {
             setCarregando(false)
@@ -30,6 +32,20 @@ const Page = () => {
 
     return (
         <Layout titlePage="Cliente Consumidor Cadastrados" menu="clientes" subMenu="clientes-cadastrados">
+            <Card sx={{marginBottom: 3}}>
+                <CardContent>
+                    <Grid container>
+                        <Grid container justifyContent="space-between">
+                            <Grid size={12}>
+                                <Link href={route('auth.cliente.proposta.create')}>
+                                    <Button color="Warning" startIcon={<IconPlus/>}>Cadastrar Cliente e Emitir Proposta</Button>
+                                </Link>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </CardContent>
+            </Card>
+
             <Grid container spacing={2} justifyContent="space-between" alignItems="center">
                 <Grid>
                     <Typography variant="h5" marginBottom={3}>Todos os Clientes Cadastrados</Typography>
@@ -41,9 +57,9 @@ const Page = () => {
 
             {carregando && <LinearProgress color="inherit"/>}
 
-            {usuarios.length === 0 && !carregando && <Typography>Nenhum Produtor Cadastrado.</Typography>}
+            {clientes.length === 0 && !carregando && <Typography>Nenhum Produtor Cadastrado.</Typography>}
 
-            {usuarios.map(item => (
+            {clientes.map(item => (
                 <Link key={item.id} href={route('auth.cliente.show', item.id)}>
                     <Card sx={{marginBottom: 3}}>
                         <CardContent>
@@ -63,6 +79,7 @@ const Page = () => {
                                             <Typography>{item.user_data.razao_social}</Typography>
                                         </Stack>}
                                     </Stack>
+                                    <Divider sx={{marginBlock: 1}}/>
                                     <Grid container>
                                         <Grid size={{xs: 12, md: 6}}>
                                             {item.user_data.cnpj && <Stack direction="row" spacing={2}>
@@ -74,12 +91,14 @@ const Page = () => {
                                                 <Typography>{item.user_data.cpf}</Typography>
                                             </Stack>}
                                         </Grid>
-                                        <Grid size={{xs: 12, md: 6}}>
-                                            <Stack direction="row" spacing={2}>
-                                                <Typography fontWeight="bold">Localização:</Typography>
-                                                <Typography>{item.user_data?.endereco?.cidade_estado}</Typography>
-                                            </Stack>
-                                        </Grid>
+                                        {item.user_data?.endereco?.cidade_estado && (
+                                            <Grid size={{xs: 12, md: 6}}>
+                                                <Stack direction="row" spacing={2}>
+                                                    <Typography fontWeight="bold">Localização:</Typography>
+                                                    <Typography>{item.user_data?.endereco?.cidade_estado}</Typography>
+                                                </Stack>
+                                            </Grid>
+                                        )}
                                     </Grid>
                                     <Grid container>
                                         <Grid size={{xs: 12, md: 6}}>
@@ -98,6 +117,15 @@ const Page = () => {
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold" variant="body1">Cadastrado em:</Typography>
                                                 <Typography variant="body1">{item.cadastrado_em}</Typography>
+                                            </Stack>
+                                        </Grid>
+                                    </Grid>
+                                    <Divider sx={{marginBlock: 1}}/>
+                                    <Grid container>
+                                        <Grid size={{xs: 12, md: 6}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold">Consultor:</Typography>
+                                                <Typography>{item?.consultor?.nome}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>

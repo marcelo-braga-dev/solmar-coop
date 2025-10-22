@@ -46,7 +46,7 @@ const Page = () => {
     }
 
     return (
-        <Layout titlePage="Gerar Proposta de Investimento- Produtor Solar" menu="produtores-solar" subMenu="produtores-propostas" backPage>
+        <Layout titlePage="Gerar Proposta de Investimento - Produtor Solar" menu="produtores-solar" subMenu="produtores-propostas" backPage>
             {error && <AlertError message="Usuário com o mesmo documento já cadastrado!" close={setError}/>}
             <form onSubmit={submit}>
                 {cadastrarUsuario && <Card sx={{marginBottom: 4}}>

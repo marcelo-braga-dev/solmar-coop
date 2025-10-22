@@ -1,8 +1,8 @@
 import {Link} from "@inertiajs/react";
-import {Button, Card, CardContent, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
+import {Button, Card, CardContent, Divider, LinearProgress, Pagination, Stack, Typography} from "@mui/material";
 import Layout from "@/Layouts/UserLayout/Layout.jsx";
 import Grid from "@mui/material/Grid2";
-import {IconFileText, IconUserSearch} from "@tabler/icons-react";
+import {IconPlus} from "@tabler/icons-react";
 import React, {useEffect, useState} from "react";
 import TextInfo from "@/Components/DataDisplay/TextInfo.jsx";
 
@@ -18,17 +18,23 @@ const Page = () => {
         const response = await axios.get(route('auth.produtor.api.get-all'))
             .finally(() => setCarregando(false))
         setProdutores(response.data)
+        console.log(response.data)
     }
 
     return (
         <Layout titlePage="Produtores Solar" menu="produtores-solar" subMenu="produtores-solar-cadastrados">
 
+            <Card sx={{marginBottom: 3}}>
+                <CardContent>
+                    <Link href={route('auth.produtor.proposta.create')}>
+                        <Button color="warning" startIcon={<IconPlus/>}>Cadastrar Produtor e Emitir Proposta</Button>
+                    </Link>
+                </CardContent>
+            </Card>
+
             <Grid container spacing={2} justifyContent="space-between" alignItems="center">
                 <Grid>
                     <Typography variant="h5" marginBottom={3}>Todos os Produtores Solar Cadastrados</Typography>
-                </Grid>
-                <Grid>
-                    {/*<Pagination count={lastPage} page={page} onChange={handleChange}/>*/}
                 </Grid>
             </Grid>
 
@@ -40,44 +46,42 @@ const Page = () => {
                 <Card key={item.id} sx={{marginBottom: 3}}>
                     <CardContent>
                         <Link href={route('auth.produtor.show', item.id)}>
-                            <Grid container justifyContent="space-between">
-                                <Grid size={{xs: 12}}>
+                            <Grid container justifyContent="space-between" marginBottom={2}>
+                                <Grid size={{xs: 12, md: 6}}>
                                     <Stack spacing={2}>
-                                        <Grid container>
-                                            <Grid size={{xs: 12, md: 6}}>
-                                                <Stack spacing={2}>
-                                                    {item?.user_data?.nome && <TextInfo title="Nome" text={item.user_data.nome}/>}
-                                                    {item?.user_data?.razao_social && <TextInfo title="Razão Social" text={item.user_data.razao_social}/>}
-                                                    {item?.user_data?.nome_fantasia && <TextInfo title="Nome Fantasia" text={item?.user_data?.nome_fantasia}/>}
-                                                    {item?.user_data?.cnpj && <TextInfo title="CNPJ" text={item?.user_data?.cnpj}/>}
-                                                    {item?.endereco?.cidade_estado && <TextInfo title="Localização" text={item?.endereco?.cidade_estado}/>}
-                                                </Stack>
-                                            </Grid>
-                                            <Grid size={{xs: 12, md: 6}}>
-                                                <Stack spacing={2}>
-                                                    {item.status_nome && <TextInfo title="Status" text={item.status_nome}/>}
-                                                    {item.id && <TextInfo title="Matrícula" text={item.id}/>}
-                                                </Stack>
-                                            </Grid>
-                                        </Grid>
+                                        {item?.user_data?.nome && <TextInfo title="Nome" text={item.user_data.nome}/>}
+                                        {item?.user_data?.razao_social && <TextInfo title="Razão Social" text={item.user_data.razao_social}/>}
+                                        {item?.user_data?.nome_fantasia && <TextInfo title="Nome Fantasia" text={item?.user_data?.nome_fantasia}/>}
                                     </Stack>
                                 </Grid>
                             </Grid>
-                        </Link>
-                        <Grid container justifyContent="space-between">
-                            <Grid>
-                                {item.status === 'novo' && (
-                                    <Link href={route('admin.produtor.status.analizar-documentos.show', item.id)}>
-                                        <Button sx={{marginTop: 2}} color="warning" startIcon={<IconUserSearch size="20"/>} size="small">Analizar Documentos</Button>
-                                    </Link>
-                                )}
-                                {item.status === 'documentacao-aprovada' && (
-                                    <Link href={route('auth.contratos.usina.index', {produtor: item.id})}>
-                                        <Button sx={{marginTop: 2}} color="info" startIcon={<IconFileText/>}>Gerar Contrato</Button>
-                                    </Link>
-                                )}
+
+                            <Grid container justifyContent="space-between">
+                                <Grid size={{xs: 12, md: 6}}>
+                                    <Stack spacing={2}>
+                                        {item?.user_data?.cnpj && <TextInfo title="CNPJ" text={item?.user_data?.cnpj}/>}
+                                        {item?.endereco?.cidade_estado && <TextInfo title="Localização" text={item?.endereco?.cidade_estado}/>}
+                                    </Stack>
+                                </Grid>
                             </Grid>
-                        </Grid>
+
+                            <Grid container justifyContent="space-between">
+                                <Grid size={{xs: 12, md: 6}}>
+                                    <Stack spacing={2}>
+                                        {item.status_nome && <TextInfo title="Status" text={item.status_nome}/>}
+                                        {item.id && <TextInfo title="Matrícula" text={item.id}/>}
+                                    </Stack>
+                                </Grid>
+                            </Grid>
+
+                            <Divider sx={{marginBlock: 1}}/>
+                            <Grid container>
+                                <Grid size={{xs: 12, md: 6}}>
+                                    {item?.consultor?.nome && <TextInfo title="Consultor" text={item?.consultor?.nome}/>}
+                                </Grid>
+                            </Grid>
+
+                        </Link>
                     </CardContent>
                 </Card>
             ))}

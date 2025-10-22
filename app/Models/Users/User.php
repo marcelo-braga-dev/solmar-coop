@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class User extends Authenticatable
 {
@@ -56,18 +57,15 @@ class User extends Authenticatable
 
     protected $appends = ['nome', 'status_nome', 'cadastrado_em', 'dados_acesso'];
 
-    protected $with = ['userData', 'contatos'];
+    protected $with = ['userData', 'contatos', 'consultor'];
 
     public function scopeSomenteMeusClientes($query)
     {
         $user = Auth::user();
 
-        // Aplica o filtro apenas se o usuário for um consultor
-        if ($user && $user->role_id == RoleUser::$CONSULTOR) {
-            return $query->where('consultor_id', $user->id);
-        }
+        if ($user && $user->role_id == RoleUser::$ADMIN) return $query;
 
-        return $query;
+        return $query->where('consultor_id', $user->id);
     }
 
     //--------------
@@ -78,6 +76,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class, 'consultor_id');
     }
+
     public function userData(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(UserData::class, 'user_id', 'id');
@@ -115,11 +114,13 @@ class User extends Authenticatable
     {
         switch ($this->attributes['status']) {
             case '0':
-                $statusNome = 'Bloqueado'; break;
+                $statusNome = 'Bloqueado';
+                break;
             case '1':
-                $statusNome = 'Ativo';; break;
+                $statusNome = 'Ativo';;
+                break;
             default:
-                $statusNome =  'Desconhecido';
+                $statusNome = 'Desconhecido';
         }
 
         return [

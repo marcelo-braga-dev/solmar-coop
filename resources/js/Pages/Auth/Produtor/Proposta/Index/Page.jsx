@@ -15,15 +15,18 @@ const Page = () => {
     const getRegistros = async () => {
         const response = await axios.get(route('auth.produtor.proposta.api.get-all'))
         setRegistros(response.data)
+        console.log(response.data)
     }
 
     return (
         <Layout titlePage="Propostas - Produtor Solar" menu="produtores-solar" subMenu="produtores-propostas">
-            <Grid container sx={{marginBlockEnd: 4}}>
-                <Link href={route('auth.produtor.proposta.create')}>
-                    <Button color="success" startIcon={<IconPlus/>}>Gerar Proposta Produtor</Button>
-                </Link>
-            </Grid>
+            <Card sx={{marginBottom: 3}}>
+                <CardContent>
+                    <Link href={route('auth.produtor.proposta.create')}>
+                        <Button color="warning" startIcon={<IconPlus/>}>Cadastrar Produtor e Emitir Proposta</Button>
+                    </Link>
+                </CardContent>
+            </Card>
 
             <Typography variant="h5" marginBottom={2}>Histórico de Proposta Geradas</Typography>
 
@@ -91,6 +94,17 @@ const Page = () => {
                                             <Stack direction="row" spacing={2}>
                                                 <Typography fontWeight="bold">Valor da Proposta:</Typography>
                                                 <Typography>R$ {item.valor_investimento}</Typography>
+                                            </Stack>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Divider sx={{marginBlock: 1}}/>
+
+                                    <Grid container>
+                                        <Grid size={{xs: 12, md: 6}}>
+                                            <Stack direction="row" spacing={2}>
+                                                <Typography fontWeight="bold">Consultor:</Typography>
+                                                <Typography>{item?.consultor?.nome}</Typography>
                                             </Stack>
                                         </Grid>
                                     </Grid>

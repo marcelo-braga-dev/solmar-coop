@@ -17,7 +17,7 @@ export const adminMenu = [
         id: 'clientes',
         cor: 'orange',
         subItems: [
-            {id: 'clientes-cadastrados', title: 'Clientes Cadastrados', link: route('auth.cliente.index')},
+            {id: 'clientes-cadastrados', title: 'Clientes', link: route('auth.cliente.index')},
             {id: 'clientes-propostas', title: 'Propostas Cliente', link: route('auth.cliente.proposta.index')},
         ],
     }, {
@@ -26,7 +26,7 @@ export const adminMenu = [
         id: 'produtores-solar',
         cor: 'blue',
         subItems: [
-            {id: 'produtores-solar-cadastrados', title: 'Produtores Cadastrados', link: route('auth.produtor.index')},
+            {id: 'produtores-solar-cadastrados', title: 'Produtores', link: route('auth.produtor.index')},
             {id: 'produtores-propostas', title: 'Propostas Produtor', link: route('auth.produtor.proposta.index')},
         ],
     },

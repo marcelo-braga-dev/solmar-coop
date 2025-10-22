@@ -4,9 +4,10 @@ namespace App\src\Roles;
 
 class RoleUser
 {
-    static int $CLIENTE = 4;
+    static int $ADMIN = 1;
     static int $CONSULTOR = 2;
     static int $PRODUTOR = 3;
+    static int $CLIENTE = 4;
 
     public function admin(): int
     {
